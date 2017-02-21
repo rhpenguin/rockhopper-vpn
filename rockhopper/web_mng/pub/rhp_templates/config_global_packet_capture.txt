@@ -1,0 +1,133 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 10px;margin-top: 10px;margin-bottom: 30px;">
+Packet Capture
+</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+      <label style="font-weight: bold;font-size: 110%;">Capture Configuration</label>
+      </td>
+      <td style="width: 20px;">
+      </td>
+      <td>
+      <table>
+        <tbody>
+        <tr>
+          <td><label>Max amount of caputured packets (bytes):</label></td>    
+          <td><div id="configPacketCaptureCapturedBytes"></div></td>
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><label>Max numbers of caputured packets:</label></td>    
+          <td><div id="configPacketCaptureCapturedNum"></div></td>
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><label>Capture interval (seconds):</label></td>    
+          <td><div id="configPacketCaptureInterval"></div></td>
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><label>VPN Realm ID:</label></td>    
+          <td><div id="configPacketCaptureRealmId"></div></td>
+        </tr>    
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 0px;margin-top: 30px;margin-bottom: 10px;">
+</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+      <label style="font-weight: bold;font-size: 110%;">Captured Traffic</label>
+      </td>
+      <td style="width: 50px;">
+      </td>
+      <td>
+      <table>
+        <tbody>
+        <tr>
+          <td><div id="configPacketCaptureTrafficEsp"></div></td>
+          <td><label>ESP packets</label></td>    
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><div id="configPacketCaptureTrafficEspPlainText"></div></td>
+          <td><label>ESP packets (plaintext)</label></td>    
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><div id="configPacketCaptureTrafficIkev2"></div></td>
+          <td><label>IKE packets</label></td>    
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><div id="configPacketCaptureTrafficIkev2PlainText"></div></td>
+          <td><label>IKE packets (plaintext)</label></td>    
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><div id="configPacketCaptureTrafficRadius"></div></td>
+          <td><label>RADIUS</label></td>    
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><div id="configPacketCaptureTrafficVpnIF"></div></td>
+          <td><label>Packets received and sent via VPN Tunnel/TAP Interface (plaintext)</label></td>    
+        </tr>    
+        <tr style="height: 5px;"><td></td><tr>
+        <tr>
+          <td><div id="configPacketCaptureTrafficEspPlainTextNotChecked"></div></td>
+          <td><label>Unchecked ESP packets (plaintext)</label></td>    
+        </tr>    
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p style="font-size: 90%;padding: 0px;margin: 0px;margin-top: 20px;margin-bottom: 20px;">
+<table>
+  <tbody>
+    <tr>
+      <td style="width: 600px;">
+      Ethernet headers, L3 headers (e.g. IP) and L4 headers (e.g. UDP) of captured packets
+      are pseudo headers by Rockhopper. Therefore, they may be different from actual headers 
+      by kernel's network stack or network nodes.
+      </td>
+    </tr>
+  </tbody>
+</table>
+</p>
+
+
+<p style="margin-top: 30px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+        <div id="configGlobalPacketCaptureStart"></div>
+        </td>
+        <td style="width: 20px;">
+        <td>
+        <div id="configGlobalPacketCaptureSave"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <iframe name="packet_capture_resp" style="display:none;" id="configPacketCaptureResp">
+  </iframe>  
+</p>
+<p>  
+  <label style="font-size:115%;" id="configPacketCaptureStatus"></label>
+</p>
+

@@ -1,0 +1,42 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+VPN Tunnel/TAP Interface
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+(*): Required.
+</p>
+<p id="pConfigVpnInterface">
+  <table>
+    <tbody>
+      <tr>
+        <td><label id="configVpnInterfaceLabel" style="font-weight: bold; font-size: 100%;" >Internal Address Type(*): </label></td>
+        <td><div id="configVpnInterface"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p id="pConfigVpnInterface2">
+  <div id="configVpnInterface2"></div>
+</p>
+<p id="pConfigEncap">
+  <table>
+    <tbody>
+      <tr>
+        <td><label id="configEncapLabel" style="font-weight: bold; font-size: 100%;">Encapsulation Mode: </label></td>
+        <td><div id="configEncap"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p id="pConfigFixedMtu">
+  <table>
+    <tbody>
+      <tr>
+        <td><label id="configFixedMtuLabel" style="font-weight: bold; font-size: 100%;">MTU: </label></td>
+        <td><div id="configFixedMtu"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p id="pConfigVpnInterface3">
+  <div id="configVpnInterface3"></div>
+</p>

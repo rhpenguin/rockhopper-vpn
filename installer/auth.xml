@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<rhp_auth version="1.0" description="Rockhopper Authentication Info">
+
+  <admin id="admin" prf_method="hmac-sha1" hashed_key="HaRB3vKaIiEEEeS/jkT0qTEVIpA=" vpn_realm="any"/>
+  <admin id="rhp_client_gtk2_perl" prf_method="hmac-sha1" hashed_key="fdxz6CE0M6VPHwGA0mpCfezfCGg=" vpn_realm="any" is_nobody="enable"/>
+  <admin id="rhp_mng_cmd_perl" prf_method="hmac-sha1" hashed_key="Mc5Df5n+pfRhRGScHE54CxBYxoE=" vpn_realm="any" is_nobody="enable"/>
+
+</rhp_auth>
+
+
+

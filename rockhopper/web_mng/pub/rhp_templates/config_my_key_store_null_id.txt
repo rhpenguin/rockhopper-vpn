@@ -1,0 +1,34 @@
+
+<p style="font-size: 90%;padding-top: 30px;margin-top: 0px;">
+  <table id="configVpnMyKeyStoreNullAuthIdTop">
+    <tbody>
+      <tr style="height: 30px;">
+        <td><label id="configVpnMyKeyStoreNullAuthIdTypeLabel" style="font-weight: bold; font-size: 100%;">My ID Type: </label></td>
+        <td><div id="configVpnMyKeyStoreNullAuthIdType"></div></td>
+      </tr>
+      <tr style="height: 30px;width:100%;margin-bottom: 0px;padding-bottom: 0px;">
+        <td><label class="myKeyStoreNullAuthIdLabel" id="configVpnMyKeyStoreNullAuthIdLabel" style="font-weight: bold; font-size: 100%;">My ID: </label></td>
+        <td><div id="configVpnMyKeyStoreNullAuthId"></div></td>
+      </tr>
+      <tr style="margin-top: 0px;padding-top: 0px;">
+        <td></td>
+        <td style="font-size:90%;">
+          <table>   
+            <tr>
+              <td><label>e.g. </label></td>
+              <td style="width:15px;"></td>
+              <td><label>Host Name(FQDN):</td>
+              <td>hostname.example.com</label></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="width:15px;"></td>
+              <td><label>Email Address:</td>
+              <td>username@example.com</label></td>
+            </tr>
+          </table>   
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</p>

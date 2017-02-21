@@ -1,0 +1,19 @@
+{
+  "identifier":"childsa_name",
+  "label": "childsa_name",
+  "items": [
+        {"childsa_name":"pfs","default_value":"disable","desc":""},
+        {"childsa_name":"responder_not_rekeying","default_value":"disable","desc":""},
+        {"childsa_name":"anti_replay","default_value":"enable","desc":""},
+        {"childsa_name":"anti_replay_win_size","default_value":64,"desc":""},
+        {"childsa_name":"tfc_padding","default_value":"disable","desc":""},
+        {"childsa_name":"tfc_padding_max_size","default_value":64,"desc":""},
+        {"childsa_name":"apply_traffic_selector_to_eoip","default_value":"enable","desc":""},
+        {"childsa_name":"apply_traffic_selector_to_gre","default_value":"enable","desc":""},
+        {"childsa_name":"adjust_path_mtu","default_value":"enable","desc":""},
+        {"childsa_name":"out_of_order_drop","default_value":"disable","desc":""},
+        {"childsa_name":"gre_auto_generate_ts","default_value":"enable","desc":""},
+        {"childsa_name":"gre_ts_allow_nat_reflexive_addr","default_value":"enable","desc":""},
+        {"childsa_name":"v6_aux_link_local_addr","default_value":"fe80::38dd:efaa","desc":""}
+  ]
+}

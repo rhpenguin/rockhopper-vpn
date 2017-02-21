@@ -1,0 +1,78 @@
+<p>
+  <table class="rhpTableTag topRealmPeerChildSaTable" style="width:450px;">
+    <tbody class="topRealmPeerChildSaTableBody">
+    </tbody>
+  </table>
+</p>
+<p>
+  <table class="rhpTableTag topRealmPeerChildSaTable" style="width:300px;">
+    <tbody class="topRealmPeerChildSaTable02Body">
+    </tbody>
+  </table>
+</p>
+<p>
+  <table class="rhpTableTag topRealmPeerChildSaTable" style="width:450px;">
+    <tbody class="topRealmPeerChildSaTable03Body">
+    </tbody>
+  </table>
+</p>
+<p>
+  <label style="font-size: 110%;font-weight:bold;">Cryptographic algorithms:</label>
+  <table class="rhpTableTag topRealmPeerChildSaTable2" style="width:450px;">
+    <tbody class="topRealmPeerChildSaTable2Body">
+    </tbody>
+  </table>
+</p>
+<p>
+  <label style="font-size: 110%;font-weight:bold;">My Traffic Selectors:</label>
+  <table class="rhpTableTag topRealmPeerChildSaTable4" style="width:500px;">
+    <tbody class="topRealmPeerChildSaTable4Body">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">IPv4 Address Range</td>
+        <td class="rhpTableTdTag style="width:80px;">Protocol</td>
+        <td class="rhpTableTdTag">Port Range</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p>
+  <table class="rhpTableTag topRealmPeerChildSaTable4V6" style="width:500px;">
+    <tbody class="topRealmPeerChildSaTable4V6Body">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">IPv6 Address Range</td>
+        <td class="rhpTableTdTag style="width:80px;">Protocol</td>
+        <td class="rhpTableTdTag">Port Range</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p>
+  <label style="font-size: 110%;font-weight:bold;">Peer's Traffic Selectors:</label>
+  <table class="rhpTableTag topRealmPeerChildSaTable5" style="width:500px;">
+    <tbody class="topRealmPeerChildSaTable5Body">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">IPv4 Address Range</td>
+        <td class="rhpTableTdTag style="width:80px;">Protocol</td>
+        <td class="rhpTableTdTag">Port Range</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p>
+  <table class="rhpTableTag topRealmPeerChildSaTable5V6" style="width:500px;">
+    <tbody class="topRealmPeerChildSaTable5V6Body">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">IPv6 Address Range</td>
+        <td class="rhpTableTdTag style="width:80px;">Protocol</td>
+        <td class="rhpTableTdTag">Port Range</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p>
+  <label style="font-size: 110%;font-weight:bold;">Anti-Replay:</label>
+  <table class="rhpTableTag topRealmPeerChildSaTable3">
+    <tbody class="topRealmPeerChildSaTable3Body">
+    </tbody>
+  </table>
+</p>

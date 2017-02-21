@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<user id="4" name="func">
+
+<message id="1" tag="CALL">
+<![CDATA[##FUNC_TRC_ADR_START##%x##FUNC_TRC_ADR_END##%di]]>
+</message>
+
+<message id="2" tag="RTRN">
+<![CDATA[##FUNC_TRC_ADR_START##%x##FUNC_TRC_ADR_END##%di]]>
+</message>
+
+</user>

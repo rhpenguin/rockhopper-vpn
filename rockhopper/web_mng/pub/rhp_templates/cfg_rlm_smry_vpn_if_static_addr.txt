@@ -1,0 +1,30 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryVpnIfStaticAddrInternalAddr">
+    <tr class="rhpTableTrTag rhpTableTrTagTop">
+      <td class="rhpTableTdTag">Internal Address Type</td>
+      <td class="rhpTableTdTag">IPv4 Address</td>
+      <td class="rhpTableTdTag">IPv6 Address</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfStaticAddrInternalAddrType"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfStaticAddrInternalAddrIPv4"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfStaticAddrInternalAddrIPv6"></td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<p>
+<table class="rhpTableTag" style="width:200px;">
+  <tbody id="cfgRlmSmryVpnIfStaticAddrInternalAddr2">
+    <tr class="rhpTableTrTag rhpTableTrTagTop">
+      <td class="rhpTableTdTag">Encapsulation Mode</td>
+      <td class="rhpTableTdTag">MTU</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfStaticAddrEncapMode"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfStaticAddrMtu"></td>
+    </tr>
+  </tbody>
+</table>
+</p>

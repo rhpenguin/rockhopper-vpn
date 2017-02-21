@@ -1,0 +1,31 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a VPN Realm
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Realm ID(*):</label></td>
+    <td><div id="createRealmId"></div></td>
+  </tr>
+  <tr>
+    <td><label>Realm Name(*):</label></td>
+    <td><div id="createRealmName"></div></td>
+  </tr>
+  <tr>
+    <td><label>Description:</label></td>
+    <td><div id="createRealmDesc"></div></td>
+  </tr>
+  <tr>
+    <td><label>Mode(*):</label></td>
+    <td><div id="createRealmTypeOfMode"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="createRealmCreateOk"></div></td>
+    <td><div id="createRealmCreateCancel"></div></td>
+  </tr>
+</table>
+</p>

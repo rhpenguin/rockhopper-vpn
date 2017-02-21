@@ -1,0 +1,86 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 10px;margin-top: 10px;margin-bottom: 10px;">
+Save Configuration's Backup
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+ A saved archive file includes all settings, keys and certificates.<br />
+ <br />
+</p>
+ 
+  <table>
+    <tbody>
+    <tr>
+      <td><label>Archive's Password(*):</label></td>    
+      <td><div id="configArchivePwTxtBox"></div></td>
+      <td>
+        <p style="font-size: 90%;">
+        (Required)<br>
+        </p>
+      </td>
+    </tr>    
+    <tr style="height: 5px;"><td></td><tr>
+    <tr>
+      <td><div id="configArchiveBtn"></div></td>    
+      <td></td>
+    </tr>    
+    </tbody>
+  </table>
+  <iframe name="save_cfg_response" style="display:none;" id="configSaveCfgResponse">
+  </iframe>  
+<p>  
+  <label style="font-size:115%;" id="configSaveArchiveActionStatus"></label>
+</p>
+
+
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 50px;margin-bottom: 10px;">
+Upload and Restore Configuration
+</p>
+
+  <form name="configUploadArchiveForm" action="/protected/config" method="post" enctype="multipart/form-data" target="upload_cfg_response">
+  <table>
+    <tbody>
+    <tr>      
+      <td>
+        <label id="configUploadArchiveActionStatus"></label>
+      </td>
+    </tr>    
+    <tr>
+    <tr>
+      <td><label>Please specify your saved archive file(*.rcfg). </label></td>
+    <tr>
+    <tr style="height: 5px;">
+    <tr>
+    <tr>
+      <td >
+        <input type="file" name="upload_config">
+      </td>    
+    </tr>    
+    <tr style="height: 5px;">
+    <tr>
+    </tbody>
+  </table>
+  
+  <input type="hidden" name="upload_config_bus_session_id" value="">
+  </form>
+
+  <table>
+    <tbody>
+    <tr>
+      <td >
+        Archive's Password(*): <div id="configArchiveUploadPwTxtBox"></div>
+      </td>    
+      <td>
+      <p style="font-size: 90%;">
+      (Required)<br>
+      </p>
+      </td>
+    </tr>    
+    <tr>
+      <td >
+        <div id="configRestoreBtn"></div>
+      </td>    
+    </tr>
+    </tbody>
+  </table>
+
+  <iframe name="upload_cfg_response" style="display:none;" id="configUploadCfgResponse">
+  </iframe>

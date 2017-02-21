@@ -1,0 +1,10 @@
+<p style="font-weight: bold;font-size: 110%;padding-top: 0px;margin-top: 15px;margin-bottom: 10px;">
+Bridge Statistics          
+<div class="topGlobalStatisticsBridgeClear"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="topGlobalStatisticsBridgeTable" style="width: 480px;">
+    <tbody class="topGlobalStatisticsBridgeTableBody">
+    </tbody>
+  </table>
+</p>

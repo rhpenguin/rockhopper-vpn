@@ -1,0 +1,374 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 10px;">
+Service
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px; margin-bottom: 10px;">
+(*): Required.
+</p>
+
+<table id="configVpnServiceTop"><tbody>
+<tr>
+  <td>
+    <label style="font-weight: bold; font-size: 100%;">Network Deployment (*):</label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceDeploy">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceDeployHub" value="hub" name="configVpnServiceDeploy"></input>
+              <label for="configVpnServiceDeployHub">Hub (Concentrator / Gateway / NHS) Node</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceDeploySpoke" value="spoke" name="configVpnServiceDeploy"></input>
+              <label for="configVpnServiceDeploySpoke">Spoke Node / Client / NHC / Other</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceDeployMeshNode" value="mesh_node" name="configVpnServiceDeploy"></input>
+              <label for="configVpnServiceDeployMeshNode">Mesh Node</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+
+<tr>
+<td style="height: 20px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+  <td>
+    <label style="font-weight: bold; font-size: 100%;">Remote Configuration: </label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceConfig">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceConfigDisabled" value="disabled" name="configVpnServiceConfig"></input>
+              <label for="configVpnServiceConfigDisabled">Disabled</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceConfigClient" value="client" name="configVpnServiceConfig"></input>
+              <label for="configVpnServiceConfigClient">Remote Access Client</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceConfigServer" value="server" name="configVpnServiceConfig"></input>
+              <label for="configVpnServiceConfigServer">Remote Configuration Server</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+<tr>
+<td style="height: 20px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+    <label style="font-weight: bold; font-size: 100%;">IKEv2 Authentication Method<br/> for Remote Peers:</label><br/><label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceAuthMethod">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input id="configVpnServiceAuthMethodPsk"></input>
+              <label class="configVpnServiceAuthMethodNonNullLabel" for="configVpnServiceAuthMethodPSK">PSK (Pre-Shared Key)</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input id="configVpnServiceAuthMethodRsaSig"></input>
+              <label class="configVpnServiceAuthMethodNonNullLabel" for="configVpnServiceAuthMethodRsaSig">RSA-Sig (RSA Signature)</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input id="configVpnServiceAuthMethodEap"></input>
+              <label class="configVpnServiceAuthMethodNonNullLabel" for="configVpnServiceAuthMethodEap">EAP (Extensible Authentication Protocol) Clients</label>
+            </td>
+          </tr>
+          <tr>
+            <td style="height: 15px;"></td>
+          </tr>
+          <tr>
+            <td>
+              <input id="configVpnServiceAuthMethodNullId"></input>
+              <label for="configVpnServiceAuthMethodNullId">No Authentication</label>
+            </td>
+          </tr>
+      </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+<tr>
+<td style="height: 20px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+    <label class="configVpnServiceEapSvrLabel" style="font-weight: bold; font-size: 100%;">IKEv2 EAP Server:</label><br/><label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceEapServer">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceEapSvrDisabled" value="disabled" name="configVpnServiceEapSvr"></input>
+              <label class="configVpnServiceEapSvrLabel" for="configVpnServiceEapSvrDisabled">Disabled</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceEapSvrMsChapV2" value="client" name="configVpnServiceEapSvr"></input>
+              <label class="configVpnServiceEapSvrLabel configVpnServiceEapSvrNonRadiusLabel" for="configVpnServiceEapSvrMsChapV2">EAP-MSCHAPv2 (Local Authentication)</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceEapSvrRadius" value="radius" name="configVpnServiceEapSvr"></input>
+              <label class="configVpnServiceEapSvrLabel configVpnServiceEapSvrRadiusLabel" for="configVpnServiceEapSvrRadius">RADIUS Authentication</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+<tr>
+<td style="height: 10px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+    <label class="configVpnServiceEapSvrLabel configVpnServiceEapSvrDefaultLabel" style="font-weight: bold; font-size: 100%;">
+    &nbsp;&nbsp;Default EAP Server:
+    </label><br/><label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceDefEapServer">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input id="configVpnServiceEapSvrDefault"></input>
+              <label class="configVpnServiceEapSvrLabel configVpnServiceEapSvrDefaultLabel" for="configVpnServiceEapSvrDefault">Enable</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+
+<tr>
+<td style="height: 35px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+  <td>
+    <label style="font-weight: bold; font-size: 100%;">NHRP (Next Hop Resolution Protocol):</label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceNhrp">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input id="configVpnServiceNhrpEnabled"></input>
+              <label class="configVpnServiceNhrpEnabledCheckBoxLabel" for="configVpnServiceNhrpEnabled">
+                Enable (Internal Address Registration)
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+<tr>
+<td style="height: 5px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+    <label style="font-weight: bold; font-size: 100%;" class="configVpnServiceDmvpnEnabledCheckBoxLabel">
+    &nbsp;&nbsp;DMVPN (Dynamic Multipoint VPN):</label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceDmvpn">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input id="configVpnServiceDmvpnEnabled"></input>
+              <label class="configVpnServiceDmvpnEnabledCheckBoxLabel" for="configVpnServiceDmvpnEnabled">
+                Enable (Shortcut Switching Enhancements for NHRP)
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+<tr>
+<td style="height: 5px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+    <label style="font-weight: bold; font-size: 100%;" class="configVpnServiceDmvpnEnabledCheckBoxLabel configVpnServiceAuthTktEnabledCheckBoxLabel">
+    &nbsp;&nbsp;IKEv2 Authentication Ticket:</label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceDmvpn">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <table>
+                <tbody>
+                  <tr>
+                  <td>
+                  <input id="configVpnServiceAuthTkt"></input>
+                  </td>
+                  <td>
+                  <label class="configVpnServiceDmvpnEnabledCheckBoxLabel configVpnServiceAuthTktEnabledCheckBoxLabel" for="configVpnServiceAuthTkt">
+                  Enable SSO (Single Sign-On) for spoke-to-spoke authentication. <br/>(Rockhopper's private extension)</label>
+                  </td>
+                  </tr>
+                </tbody>               
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+
+<tr>
+<td style="height: 20px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+  <td>
+    <label class="configVpnServiceXauthSvrLabel" style="font-weight: bold; font-size: 100%;">IKEv1 XAUTH Server:</label><br/><label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceXauthServer">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceXauthSvrDisabled" value="disabled" name="configVpnServiceXauthSvr"></input>
+              <label class="configVpnServiceXauthSvrLabel" for="configVpnServiceXauthSvrDisabled">Disabled</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceXauthSvrXauthPskPap" value="xauth_psk_pap" name="configVpnServiceXauthSvr"></input>
+              <label class="configVpnServiceXauthSvrLabel" for="configVpnServiceXauthSvrXauthPskPap">XAUTH: PSK(Pre-Shared Key) - PAP</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceXauthSvrXauthRsaSigPap" value="xauth_rsasig_pap" name="configVpnServiceXauthSvr"></input>
+              <label class="configVpnServiceXauthSvrLabel" for="configVpnServiceXauthSvrXauthRsaSigPap">XAUTH: RSA-Sig(RSA Signature) - PAP</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="radio" id="configVpnServiceXauthSvrHybridRsaSigPap" value="hybrid_rsasig_pap" name="configVpnServiceXauthSvr"></input>
+              <label class="configVpnServiceXauthSvrLabel" for="configVpnServiceXauthSvrHybridRsaSigPap">Hybrid: RSA-Sig(RSA Signature) - PAP</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+
+<tr>
+<td style="height: 20px;"></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+    <label class="configVpnServiceNullAuthLabel" style="font-weight: bold; font-size: 100%;">IKEv2 No Authentication:</label><br/><label>
+  </td>
+  <td style="width: 30px;"></td>
+  <td>
+    <form id="configVpnServiceNullAuth">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <input id="configNullAuthDefSecDisabled"></input>
+              <label class="configVpnServiceNullAuthLabel" for="configNullAuthDefSecDisabled">Disable default security settings.</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </td>
+</tr>
+
+</tbody></table>

@@ -1,0 +1,35 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Child SA's Algorithm (IKEv2)
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Type:</label></td>
+    <td><div id="configGlobalCryptoTypeChildSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Priority:</label></td>
+    <td><div id="configGlobalCryptoPriorityChildSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Encryption:</label></td>
+    <td><div id="configGlobalCryptoEncrChildSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Integrity:</label></td>
+    <td><div id="configGlobalCryptoIntegChildSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Extended Sequence Number(ESN):</label></td>
+    <td><div id="configGlobalCryptoEsnChildSa"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddGlobalCryptoChildSaOk"></div></td>
+    <td><div id="configVpnAddGlobalCryptoChildSaCancel"></div></td>
+  </tr>
+</table>
+</p>

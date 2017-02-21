@@ -1,0 +1,56 @@
+<p style="font-size: 100%;padding-top: 20px;margin: 0px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <table><tbody>
+          <tr>
+          <td>
+          <input id="configVpnMyKeyStoreEapMsChapv2CacheUserKey">
+          </td>
+          <td>
+          <label for="configVpnMyKeyStoreEapMsChapv2CacheUserKey" style="font-weight: bold; font-size: 100%;">
+            Cache user name and password to reconnect VPN.</label>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          </td>
+          <td>
+            <label>These will be forgotten after reboot.</label>
+            If <label style="font-weight: bold; font-size: 95%;">Automatically reconnect VPN</label> is enabled, this should be checked.
+          </td>
+          </tr>
+          </tbody>
+          </table>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p>
+<div id="configVpnMyKeyStoreEapMsChapv2ClearUserKeyCache"></div>
+</p>
+<p style="font-size: 95%;padding-top: 15px;margin: 0px;">
+If you want to save your name and password, you can specify them here.
+<br/>
+Otherwise, Rockhopper will ask for your name and password when starting to connect VPN.
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr style="height: 30px;width:100%;margin-bottom: 0px;padding-bottom: 0px;">
+        <td><label id="configVpnMyKeyStoreEapMsChapv2IdLabel" style="font-weight: bold; font-size: 100%;">User name: </label></td>
+        <td><div id="configVpnMyKeyStoreEapMsChapv2Id"></div></td>
+      </tr>
+      <tr style="height: 20px;">
+        <td></td>
+        <td></td>
+      <td>
+      <tr style="height: 30px;">
+        <td style="width: 163px;"><label id="configVpnMyKeyStoreEapMsChapv2KeyLabel" style="font-weight: bold; font-size: 100%;">Password: </label></td>
+        <td><div id="configVpnMyKeyStoreEapMsChapv2Key"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

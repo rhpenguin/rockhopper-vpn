@@ -1,0 +1,41 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Internal Route
+</p>
+<p>
+<table><tbody>
+  <tr>
+    <td><label class="configVpnAddRmtCfgSvrInternalRouteIPVerLabel">IP Version(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalRouteIPVer"></div></td>
+  </tr>
+
+  <tr style="height: 10px;"><td></td><td></td></tr>
+
+  <tr>
+    <td><label class="configVpnAddRmtCfgSvrInternalRouteIPv4Label">Destination IPv4 Network(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalRouteNetwork"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddRmtCfgSvrInternalRouteIPv4Label">Netmask(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalRouteNetmask"></div></td>
+  </tr>
+
+  <tr style="height: 10px;"><td></td><td></td></tr>
+
+  <tr>
+    <td><label class="configVpnAddRmtCfgSvrInternalRouteIPv6Label">Destination IPv6 Network(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalRouteNetworkV6"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddRmtCfgSvrInternalRouteIPv6Label">Prefix(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalRoutePrefixV6"></div></td>
+  </tr>
+</tbody></table>
+</p>
+<p>
+<table><tbody>
+  <tr>
+    <td><div id="configVpnAddRmtCfgSvrInternalRouteOk"></div></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalRouteCancel"></div></td>
+  </tr>
+</tbody></table>
+</p>

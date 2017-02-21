@@ -1,0 +1,9 @@
+<table><tbody>
+  <tr><td>
+    <input id="baseEnableAsyncAlertDialogCheck"><label for="baseEnableAsyncAlertDialogCheck">Show status dialog asynchronously.</label>
+  </td></tr>
+  <tr style="height: 5px;"></tr>
+  <tr><td>
+    <input id="baseHideConfigPanesPaneCheck"><label for="baseHideConfigPanesPaneCheck">Hide configuration tabs.</label>
+  </td></tr>
+</tbody></table>

@@ -1,0 +1,43 @@
+<p>
+  <label style="font-weight: bold; font-size: 100%;">Internal DNS Server's Address</label>
+  <table>
+    <tbody>
+    <tr>
+      <td style="width: 10px;"></td>
+      <td><label>IPv4: </label></td>    
+      <td><div id="configVpnRmtCfgSvrDnsServerAddr"></div></td>
+    </tr>    
+    <tr style="height: 10px;"><td></td><td></td><td></td></tr>
+    <tr>
+      <td style="width: 10px;"></td>
+      <td><label>IPv6: </label></td>    
+      <td><div id="configVpnRmtCfgSvrDnsServerAddrV6"></div></td>
+    </tr>    
+
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 95%;padding: 0px;margin: 0px;">
+If you specify traffic selectors other than 'any' for child SAs, please also 
+allow the above DNS server's address.
+</p>
+<p style="margin-top: 55px;">
+  <div id="configVpnRmtCfgSvrDnsCreateBtn"></div><label>(Rockhopper's private extension)</label>
+</p>
+<p>
+  <table class="rhpTableTag" id="configVpnRmtCfgSvrDnsTable">
+    <tbody id="configVpnRmtCfgSvrDnsTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 260px;">Domain Name</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 95%;padding: 0px;margin: 0px;">
+Please specify domain names to be resolved to the above internal DNS server (Split DNS).
+DNS queries including the domain names are forwarded to the internal 
+server over the VPN connection, while the other queries are resolved to the local 
+servers or the ISP's servers. 
+This feature is a Rockhopper's private extension.
+</p>

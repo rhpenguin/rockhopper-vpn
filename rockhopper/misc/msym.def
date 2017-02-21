@@ -1,0 +1,1571 @@
+
+##MSYM_START## ERROR
+	#define	EPERM		            1	/* Operation not permitted */
+	#define	ENOENT		          2	/* No such file or directory */
+	#define	ESRCH		            3	/* No such process */
+	#define	EINTR		            4	/* Interrupted system call */
+	#define	EIO		              5	/* I/O error */
+	#define	ENXIO		            6	/* No such device or address */
+	#define	E2BIG		            7	/* Argument list too long */
+	#define	ENOEXEC		          8	/* Exec format error */
+	#define	EBADF		            9	/* Bad file number */
+	#define	ECHILD		         10	/* No child processes */
+	#define	EAGAIN		         11	/* Try again or EWOULDBLOCK */
+	#define	ENOMEM		         12	/* Out of memory */
+	#define	EACCES		         13	/* Permission denied */
+	#define	EFAULT		         14	/* Bad address */
+	#define	ENOTBLK		         15	/* Block device required */
+	#define	EBUSY		           16	/* Device or resource busy */
+	#define	EEXIST		         17	/* File exists */
+	#define	EXDEV		           18	/* Cross-device link */
+	#define	ENODEV		         19	/* No such device */
+	#define	ENOTDIR		         20	/* Not a directory */
+	#define	EISDIR		         21	/* Is a directory */
+	#define	EINVAL		         22	/* Invalid argument */
+	#define	ENFILE		         23	/* File table overflow */
+	#define	EMFILE		         24	/* Too many open files */
+	#define	ENOTTY		         25	/* Not a typewriter */
+	#define	ETXTBSY		         26	/* Text file busy */
+	#define	EFBIG		           27	/* File too large */
+	#define	ENOSPC		         28	/* No space left on device */
+	#define	ESPIPE		         29	/* Illegal seek */
+	#define	EROFS		           30	/* Read-only file system */
+	#define	EMLINK		         31	/* Too many links */
+	#define	EPIPE		           32	/* Broken pipe */
+	#define	EDOM		           33	/* Math argument out of domain of func */
+	#define	ERANGE		         34	/* Math result not representable */
+	#define	EDEADLK		         35	/* Resource deadlock would occur */
+	#define	ENAMETOOLONG	     36	/* File name too long */
+	#define	ENOLCK		         37	/* No record locks available */
+	#define	ENOSYS		         38	/* Function not implemented */
+	#define	ENOTEMPTY	         39	/* Directory not empty */
+	#define	ELOOP		           40	/* Too many symbolic links encountered */
+	#define	ENOMSG		         42	/* No message of desired type */
+	#define	EIDRM		           43	/* Identifier removed */
+	#define	ECHRNG		         44	/* Channel number out of range */
+	#define	EL2NSYNC	         45	/* Level 2 not synchronized */
+	#define	EL3HLT		         46	/* Level 3 halted */
+	#define	EL3RST		         47	/* Level 3 reset */
+	#define	ELNRNG		         48	/* Link number out of range */
+	#define	EUNATCH		         49	/* Protocol driver not attached */
+	#define	ENOCSI		         50	/* No CSI structure available */
+	#define	EL2HLT		         51	/* Level 2 halted */
+	#define	EBADE		           52	/* Invalid exchange */
+	#define	EBADR		           53	/* Invalid request descriptor */
+	#define	EXFULL		         54	/* Exchange full */
+	#define	ENOANO		         55	/* No anode */
+	#define	EBADRQC		         56	/* Invalid request code */
+	#define	EBADSLT		         57	/* Invalid slot */
+	#define	EBFONT		         59	/* Bad font file format */
+	#define	ENOSTR		         60	/* Device not a stream */
+	#define	ENODATA		         61	/* No data available */
+	#define	ETIME		           62	/* Timer expired */
+	#define	ENOSR		           63	/* Out of streams resources */
+	#define	ENONET		         64	/* Machine is not on the network */
+	#define	ENOPKG		         65	/* Package not installed */
+	#define	EREMOTE		         66	/* Object is remote */
+	#define	ENOLINK		         67	/* Link has been severed */
+	#define	EADV		           68	/* Advertise error */
+	#define	ESRMNT		         69	/* Srmount error */
+	#define	ECOMM		           70	/* Communication error on send */
+	#define	EPROTO		         71	/* Protocol error */
+	#define	EMULTIHOP	         72	/* Multihop attempted */
+	#define	EDOTDOT		         73	/* RFS specific error */
+	#define	EBADMSG		         74	/* Not a data message */
+	#define	EOVERFLOW	         75	/* Value too large for defined data type */
+	#define	ENOTUNIQ	         76	/* Name not unique on network */
+	#define	EBADFD		         77	/* File descriptor in bad state */
+	#define	EREMCHG		         78	/* Remote address changed */
+	#define	ELIBACC		         79	/* Can not access a needed shared library */
+	#define	ELIBBAD		         80	/* Accessing a corrupted shared library */
+	#define	ELIBSCN		         81	/* .lib section in a.out corrupted */
+	#define	ELIBMAX		         82	/* Attempting to link in too many shared libraries */
+	#define	ELIBEXEC	         83	/* Cannot exec a shared library directly */
+	#define	EILSEQ		         84	/* Illegal byte sequence */
+	#define	ERESTART	         85	/* Interrupted system call should be restarted */
+	#define	ESTRPIPE	         86	/* Streams pipe error */
+	#define	EUSERS		         87	/* Too many users */
+	#define	ENOTSOCK	         88	/* Socket operation on non-socket */
+	#define	EDESTADDRREQ	     89	/* Destination address required */
+	#define	EMSGSIZE	         90	/* Message too long */
+	#define	EPROTOTYPE	       91	/* Protocol wrong type for socket */
+	#define	ENOPROTOOPT	       92	/* Protocol not available */
+	#define	EPROTONOSUPPORT	   93	/* Protocol not supported */
+	#define	ESOCKTNOSUPPORT	   94	/* Socket type not supported */
+	#define	EOPNOTSUPP	       95	/* Operation not supported on transport endpoint */
+	#define	EPFNOSUPPORT	     96	/* Protocol family not supported */
+	#define	EAFNOSUPPORT	     97	/* Address family not supported by protocol */
+	#define	EADDRINUSE	       98	/* Address already in use */
+	#define	EADDRNOTAVAIL	     99	/* Cannot assign requested address */
+	#define	ENETDOWN	        100	/* Network is down */
+	#define	ENETUNREACH	      101	/* Network is unreachable */
+	#define	ENETRESET	        102	/* Network dropped connection because of reset */
+	#define	ECONNABORTED	    103	/* Software caused connection abort */
+	#define	ECONNRESET	      104	/* Connection reset by peer */
+	#define	ENOBUFS		        105	/* No buffer space available */
+	#define	EISCONN		        106	/* Transport endpoint is already connected */
+	#define	ENOTCONN	        107	/* Transport endpoint is not connected */
+	#define	ESHUTDOWN	        108	/* Cannot send after transport endpoint shutdown */
+	#define	ETOOMANYREFS	    109	/* Too many references: cannot splice */
+	#define	ETIMEDOUT	        110	/* Connection timed out */
+	#define	ECONNREFUSED	    111	/* Connection refused */
+	#define	EHOSTDOWN	        112	/* Host is down */
+	#define	EHOSTUNREACH	    113	/* No route to host */
+	#define	EALREADY	        114	/* Operation already in progress */
+	#define	EINPROGRESS	      115	/* Operation now in progress */
+	#define	ESTALE		        116	/* Stale NFS file handle */
+	#define	EUCLEAN		        117	/* Structure needs cleaning */
+	#define	ENOTNAM		        118	/* Not a XENIX named type file */
+	#define	ENAVAIL		        119	/* No XENIX semaphores available */
+	#define	EISNAM		        120	/* Is a named type file */
+	#define	EREMOTEIO	        121	/* Remote I/O error */
+	#define	EDQUOT		        122	/* Quota exceeded */
+	#define	ENOMEDIUM	        123	/* No medium found */
+	#define	EMEDIUMTYPE	      124	/* Wrong medium type */
+	#define	ECANCELED	        125	/* Operation Canceled */
+	#define	ENOKEY		        126	/* Required key not available */
+	#define	EKEYEXPIRED	      127	/* Key has expired */
+	#define	EKEYREVOKED	      128	/* Key has been revoked */
+	#define	EKEYREJECTED	    129	/* Key was rejected by service */
+##MSYM_END##
+
+##MSYM_START## RHP_ERROR
+  #define RHP_STATUS_SUCCESS                                  0
+  #define RHP_STATUS_EXIT                                         1
+  #define RHP_STATUS_INVALID_MSG                            2
+  #define RHP_STATUS_NOT_SUPPORTED_VER                3
+  #define RHP_STATUS_MSG_TOO_LARGE                      4
+  #define RHP_STATUS_DECRYPTED                              5
+  #define RHP_STATUS_UNKNOWN_PAYLOAD                  6
+  #define RHP_STATUS_ENUM_OK                                  7
+  #define RHP_STATUS_UNKNOWN_PARAMS                   8
+  #define RHP_STATUS_RETRANS_OK                             9
+  #define RHP_STATUS_NO_IP                                        10
+  #define RHP_STATUS_UNKNOWN_PARAM                      11
+  #define RHP_STATUS_INVALID_CERT                           12
+  #define RHP_STATUS_INTEG_INVALID                          13
+  #define RHP_STATUS_MAX_HTTP_CONNS                   14
+  #define RHP_STATUS_CLOSE_HTTP_CONN                    15
+  #define RHP_STATUS_HTTP_READLINE_PENDING          16
+  #define RHP_STATUS_ABORT_HTTP_CONN                  17
+  #define RHP_STATUS_SKIP                                       18
+  #define RHP_STATUS_HTTP_NOT_SUP_VER                 19
+  #define RHP_STATUS_HTTP_URI_TOO_LARGE               20
+  #define RHP_STATUS_HTTP_NOT_FOUND                     21
+  #define RHP_STATUS_HTTP_ENT_TOO_LARGE             22
+  #define RHP_STATUS_HTTP_REQ_PENDING                 23
+  #define RHP_STATUS_HTTP_UNAUTHORIZED                24
+  #define RHP_STATUS_IKESA_EXISTS                           25
+  #define RHP_STATUS_CHILDSA_COLLISION                  26
+  #define RHP_STATUS_NO_PROPOSAL_CHOSEN           27
+  #define RHP_STATUS_HANDLE_COOKIE                        28
+  #define RHP_STATUS_COOKIE_NOT_MATCHED             29
+  #define RHP_STATUS_NAT_PREVENTION                     30
+  #define RHP_STATUS_CREATE_CHILDSA_FAILED            31
+  #define RHP_STATUS_PEER_NOTIFIED_ERROR              32
+  #define RHP_STATUS_NEW_REQUEST_PKT                  33
+  #define RHP_STATUS_INVALID_STATE                          35
+  #define RHP_STATUS_NETMNG_DONE                          36
+  #define RHP_STATUS_NETMNG_NOT_INTERESTED        37
+  #define RHP_STATUS_HTTP_BUS_MESG_TOO_BIG          38
+  #define RHP_STATUS_DROP_PKT                               39
+  #define RHP_STATUS_ESP_IMPL_PENDING                   40
+  #define RHP_STATUS_IKEV2_MESG_HANDLER_PENDING 41
+  #define RHP_STATUS_IKEV2_MESG_HANDLER_END       42
+  #define RHP_STATUS_BEHIND_A_NAT                           44
+  #define RHP_STATUS_IKEV2_AUTH_FAILED                    45
+  #define RHP_STATUS_IKEV2_DESTROY_SA_AFTER_TX    46
+  #define RHP_STATUS_IKEV2_COOKIE_MAX_RETRIED     47
+  #define RHP_STATUS_IKEV2_RETRY_COOKIE               48
+  #define RHP_STATUS_BAD_SA_STATE                         49
+  #define RHP_STATUS_BAD_PACKET                           51
+  #define RHP_STATUS_ANTI_REPLAY_ERROR                  52
+  #define RHP_STATUS_SELECTOR_NOT_MATCHED         53
+  #define RHP_STATUS_NO_ETHERIP_ENCAP                   54
+  #define RHP_STATUS_NO_PEER_ADDRESS                    55
+  #define RHP_STATUS_ARP_RESOLV_PENDING               56
+  #define RHP_STATUS_EAP_PSK_AUTH_FAILED              57
+  #define RHP_STATUS_DNS_PKT_NOT_INTERESTED       58
+  #define RHP_STATUS_EOF                                          59
+  #define RHP_STATUS_INVALID_DNS_PKT                      60
+  #define RHP_STATUS_IPSEC_MODE_NOT_MATCHED     61
+  #define RHP_STATUS_PEER_IS_ALSO_ACCESSPOINT     62
+  #define RHP_STATUS_PMTUD_ERROR                          63
+  #define RHP_STATUS_PEER_IS_MESH_NODE                  64
+  #define RHP_STATUS_HTTP_URI_GONE                  65
+  #define RHP_STATUS_NO_ACTIVE_IF                     66
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_PKT 67
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_NON_ESP_MARKER 68
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_LENGTH  69
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_SPI_FIELD 70
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_NEXT_PAYLOAD_FIELD  71
+  #define RHP_STATUS_INVALID_IKEV2_MESG_NOT_ENCRYPTED 72
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_ENC_PAYLOAD_LENGTH  73
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_MESG_ID 74
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_SA_INIT_NOT_INITIATOR_REQ 75
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_SA_INIT_NOT_RESPONDER_RESP  76
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_AUTH_BAD_R_SPI  77
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_AUTH_BAD_MESG_ID  78
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_AUTH_NOT_INITIATOR_REQ  79
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_AUTH_NOT_RESPONDER_RESP 80
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_CREATE_CHILD_SA_BAD_MESG_ID   81
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_INFORMATIONAL_BAD_MESG_ID 82
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_UNSUPPORTED_EXCHANGE_TYPE 83
+  #define RHP_STATUS_INVALID_IKEV2_MESG_NO_VPN  84
+  #define RHP_STATUS_INVALID_IKEV2_MESG_VPN_NOT_ACTIVE  85
+  #define RHP_STATUS_INVALID_IKEV2_MESG_NO_REALM  86
+  #define RHP_STATUS_INVALID_IKEV2_MESG_REALM_NOT_ACTIVE  87
+  #define RHP_STATUS_INVALID_IKEV2_MESG_CHECK_CFG_ADDR_ERR  88
+  #define RHP_STATUS_INVALID_IKEV2_MESG_NO_IKESA    89
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_SA_INIT_BAD_SA_STATUS   90
+  #define RHP_STATUS_INVALID_IKEV2_MESG_IKE_AUTH_BAD_SA_STATUS  91
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_SA_STATUS 92
+  #define RHP_STATUS_INVALID_IKEV2_MESG_NO_REQ_PKT    93
+  #define RHP_STATUS_INVALID_IKEV2_MESG_INTEG_ERR   94
+  #define RHP_STATUS_INVALID_IKEV2_MESG_RX_FROM_UNKNOWN_PEER  95
+  #define RHP_STATUS_INVALID_IKEV2_MESG_PEER_ADDR_PORT_CHANGED    96
+  #define RHP_STATUS_INVALID_IKEV2_MESG_COOKIE_HANDLER_ERR  97
+  #define RHP_STATUS_INVALID_IKEV2_MESG_DECRYPTO_ERR  98
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_NEXT_PAYLOAD  99
+  #define RHP_STATUS_INVALID_IKEV2_MESG_INVALID_PAYLOAD 100
+  #define RHP_STATUS_INVALID_STUN_MESG_BAD_LENGTH   101
+  #define RHP_STATUS_INVALID_STUN_MESG_BAD_LENGTH_FORMAT  102
+  #define RHP_STATUS_INVALID_STUN_MESG_BAD_MAGIC_COOKIE   103
+  #define RHP_STATUS_INVALID_STUN_MESG_BAD_START_BITS   104
+  #define RHP_STATUS_INVALID_STUN_MESG_NO_FINGERPRINT   105
+  #define RHP_STATUS_INVALID_STUN_MESG_INVALID_FINGERPRINT    106
+  #define RHP_STATUS_INVALID_STUN_MESG_BAD_POS    107
+  #define RHP_STATUS_INVALID_STUN_MESG_BAD_ADDR_FAMILY    108
+  #define RHP_STATUS_INVALID_STUN_MESG_ATTR_BAD_LENGTH    109
+  #define RHP_STATUS_INVALID_STUN_MESG_ATTR_INTEG_REQUIRED    110
+  #define RHP_STATUS_INVALID_STUN_MESG_ATTR_UNAME_REQUIRED    111
+  #define RHP_STATUS_INVALID_STUN_MESG_NO_STERM_CRED    112
+  #define RHP_STATUS_INVALID_STUN_MESG_BAD_INTEG    113
+  #define RHP_STATUS_HTTP_UNAUTHORIZED_BASIC_AUTH_PROMPT    114
+  #define RHP_STATUS_RESTORE_CFG_ARCHIVE_USER_ERR 115
+  #define RHP_STATUS_HTTP_COOKIE_UNAUTHORIZED 116
+  #define RHP_STATUS_IKEV2_NOT_SUPPORTED_PROTO    117
+  #define RHP_STATUS_IKEV2_NOT_ENCRYPTED_MESG 118
+  #define RHP_STATUS_INVALID_IKEV2_MESG_BAD_EXCHG_TYPE_RESP 119
+  #define RHP_STATUS_INVALID_IKEV2_MESG_PFS_REQUIRED                120
+  #define RHP_STATUS_EAP_STAT_NONE                                  121
+  #define RHP_STATUS_EAP_STAT_PENDING                               122
+  #define RHP_STATUS_EAP_STAT_CONTINUE                              123
+  #define RHP_STATUS_EAP_STAT_COMPLETED                             124
+  #define RHP_STATUS_EAP_STAT_NOT_SUPPORTED                         125
+  #define RHP_STATUS_EAP_STAT_ERROR                                 126
+  #define RHP_STATUS_CERT_EXPIRED                                   127
+  #define RHP_STATUS_ESP_ENCRYPT_ERR                                128
+  #define RHP_STATUS_ESP_DECRYPT_ERR                                129
+  #define RHP_STATUS_ESP_INTEG_ERR                                  130
+  #define RHP_STATUS_ESP_INVALID_PKT                                131
+  #define RHP_STATUS_ESP_NO_CHILDSA                                 132
+  #define RHP_STATUS_X509_CERT_PARSE_DER_ERR                        133
+  #define RHP_STATUS_NO_REQUESTED_CA_KEYS                           134
+  #define RHP_STATUS_CONNECT_VPN_I_EAP_SUP_USER_KEY_NEEDED          135
+  #define RHP_STATUS_IKEV2_MESG_QCD_INVALID_IKE_SPI_NTFY            136
+  #define RHP_STATUS_INVALID_IKEV2_MESG_NO_VPN_ENC                  137
+  #define RHP_STATUS_IKEV2_MOBIKE_NO_NATS_ALLOWED                   138
+  #define RHP_STATUS_IKEV2_MOBIKE_RT_CK_PENDING                     139
+  #define RHP_STATUS_IKEV2_MOBIKE_RT_CK_INVALID_COOKIE2             140
+  #define RHP_STATUS_IKEV2_MOBIKE_NOT_INTERESTED                    141
+  #define RHP_STATUS_IKEV2_MOBIKE_UPDATE_SA_ADDR_NOT_COMP           142
+  #define RHP_STATUS_IKEV2_MOBIKE_RX_UNACCEPTABLE_ADDR              143
+  #define RHP_STATUS_HTTP_CLT_DONE                                  144
+  #define RHP_STATUS_IKEV2_HASH_URL_INVALID_CERT_DATA               145
+  #define RHP_STATUS_IKEV2_QCD_ERR_RESP_IGNORED                     146
+  #define RHP_STATUS_IKEV2_MOBIKE_KA_PENDING                        147
+  #define RHP_STATUS_VPN_MAX_SESSIONS_REACHED                       148
+  #define RHP_STATUS_IKESA_MAX_HALF_OPEN_SESSIONS_REACHED           149
+  #define RHP_STATUS_DNS_RSLV_MAX_TASKS_REACHED                     150
+  #define RHP_STATUS_HTTP_CLT_MAX_REQS_REACHED                      151
+  #define RHP_STATUS_IPV6_DISABLED                                  152
+  #define RHP_STATUS_MISMATCHED_IP_VERSION                          153
+  #define RHP_STATUS_ESP_RX_DUMMY_PKT                               154
+  #define RHP_STATUS_ARP_MAX_ADDRS_REACHED                          156
+  #define RHP_STATUS_ARP_MAX_Q_PKTS_REACHED                         157
+  #define RHP_STATUS_IPV6_PKT_NOT_INTERESTED                        158
+  #define RHP_STATUS_IKEV2_FRAG_RX_PENDING                          159
+  #define RHP_STATUS_IKEV2_FRAG_RX_IGNORED                          160
+  #define RHP_STATUS_IKEV2_FRAG_RX_BAD_MESG                         161
+  #define RHP_STATUS_IKEV2_TOO_MANY_FRAGS                           162
+  #define RHP_STATUS_IKEV2_FRAG_RX_1ST_FRAG                         163
+  #define RHP_STATUS_IKEV2_FRAG_RX_COMPLETED                        164
+  #define RHP_STATUS_IKEV2_RETRANS_PKT_CLEARED                      165  
+  #define RHP_STATUS_INVALID_IKEV2_SESS_RESUME_TKT                  166
+  #define RHP_STATUS_IKEV2_SESS_RESUME_AUTH_FAILED                  167
+  #define RHP_STATUS_INVALID_IKEV2_SESS_RESUME_TKT_CFG_UPDATED      168
+  #define RHP_STATUS_IKEV2_SESS_RESUME_TKT_REVOKED                  169
+  #define RHP_STATUS_IKEV2_SESS_RESUME_TKT_REVOKED_MAX_TKTS         170
+  #define RHP_STATUS_IKEV2_SESS_RESUME_TKT_MAC_ERR                  171
+  #define RHP_STATUS_IKEV2_SESS_RESUME_TKT_DEC_ERR                  172
+  #define RHP_STATUS_IKEV2_SESS_RESUME_TKT_INVALID_VER              173
+  #define RHP_STATUS_IKEV2_SESS_RESUME_TKT_EXPIRED                  174
+  #define RHP_STATUS_IKEV2_SESS_RESUME_TKT_INVALID_PARAM            175
+  #define RHP_STATUS_IKEV2_SESS_RESUME_RX_NACK                      176
+  #define RHP_STATUS_RADIUS_INVALID_MESG_LEN                        177
+  #define RHP_STATUS_RADIUS_INVALID_AUTHENTICATOR                   178
+  #define RHP_STATUS_RADIUS_INVALID_MESG_AUTHENTICATOR              179
+  #define RHP_STATUS_RADIUS_INVALID_MESG_AUTHENTICATOR_LEN          180
+  #define RHP_STATUS_RADIUS_MESG_NO_ATTRS_FOUND                     181
+  #define RHP_STATUS_RADIUS_UNKNOWN_ATTR                            182
+  #define RHP_STATUS_RADIUS_INVALID_ATTR                            183
+  #define RHP_STATUS_RADIUS_INVALID_SESSION                         184
+  #define RHP_STATUS_RADIUS_RETX_REQ_ERR                            185
+  #define RHP_STATUS_RADIUS_UNSUP_MESG_CODE                         186
+  #define RHP_STATUS_RADIUS_NO_SECRET_FOUND                         187
+  #define RHP_STATUS_RADIUS_GEN_MSK_ERR                             188
+  #define RHP_STATUS_RADIUS_VPN_REALM_NOT_FOUND                     189
+  #define RHP_STATUS_RADIUS_MESG_SIGN_ERR                           190
+  #define RHP_STATUS_RADIUS_MESG_AUTH_ERR                           191
+  #define RHP_STATUS_RADIUS_NO_EAP_ATTR_FOUND                       192
+  #define RHP_STATUS_RADIUS_RX_REALM_ID_OR_ROLE_NOT_MATCHED         193
+  #define RHP_STATUS_RADIUS_MAX_SESSIONS_REACHED                    194
+  #define RHP_STATUS_INVALID_IKEV2_SESS_RESUME_RADIUS_TKT           195
+  #define RHP_STATUS_INVALID_IKEV2_SESS_RESUME_TKT_BAD_POLICY_IDX   196
+  #define RHP_STATUS_RADIUS_ACCT_MAX_QUEUED_MESGS_REACHED           197
+  #define RHP_STATUS_DNS_RSLV_ERR                                   198
+  #define RHP_STATUS_IP_ROUTING_MAX_ENTRIES_REACHED                 199
+  #define RHP_STATUS_IP_ROUTING_DISABLED                            200
+  #define RHP_STATUS_PKT_RECV_FROM_VPN_LOOP                         201
+  #define RHP_STATUS_NO_IPIP_ENCAP                                  202
+  #define RHP_STATUS_NO_GRE_ENCAP                                   203
+  #define RHP_STATUS_NHRP_NOT_SUPPORTED_ATTR                        204
+  #define RHP_STATUS_NHRP_INVALID_PKT                               205
+  #define RHP_STATUS_NHRP_MAX_CACHE_NUM_REACHED                     206
+  #define RHP_STATUS_NHRP_MAX_REQ_SESS_REACHED                      207
+  #define RHP_STATUS_NHRP_UNSUP_COMPULSORY_EXT                      208
+  #define RHP_STATUS_NHRP_NOT_NHS                                   209
+  #define RHP_STATUS_NHRP_INVALID_ADDR                              210
+  #define RHP_STATUS_NHRP_RX_DUPLICATED_ADDR                        211
+  #define RHP_STATUS_NHRP_RX_FROM_UNKNOWN_VPN                       212
+  #define RHP_STATUS_IP_ROUTING_HOPLIMIT_TTL_EXCEEDED               213
+  #define RHP_STATUS_NHRP_NOT_NHC                                   214
+  #define RHP_STATUS_NHRP_HOP_LIMIT_REACHED                         215
+  #define RHP_STATUS_NHRP_NO_FWD_TRANSIT_NHS_RECORDS                216
+  #define RHP_STATUS_NHRP_NO_FWD_LOOP_DETECTED                      217
+  #define RHP_STATUS_NHRP_NO_RVRS_TRANSIT_NHS_RECORDS               218
+  #define RHP_STATUS_NHRP_NO_RESPONDER_ADDR_EXT                     219
+##MSYM_END##
+
+##MSYM_START## IKESA_STAT
+  #define RHP_IKESA_STAT_DEFAULT                  0
+  #define RHP_IKESA_STAT_I_IKE_SA_INIT_SENT       1
+  #define RHP_IKESA_STAT_I_AUTH_SENT              2
+  #define RHP_IKESA_STAT_I_AUTH_EAP_SENT          3
+  #define RHP_IKESA_STAT_R_IKE_SA_INIT_SENT       4
+  #define RHP_IKESA_STAT_ESTABLISHED              5
+  #define RHP_IKESA_STAT_REKEYING                 6
+  #define RHP_IKESA_STAT_DELETE                   7
+  #define RHP_IKESA_STAT_DELETE_WAIT              8
+  #define RHP_IKESA_STAT_I_REKEY_SENT             9
+  #define RHP_IKESA_STAT_DEAD                     10
+  #define RHP_IKESA_STAT_V1_MAIN_1ST_SENT_I       101
+  #define RHP_IKESA_STAT_V1_MAIN_3RD_SENT_I       102
+  #define RHP_IKESA_STAT_V1_MAIN_5TH_SENT_I       103
+  #define RHP_IKESA_STAT_V1_MAIN_2ND_SENT_R       104
+  #define RHP_IKESA_STAT_V1_MAIN_4TH_SENT_R       105
+  #define RHP_IKESA_STAT_V1_AGG_1ST_SENT_I        106
+  #define RHP_IKESA_STAT_V1_AGG_WAIT_COMMIT_I     107
+  #define RHP_IKESA_STAT_V1_AGG_2ND_SENT_R        108
+  #define RHP_IKESA_STAT_V1_ESTABLISHED           109
+  #define RHP_IKESA_STAT_V1_REKEYING              110
+  #define RHP_IKESA_STAT_V1_DELETE                111
+  #define RHP_IKESA_STAT_V1_DELETE_WAIT           112
+  #define RHP_IKESA_STAT_V1_DEAD                  113
+##MSYM_END##
+
+##MSYM_START## EAP_STAT
+	#define RHP_IKESA_EAP_STAT_DEFAULT	      0
+	#define RHP_IKESA_EAP_STAT_I_PEND         1
+	#define RHP_IKESA_EAP_STAT_R_PEND        	2
+	#define RHP_IKESA_EAP_STAT_I_COMP        	3
+	#define RHP_IKESA_EAP_STAT_R_COMP       	4
+##MSYM_END##
+
+##MSYM_START## CHILDSA_STAT
+	#define RHP_CHILDSA_STAT_DEFAULT  		0
+	#define RHP_CHILDSA_STAT_LARVAL   		1
+	#define RHP_CHILDSA_STAT_MATURE   		2
+	#define RHP_CHILDSA_STAT_REKEYING 		3
+	#define RHP_CHILDSA_STAT_DELETE	  		4
+	#define RHP_CHILDSA_STAT_DELETE_WAIT	5
+	#define RHP_CHILDSA_STAT_DEAD     		6
+  #define RHP_IPSECSA_STAT_V1_1ST_SENT_I      100
+  #define RHP_IPSECSA_STAT_V1_WAIT_COMMIT_I   101
+  #define RHP_IPSECSA_STAT_V1_2ND_SENT_R      102
+  #define RHP_IPSECSA_STAT_V1_MATURE          103
+  #define RHP_IPSECSA_STAT_V1_REKEYING        104
+  #define RHP_IPSECSA_STAT_V1_DELETE          105
+  #define RHP_IPSECSA_STAT_V1_DELETE_WAIT     106
+  #define RHP_IPSECSA_STAT_V1_DEAD            107
+##MSYM_END##
+
+##MSYM_START## VIF_TYPE
+  #define RHP_VIF_TYPE_ETHER_TAP    1
+  #define RHP_VIF_TYPE_IP_TUNNEL    2
+##MSYM_END##
+
+
+##MSYM_START## AF
+	#define AF_UNSPEC       0
+	#define AF_UNIX         1
+	#define AF_INET         2
+	#define AF_INET6        10
+	#define AF_KEY          15
+	#define AF_NETLINK      16
+##MSYM_END##
+
+
+##MSYM_START## IKE_SIDE
+	#define RHP_IKE_INITIATOR 		0
+	#define RHP_IKE_RESPONDER 		1
+##MSYM_END##
+
+##MSYM_START## IPSEC_DIR
+	#define RHP_DIR_INBOUND			0
+	#define RHP_DIR_OUTBOUND		1
+##MSYM_END##
+
+
+##MSYM_START## PKT
+	#define RHP_PKT_IPV4_IKE        	0
+	#define RHP_PKT_IPV6_IKE 		      1
+	#define RHP_PKT_IPV4_ESP  		    2
+	#define RHP_PKT_IPV6_ESP		      3
+	#define RHP_PKT_IPV4_ESP_NAT_T  	4
+	#define RHP_PKT_IPV6_ESP_NAT_T  	5
+	#define RHP_PKT_PLAIN_ETHER_TAP		6
+	#define RHP_PKT_PLAIN_IPV4_TUNNEL	7
+	#define RHP_PKT_PLAIN_IPV6_TUNNEL	8
+  #define RHP_PKT_PLAIN_IPV4_ESP_DUMMY        9
+  #define RHP_PKT_PLAIN_IPV6_ESP_DUMMY        10
+  #define RHP_PKT_IPV4_DNS                    11
+  #define RHP_PKT_IPV6_DNS                    12
+  #define RHP_PKT_IPV4_RADIUS                 13
+  #define RHP_PKT_IPV6_RADIUS                 14
+##MSYM_END##
+
+##MSYM_START## PROTO_IP
+	#define RHP_PROTO_IP_ICMP     	1
+	#define RHP_PROTO_IP_TCP      	6
+	#define RHP_PROTO_IP_UDP      	17
+	#define RHP_PROTO_IP_GRE      	47
+	#define RHP_PROTO_IP_ESP      	50
+	#define RHP_PROTO_IP_AH       	51
+	#define RHP_PROTO_IP_ETHERIP  	97
+	#define RHP_PROTO_IP_IPCOMP	    108
+	#define RHP_PROTO_IP_L2TP     	115
+	#define RHP_PROTO_IP_SCTP     	132
+	#define RHP_PROTO_IP_UDPLITE  	136
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_EXCHG
+	#define RHP_PROTO_IKE_EXCHG_IKE_SA_INIT       34
+	#define RHP_PROTO_IKE_EXCHG_IKE_AUTH          35
+	#define RHP_PROTO_IKE_EXCHG_CREATE_CHILD_SA   36
+	#define RHP_PROTO_IKE_EXCHG_INFORMATIONAL     37
+  #define RHP_PROTO_IKE_EXCHG_SESS_RESUME       38
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_PAYLOAD
+	#define RHP_PROTO_IKE_NO_MORE_PAYLOADS   0
+	#define RHP_PROTO_IKE_PAYLOAD_SA         33
+	#define RHP_PROTO_IKE_PAYLOAD_KE         34
+	#define RHP_PROTO_IKE_PAYLOAD_ID_I       35
+	#define RHP_PROTO_IKE_PAYLOAD_ID_R       36
+	#define RHP_PROTO_IKE_PAYLOAD_CERT       37
+	#define RHP_PROTO_IKE_PAYLOAD_CERTREQ    38
+	#define RHP_PROTO_IKE_PAYLOAD_AUTH       39
+	#define RHP_PROTO_IKE_PAYLOAD_N_I_R      40
+	#define RHP_PROTO_IKE_PAYLOAD_N          41
+	#define RHP_PROTO_IKE_PAYLOAD_D          42
+	#define RHP_PROTO_IKE_PAYLOAD_V          43
+	#define RHP_PROTO_IKE_PAYLOAD_TS_I       44
+	#define RHP_PROTO_IKE_PAYLOAD_TS_R       45
+	#define RHP_PROTO_IKE_PAYLOAD_E          46
+	#define RHP_PROTO_IKE_PAYLOAD_CP         47
+	#define RHP_PROTO_IKE_PAYLOAD_EAP        48
+  #define RHP_PROTO_IKE_PAYLOAD_GSPM       49
+  #define RHP_PROTO_IKE_PAYLOAD_IDG        50
+  #define RHP_PROTO_IKE_PAYLOAD_GSA        51
+  #define RHP_PROTO_IKE_PAYLOAD_KD         52
+  #define RHP_PROTO_IKE_PAYLOAD_SKF        53
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_PROTOID
+	#define RHP_PROTO_IKE_PROTOID_IKE       1
+	#define RHP_PROTO_IKE_PROTOID_AH        2
+	#define RHP_PROTO_IKE_PROTOID_ESP       3
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_TRANSFORM
+	#define RHP_PROTO_IKE_TRANSFORM_TYPE_RESERVED   0
+	#define RHP_PROTO_IKE_TRANSFORM_TYPE_ENCR       1
+	#define RHP_PROTO_IKE_TRANSFORM_TYPE_PRF        2
+	#define RHP_PROTO_IKE_TRANSFORM_TYPE_INTEG      3
+	#define RHP_PROTO_IKE_TRANSFORM_TYPE_DH         4
+	#define RHP_PROTO_IKE_TRANSFORM_TYPE_ESN        5
+	#define RHP_PROTO_IKE_TRANSFORM_TYPE_MAX        5
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_ID
+  #define RHP_PROTO_IKE_ID_ANY           0
+  #define RHP_PROTO_IKE_ID_IPV4_ADDR     1
+  #define RHP_PROTO_IKE_ID_FQDN          2
+  #define RHP_PROTO_IKE_ID_RFC822_ADDR   3
+  #define RHP_PROTO_IKE_ID_UNASSIGNED4   4
+  #define RHP_PROTO_IKE_ID_IPV6_ADDR     5
+  #define RHP_PROTO_IKE_ID_UNASSIGNED6   6
+  #define RHP_PROTO_IKE_ID_UNASSIGNED7   7
+  #define RHP_PROTO_IKE_ID_UNASSIGNED8   8
+  #define RHP_PROTO_IKE_ID_DER_ASN1_DN   9
+  #define RHP_PROTO_IKE_ID_DER_ASN1_GN   10
+  #define RHP_PROTO_IKE_ID_KEY_ID        11
+  #define RHP_PROTO_IKE_ID_FC_NAME       12
+  #define RHP_PROTO_IKE_ID_NULL_ID      13
+  #define RHP_PROTO_IKE_ID_PRIVATE_SUBJECTALTNAME       10000
+  #define RHP_PROTO_IKE_ID_PRIVATE_CERT_AUTO            10001
+  #define RHP_PROTO_IKE_ID_PRIVATE_NOT_RESOLVED         10002
+  #define RHP_PROTO_IKE_ID_PRIVATE_NULL_ID_WITH_ALT_ID  10003
+  #define RHP_PROTO_IKE_ID_PRIVATE_NULL_ID_WITH_ADDR    10004  
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_NOTIFY
+  #define RHP_PROTO_IKE_NOTIFY_RESERVED                               0
+  #define RHP_PROTO_IKE_NOTIFY_ERR_UNSUPPORTED_CRITICAL_PAYLOAD       1
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INVALID_IKE_SPI                    4
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INVALID_MAJOR_VERSION              5
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INVALID_SYNTAX                     7
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INVALID_MESSAGE_ID                 9
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INVALID_SPI                        11
+  #define RHP_PROTO_IKE_NOTIFY_ERR_NO_PROPOSAL_CHOSEN                 14
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INVALID_KE_PAYLOAD                 17
+  #define RHP_PROTO_IKE_NOTIFY_ERR_AUTHENTICATION_FAILED              24
+  #define RHP_PROTO_IKE_NOTIFY_ERR_SINGLE_PAIR_REQUIRED               34
+  #define RHP_PROTO_IKE_NOTIFY_ERR_NO_ADDITIONAL_SAS                  35
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INTERNAL_ADDRESS_FAILURE           36
+  #define RHP_PROTO_IKE_NOTIFY_ERR_FAILED_CP_REQUIRED                 37
+  #define RHP_PROTO_IKE_NOTIFY_ERR_TS_UNACCEPTABLE                    38
+  #define RHP_PROTO_IKE_NOTIFY_ERR_INVALID_SELECTORS                  39
+  #define RHP_PROTO_IKE_NOTIFY_ERR_UNACCEPTABLE_ADDRESSES             40
+  #define RHP_PROTO_IKE_NOTIFY_ERR_UNEXPECTED_NAT_DETECTED            41
+  #define RHP_PROTO_IKE_NOTIFY_ERR_TEMPORARY_FAILURE                  43
+  #define RHP_PROTO_IKE_NOTIFY_ERR_CHILD_SA_NOT_FOUND                 44
+  #define RHP_PROTO_IKE_NOTIFY_ERR_PRIV_MS_STATUS                     12345
+  #define RHP_PROTO_IKE_NOTIFY_ST_INITIAL_CONTACT                     16384
+  #define RHP_PROTO_IKE_NOTIFY_ST_SET_WINDOW_SIZE                     16385
+  #define RHP_PROTO_IKE_NOTIFY_ST_ADDITIONAL_TS_POSSIBLE              16386
+  #define RHP_PROTO_IKE_NOTIFY_ST_IPCOMP_SUPPORTED                    16387
+  #define RHP_PROTO_IKE_NOTIFY_ST_NAT_DETECTION_SOURCE_IP             16388
+  #define RHP_PROTO_IKE_NOTIFY_ST_NAT_DETECTION_DESTINATION_IP        16389
+  #define RHP_PROTO_IKE_NOTIFY_ST_COOKIE                              16390
+  #define RHP_PROTO_IKE_NOTIFY_ST_USE_TRANSPORT_MODE                  16391
+  #define RHP_PROTO_IKE_NOTIFY_ST_HTTP_CERT_LOOKUP_SUPPORTED          16392
+  #define RHP_PROTO_IKE_NOTIFY_ST_REKEY_SA                            16393
+  #define RHP_PROTO_IKE_NOTIFY_ST_ESP_TFC_PADDING_NOT_SUPPORTED       16394
+  #define RHP_PROTO_IKE_NOTIFY_ST_NON_FIRST_FRAGMENTS_ALSO            16395
+  #define RHP_PROTO_IKE_NOTIFY_ST_MOBIKE_SUPPORTED                    16396
+  #define RHP_PROTO_IKE_NOTIFY_ST_ADDITIONAL_IP4_ADDRESS              16397
+  #define RHP_PROTO_IKE_NOTIFY_ST_ADDITIONAL_IP6_ADDRESS              16398
+  #define RHP_PROTO_IKE_NOTIFY_ST_NO_ADDITIONAL_ADDRESSES             16399
+  #define RHP_PROTO_IKE_NOTIFY_ST_UPDATE_SA_ADDRESSES                 16400
+  #define RHP_PROTO_IKE_NOTIFY_ST_COOKIE2                             16401
+  #define RHP_PROTO_IKE_NOTIFY_ST_NO_NATS_ALLOWED                     16402
+  #define RHP_PROTO_IKE_NOTIFY_ST_QCD_TOKEN                           16419
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_START                          40960
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_END                            65535
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_MS_NOTIFY_STATUS         40003
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_MS_NOTIFY_DOS_COOKIE     40004
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_MS_NOTIFY_EXCHANGE_INFO  40005
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_USE_ETHERIP_ENCAP            59300
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_INTERNAL_IP4_ADDRESS         59301
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_INTERNAL_IP6_ADDRESS         59302
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_INTERNAL_MAC_ADDRESS         59303
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_INTERNAL_ACCESSPOINT         59304
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_INTERNAL_MESH_NODE           59305
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_REALM_ID                     59306
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_IPV6_AUTOCONF_REKEY_SA       59307
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_USE_GRE_ENCAP                59308
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_AUTH_TICKET                  59309
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_ENC_AUTH_TICKET              59310
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_AUTH_TICKET_SUPPORTED        59311
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_DBG_IKE_INTEG_ERR            59400
+  #define RHP_PROTO_IKE_NOTIFY_ST_PRIV_RHP_DBG_ESP_INTEG_ERR            59401
+##MSYM_END##
+
+
+##MSYM_START## PROTO_IKE_CFG
+	#define RHP_PROTO_IKE_CFG_REQUEST      1
+	#define RHP_PROTO_IKE_CFG_REPLY        2
+	#define RHP_PROTO_IKE_CFG_SET          3
+	#define RHP_PROTO_IKE_CFG_ACK          4
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_CFG_ATTR
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_ADDRESS     1
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_NETMASK     2
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_DNS         3
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_NBNS        4
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_ADDRESS_EXPIRY  5
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_DHCP        6
+	#define RHP_PROTO_IKE_CFG_ATTR_APPLICATION_VERSION      7
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_ADDRESS     8
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_DNS        10
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_NBNS       11
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_DHCP       12
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_SUBNET     13
+	#define RHP_PROTO_IKE_CFG_ATTR_SUPPORTED_ATTRIBUTES    14
+	#define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_SUBNET     15
+  #define RHP_PROTO_IKE_CFG_ATTR_RHP_DNS_SFX             28467
+  #define RHP_PROTO_IKE_CFG_ATTR_RHP_IPV4_GATEWAY        28468
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_CERTENC
+	#define RHP_PROTO_IKE_CERTENC_PKCS7_X509_CERT       1
+	#define RHP_PROTO_IKE_CERTENC_PGP_CERT              2
+	#define RHP_PROTO_IKE_CERTENC_DNS_SIGNED_KEY        3
+	#define RHP_PROTO_IKE_CERTENC_X509_CERT_SIG         4
+	#define RHP_PROTO_IKE_CERTENC_KERBEROS_TOKEN        6
+	#define RHP_PROTO_IKE_CERTENC_CRL                   7
+	#define RHP_PROTO_IKE_CERTENC_ARL                   8
+	#define RHP_PROTO_IKE_CERTENC_SPKI_CERT             9
+	#define RHP_PROTO_IKE_CERTENC_X509_CERT_ATTR        10
+	#define RHP_PROTO_IKE_CERTENC_RAW_RSA_KEY           11
+	#define RHP_PROTO_IKE_CERTENC_X509_CERT_HASH_URL    12
+	#define RHP_PROTO_IKE_CERTENC_X509_BUNDLE_HASH_URL  13
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_NOTIFY_RHP_INTERNAL_NET_MODE
+	#define RHP_PROTO_IKE_NOTIFY_RHP_INTERNAL_NET_MODE_IPNET	  1
+	#define RHP_PROTO_IKE_NOTIFY_RHP_INTERNAL_NET_MODE_ETHERNET	2
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_TS
+	#define RHP_PROTO_IKE_TS_IPV4_ADDR_RANGE    7
+	#define RHP_PROTO_IKE_TS_IPV6_ADDR_RANGE    8
+  #define RHP_PROTO_IKEV1_ID_IPV4_ADDR          1
+  #define RHP_PROTO_IKEV1_ID_IPV4_ADDR_SUBNET   4
+  #define RHP_PROTO_IKEV1_ID_IPV6_ADDR          5
+  #define RHP_PROTO_IKEV1_ID_IPV6_ADDR_SUBNET   6	
+##MSYM_END##
+
+##MSYM_START## IPC
+  #define RHP_IPC_RESERVED                        0
+  #define RHP_IPC_EXIT_REQUEST                    1
+  #define RHP_IPC_NOP                             2
+  #define RHP_IPC_NETMNG_REGISTER                 10
+  #define RHP_IPC_NETMNG_UPDATE_IF                11
+  #define RHP_IPC_NETMNG_UPDATE_ADDR              12
+  #define RHP_IPC_NETMNG_DELETE_IF                13
+  #define RHP_IPC_NETMNG_DELETE_ADDR              14
+  #define RHP_IPC_NETMNG_VIF_CREATE               15
+  #define RHP_IPC_NETMNG_VIF_DELETE               16
+  #define RHP_IPC_NETMNG_VIF_UPDATE               17
+  #define RHP_IPC_NETMNG_ROUTE_UPDATE             18
+  #define RHP_IPC_NETMNG_ROUTE_DELETE             19
+  #define RHP_IPC_NETMNG_DNSPXY_RDIR_START        20
+  #define RHP_IPC_NETMNG_DNSPXY_RDIR_END          21
+  #define RHP_IPC_NETMNG_BRIDGE_ADD               22
+  #define RHP_IPC_NETMNG_BRIDGE_DELETE            23
+  #define RHP_IPC_NETMNG_ROUTEMAP_UPDATED         24
+  #define RHP_IPC_NETMNG_ROUTEMAP_DELETED         25
+  #define RHP_IPC_NETMNG_VIF_EXEC_IPV6_AUTOCONF   26
+  #define RHP_IPC_AUTH_BASIC_REQUEST              100
+  #define RHP_IPC_AUTH_BASIC_REPLY                101
+  #define RHP_IPC_AUTH_COOKIE_REQUEST             102
+  #define RHP_IPC_AUTH_COOKIE_REPLY               103
+  #define RHP_IPC_SIGN_REQUEST                    200
+  #define RHP_IPC_SIGN_PSK_REPLY                  201
+  #define RHP_IPC_SIGN_RSASIG_REPLY               202
+  #define RHP_IPC_VERIFY_PSK_REQUEST              203
+  #define RHP_IPC_VERIFY_PSK_REPLY                204
+  #define RHP_IPC_VERIFY_RSASIG_REQUEST           205
+  #define RHP_IPC_VERIFY_RSASIG_REPLY             206
+  #define RHP_IPC_CA_PUBKEY_DIGESTS_REQUEST       207
+  #define RHP_IPC_CA_PUBKEY_DIGESTS_REPLY         208
+  #define RHP_IPC_RESOLVE_MY_ID_REQUEST           209
+  #define RHP_IPC_RESOLVE_MY_ID_REPLY             210
+  #define RHP_IPC_VERIFY_AND_SIGN_REQUEST         211
+  #define RHP_IPC_VERIFY_AND_SIGN_REPLY           212
+  #define RHP_IPC_EAP_SUP_VERIFY_REQUEST          213
+  #define RHP_IPC_EAP_SUP_VERIFY_REPLY            214
+  #define RHP_IPC_QCD_TOKEN_REQUEST               215
+  #define RHP_IPC_QCD_TOKEN_REPLY                 216
+  #define RHP_IPC_QCD_GEN_REPLY_TOKEN_REQUEST     217
+  #define RHP_IPC_QCD_GEN_REPLY_TOKEN_REPLY       218
+  #define RHP_IPC_SESS_RESUME_ENC_REQUEST         219
+  #define RHP_IPC_SESS_RESUME_ENC_REPLY           220
+  #define RHP_IPC_SESS_RESUME_DEC_REQUEST         221
+  #define RHP_IPC_SESS_RESUME_DEC_REPLY           222
+  #define RHP_IPC_SYSPXY_CFG_REQUEST              300
+  #define RHP_IPC_SYSPXY_CFG_REPLY                301
+  #define RHP_IPC_CA_PUBKEY_DIGESTS_UPDATE        302
+  #define RHP_IPC_SYSPXY_MEMORY_DBG               400
+  #define RHP_IPC_SYSPXY_LOG_RECORD               500
+  #define RHP_IPC_SYSPXY_LOG_CTRL                 501
+  #define RHP_IPC_EAP_AUTH_HANDLE_REQUEST         600
+  #define RHP_IPC_EAP_AUTH_HANDLE_REPLY           601
+  #define RHP_IPC_EAP_AUTH_HANDLE_CANCEL          602
+  #define RHP_IPC_EAP_SUP_HANDLE_REQUEST          603
+  #define RHP_IPC_EAP_SUP_HANDLE_REPLY            604
+  #define RHP_IPC_EAP_SUP_HANDLE_CANCEL           605
+  #define RHP_IPC_EAP_SUP_USER_KEY_REQUEST        606
+  #define RHP_IPC_EAP_SUP_USER_KEY                607
+  #define RHP_IPC_EAP_SUP_USER_KEY_CACHED         608
+  #define RHP_IPC_EAP_SUP_USER_KEY_CLEAR_CACHE    609
+  #define RHP_IPC_FIREWALL_RULES_APPLY            700
+  #define RHP_IPC_RADIUS_MESG_AUTH_REQUEST        800
+  #define RHP_IPC_RADIUS_MESG_AUTH_REPLY          801
+  #define RHP_IPC_RADIUS_MESG_SIGN_REQUEST        802
+  #define RHP_IPC_RADIUS_MESG_SIGN_REPLY          803
+##MSYM_END##
+
+##MSYM_START## SYSPXY_EOPLL_EVENT
+	#define RHP_SYSPXY_EPOLL_NETLINK  0
+	#define RHP_SYSPXY_EPOLL_IPC      1
+##MSYM_END##
+
+##MSYM_START## MAIN_EOPLL_EVENT
+  #define RHP_MAIN_EPOLL_IPC                      0
+  #define RHP_MAIN_EPOLL_NETSOCK                  1
+  #define RHP_MAIN_EPOLL_TUNDEV                   2
+  #define RHP_MAIN_EPOLL_HTTP_LISTEN              3
+  #define RHP_MAIN_EPOLL_HTTP_SERVER              4
+  #define RHP_MAIN_EPOLL_DNSPXY_RSLVR             5
+  #define RHP_MAIN_EPOLL_DNSPXY_PROTECTED_V4      6
+  #define RHP_MAIN_EPOLL_DNSPXY_INET_V4           7
+  #define RHP_MAIN_EPOLL_HTTP_CLT_GET_CONNECT     8
+  #define RHP_MAIN_EPOLL_HTTP_CLT_GET_RECV        9
+  #define RHP_MAIN_EPOLL_DNSPXY_PROTECTED_V6      10
+  #define RHP_MAIN_EPOLL_DNSPXY_INET_V6           11
+##MSYM_END##
+
+##MSYM_START## IP_PMTUD_FLAG
+	#define IP_PMTUDISC_DONT           0
+	#define IP_PMTUDISC_WANT           1
+	#define IP_PMTUDISC_DO             2
+	#define IP_PMTUDISC_PROBE          3
+##MSYM_END##
+
+##MSYM_START## WTS_DISP_RULE_FLAG
+  #define RHP_WTS_DISP_RULE_NETSOCK     1
+  #define RHP_WTS_DISP_RULE_CERTOPR     2
+  #define RHP_WTS_DISP_RULE_AUTHREP     3
+  #define RHP_WTS_DISP_RULE_ESP_TX      4
+  #define RHP_WTS_DISP_RULE_TUNTAP      5
+  #define RHP_WTS_DISP_RULE_SESS_RESUME_DEC_TKT     6
+  #define RHP_WTS_DISP_RULE_DMVPN_HANDLE_SHORTCUT   7
+  #define RHP_WTS_DISP_RULE_MISC        8 // (RHP_WTS_DISP_RULE_MAX + 1)
+  #define RHP_WTS_DISP_RULE_RAND        9 // (RHP_WTS_DISP_RULE_MAX + 2)
+  #define RHP_WTS_DISP_RULE_SAME_WORKER 10 // (RHP_WTS_DISP_RULE_MAX + 3)
+  #define RHP_WTS_DISP_RULE_MISC_BLOCKING 11 // (RHP_WTS_DISP_RULE_MAX + 4)
+##MSYM_END##
+
+##MSYM_START## WTS_DISP_LEVEL_FLAG
+  #define RHP_WTS_DISP_LEVEL_CTRL     0
+  #define RHP_WTS_DISP_LEVEL_HIGH_1   1
+  #define RHP_WTS_DISP_LEVEL_HIGH_2   2
+  #define RHP_WTS_DISP_LEVEL_HIGH_3   3
+  #define RHP_WTS_DISP_LEVEL_LOW_1    4
+  #define RHP_WTS_DISP_LEVEL_LOW_2    5
+  #define RHP_WTS_DISP_LEVEL_LOW_3    6
+##MSYM_END##
+
+##MSYM_START## NETSOCK_RX_SOCK
+	#define RHP_NETSOCK_RX_SK_IKE		  0
+	#define RHP_NETSOCK_RX_SK_ESP		  1
+	#define RHP_NETSOCK_RX_SK_NAT_T		2
+##MSYM_END##
+
+##MSYM_START## PROCESS_ROLE
+	#define RHP_PROCESS_ROLE_SYSPXY    0
+	#define RHP_PROCESS_ROLE_MAIN      1
+##MSYM_END##
+
+##MSYM_START## NETLINK_MSG
+	#define NLMSG_NOOP              1
+	#define NLMSG_ERROR             2
+	#define NLMSG_DONE              3
+	#define NLMSG_OVERRUN           4
+	#define RTM_NEWLINK		          16
+	#define RTM_DELLINK		          17
+	#define RTM_GETLINK		          18
+	#define RTM_SETLINK		          19
+	#define RTM_NEWADDR		          20
+	#define RTM_DELADDR		          21
+	#define RTM_GETADDR		          22
+	#define RTM_NEWROUTE		        24
+	#define RTM_DELROUTE		        25
+	#define RTM_GETROUTE		        26
+	#define RTM_NEWNEIGH		        28
+	#define RTM_DELNEIGH		        29
+	#define RTM_GETNEIGH		        30
+	#define RTM_NEWRULE		          32
+	#define RTM_DELRULE		          33
+	#define RTM_GETRULE		          34
+	#define RTM_NEWQDISC		        36
+	#define RTM_DELQDISC		        37
+	#define RTM_GETQDISC		        38
+	#define RTM_NEWTCLASS		        40
+	#define RTM_DELTCLASS		        41	
+	#define RTM_GETTCLASS		        42
+	#define RTM_NEWTFILTER		      44
+	#define RTM_DELTFILTER		      45
+	#define RTM_GETTFILTER		      46
+	#define RTM_NEWACTION		        48
+	#define RTM_DELACTION		        49
+	#define RTM_GETACTION		        50
+	#define RTM_NEWPREFIX		        52
+	#define RTM_GETMULTICAST	      58
+	#define RTM_GETANYCAST		      62
+	#define RTM_NEWNEIGHTBL		      64
+	#define RTM_GETNEIGHTBL		      66
+	#define RTM_SETNEIGHTBL 	      67
+	#define RTM_NEWNDUSEROPT	      68
+	#define RTM_NEWADDRLABEL	      72
+	#define RTM_DELADDRLABEL	      73
+	#define RTM_GETADDRLABEL	      74
+##MSYM_END##
+
+##MSYM_START## NETLINK_RTA
+	#define IFLA_UNSPEC		    0
+	#define IFLA_ADDRESS		  1
+	#define IFLA_BROADCAST		2
+	#define IFLA_IFNAME		    3
+	#define IFLA_MTU		      4
+	#define IFLA_LINK		      5
+	#define IFLA_QDISC		    6
+	#define IFLA_STATS		    7
+	#define IFLA_COST		      8
+	#define IFLA_PRIORITY		  9
+	#define IFLA_MASTER		    10
+	#define IFLA_WIRELESS		  11
+	#define IFLA_PROTINFO		  12
+	#define IFLA_TXQLEN		    13
+	#define IFLA_MAP		      14
+	#define IFLA_WEIGHT		    15
+	#define IFLA_OPERSTATE		16
+	#define IFLA_LINKMODE		  17
+	#define IFLA_LINKINFO		  18
+	#define IFLA_NET_NS_PID		19
+##MSYM_END##
+
+##MSYM_START## RT_TABLE
+	#define RT_TABLE_UNSPEC			 0
+	#define RT_TABLE_DEFAULT		 253
+	#define RT_TABLE_MAIN			   254
+	#define RT_TABLE_LOCAL			 255
+##MSYM_END##
+
+##MSYM_START## RT_RTN
+	#define RTN_UNSPEC			  0
+	#define RTN_UNICAST			  1
+	#define RTN_LOCAL			    2
+	#define RTN_BROADCAST		  3
+	#define RTN_ANYCAST			  4
+	#define RTN_MULTICAST			5
+	#define RTN_BLACKHOLE			6
+	#define RTN_UNREACHABLE		7
+	#define RTN_PROHIBIT			8
+	#define RTN_THROW			    9
+	#define RTN_NAT				    10
+	#define RTN_XRESOLVE			11
+##MSYM_END##
+
+##MSYM_START## RT_SCOPE
+	#define RT_SCOPE_UNIVERSE	  0
+	#define RT_SCOPE_SITE		    200
+	#define RT_SCOPE_LINK		    253
+	#define RT_SCOPE_HOST		    254
+	#define RT_SCOPE_NOWHERE	  255
+##MSYM_END##
+
+##MSYM_START## RTPROT
+	#define RTPROT_UNSPEC   0
+	#define RTPROT_REDIRECT 1
+	#define RTPROT_KERNEL   2
+	#define RTPROT_BOOT     3
+	#define RTPROT_STATIC   4
+	#define RTPROT_GATED    8
+	#define RTPROT_RA       9
+	#define RTPROT_MRT      10
+	#define RTPROT_ZEBRA    11
+	#define RTPROT_BIRD     12
+	#define RTPROT_DNROUTED 13
+	#define RTPROT_XORP     14
+	#define RTPROT_NTK      15
+##MSYM_END##
+
+##MSYM_START## RTA_ATTR_TYPE
+  #define RTA_UNSPEC  0
+  #define RTA_DST     1
+  #define RTA_SRC     2
+  #define RTA_IIF     3
+  #define RTA_OIF     4
+  #define RTA_GATEWAY 5
+  #define RTA_PRIORITY  6
+  #define RTA_PREFSRC 7
+  #define RTA_METRICS 8
+  #define RTA_MULTIPATH 9
+  #define RTA_PROTOINFO 10 // no longer used
+  #define RTA_FLOW  11
+  #define RTA_CACHEINFO 12
+  #define RTA_SESSION 13 // no longer used
+  #define RTA_MP_ALGO 14 // no longer used
+  #define RTA_TABLE 15
+  #define RTA_MARK  16
+##MSYM_END##
+
+##MSYM_START## IFC_EVT
+	#define RHP_IFC_EVT_DESTROY		      0
+	#define RHP_IFC_EVT_UPDATE_IF		    1
+	#define RHP_IFC_EVT_UPDATE_ADDR   	2
+	#define RHP_IFC_EVT_DELETE_IF		    3
+	#define RHP_IFC_EVT_DELETE_ADDR	  	4
+##MSYM_END##
+
+##MSYM_START## UI
+	#define RHP_UI_TYPE_HTTP	0
+##MSYM_END##
+
+##MSYM_START## TIMER_STAT
+	#define RHP_TIMER_STAT_INIT       0
+	#define RHP_TIMER_STAT_WAITING    1
+	#define RHP_TIMER_STAT_EXEC	      2
+	#define RHP_TIMER_STAT_DONE       3
+	#define RHP_TIMER_STAT_DELETED    4
+##MSYM_END##
+
+##MSYM_START## CHILDSA_MODE
+	#define RHP_CHILDSA_MODE_TRANSPORT	0
+	#define RHP_CHILDSA_MODE_TUNNEL		  1
+##MSYM_END##
+
+##MSYM_START## IKEV2_MESG_HDLR
+  #define RHP_IKEV2_MESG_HANDLER_START              0
+  #define RHP_IKEV2_MESG_HANDLER_END                1
+  #define RHP_IKEV2_MESG_HANDLER_IKESA_INIT         10
+  #define RHP_IKEV2_MESG_HANDLER_SESS_RESUME        11
+  #define RHP_IKEV2_MESG_HANDLER_NAT_T              20
+  #define RHP_IKEV2_MESG_HANDLER_AUTH_TKT_SHORTCUT  25
+  #define RHP_IKEV2_MESG_HANDLER_IKESA_AUTH         30
+  #define RHP_IKEV2_MESG_HANDLER_EAP                40
+  #define RHP_IKEV2_MESG_HANDLER_CONFIG             50
+  #define RHP_IKEV2_MESG_HANDLER_RHP_INTERNAL_NET   60
+  #define RHP_IKEV2_MESG_HANDLER_CREATE_CHILDSA     70
+  #define RHP_IKEV2_MESG_HANDLER_KEEP_ALIVE         80
+  #define RHP_IKEV2_MESG_HANDLER_REKEY              90
+  #define RHP_IKEV2_MESG_HANDLER_MOBIKE             100
+  #define RHP_IKEV2_MESG_HANDLER_SESS_RESUME_TKT    110
+  #define RHP_IKEV2_MESG_HANDLER_AUTH_TKT_HUB2SPOKE 120
+  #define RHP_IKEV2_MESG_HANDLER_QCD                200
+  #define RHP_IKEV2_MESG_HANDLER_INFORMATIONAL      1000
+  #define RHP_IKEV2_MESG_HANDLER_DELETE_SA          1001
+  #define RHP_IKEV2_MESG_HANDLER_TX_NEW_REQ         15000
+##MSYM_END##
+
+
+##MSYM_START## VPN_ENCAP
+	#define RHP_VPN_ENCAP_ETHERIP		 1
+	#define RHP_VPN_ENCAP_IPIP		   2
+  #define RHP_VPN_ENCAP_GRE        4
+	#define RHP_VPN_ENCAP_ANY		     7
+##MSYM_END##
+
+##MSYM_START## PROTO_IKE_AUTHMETHOD
+  #define RHP_PROTO_IKE_AUTHMETHOD_NONE         0
+  #define RHP_PROTO_IKE_AUTHMETHOD_RSA_SIG      1
+  #define RHP_PROTO_IKE_AUTHMETHOD_SHARED_KEY   2
+  #define RHP_PROTO_IKE_AUTHMETHOD_DSS_SIG      3
+  #define RHP_PROTO_IKE_AUTHMETHOD_UNASSIGNED4  4
+  #define RHP_PROTO_IKE_AUTHMETHOD_UNASSIGNED5  5
+  #define RHP_PROTO_IKE_AUTHMETHOD_UNASSIGNED6  6
+  #define RHP_PROTO_IKE_AUTHMETHOD_UNASSIGNED7  7
+  #define RHP_PROTO_IKE_AUTHMETHOD_UNASSIGNED8  8
+  #define RHP_PROTO_IKE_AUTHMETHOD_ECDSA_SHA_256  9
+  #define RHP_PROTO_IKE_AUTHMETHOD_ECDSA_SHA_384  10
+  #define RHP_PROTO_IKE_AUTHMETHOD_ECDSA_SHA_512  11
+  #define RHP_PROTO_IKE_AUTHMETHOD_GSPM           12
+  #define RHP_PROTO_IKE_AUTHMETHOD_NULL_AUTH      13
+  #define RHP_PROTO_IKE_AUTHMETHOD_DIGITAL_SIG    14
+##MSYM_END##
+
+
+##MSYM_START## BRIDGE_SIDE
+  #define RHP_BRIDGE_SIDE_TUNTAP      0
+  #define RHP_BRIDGE_SIDE_VPN         1
+##MSYM_END##
+
+##MSYM_START## XML_DT
+  #define RHP_XML_DT_LONG         0  // long
+  #define RHP_XML_DT_ULONG        1  // unsigned long
+  #define RHP_XML_DT_LONGLONG     2  // long long
+  #define RHP_XML_DT_ULONGLONG    3  // unsigned long long
+  #define RHP_XML_DT_IPV4         4  // u8[4] (Network byte order)
+  #define RHP_XML_DT_IPV6         5  // u8[16] (Network byte order)
+  #define RHP_XML_DT_PORT         6  //  u16 (Network byte order)
+  #define RHP_XML_DT_STRING       7  // char*
+  #define RHP_XML_DT_IPV4_SUBNET  8  // rhp_ip_addr
+  #define RHP_XML_DT_IPV6_SUBNET  9  // rhp_ip_addr
+  #define RHP_XML_DT_BASE64       10 // u8*
+  #define RHP_XML_DT_DN_DER       11 // u8* (DER encoded bytes)
+  #define RHP_XML_DT_LONG         12 // int
+  #define RHP_XML_DT_ULONG        13 // unsigned int
+  #define RHP_XML_DT_DOUBLE       14 // double
+##MSYM_END##
+
+##MSYM_START## ROLE_TYPE
+  #define RHP_ROLE_TYPE_FQDN                    1
+  #define RHP_ROLE_TYPE_EMAIL                   2
+  #define RHP_ROLE_TYPE_SUBJECT                 3
+  #define RHP_ROLE_TYPE_SUBJECTALTNAME_FQDN     4
+  #define RHP_ROLE_TYPE_SUBJECTALTNAME_EMAIL    5
+  #define RHP_ROLE_TYPE_EAP_PREFIX_SEARCH       6
+  #define RHP_ROLE_TYPE_EAP_SUFFIX_SEARCH       7
+  #define RHP_ROLE_TYPE_ANY                     8
+  #define RHP_ROLE_TYPE_RADIUS_ATTRIBUTE        9
+##MSYM_END##
+
+##MSYM_START## IKEV2_CFG_ATTR_TYPE
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_ADDRESS         1
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_NETMASK         2
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_DNS             3
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_NBNS            4
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_ADDRESS_EXPIRY      5
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_DHCP            6
+  #define RHP_PROTO_IKE_CFG_ATTR_APPLICATION_VERSION          7
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_ADDRESS         8
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_DNS             10
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_NBNS            11
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_DHCP            12
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP4_SUBNET          13
+  #define RHP_PROTO_IKE_CFG_ATTR_SUPPORTED_ATTRIBUTES         14
+  #define RHP_PROTO_IKE_CFG_ATTR_INTERNAL_IP6_SUBNET          15
+  #define RHP_PROTO_IKE_CFG_ATTR_MS_INTERNAL_IPV4_SERVER        23456
+  #define RHP_PROTO_IKE_CFG_ATTR_MS_INTERNAL_IPV6_SERVER        23457
+  #define RHP_PROTO_IKE_CFG_ATTR_RHP_DNS_SFX                    28467
+  #define RHP_PROTO_IKE_CFG_ATTR_RHP_IPV4_GATEWAY               28468
+  #define RHP_PROTO_IKE_CFG_ATTR_RHP_IPV6_GATEWAY               28469
+  #define RHP_PROTO_IKE_CFG_ATTR_RHP_IPV6_AUTOCONF              28470
+##MSYM_END##
+
+##MSYM_START## IPC_SYSPXY_CFG
+  #define RHP_IPC_SYSPXY_CFG_NONE                   0
+  #define RHP_IPC_SYSPXY_CFG_GET                    1
+  #define RHP_IPC_SYSPXY_CFG_CREATE_REALM           2
+  #define RHP_IPC_SYSPXY_CFG_UPDATE_REALM           3
+  #define RHP_IPC_SYSPXY_CFG_DELETE_REALM           4
+  #define RHP_IPC_SYSPXY_CFG_GET_KEY_INFO           5
+  #define RHP_IPC_SYSPXY_CFG_UPDATE_KEY_INFO        6
+  #define RHP_IPC_SYSPXY_CFG_DELETE_KEY_INFO        7
+  #define RHP_IPC_SYSPXY_CFG_UPDATE_CERT            8
+  #define RHP_IPC_SYSPXY_CFG_DELETE_CERT            9
+  #define RHP_IPC_SYSPXY_CFG_UPDATE_ADMIN           10
+  #define RHP_IPC_SYSPXY_CFG_DELETE_ADMIN           11
+  #define RHP_IPC_SYSPXY_CFG_GET_PRINTED_CERTS      12
+  #define RHP_IPC_SYSPXY_CFG_ENUM_ADMIN             13
+  #define RHP_IPC_SYSPXY_CFG_BKUP_SAVE              14
+  #define RHP_IPC_SYSPXY_CFG_UPLOAD_CERT_FILE       15
+  #define RHP_IPC_SYSPXY_CFG_UPDATE_CERT_FILE       16
+  #define RHP_IPC_SYSPXY_CFG_RSRC_STATISTICS        17
+  #define RHP_IPC_SYSPXY_CFG_ENABLE_REALM           18
+  #define RHP_IPC_SYSPXY_CFG_DISABLE_REALM          19
+  #define RHP_IPC_SYSPXY_CFG_RESET_QCD_KEY          20
+  #define RHP_IPC_SYSPXY_CFG_RESET_SESS_RESUME_KEY  21
+  #define RHP_IPC_SYSPXY_CFG_UPDATE_RADIUS_MNG      22
+##MSYM_END##
+
+##MSYM_START## XML_NODE
+  #define  XML_ELEMENT_NODE   1
+  #define  XML_ATTRIBUTE_NODE   2
+  #define  XML_TEXT_NODE    3
+  #define  XML_CDATA_SECTION_NODE 4
+  #define  XML_ENTITY_REF_NODE  5
+  #define  XML_ENTITY_NODE    6
+  #define  XML_PI_NODE    7
+  #define  XML_COMMENT_NODE   8
+  #define  XML_DOCUMENT_NODE    9
+  #define  XML_DOCUMENT_TYPE_NODE 10
+  #define  XML_DOCUMENT_FRAG_NODE 11
+  #define  XML_NOTATION_NODE    12
+  #define  XML_HTML_DOCUMENT_NODE 13
+  #define  XML_DTD_NODE   14
+  #define  XML_ELEMENT_DECL   15
+  #define  XML_ATTRIBUTE_DECL   16
+  #define  XML_ENTITY_DECL    17
+  #define  XML_NAMESPACE_DECL   18
+  #define  XML_XINCLUDE_START   19
+  #define  XML_XINCLUDE_END   20
+  #define  XML_DOCB_DOCUMENT_NODE 21
+##MSYM_END##
+   
+   
+##MSYM_START## WTS_DISP_TASK_NAME
+  #define RHP_WTS_STA_TASK_NAME_PKT           0
+  #define RHP_WTS_STA_TASK_NAME_LOG           1
+##MSYM_END##
+
+
+##MSYM_START## LOG_SRC
+  #define RHP_LOG_SRC_MAIN            1
+  #define RHP_LOG_SRC_SYSPXY        2
+  #define RHP_LOG_SRC_IKEV2         3
+  #define RHP_LOG_SRC_UI                4
+  #define RHP_LOG_SRC_VPNMNG      5
+  #define RHP_LOG_SRC_CFG             6
+  #define RHP_LOG_SRC_AUTHCFG   7
+##MSYM_END##
+
+
+##MSYM_START## LOG_LV
+  #define RHP_LOG_LV_DEBUG          0
+  #define RHP_LOG_LV_ERR              1
+  #define RHP_LOG_LV_WARN         2
+  #define RHP_LOG_LV_NOTICE       3
+  #define RHP_LOG_LV_INFO           4
+##MSYM_END##
+
+##MSYM_START## LOG_ID
+  #define RHP_LOG_ID_CONNECT_I_ERR                          100
+  #define RHP_LOG_ID_CONNECT_I_START                      101
+  #define RHP_LOG_ID_CLOSE_VPN                                  102
+  #define RHP_LOG_ID_CLOSE_VPN_ERR                          103
+  #define RHP_LOG_ID_VPN_ESTABLISHED                      104
+  #define RHP_LOG_ID_VPN_DELETED                              105
+  #define RHP_LOG_ID_VPN_ADDED                                106
+  #define RHP_LOG_ID_MAIN_CREATE_REALM                  107
+  #define RHP_LOG_ID_MAIN_CREATE_REALM_ERR        108
+  #define RHP_LOG_ID_SYSPXY_CREATE_REALM              109
+  #define RHP_LOG_ID_SYSPXY_CREATE_REALM_ERR      110
+  #define RHP_LOG_ID_MAIN_DELETE_REALM                  111
+  #define RHP_LOG_ID_MAIN_DELETE_REALM_ERR          112
+  #define RHP_LOG_ID_SYSPXY_DELETE_REALM              113
+  #define RHP_LOG_ID_SYSPXY_DELETE_REALM_ERR      114
+  #define RHP_LOG_ID_MAIN_UPDATE_REALM                115
+  #define RHP_LOG_ID_MAIN_UPDATE_REALM_ERR        116
+  #define RHP_LOG_ID_SYSPXY_UPDATE_REALM              117
+  #define RHP_LOG_ID_SYSPXY_UPDATE_REALM_ERR    118
+  #define RHP_LOG_ID_CFG_PARSE_ERR                          119
+  #define RHP_LOG_ID_AUTHCFG_PARSE_ERR                120
+  #define RHP_LOG_ID_NO_MY_AUTH_INFO                    121
+  #define RHP_LOG_ID_NO_MY_PSK                                  122
+  #define RHP_LOG_ID_NO_MY_CERT                               123
+  #define RHP_LOG_ID_NO_PEER_AUTH_INFO                  124
+  #define RHP_LOG_ID_PARSE_GLOBAL_CFG_ERR           125
+  #define RHP_LOG_ID_UPDATE_GLOBAL_CFG                126
+  #define RHP_LOG_ID_UPDATE_GLOBAL_CFG_ERR        127
+  #define RHP_LOG_ID_MEMDBG_FREE_NULL_PT            128
+  #define RHP_LOG_ID_MEMDBG_FREE_INVALID_PT       129
+  #define RHP_LOG_ID_MEMDBG_FREE_DUP_PT             130
+  #define RHP_LOG_ID_MEMDBG_FREE_MAY_DUP_PT   131
+  #define RHP_LOG_ID_MEMDBG_FREE_MAY_DUP_PT2  132
+##MSYM_END##
+
+##MSYM_START## VIF_ADDR
+  #define RHP_VIF_ADDR_STATIC     0
+  #define RHP_VIF_ADDR_IKEV2CFG   1
+  #define RHP_VIF_ADDR_DHCP       2
+  #define RHP_VIF_ADDR_NONE       3
+##MSYM_END##
+
+
+##MSYM_START## SQLITE3_ERR
+  #define SQLITE_OK           0   /* Successful result */
+  #define SQLITE_ERROR        1   /* SQL error or missing database */
+  #define SQLITE_INTERNAL     2   /* Internal logic error in SQLite */
+  #define SQLITE_PERM         3   /* Access permission denied */
+  #define SQLITE_ABORT        4   /* Callback routine requested an abort */
+  #define SQLITE_BUSY         5   /* The database file is locked */
+  #define SQLITE_LOCKED       6   /* A table in the database is locked */
+  #define SQLITE_NOMEM        7   /* A malloc() failed */
+  #define SQLITE_READONLY     8   /* Attempt to write a readonly database */
+  #define SQLITE_INTERRUPT    9   /* Operation terminated by sqlite3_interrupt()*/
+  #define SQLITE_IOERR       10   /* Some kind of disk I/O error occurred */
+  #define SQLITE_CORRUPT     11   /* The database disk image is malformed */
+  #define SQLITE_NOTFOUND    12   /* NOT USED. Table or record not found */
+  #define SQLITE_FULL        13   /* Insertion failed because database is full */
+  #define SQLITE_CANTOPEN    14   /* Unable to open the database file */
+  #define SQLITE_PROTOCOL    15   /* Database lock protocol error */
+  #define SQLITE_EMPTY       16   /* Database is empty */
+  #define SQLITE_SCHEMA      17   /* The database schema changed */
+  #define SQLITE_TOOBIG      18   /* String or BLOB exceeds size limit */
+  #define SQLITE_CONSTRAINT  19   /* Abort due to constraint violation */
+  #define SQLITE_MISMATCH    20   /* Data type mismatch */
+  #define SQLITE_MISUSE      21   /* Library used incorrectly */
+  #define SQLITE_NOLFS       22   /* Uses OS features not supported on host */
+  #define SQLITE_AUTH        23   /* Authorization denied */
+  #define SQLITE_FORMAT      24   /* Auxiliary database format error */
+  #define SQLITE_RANGE       25   /* 2nd parameter to sqlite3_bind out of range */
+  #define SQLITE_NOTADB      26   /* File opened that is not a database file */
+  #define SQLITE_ROW         100  /* sqlite3_step() has another row ready */
+  #define SQLITE_DONE        101  /* sqlite3_step() has finished executing */
+##MSYM_END##
+
+##MSYM_START## EAP_CODE
+  #define RHP_PROTO_EAP_CODE_REQUEST    1
+  #define RHP_PROTO_EAP_CODE_RESPONSE   2
+  #define RHP_PROTO_EAP_CODE_SUCCESS    3
+  #define RHP_PROTO_EAP_CODE_FAILURE    4
+##MSYM_END##
+
+##MSYM_START## EAP_TYPE
+  #define RHP_PROTO_EAP_TYPE_NONE                 0
+  #define RHP_PROTO_EAP_TYPE_IDENTITY             1
+  #define RHP_PROTO_EAP_TYPE_NOTIFICATION         2
+  #define RHP_PROTO_EAP_TYPE_NAK                  3
+  #define RHP_PROTO_EAP_TYPE_MD5_CHALLENGE        4
+  #define RHP_PROTO_EAP_TYPE_ONE_TIME_PASSWORD    5
+  #define RHP_PROTO_EAP_TYPE_GENERIC_TOKEN_CARD   6
+  #define RHP_PROTO_EAP_TYPE_EAP_TLS              13
+  #define RHP_PROTO_EAP_TYPE_EAP_GSM_SIM          18
+  #define RHP_PROTO_EAP_TYPE_EAP_TTLS             21
+  #define RHP_PROTO_EAP_TYPE_EAP_AKA              23
+  #define RHP_PROTO_EAP_TYPE_PEAP                 25
+  #define RHP_PROTO_EAP_TYPE_MS_CHAPV2            26
+  #define RHP_PROTO_EAP_TYPE_PEAPV0_MS_CHAPV2     29
+  #define RHP_PROTO_EAP_TYPE_EAP_FAST             43
+  #define RHP_PROTO_EAP_TYPE_EAP_PSK              47
+  #define RHP_PROTO_EAP_TYPE_EAP_SAKE             48
+  #define RHP_PROTO_EAP_TYPE_EAP_IKEV2            49
+  #define RHP_PROTO_EAP_TYPE_EAP_AKA_PRIME        50
+  #define RHP_PROTO_EAP_TYPE_EAP_GPSK             51
+  #define RHP_PROTO_EAP_TYPE_EAP_PWD              52
+  #define RHP_PROTO_EAP_TYPE_EAP_EKE_V1           53
+  #define RHP_PROTO_EAP_TYPE_EAP_PT_EAP           54
+  #define RHP_PROTO_EAP_TYPE_TEAP                 55  
+  #define RHP_PROTO_EAP_TYPE_PRIV_RADIUS          500 // Internal use only. (> 255)
+##MSYM_END##
+
+##MSYM_START## MSCHAPV2
+  #define RHP_PROTO_MS_CHAPV2_CODE_CHALLENGE  1
+  #define RHP_PROTO_MS_CHAPV2_CODE_RESPONSE   2
+  #define RHP_PROTO_MS_CHAPV2_CODE_SUCCESS    3
+  #define RHP_PROTO_MS_CHAPV2_CODE_FAILURE    4
+  #define RHP_PROTO_MS_CHAPV2_CODE_CHANGE_PASSWORD  7
+##MSYM_END##
+
+##MSYM_START## EAP_ROLE
+  #define RHP_EAP_DISABLED        0
+  #define RHP_EAP_SUPPLICANT      1
+  #define RHP_EAP_AUTHENTICATOR   2
+##MSYM_END##
+
+
+
+##MSYM_START## STUN_ATTR_TYPE
+  #define RHP_PROTO_STUN_ATTR_MAPPED_ADDRESS            1
+  #define RHP_PROTO_STUN_ATTR_USERNAME                  6
+  #define RHP_PROTO_STUN_ATTR_MESSAGE_INTEGRITY         8
+  #define RHP_PROTO_STUN_ATTR_ERROR_CODE                9
+  #define RHP_PROTO_STUN_ATTR_UNKNOWN_ATTRIBUTES        10
+  #define RHP_PROTO_STUN_ATTR_REALM                     20
+  #define RHP_PROTO_STUN_ATTR_NONCE                     21
+  #define RHP_PROTO_STUN_ATTR_XOR_MAPPED_ADDRESS        32
+  #define RHP_PROTO_STUN_ATTR_SOFTWARE                  32802
+  #define RHP_PROTO_STUN_ATTR_ALTERNATE_SERVER          32803
+  #define RHP_PROTO_STUN_ATTR_FINGERPRINT               32808
+  #define RHP_PROTO_STUN_ATTR_CHANNEL_NUMBER            12
+  #define RHP_PROTO_STUN_ATTR_LIFETIME                  13
+  #define RHP_PROTO_STUN_ATTR_XOR_PEER_ADDRESS          18
+  #define RHP_PROTO_STUN_ATTR_DATA                      19
+  #define RHP_PROTO_STUN_ATTR_XOR_RELAYED_ADDRESS       22
+  #define RHP_PROTO_STUN_ATTR_EVEN_PORT                 24
+  #define RHP_PROTO_STUN_ATTR_REQUESTED_TRANSPORT       25
+  #define RHP_PROTO_STUN_ATTR_DONT_FRAGMENT             26
+  #define RHP_PROTO_STUN_ATTR_RESERVATION_TOKEN         34
+##MSYM_END##
+
+##MSYM_START## STUN_METHOD
+  #define RHP_PROTO_STUN_METHOD_BIND                     1
+  #define RHP_PROTO_STUN_METHOD_ALLOCATE                 3
+  #define RHP_PROTO_STUN_METHOD_REFRESH                  4
+  #define RHP_PROTO_STUN_METHOD_SEND                     6
+  #define RHP_PROTO_STUN_METHOD_DATA                     7
+  #define RHP_PROTO_STUN_METHOD_CREATE_PERMISSION        8
+  #define RHP_PROTO_STUN_METHOD_CHANNEL_BIND             9
+##MSYM_END##
+
+##MSYM_START## STUN_CLASS
+  #define RHP_PROTO_STUN_CLASS_REQ              0
+  #define RHP_PROTO_STUN_CLASS_INDICATION       1
+  #define RHP_PROTO_STUN_CLASS_RESP             2
+  #define RHP_PROTO_STUN_CLASS_ERROR            3
+##MSYM_END##
+
+##MSYM_START## LIB_MCHP2_STAT
+  #define INIT            0
+  #define CHALLENGE       1
+  #define RETRY_REQ       2
+  #define SUCCESS_REQ     3
+  #define FAILURE_RESP    4
+  #define SUCCESS_RESP    5
+  #define SUCCESS         6
+  #define FAILURE         7
+##MSYM_END##
+
+##MSYM_START## LIB_S_MCHP2_STAT
+  #define INIT                          0
+  #define CHALLENGE_RESP                1
+  #define CHALLENGE_RETRY_WAIT_NEWKEY   2
+  #define CHALLENGE_RETRY_RESP          3
+  #define SUCCESS_RESP                  4
+  #define FAILURE_RESP                  5
+  #define SUCCESS                       6
+  #define FAILURE                       7
+##MSYM_END##
+   
+##MSYM_START## OPNSSL_CRT_ERR
+  #define   X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT    2
+  #define   X509_V_ERR_UNABLE_TO_GET_CRL      3
+  #define   X509_V_ERR_UNABLE_TO_DECRYPT_CERT_SIGNATURE 4
+  #define   X509_V_ERR_UNABLE_TO_DECRYPT_CRL_SIGNATURE  5
+  #define   X509_V_ERR_UNABLE_TO_DECODE_ISSUER_PUBLIC_KEY 6
+  #define   X509_V_ERR_CERT_SIGNATURE_FAILURE   7
+  #define   X509_V_ERR_CRL_SIGNATURE_FAILURE    8
+  #define   X509_V_ERR_CERT_NOT_YET_VALID     9
+  #define   X509_V_ERR_CERT_HAS_EXPIRED     10
+  #define   X509_V_ERR_CRL_NOT_YET_VALID      11
+  #define   X509_V_ERR_CRL_HAS_EXPIRED      12
+  #define   X509_V_ERR_ERROR_IN_CERT_NOT_BEFORE_FIELD 13
+  #define   X509_V_ERR_ERROR_IN_CERT_NOT_AFTER_FIELD  14
+  #define   X509_V_ERR_ERROR_IN_CRL_LAST_UPDATE_FIELD 15
+  #define   X509_V_ERR_ERROR_IN_CRL_NEXT_UPDATE_FIELD 16
+  #define   X509_V_ERR_OUT_OF_MEM       17
+  #define   X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT    18
+  #define   X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN    19
+  #define   X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY  20
+  #define   X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE  21
+  #define   X509_V_ERR_CERT_CHAIN_TOO_LONG      22
+  #define   X509_V_ERR_CERT_REVOKED       23
+  #define   X509_V_ERR_INVALID_CA       24
+  #define   X509_V_ERR_PATH_LENGTH_EXCEEDED     25
+  #define   X509_V_ERR_INVALID_PURPOSE      26
+  #define   X509_V_ERR_CERT_UNTRUSTED     27
+  #define   X509_V_ERR_CERT_REJECTED      28
+  #define   X509_V_ERR_SUBJECT_ISSUER_MISMATCH    29
+  #define   X509_V_ERR_AKID_SKID_MISMATCH     30
+  #define   X509_V_ERR_AKID_ISSUER_SERIAL_MISMATCH    31
+  #define   X509_V_ERR_KEYUSAGE_NO_CERTSIGN     32
+  #define   X509_V_ERR_UNABLE_TO_GET_CRL_ISSUER   33
+  #define   X509_V_ERR_UNHANDLED_CRITICAL_EXTENSION   34
+  #define   X509_V_ERR_KEYUSAGE_NO_CRL_SIGN     35
+  #define   X509_V_ERR_UNHANDLED_CRITICAL_CRL_EXTENSION 36
+  #define   X509_V_ERR_INVALID_NON_CA     37
+  #define   X509_V_ERR_PROXY_PATH_LENGTH_EXCEEDED   38
+  #define   X509_V_ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE  39
+  #define   X509_V_ERR_PROXY_CERTIFICATES_NOT_ALLOWED 40
+  #define   X509_V_ERR_INVALID_EXTENSION      41
+  #define   X509_V_ERR_INVALID_POLICY_EXTENSION   42
+  #define   X509_V_ERR_NO_EXPLICIT_POLICY     43
+  #define   X509_V_ERR_DIFFERENT_CRL_SCOPE      44
+  #define   X509_V_ERR_UNSUPPORTED_EXTENSION_FEATURE  45
+  #define   X509_V_ERR_UNNESTED_RESOURCE      46
+  #define   X509_V_ERR_PERMITTED_VIOLATION      47
+  #define   X509_V_ERR_EXCLUDED_VIOLATION     48
+  #define   X509_V_ERR_SUBTREE_MINMAX     49
+  #define   X509_V_ERR_UNSUPPORTED_CONSTRAINT_TYPE    51
+  #define   X509_V_ERR_UNSUPPORTED_CONSTRAINT_SYNTAX  52
+  #define   X509_V_ERR_UNSUPPORTED_NAME_SYNTAX    53
+  #define   X509_V_ERR_CRL_PATH_VALIDATION_ERROR    54
+  #define   X509_V_ERR_APPLICATION_VERIFICATION   50
+##MSYM_END##
+   
+##MSYM_START## RTMAP_TYPE
+  #define RHP_RTMAP_TYPE_UNKNOWN  0
+  #define RHP_RTMAP_TYPE_DEFAULT  1
+  #define RHP_RTMAP_TYPE_STATIC   2
+  #define RHP_RTMAP_TYPE_DYNAMIC  3
+  #define RHP_RTMAP_TYPE_DYNAMIC_DEFAULT  4
+  #define RHP_RTMAP_TYPE_INTERNAL 5
+##MSYM_END##
+   
+##MSYM_START## RTMAP_EVT
+  #define RHP_RTMAPC_EVT_DESTROY      0
+  #define RHP_RTMAPC_EVT_UPDATED      1
+  #define RHP_RTMAPC_EVT_DELETED      2
+##MSYM_END##
+   
+##MSYM_START## V6LLADDR_STAT
+  #define RHP_V6_LINK_LOCAL_ADDR_INIT         0
+  #define RHP_V6_LINK_LOCAL_ADDR_DAD_PROBING  1
+  #define RHP_V6_LINK_LOCAL_ADDR_AVAILABLE    2
+  #define RHP_V6_LINK_LOCAL_ADDR_ERR          3
+##MSYM_END##
+
+##MSYM_START## RADIUS_CODE
+  #define RHP_RADIUS_CODE_NONE                0
+  #define RHP_RADIUS_CODE_ACCESS_REQUEST      1
+  #define RHP_RADIUS_CODE_ACCESS_ACCEPT       2
+  #define RHP_RADIUS_CODE_ACCESS_REJECT       3
+  #define RHP_RADIUS_CODE_ACCOUNTING_REQUEST  4
+  #define RHP_RADIUS_CODE_ACCOUNTING_RESPONSE 5
+  #define RHP_RADIUS_CODE_ACCESS_CHALLENGE    11
+  #define RHP_RADIUS_CODE_STATUS_SERVER       12
+  #define RHP_RADIUS_CODE_STATUS_CLIENT       13
+  #define RHP_RADIUS_CODE_RESERVED            255
+##MSYM_END##
+
+##MSYM_START## RADIUS_ATTR
+  #define RHP_RADIUS_ATTR_TYPE_USER_NAME            1
+  #define RHP_RADIUS_ATTR_TYPE_NAS_IP_ADDRESS       4
+  #define RHP_RADIUS_ATTR_TYPE_NAS_IPV6_ADDRESS     95
+  #define RHP_RADIUS_ATTR_TYPE_NAS_ID               32
+  #define RHP_RADIUS_ATTR_TYPE_FRAMED_MTU           12
+  #define RHP_RADIUS_ATTR_TYPE_CALLED_STATION_ID    30
+  #define RHP_RADIUS_ATTR_TYPE_CALLING_STATION_ID   31
+  #define RHP_RADIUS_ATTR_TYPE_NAS_PORT_TYPE        61
+  #define RHP_RADIUS_ATTR_TYPE_EAP                  79
+  #define RHP_RADIUS_ATTR_TYPE_MESG_AUTH            80
+  #define RHP_RADIUS_ATTR_TYPE_NAS_PORT             5
+  #define RHP_RADIUS_ATTR_TYPE_NAS_PORT_ID          87
+  #define RHP_RADIUS_ATTR_TYPE_CONNECT_INFO         77
+  #define RHP_RADIUS_ATTR_TYPE_SESSION_TIMEOUT      27
+  #define RHP_RADIUS_ATTR_TYPE_REPLY_MESG           18
+  #define RHP_RADIUS_ATTR_TYPE_STATE                24
+  #define RHP_RADIUS_ATTR_TYPE_VENDOR_SPECIFIC      26
+  #define RHP_RADIUS_ATTR_TYPE_TERMINATION_ACTION   29
+  #define RHP_RADIUS_ATTR_TYPE_FRAMED_IP_ADDRESS    8
+  #define RHP_RADIUS_ATTR_TYPE_FRAMED_IP_NETMASK    9
+  #define RHP_RADIUS_ATTR_TYPE_FRAMED_IPV6_ADDRESS  168
+  #define RHP_RADIUS_ATTR_TYPE_DNS_IPV6_ADDRESS     169
+  #define RHP_RADIUS_ATTR_TYPE_TUNNEL_PRIVATE_GROUP_ID    81
+  #define RHP_RADIUS_ATTR_TYPE_TUNNEL_CLIENT_AUTH_ID      90
+  #define RHP_RADIUS_ATTR_TYPE_ERROR_CAUSE          101
+##MSYM_END##
+
+##MSYM_START## RADIUS_VENDOR
+  #define RHP_RADIUS_ATTR_TYPE_VENDOR_SPECIFIC_CISCO      9
+  #define RHP_RADIUS_ATTR_TYPE_VENDOR_SPECIFIC_MICROSOFT  311
+##MSYM_END##
+
+##MSYM_START## RADIUS_MS_ATTR
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_SEND_KEY            16
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_RECV_KEY            17
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_ENCRYPTION_POLICY   7
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_ENCRYPTION_TYPES    8
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_PRIMARY_DNS_SERVER       28
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_SECONDARY_DNS_SERVER     29
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_PRIMARY_NBNS_SERVER      30
+  #define RHP_RADIUS_VENDOR_MS_ATTR_TYPE_SECONDARY_NBNS_SERVER    31
+##MSYM_END##
+
+##MSYM_START## RADIUS_ACCT_STAT
+  #define RHP_START          1
+  #define RHP_STOP           2
+  #define RHP_INTERIM_UPDATE 3
+  #define RHP_ACCOUNTING_ON  7
+  #define RHP_ACCOUNTING_OFF 8
+##MSYM_END##
+
+##MSYM_START## RADIUS_ACCT_TERM_CAUSE
+  #define RHP_USER_REQUEST         1
+  #define RHP_LOST_CARRIER         2
+  #define RHP_LOST_SERVICE         3
+  #define RHP_IDLE_TIMEOUT         4
+  #define RHP_SESSION_TIMEOUT      5
+  #define RHP_ADMIN_RESET          6
+  #define RHP_ADMIN_REBOOT         7
+  #define RHP_PORT_ERROR           8
+  #define RHP_NAS_ERROR            9
+  #define RHP_NAS_REQUEST          10
+  #define RHP_NAS_REBOOT           11
+  #define RHP_PORT_UNNEEDED        12
+  #define RHP_PORT_PREEMPTED       13
+  #define RHP_PORT_SUSPENDED       14
+  #define RHP_SERVICE_UNAVAILABLE  15
+  #define RHP_CALLBACK             16
+  #define RHP_USER_ERROR           17
+  #define RHP_HOST_REQUEST         18
+##MSYM_END##
+
+##MSYM_START## RADIUS_ACCT_AUTHENTIC
+  #define RHP_AUTHENTIC_RADIUS    1
+  #define RHP_AUTHENTIC_LOCAL     2
+  #define RHP_AUTHENTIC_REMOTE    3
+##MSYM_END##
+
+##MSYM_START## RADIUS_USAGE
+  #define RHP_RADIUS_USAGE_AUTHENTICATION   0
+  #define RHP_RADIUS_USAGE_ACCOUNTING       1
+##MSYM_END##
+
+##MSYM_START## RADIUS_SECRET_IDX
+  #define RHP_RADIUS_SECRET_IDX_PRIMARY         0
+  #define RHP_RADIUS_SECRET_IDX_SECONDARY       1
+  #define RHP_RADIUS_SECRET_IDX_ACCT_PRIMARY    2
+  #define RHP_RADIUS_SECRET_IDX_ACCT_SECONDARY  3
+##MSYM_END##
+
+
+##MSYM_START## NHRP_PKT_TYPE
+  #define RHP_PROTO_NHRP_PKT_RESOLUTION_REQ     1
+  #define RHP_PROTO_NHRP_PKT_RESOLUTION_REP     2
+  #define RHP_PROTO_NHRP_PKT_REGISTRATION_REQ   3
+  #define RHP_PROTO_NHRP_PKT_REGISTRATION_REP   4
+  #define RHP_PROTO_NHRP_PKT_PURGE_REQ          5
+  #define RHP_PROTO_NHRP_PKT_PURGE_REP          6
+  #define RHP_PROTO_NHRP_PKT_ERROR_INDICATION   7
+  #define RHP_PROTO_NHRP_PKT_TRAFFIC_INDICATION 8 
+##MSYM_END##
+
+##MSYM_START## NHRP_CIE_CODE
+  #define RHP_PROTO_NHRP_CIE_CODE_NONE              0
+  #define RHP_PROTO_NHRP_CIE_CODE_SUCCESS           0
+  #define RHP_PROTO_NHRP_CIE_CODE_ADMIN_PROHIBITED  4
+  #define RHP_PROTO_NHRP_CIE_CODE_NO_RESOURCE       5
+  #define RHP_PROTO_NHRP_CIE_CODE_ADDR_COLLISION    14
+##MSYM_END##
+
+##MSYM_START## NHRP_ERR_CODE
+  #define RHP_PROTO_NHRP_ERR_CODE_UNSUP_EXT         1 
+  #define RHP_PROTO_NHRP_ERR_CODE_LOOP_DECTECT      3 
+  #define RHP_PROTO_NHRP_ERR_CODE_UNREACH           6
+  #define RHP_PROTO_NHRP_ERR_CODE_PROTOCOL_ERR      7
+  #define RHP_PROTO_NHRP_ERR_CODE_MESG_TOO_LONG     8
+  #define RHP_PROTO_NHRP_ERR_CODE_INVALID_EXT       9
+  #define RHP_PROTO_NHRP_ERR_CODE_INVALID_RES_REP   10
+  #define RHP_PROTO_NHRP_ERR_CODE_AUTH_FAILURE      11
+  #define RHP_PROTO_NHRP_ERR_CODE_HOP_CNT_EXCEEDED  12
+##MSYM_END##
+
+##MSYM_START## NHRP_TRF_CODE
+  #define RHP_PROTO_NHRP_TRAFFIC_CODE_NHRP    0
+##MSYM_END##
+
+##MSYM_START## NHRP_AF
+#define RHP_PROTO_NHRP_ADDR_FAMILY_IPV4   0x0100
+#define RHP_PROTO_NHRP_ADDR_FAMILY_IPV6   0x0200
+##MSYM_END##
+
+##MSYM_START## NHRP_EXT
+  #define RHP_PROTO_NHRP_EXT_TYPE_END                         0
+  #define RHP_PROTO_NHRP_EXT_TYPE_RESPONDER_ADDRESS           3
+  #define RHP_PROTO_NHRP_EXT_TYPE_FORWARD_TRANSIT_NHS_RECORD  4
+  #define RHP_PROTO_NHRP_EXT_TYPE_REVERSE_TRANSIT_NHS_RECORD  5
+  #define RHP_PROTO_NHRP_EXT_TYPE_AUTHENTICATION              7
+  #define RHP_PROTO_NHRP_EXT_TYPE_VENDOR_PRIVATE              8
+  #define RHP_PROTO_NHRP_EXT_TYPE_NAT_ADDRESS                 9
+##MSYM_END##
+
+##MSYM_START## AUTH_TKT_ATTR
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_NONE                  0
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_AUTHENTICATOR_ID      1
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_INITIATOR_ID          2
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_RESPONDER_ID          3
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_INITIATOR_PUB_IP      4
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_RESPONDER_PUB_IP      5
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_INITIATOR_ITNL_IP     6
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_RESPONDER_ITNL_IP     7
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_EXPIRATION_TIME       8
+#define RHP_PROTO_IKEV2_AUTH_TKT_ATTR_SESSION_KEY           9
+##MSYM_END##
+
+##MSYM_START## AUTH_TKT
+#define RHP_PROTO_IKEV2_AUTH_TKT_TYPE_NONE        0
+#define RHP_PROTO_IKEV2_AUTH_TKT_TYPE_REQUEST     1
+#define RHP_PROTO_IKEV2_AUTH_TKT_TYPE_RESPONSE    2
+#define RHP_PROTO_IKEV2_AUTH_TKT_TYPE_FORWARD     3
+#define RHP_PROTO_IKEV2_AUTH_TKT_TYPE_ERROR       4
+##MSYM_END##
+

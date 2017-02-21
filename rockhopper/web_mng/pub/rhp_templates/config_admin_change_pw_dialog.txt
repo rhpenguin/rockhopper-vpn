@@ -1,0 +1,19 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Change Administrator's Password
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>New Password(*):</label></td>
+    <td><div id="configChangeAdminPw"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configChangeAdminPwOk"></div></td>
+    <td><div id="configChangeAdminPwCancel"></div></td>
+  </tr>
+</table>
+</p>

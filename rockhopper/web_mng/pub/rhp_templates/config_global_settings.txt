@@ -1,0 +1,177 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 5px;margin-top: 5px;margin-bottom: 10px;">
+Detailed Global Settings
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+If no settings exist, default settings are used.
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+The following settings are actually applied after you restart Rockhopper. 
+</p>
+
+<p style="margin-top: 20px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configGlobalIPv6Enabled">
+          <label style="font-weight: bold;font-size: 105%;" for="configGlobalIPv6Enabled">
+            Enable IPv6.
+          </label>
+        </td>
+      </tr>
+      <tr style="height: 15px;"></tr>
+      <tr>
+        <td>
+          <input id="configGlobalIkev2FragEnabled">
+          <label style="font-weight: bold;font-size: 105%;" for="configGlobalIkev2FragEnabled">
+            Enable IKEv2 Fragmentation. (RFC7383)
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 5px;"></tr>
+      <tr>
+        <td>
+          <input id="configGlobalIkev2QcdEnabled">
+          <label style="font-weight: bold;font-size: 105%;" for="configGlobalIkev2QcdEnabled">
+            Enable IKEv2 QCD (Quick Crash Detection). (RFC6290)
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<div id="configGlobalIkev2SessionResumeTop">
+<p style="margin-top: 25px;">
+<label style="font-weight: bold;font-size: 110%;">
+- IKEv2 Session Resumption (RFC5723)
+</label>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+        &nbsp;&nbsp;&nbsp;
+          <input id="configGlobalIkev2SessionResumeInitEnabled">
+          <label style="font-weight: bold;font-size: 100%;" for="configGlobalIkev2SessionResumeInitEnabled">
+            Enable for an initiator (client).
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 5px;"></tr>
+      <tr>
+        <td>
+        &nbsp;&nbsp;&nbsp;
+          <input id="configGlobalIkev2SessionResumeRespEnabled">
+          <label style="font-weight: bold;font-size: 100%;" for="configGlobalIkev2SessionResumeRespEnabled">
+            Enable for a responder (concentrator / gateway).
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 3px;"></tr>
+      <tr>
+        <td>
+          <table><tbody><tr>
+          <td>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input id="configGlobalIkev2SessionResumeRespTktRevokeEnabled">
+          </td>
+          <td>
+          <label style="font-weight: bold;font-size: 100%;" for="configGlobalIkev2SessionResumeRespTktRevokeEnabled" class="configGlobalIkev2SessionResumeRespTktRevokeLabel">
+            Reject session tickets reused by misbehaving initiators. 
+          </label>
+          </td>
+          </tr></tbody></table>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+</div>
+
+
+<div id="configGlobalIkev1Top">
+<p style="margin-top: 25px;">
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configGlobalIkev1Enabled">
+          <label style="font-weight: bold;font-size: 110%;" for="configGlobalIkev1Enabled">
+            Enable IKEv1.
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+        &nbsp;&nbsp;&nbsp;
+          <input id="configGlobalIkev1MainMode">
+          <label style="font-weight: bold;font-size: 100%;" for="configGlobalIkev1MainMode" class="configGlobalIkev1Label">
+            Enable Main mode.
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 5px;"></tr>
+      <tr>
+        <td>
+        &nbsp;&nbsp;&nbsp;
+          <input id="configGlobalIkev1AggressiveMode">
+          <label style="font-weight: bold;font-size: 100%;" for="configGlobalIkev1AggressiveMode" class="configGlobalIkev1Label">
+            Enable Aggressive mode.
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>  
+</p>
+</div>
+
+<p style="margin-top: 40px;">
+  <div id="configGlobalIkesaAddSetting"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configGlobalIkesaSettingTable" style="width:530px;">
+    <tbody id="configGlobalIkesaSettingTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;">Name</td>
+        <td class="rhpTableTdTag" style="width: 200px;">Value</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="margin-top: 30px;">
+  <div id="configGlobalChildsaAddSetting"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configGlobalChildsaSettingTable" style="width:530px;">
+    <tbody id="configGlobalChildsaSettingTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;">Name</td>
+        <td class="rhpTableTdTag" style="width: 200px;">Value</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="margin-top: 30px;">
+  <div id="configGlobalVpnAddSetting"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configGlobalVpnSettingTable" style="width:530px;">
+    <tbody id="configGlobalVpnSettingTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;">Name</td>
+        <td class="rhpTableTdTag" style="width: 200px;">Value</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

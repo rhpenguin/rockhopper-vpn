@@ -1,0 +1,16 @@
+<p style="margin-top: 30px;">
+  <div id="configVpnRmtCfgSvrReservedAddrCreateBtn"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configVpnRmtCfgSvrReservedAddrTable">
+    <tbody id="configVpnRmtCfgSvrReservedAddrTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 120px;">Reserved IP Address</td>
+        <td class="rhpTableTdTag" style="width: 120px;">Netmask(IPv4) / Prefix(IPv6)</td>
+        <td class="rhpTableTdTag" style="width: 25%;">Peer ID</td>
+        <td class="rhpTableTdTag" style="width: 15%;">ID Type</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

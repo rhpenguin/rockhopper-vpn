@@ -1,0 +1,117 @@
+#!/bin/bash
+#
+# chkconfig: 2345 50 9
+
+### BEGIN INIT INFO
+# Provides:          rockhopper
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: rockhopper initscript
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.
+### END INIT INFO
+
+#
+# Author: TETSUHARU HANADA <rhpenguine@gmail.com>
+#
+#
+# Copyright (C) 2009 - 2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+# All rights reserved.
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# Do NOT "set -e"
+
+# PATH should only include /usr/* if it runs after the mountnfs.sh script
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin
+DESC="IP Security service"
+NAME="rockhopperd"
+MAINDIR=/home/rhpmain
+PROTECTEDDIR=/home/rhpprotected
+RHPGROUP=rhpenguin
+MAINUSR=rhpmain
+PROTECTEDUSR=rhpprotected
+DAEMON=/usr/sbin/${NAME}
+PIDDIR=/var/run/rockhopper
+DAEMON_ARGS="-m ${MAINDIR}/config/main.xml -p ${PROTECTEDDIR}/config/protected.xml -u ${MAINUSR} -s ${PROTECTEDUSR} -i ${PIDDIR}"
+MAINPIDFILE=${PIDDIR}/rockhopper_main.pid
+PROTECTEDPIDFILE=${PIDDIR}/rockhopper_protected.pid
+SCRIPTNAME=/etc/init.d/rockhopper
+RHPSCRIPTDIR=${PROTECTEDDIR}/script
+RHPINITSCRIPT=${RHPSCRIPTDIR}/rhp_systemd_ext
+
+lockfile=/var/lock/subsys/${NAME}
+
+
+#
+# [NOTICE]
+#  To enable debug trace service, please set 1.
+#
+RHPTRACE=0
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+if [ "${RHPTRACE}" != 0 ]; then
+  rhp_trace="/dev/rhp_file_trace"
+else
+  rhp_trace="/dev/null"
+fi
+
+# Exit if the package is not installed
+[ -x "${DAEMON}" ] || exit 0
+
+
+start() {
+
+  "${RHPINITSCRIPT}" init invoke_trace
+
+  # Start daemons.
+  daemon "${NAME}" "${DAEMON_ARGS}"
+  RETVAL="$?"
+  [ "$RETVAL" -eq 0 ] && touch "${lockfile}"
+  return "${RETVAL}"
+}
+
+stop() {
+
+  echo -n "Shutting down ${NAME}: "
+  killproc "${NAME}"
+  RETVAL="$?"
+  [ "${RETVAL}" -eq 0 ] && rm -f ${lockfile}
+
+  "${RHPINITSCRIPT}" cleanup
+
+  return "${RETVAL}"
+}
+
+# See how we were called.
+case "$1" in
+  start)
+  start
+  ;;
+  stop)
+  stop
+  ;;
+  status)
+#  status ${prog}
+  ;;
+  restart|force-reload)
+  stop
+  start
+  ;;
+  try-restart|condrestart)
+ # if status ${prog} > ${rhp_trace}; then
+ #     stop
+ #     start
+ # fi
+  ;;
+  reload)
+  exit 3
+  ;;
+  *)
+  echo $"Usage: $0 {start|stop|status|restart|try-restart|force-reload}"
+  exit 2
+esac

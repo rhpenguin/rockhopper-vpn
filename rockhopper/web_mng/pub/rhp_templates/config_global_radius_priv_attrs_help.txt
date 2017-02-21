@@ -1,0 +1,85 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+RADIUS Attribute Value's Examples
+</p>
+<p style="margin-top: 15px;">
+<label class="configRadiusLabel">
+Specify each attribute value to RADIUS server's configuration as a string (text) like the following examples.
+</label>
+</p>
+<p>
+<small>
+<table class="rhpTableTag">
+  <tbody>
+    <tr class="rhpTableTrTag rhpTableTrTagTop">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Attribute Type</label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Value String's Example</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >VPN Realm ID: </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >10</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >VPN Realm's role string:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >sales_dep</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Remote user's unique<br/>and opaque index: </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >zLsTYuJT6K8ku9mz<br/>(e.g. Any string like a random value)</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal IPv4 Address: </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >192.168.100.17 or 192.168.100.17/24<br/>A prefix length (e.g. '/24') is used as a hint by VPN gateway(NAS).</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal IPv6 Address: </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >2001:db8:100::17 or 2001:db8:100::17/64<br/>A prefix length (e.g. '/64') is used as a hint by VPN gateway(NAS).</label></td>
+    </tr>
+
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal DNS Server's<br/>IPv4 Address: </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >192.168.100.100</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal DNS Server's<br/>IPv6 Address: </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >2001:db8:100::100</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal Domain Name: </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >.example.com</label></td>
+    </tr>
+
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal IPv4 Destination<br/>Network:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >192.168.101.0/24</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal IPv6 Destination<br/>Network:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >2001:db8:101::/64</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal Gateway's IPv4<br/>Address (Bridge mode):  </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >192.168.100.10</label></td>
+    </tr>
+
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >Internal Gateway's IPv6<br/>Address (Bridge mode):  </label></td>
+      <td></td>
+      <td class="rhpTableTdTag" align="left"><label class="configRadiusLabel" >2001:db8:100::10</label></td>
+    </tr>
+
+  </tbody>
+</table>
+</small>
+</p>

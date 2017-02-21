@@ -1,0 +1,132 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 10px;margin-top: 10px;margin-bottom: 10px;">
+RADIUS Accounting
+</p>
+
+<div id="configRadiusAcctTop">
+<p style="margin-top: 25px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configGlobalRadiusAcctEnable">
+          <label for="configGlobalRadiusAcctEnable" style="font-weight: bold; font-size: 110%;">
+            Enable RADIUS Accounting.
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+<label class="configRadiusAcctLabel">(*): Required.</label>
+</p>
+<p style="margin-top: 0px;">
+  <table>
+    <tbody>
+    
+      <tr>
+        <td><label class="configRadiusAcctLabel" style="font-weight: bold; font-size: 100%;">RADIUS Server's Address(*):</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configRadiusAcctIPVer"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td><div id="configRadiusAcctServerAddress"></div></td>
+            <td style="padding-left: 10px;"><label class="configRadiusAcctLabel">Port:</label></td>
+            <td><div id="configRadiusAcctServerPort"></div></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>    
+
+      <tr style="height: 10px;"></tr>
+
+      <tr>
+        <td><label class="configRadiusAcctLabel" style="font-weight: bold; font-size: 100%;">Source IP Address:</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configRadiusAcctSourceAddressIPVer"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td><div id="configRadiusAcctSourceAddress"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>    
+
+      <tr style="height: 15px;"></tr>
+
+      <tr>
+        <td><label class="configRadiusAcctLabel" style="font-weight: bold; font-size: 100%;">Shared Secret(*):</label></td>    
+        <td><div id="configRadiusAcctSharedSecret"></td>
+      </tr>    
+
+      <tr style="height: 5px;"></tr>
+
+      <tr>
+        <td></td>
+        <td>
+          <label class="configRadiusAcctLabel" style="font-size: 95%;">
+          To set or change a shared secret, please sepcify a new secret to 
+          <label style="font-weight: bold; font-size: 100%;">Shared Secret</label>.
+          </label>
+        </td>    
+      </tr>    
+
+    </tbody>
+  </table>
+</p>
+<p style="margin-top: 20px;">
+<div id="configRadiusAcctSecondaryServerCheck"></div>
+<label class="configRadiusAcctLabel" style="font-weight: bold;font-size: 110%;">
+ Configure a Secondary RADIUS server.
+</label>
+<div id="configRadiusAcctSecondaryServerPane"></div>
+</p>
+
+
+<p style="margin-top: 55px;">
+<label class="configRadiusAcctLabel" style="font-weight: bold;font-size: 110%;">
+- Configure attributes sent to RADIUS server.
+</label>
+</p>
+<p style="margin-top: 15px;">
+  <div id="configRadiusAcctAddSendingAttrs"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configRadiusAcctAddSendingAttrsTable" style="width:530px;">
+    <tbody id="configRadiusAcctAddSendingAttrsTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusAcctLabel">Attribute Type</label></td>
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusAcctLabel">Value</label></td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+
+<p style="margin-top: 55px;">
+  <div id="configRadiusAcctAddSetting"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configRadiusAcctSettingTable" style="width:530px;">
+    <tbody id="configRadiusAcctSettingTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusAcctLabel">Name</label></td>
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusAcctLabel">Value</label></td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+</div>

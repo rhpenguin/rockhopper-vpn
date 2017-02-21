@@ -1,0 +1,48 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Address Pool
+</p>
+<p>
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogTopIPv6Range"><tbody>
+  <tr>
+    <td><label>Address Type(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolTypeIPv6Range"></div></td>
+  </tr>
+</tbody></table>
+</p>
+
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogIPv6Range"><tbody>
+  <tr>
+    <td>
+      <table><tbody>
+        <tr>
+        <td>
+        <label class="configVpnAddRmtCfgSvrAddrPoolRangeV6Label">Starting Address: </label>
+        </td>
+        <td>
+        <div id="configVpnAddRmtCfgSvrAddrPoolStartAddressV6"></div>
+        </td>
+        </tr>
+        <tr style="height: 5px;" ></tr>
+        <tr>
+        <td>
+        <label class="configVpnAddRmtCfgSvrAddrPoolRangeV6Label">Ending Address: </label>
+        </td>
+        <td>
+        <div id="configVpnAddRmtCfgSvrAddrPoolEndAddressV6"></div>
+        </td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+</tbody></table>
+<p>
+Prefix length for above addresses must be 64 and more.
+</p>
+<p>
+<table><tbody>
+  <tr>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolOkIPv6Range"></div></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolCancelIPv6Range"></div></td>
+  </tr>
+</tbody></table>
+</p>

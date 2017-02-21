@@ -1,0 +1,22 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+VPN Role
+</p>
+<p style="margin-top: 30px;">
+  <div id="configVpnRoleCreateBtn"></div>
+</p>
+<p style="font-size: 95%;">  
+  <label>To identify remote peers' membership, add common prefixes/suffixes of remote peer IDs or role 
+  strings received from a RADIUS server. If no roles are configured, it means ANY by default. 
+  These settings are valid only for a responder node.</label><br/>
+</p>
+<p>
+  <table class="rhpTableTag" id="configVpnRoleTable">
+    <tbody id="configVpnRoleTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 300px;">Role String</td>
+        <td class="rhpTableTdTag" style="width: 350px;">Type</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

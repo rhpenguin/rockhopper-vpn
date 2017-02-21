@@ -1,0 +1,35 @@
+<p>
+  <table>
+    <tbody>
+      <tr style="height: 25px;">
+        <td>
+          <label>Please paste CA Certificates(PEM Encoded X.509 Text).</label>
+        </td>
+      </tr>
+      <tr>
+        <td><div id="configVpnCaCertificateText"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label style="font-size: 90%;">
+          Please include the first line like 'BEGIN CERTIFICATE' and the last line like 'END CERTIFICATE', too.
+          </label>
+        </td>
+      </tr>
+      <tr style="height: 6px;"><td></td></tr>
+      <tr>
+        <td>
+          <label style="font-size: 95%;">
+          Multiple Certificates for a root CA and intermediate CAs are allowed.
+          In the above PEM file you specify, PEM-encoded text blocks of all 
+          intermediate CAs' must be pasted before a PEM-encoded text block of 
+          the root CA's certificate. 
+          The root CA's text block must be the last one. These intermediate CA
+          certificates are NOT sent to peers.
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</p>

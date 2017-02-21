@@ -1,0 +1,30 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryService">
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">Network Deployment</td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryServiceDeploy"></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">IKE Remote Configuration</td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryServiceRemoteCfg"></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">IKEv2 Authentication Method for Remote Peers</td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryServiceAuthMethodForPeers"></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">IKEv2 EAP Server</td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryServiceEapServer"></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">NHRP/DMVPN</td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryServiceNhrpServer"></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">IKEv1 XAUTH Server</td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryServiceXauthServer"></td>
+    </tr>
+  </tbody>
+</table>
+</p>

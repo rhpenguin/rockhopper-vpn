@@ -1,0 +1,454 @@
+
+ * rockhopper-0.2.b1-022 [2017/01/07]
+
+  - [New] [RADIUS] RADIUS support for EAP Authentication. [RFC2138][RFC3579]
+          (Web Console: Global Configuration -> RADIUS -> Authentication)
+
+  - [New] [RADIUS] RADIUS Accounting support. [RFC2866]
+          (Web Console: Global Configuration -> RADIUS -> Accounting)
+  
+  - [New] [IKEv2/Session Resumption] UI to invalidate IKEv2 Session 
+          Resumption's tickets. 
+          (Web Console: Top -> Realm ID: Realm Name (Left-tree) 
+           -> Management)
+
+  - [New] [Routing/Hub: IP over IP and GRE encapsulation] Directly 
+          routing and forwarding packets between VPN tunnels.
+  
+  - [New] [Routing] Peer address registration by NHRP and GRE over 
+          IPsec are supported. [RFC2332][RFC2784] 
+
+  - [New] [DMVPN] Started to support Dynamic Mesh VPN (i.e. Dynamic 
+          Multipoint VPN (DMVPN): Shortcut Switching Enhancements 
+          for NHRP) based on the internet-draft (draft-detienne-dmvpn-01) 
+          by Cisco.
+          (https://tools.ietf.org/html/draft-detienne-dmvpn-01) 
+
+          *** Interoperability evaluation by using IKEv2 has NOT been done
+          yet. I would appreciate your contribution if you would evaluate 
+          and debug Rockhopper with Cisco devices implementing IKEv2. ***
+          
+  - [New] [DMVPN] A session ticket issued by hub node (authenticator) 
+          for spoke-to-spoke (shortcut) authentication (Rockhopper's 
+          private extension). By enabling it, a kind of SSO property 
+          like Kerberos Authentication can be added between spoke nodes. 
+          (i.e.) Even if each spoke node uses PSK or EAP as an auth 
+          method, keys or passwords for other remote spoke nodes need 
+          not to be configured on it. You just need to configure a key
+          or a password to connect your spoke node with the hub node.
+          See app/rhp_ikev2_auth_tkt_hb2spk.c for protocol details.          
+
+  - [New] [Packet capture/PCAP] A packet capture tool is supported. 
+          A capture file including plaintext and ciphertext packets of 
+          ESP and IKEv1/v2 handled by Rockhopper can be saved in PCAP 
+          format and viewed by network protocol analyzer like Wireshark. 
+          The file can be gotten by Web Console (Management / Tool 
+          -> Packet Capture). 
+          
+  - [New] [IKEv1] Started to support legacy IKEv1 for an interoperability 
+          purpose. However, I strongly recommend using more secure, 
+          reliable, extensible, interoperable and multifunctional IKEv2.
+          
+  - [New] [IKEv1] IKEv1 XAUTH (PSK, RSA-Sig and hybrid Authentication) and 
+          Mode-Config as a responder side are supported for legacy IKEv1 
+          VPN clients. Currently, only PAP (by local authentication) is 
+          implemented.
+          (https://tools.ietf.org/html/draft-dukes-ike-mode-cfg-02)
+          (https://tools.ietf.org/html/draft-beaulieu-ike-xauth-02)
+  
+  - [New] [IKEv1] Interoperability with IPsec-Tools, strongSwan, Cisco IOS 
+          and Android.
+  
+  - [New] [Web Console/Monitoring & Statistics] Showing Routing table/cache 
+          and NHRP cache. A command-line tool (/usr/local/sbin/rockhopper) 
+          also supports it.
+
+  - [Improved] [Gateway/Packet Forwarding] Hash table sizes for MAC, 
+               ARP(IPv4) and ND(IPv6) caches are configurable. 
+               (Global setting: rhp_gcfg_mac_cache_hash_size and 
+                rhp_gcfg_neigh_cache_hash_size)
+
+  - [New] [Installer] Tested on Ubuntu 16.04, Ubuntu 16.10 , Debian 8.6, 
+          CentOS 7.2 and LinuxMint 18.
+
+  - [Regression/Fixed] Failed to configure 3DES-CBC for Child SAs by Web 
+                       Console (Global Configuration -> Crypto Algorithms 
+                       -> Add Child SA's Algorithms).
+
+  - [Improved] [Alg] MD5 is removed from default integ/prf methods. 
+
+  - [Improved] [IKEv2/Auth-ID] ID_IPV4_ADDR and ID_IPV6_ADDR are supported.
+
+  - [Improved] [Web Console/Event Viewer] Add the 'Automatically update 
+               view' checkbox to enable/disable automatically scrolling on 
+               the Event log view. If uncheck it, you can update the view by 
+               pushing the 'Update View' button. By default, it is enabled
+               (checked) as usual.
+
+
+
+
+ * rockhopper-0.2.b1-021 [2015/12/17]
+
+  - [New] The NULL Authentication Method in IKEv2 [RFC7619].  
+
+  - [New] [Web Console/Remote Client] A simple and easy view to cinfigure a remote 
+           client. By checking 'Advanced Settings', a VPN user can configure details 
+           as usual.
+
+  - [Improved] [IKEv2/Web Console] A setting to explicitly limit authentication  
+               methods for remote peers.
+
+  - [Improved] [IKEv2] Specifying a remote peer address as a hostname(FQDN).
+
+  - [New] [Web Console/Tool] Clering dormant connections.
+
+  - [Improved] [Web Console] A VPN config's summary pane was implemented properly.          
+
+  - [Improved] [IKEv2/Child SA] A setting not to narrow traffic selectors. [Exact Match]
+  
+  - [Improved] [Gateway/Packet Forwarding] A setting not to forward decrypted packets
+               between VPN connections (i.e. Remote IPsec nodes). In this case, 
+               decrypted packets are forwarded only between a remote IPsec node and 
+               protected network.
+
+  - [Fixed] [IKEv2/IPv6:Remote Client] There may be a case where internal network info 
+            (internal route info) was not cleared when a VPN connection was closed.
+
+  - [Fixed] [ESP/IKEv2 MOBIKE] A bug, which may potentially cause a dead lock when  
+            I/F address or state is dynamically changed, was fixed.
+
+  - [Improved] [Packet Forwarding] A cached MAC address is immediately cleaned when 
+               receiving a resolution request (ARP/ND) for the same IP address from 
+               a different side (RHP_BRIDGE_SIDE_VPN or RHP_BRIDGE_SIDE_TUNTAP).
+
+  - [Improved] [IKEv2 Sess Resumption] A few additional security checks.
+
+  - [NEW] [VPN connection] A VPN connection's lifetime. If it expires, the connection
+          is closed.
+
+  - [NEW] [IKEv2/Remote Configutaion] IPv6 address Auto-configuration for a remote  
+          client. This spec includes a Rockhopper's private extension 
+          (See app/rhp_ikev2_cfg.c for protocol details).
+    
+  - [Improved] [Web Console/IKEv2:Remote Configutaion] A UI for a setting to narrow 
+               traffic selectors for remote clients by using assigned address(es). 
+
+  - [NEW] [IKEv2/Remote Configutaion] A setting to reject VPN connections with peers 
+          other than remote clients.
+
+  - [NEW] [IKEv2/Remote Configutaion] A setting not to forward decrypted packets
+          between remote clients. 
+
+  - [NEW] [IKEv2/Remote Configutaion] A setting to disable Non-IP traffic. 
+          IP encapsulation (IP over IP) is automatically configured as Encapsulation 
+          Mode for remote clients.
+
+  - [NEW] [IKEv2/Remote Configutaion] A setting to reject traffic selectors requested 
+          by remote client. This means that a remote client need to obey traffic 
+          selectors specified by remote configuration server.
+
+  - [New] [Installer] Tested on Ubuntu 15.10, Debian 8.2, LinuxMint 17.2 and Fedora 23.
+
+  - [Fixed] [Web Console/js] When a Web browser shutdowns a httpBusRead connection 
+            (HTTP GET), it may return an empty content instead of an error event 
+            (e.g. Firefox 43.0). In this case, the event is just ignored.
+
+
+ * rockhopper-0.2.b1-018-3 [2015/12/17]
+
+  - [Fixed] [Web Console/js] When a Web browser shutdowns a httpBusRead connection 
+            (HTTP GET), it may return an empty content instead of an error event 
+            (e.g. Firefox 43.0). In this case, the event is just ignored.
+  
+
+ * rockhopper-0.2.b1-020 [2015/08/15]
+
+  - [New] IKEv2 Session Resumption [RFC5723].
+
+  - [New] [Web Console] On the Management view, resetting a QCD key. A command-line 
+          tool (/usr/local/sbin/rockhopper) also supports it.
+
+  - [New] [Installer] Tested on Debian 8.1 and LinuxMint 17.2.
+
+  - [New] Interoperability with Windows 10.
+
+          Avoid adding a new VPN connection on the new 'Network & Internet' Window 
+          (Start Menu > Settings > VPN > 'Add a VPN connection') because there may 
+          be a case where an IPv4 defaut route via the connection is not added. 
+          Instead, set up the new connection on the 'Network and Sharing Center' 
+          window (Start Menu > Settings > Network & Internet > VPN > Network and 
+          Sharing Center > 'Set up a new connection and network') and configure 
+          IKEv2 for it on the each VPN adapter's 'Properties' window. (Start Menu 
+          > Settings > Network & Internet > VPN > 'Change adapter options' 
+          > Right-click The created VPN adapter's icon.) Of course, you can open 
+          the 'Network and Sharing Center' window from the Control Panel like 
+          Windows 7/8. I hope this spec or problem will be clarified by Microsoft.
+   
+  - [New] [Web Console] On the VPN Configuration view, showing created-time and
+          updated-time of a VPN realm's config.
+  
+  - [Improved] [Web Console/rockhopper] When a configuration's backup file saved for  
+               an old software package is uploaded and restored, required settings  
+               for a new package are automatically added. 
+
+  - [New] [Tool] A script to reset all configuration is included. 
+                (rockhopper-<version>/installer/reset_config.sh)
+
+  - [Fixed] [IKEv2/IPv6] A VPN client's linklocal address is not included in a CP 
+            payload (CFG_REQUEST).
+  
+  - [Fixed] [Debug Trace] A few bad format args.
+
+  - [Improved] [IKEv2/EAP Server] If an only single VPN realm is configured, it
+               is treated as a default EAP server by default. 
+               (Global setting: rhp_gcfg_def_eap_server_if_only_single_rlm_defined)
+
+  - [Improved] [Debug Trace/Event Log] Add new conversion specifiers for time_t.
+
+  - [Improved] [IKEv2/QCD] A token taker checks a source address of a received IKEv2 
+               INVALID_IKE_SPI error notification with token maker's addresses  
+               including MOBIKE's additional addresses and a secondary address 
+               configured by user or resoloved by DNS-query.  
+
+  
+ * rockhopper-0.2.b1-019 [2015/05/23]
+
+  - [New] IPv6 support.
+  
+          If you configure a Split DNS for your VPN (IPv6), it requires kernel v3.7 
+          and later (supporting IPv6 NAT) and corresponding ip6tables 
+         (e.g. Ubuntu 13.04 or later). 
+
+  - [New] [IKEv2] IKEv2 Message Fragmentation [RFC7383].
+
+  - [New] [Tool] A command-line admin tool (rockhopper) supports additional features.
+      - /usr/local/sbin/rockhopper.pl was renamed /usr/local/sbin/rockhopper.
+      - Uploading a PKCS#12 file and PEM files.
+      - Uploading a CRL file (PEM).
+      - Uploading a configuration achive file (a backup file including configurations, 
+        keys and certificates).
+      - Showing information about tuntap-interfaces and source-interfaces.
+      - Connecting VPN by EAP-MSCHAPv2.
+      - Some obsolete or unsupported features were removed.
+      - Improvements related to authentication info.
+      - MOBIKE initiator's routability check.
+      - Enabling or disabling a VPN realm's config.
+      - Showing remote peer's certificates.
+
+  - [New] [Tool] A command-line event-log tool (/usr/local/sbin/rockhopper_log).
+      - Showing or following events.
+      - Saving events as a text file.
+      - Clearing old events.
+
+  - [New] [Net Config] Network configuration scripts call iproute2's utilities instead 
+          of legacy tools like ifconfig and route commands.
+
+  - [Improved] [Bridge] Using a system's defaut gateway to forward decrypted packets
+               destinated to other subnets if no static gateway's setting exists.
+
+  - [New] [Web Console] On the VPN status view, showing results of MOBIKE initiator's 
+          routability check (available paths to a remote peer). 
+
+  - [New] [Web Console] Saving events as a text file.
+
+  - [Improved] [Web Console] When a password/key string is submitted by a <form> or 
+               <input> tag on Firefox, it shows a prompt dialog to save it into 
+               the browser's cache. As a workaround, the passwords/keys are submitted 
+               in other XML messages.
+
+  - [Improved] [IKEv2/Remote Config Server] Cached assigned addresses for an EAP 
+               client are bound only to the EAP identity value not including a  
+               IDi payload's value(an IPv4/IPv6 address). 
+   
+  - [Improved] [Web Console] On the realm status view, showing bridge I/F's info 
+               a Rockhopper's VPN I/F links to.
+
+  - [New] [Installer] Tested on Fedora 21. 
+
+  - [New] [Installer] Systemd configuration for Cent OS 7, Fedora 21, Ubuntu 15.04  
+          and Debian 8.0.
+
+  - [Improved] [IKEv2/EAP] An IDi payload's value is set to a random IP address when 
+               EAP-MSCHAPv2 is used as a client's auth method.
+               (Global setting: eap_client_use_ikev2_random_addr_id)
+
+  - [Improved] [IKEv2/ESP] Multiple IPv4 addresses configured for a single network 
+               I/F are supported.
+
+  - [Improved] [Tuntap I/F] When many virtual I/Fs are created, netlink's buffers to send
+               NEWLINK and NEWROUTE messages may overflow. As a workaround, after receiving
+               the messages related to a created interface from netlink, Rockhopper continues 
+               to create the next interface one by one.
+
+  - [Fixed] [IKEv2/Remote client] Static internal dev routes locally configured for 
+            a remote client are added into the system after VPN connection is established.
+
+  - [Fixed] [IKEv2/EAP peer(client)] A few memory leaks.
+  
+  - [New] [Config] Disabling or enabling a VPN realm's config by management tools.
+
+
+ * rockhopper-0.2.b1-018-2 [2015/05/04]
+
+  - [Fixed] [IKEv2] Initializing attributes of a packet buffer(rhp_packet) used for a  
+            MOBIKE(Initiator) probe packet when it is released. This bug may cause a
+            parse error of a received IKEv2 packet and a connection failure later when 
+            the same rhp_packet is reallocated for the packet.
+
+  - [Fixed] [Tuntap I/F] When read() returns with no data (length=0), the call is ignored.
+  
+  - [Fixed] [Debug Trace] A few bad format args.
+  
+  - [New] [Installer] Tested on Ubuntu 15.04.
+
+
+ * rockhopper-0.2.b1-018-1 [2015/01/29]
+
+  - [New] [Installer] CentOS 7 and Ubuntu 14.10 are supported. 
+
+  - [Fixed] [Debug Trace] Undef user-space APIs(rhp_trace.h). 
+
+
+ * rockhopper-0.2.b1-018 [2013/12/21]
+
+  - [Fixed] [IKEv2] A memory leak of rhp_packet. [rhp_ikev2.c:_rhp_ikev2_rx_verify_request()].
+
+
+ * rockhopper-0.2.b1-017 [2013/12/20]
+
+  - [New] [IKEv2] An initiator can send a realm ID to a remote responder 
+          in the IKE_AUTH exchange. 
+          When multiple realms are configured and multiple VPN connections
+          are established between the two nodes, the responder can distinguish 
+          the initiator's membership for each connection by using the received
+          realm ID. Therefore, each peer can use a common PSK's ID or 
+          certificate for the realms. 
+          (VPN Configuration -> IKE SA Settings: send_realm_id)
+
+  - [Improved] [ESP] Preferentially forwarding ARP, OSPF, RIP and BGP packets.                
+               (Global setting: forward_critical_pkt_preferentially)
+               
+  - [Improved] [IKEv2] [Mesh] Rejecting a VPN connection between a mesh node 
+               and a hub node. When meshed VPN is deployed, each peer of the 
+               VPN connection must be configured as a mesh node. 
+
+  - [Improved] [ESP] [Hub and Spoke] A spoke node can flood packets from a 
+               virtual (TUN/TAP) interface to VPN connections beween spoke 
+               nodes when a VPN connection with a hub node is not available.
+               (Global setting: flood_pkts_if_no_accesspoint_exists)
+
+  - [Regression/Fixed] [IKEv2/RSA-Sig] Failed to establish a VPN connection 
+                       when an initiator's peer is explicitly configured 
+                       (i.e. not as ANY) on the responder's peer side and 
+                       the initiator's certificate includes a subjectAltName.
+
+  - [Improved] [Web Console] Show a hostname next to the title string.
+
+  - [Improved] [IKEv2] Search configured peers for an initiator's realm ID
+               on the responder's side.
+               (Global setting: dont_search_cfg_peers_for_realm_id)
+
+  - [New] [IKEv2] Peek in a received packet's header to get the packet's 
+          length before actually reading it. This is a relatively inefficent 
+          way because recvmesg() is called twice for each received packet. 
+          However, if the system has small memory and large IKEv2 packets, 
+          for example, IKE_AUTH packets including many CERT payloads, are 
+          exchanged, this optional feature may be useful. By default, 
+          it is disabled. (Global setting: peek_rx_packet_size)
+
+
+ * rockhopper-0.2.b1-016 [2013/09/23]
+
+  - [New] [IKEv2] Quick Crash Detection (QCD) [RFC6290].
+
+  - [New] [IKEv2] Mobility and Multihoming Protocol (MOBIKE) [RFC4555].
+
+  - [New] [IKEv2] EAP-MSCHAPv2 peer (client).
+
+  - [New] [IKEv2] Hash and URL (X.509 Certificate).
+
+  - [New] [IKEv2/ESP] Secondary source interface to establish VPN.
+
+  - [Improved] [IKEv2] Longer timeout for EAP in the IKE_AUTH exchange. 
+               (Global setting: lifetime_eap_larval)
+
+  - [Improved][IKEv2] Upper limit of queued request packets in the 
+              IKE_SA_INIT exchange while IKEv2 COOKIES is activated. 
+              (Global setting: ikesa_cookie_max_pend_packets)
+
+  - [Improved] [ESP] By default, fowarding any DNS queries to VPN connected 
+               with other implementations. 
+               (Global setting: dns_pxy_fwd_any_queries_to_vpn_non_rockhopper)
+
+  - [Improved] [IKEv2] Peer ID (FQDN) is used as peer's address if no peer's 
+               address is configured.
+
+  - [Improved] [IKEv2] Add statistics values related to IKEv2 COOKIES in the 
+               IKE_SA_INIT echange.
+
+  - [New] [IKEv2] Upper limit per second of retransmitted responses.
+          (Global setting: ike_retransmit_reps_limit_per_sec)
+
+  - [New] [IKEv2/ESP] Strictly check for rx interface. 
+          (Global setting: ikev2_rx_if_strictly_check)
+
+  - [New] [IKEv2/ESP] Drop routing-looped packets. 
+          (Global setting: check_pkt_routing_loop)
+
+  - [New] Upper limit of queued log records. 
+          (Global setting: log_pending_records_max)
+
+  - [Fixed] [IKEv2] D-H public key: Correctly prepending zero bits
+            (fixed wrong usage of OpenSSL API).
+
+  - [Fixed] [IKEv2] Error N payload's protocol ID for some error types:  
+            Not set IKE(1) but zero.
+
+  - [Fixed] [DNS proxy] Segfault when reading more than three nameservers 
+            (more than libc resolver's max) defined in /etc/resolv.conf.
+
+  - [Improved] [IKEv2] Automatically add a dev route to forward packets  
+               to VPN when CP(INTERNAL_IP4_SUBNET) attributes are received  
+               and CP(INTERNAL_IP4_NETMASK) is /32 or is unkown.
+
+  - [Improved] Add many log messages at the debug level.
+
+  - [Improved] [IKEv2] EAP-MSCHAPv2: Add the optional Identity exchange 
+               before the MSCHAPv2 exchange starts. 
+
+  - [New] Add a RHP_WTS_DISP_RULE_MISC_BLOCKING worker thread for tasks 
+          which may sleep or need blocking I/O.
+
+  - [New] Add resolution by the nano/micro second for timers.
+
+  - [Improved] [Web Mng] Add the MIME types (application/pkix-cert and 
+               application/pkix-crl) to upload a PEM-encoded certificate or 
+               CRL by Web Console (application/pkix-cert and application/pkix-crl). 
+               But, currently, a DER-encoded file is not supported.
+
+  - [Fixed] [Web Console] Correctly show saved certificate info when 
+            multiple realms are configured.
+
+  - [New] [IKEv2] Upper limit of VPN connections. 
+          (Global setting: vpn_max_sessions)
+
+  - [New] [IKEv2] Upper limit of half-open VPN connections. 
+          (Global setting: vpn_max_half_open_sessions)
+
+  - [New] [Installer] Supported Debian 7.1 (i386 and amd64).
+
+  - [Obsoleted] [Web Console] "Connect VPN by Address" pain was obsoleted. 
+
+  - [Fixed] [Web Console] "Reconnect" button for a responder on the VPN  
+            peer pane was removed.
+
+  - [Fixed] [DNS Proxy] Upper limit for open sockets to forward DNS queries.
+            Also, aggressively cleaning up timed-out query sessions when 
+            the number of the open sockets reaches the limit.
+
+  - [Fixed] [DNS Proxy] Memory leaks caused by rx packets from inet.
+
+  - [New] [DNS Proxy] Add several statistics values.
+
+  

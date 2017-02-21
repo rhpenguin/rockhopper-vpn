@@ -1,0 +1,112 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 10px;margin-bottom: 10px;">
+Simple Firewall Settings (IPv4)
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+You can specify only minimum firewall (iptables) rules for interfaces linked to 
+unprotected network here. If these rules are not enough, please setup additional
+rules by iptables. These rules are added to iptables' filter chains named 
+'rockhopper_fw_in'(INPUT), 'rockhopper_fw_out'(OUTPUT) and 'rockhopper_fw_fwd'(FORWARD) 
+respectively.
+</p>
+<p>
+  <form id="configGlobalFwPolicy">
+    <table>
+      <tbody>
+
+        <tr>
+          <td>
+            <input id="configGlobalFwDefaultPolicyDefaultDeny">
+            <label for="configGlobalFwDefaultPolicyDefaultDeny">
+            Enable Default Deny policy: Drop all traffic not explicitly allowed.
+            </label>
+          </td>
+        </tr>
+        <tr style="height: 30px;">
+        </tr>    
+
+        <tr>
+          <td>
+            <input id="configGlobalFwDefaultPolicyAllowIpsecTrf">
+            <label for="configGlobalFwDefaultPolicyAllowIpsecTrf">
+            Allow IPsec(IKEv2 and ESP) traffic.
+            </label>
+          </td>
+        </tr>
+        <tr style="height: 20px;">
+        </tr>    
+
+        <tr>
+          <td>
+            <input id="configGlobalFwDefaultPolicyAllowVifTrf">
+            <label for="configGlobalFwDefaultPolicyAllowVifTrf">
+            Allow encrypted or decrypted traffic by Rockhopper via virtual interface(Tunnel/TAP interface, rhpvif<RealmID>).
+            </label>
+          </td>
+        </tr>
+        <tr style="height: 20px;">
+        </tr>    
+
+        <tr>
+          <td>
+            <input id="configGlobalFwDefaultPolicyAllowMngTrf">
+            <label for="configGlobalFwDefaultPolicyAllowMngTrf">
+            Allow Rockhopper Web console's traffic via network interface. 
+            </label><br>
+          </td>
+        </tr>
+        <tr style="height: 5px;">
+        </tr>    
+
+        <tr>
+          <td>
+            <label style="font-size: 85%;margin-top: 7px;">
+            * To enable this, you need to setup 'listening address' and 
+              'allowed client's address' on 'Web Management Service' Tab. <br>
+            * Rockhopper Web console's traffic is NOT encrypted. You should NOT 
+              allow the traffic via interface directly linked to unprotected 
+              network like the Internet. <br>
+            </label>
+          </td>
+        </tr>
+        <tr style="height: 30px;">
+        </tr>    
+
+        <tr>
+          <td>
+            <input id="configGlobalFwDefaultPolicyAllowDnsTrf">
+            <label for="configGlobalFwDefaultPolicyAllowDnsTrf">
+            Allow DNS traffic via network interface.
+            </label>
+          </td>
+        </tr>
+        <tr style="height: 20px;">
+        </tr>    
+
+        <tr>
+          <td>
+            <input id="configGlobalFwDefaultPolicyAllowDhcpTrf">
+            <label for="configGlobalFwDefaultPolicyAllowDhcpTrf">
+            Allow DHCP traffic via network interface.
+            </label>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </form>
+</p>
+
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 25px;margin-bottom: 10px;">
+Network Interface
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+Please specify network interfaces to apply the above firewall rules.
+</p>
+<p style="margin-top: 10px;">
+  <form id="configGlobalFwNetworkIf">
+    <table>
+      <tbody id="configGlobalFwNetworkIfBodyTop">
+      </tbody>
+    </table>
+  </form>
+</p>

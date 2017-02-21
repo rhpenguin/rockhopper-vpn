@@ -1,0 +1,226 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+  overflow: auto;
+  padding: 0px;
+}
+
+#baseLayout {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+#baseTopLayout {
+  width: 100%;
+  height: 9%;
+}
+
+#baseTabContainer {
+  width: 100%;
+  height: 93%;
+}
+
+#baseLeftToolbar {
+  border-width: 0px;
+}
+
+#baseRightToolbar {
+  border-width: 0px;
+}
+
+#baseToolbarButtonLogoff {
+  font-size: 130%;
+  font-weight: bold;
+}
+
+#welcomeUserNameLabel {
+  font-size: 150%;
+}
+
+#welcomeUserPwLabel {
+  font-size: 150%;
+}
+
+#welcomePaneTxt {
+  font-size: 210%;
+  font-weight: bold;
+}
+
+#welcomePaneVer {
+  font-size: 90%;
+}
+
+#adminNameTxBtn {
+  font-size: 130%;
+}
+
+#baseWelcomePane {
+  border-width: 0px;
+}
+
+#baseConfigContainer {
+}
+
+#configNavVpnContainer {
+  width: 18.5em;
+}
+
+#baseTopNavContainer {
+  width: 20em;
+}
+
+#baseTopContContainer {
+  border-width: 0px;
+}
+
+#baseTopTitlePane {
+  border-width: 0px;
+  height: 100%;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#configContVpnEditRlmToolbar1 {
+  border-width: 0px;
+}
+
+#configContVpnEditRlmToolbar2 {
+  border-width: 0px;
+}
+
+#configContVpnEditRlmToolbar3 {
+  border-width: 0px;
+}
+
+#configContVpnEditRlmToolbar4 {
+  border-width: 0px;
+}
+
+#configContVpnEditRlmTopContainer {
+  border-width: 0px;
+  height: 85px;
+}
+
+#configContVpnEditRlmBottomPane {
+  border-width: 0px;
+  height: 8px;
+}
+
+#create_remove_vpn_realm_Pane {
+  border-width: 0px;
+}
+
+#configContVpnEditRlmContainer {
+  border-width: 0;
+}
+
+#configContVpnEditRlmPane {
+  border-width: 0px;
+}
+
+table.rhpTableTag {
+  border-top:1px solid #769dc0;
+  border-left:1px solid #769dc0;
+  border-collapse:collapse;
+  border-spacing:0px;
+  background-color:#ffffff;
+  empty-cells:show;
+  width: 100%;
+}
+
+.rhpTableTrTag {
+  border-right:1px solid #769dc0;
+  border-bottom:1px solid #769dc0;
+  background-position: center top;
+  background-repeat: repeat-x;
+  background-color: #e9f4fe;
+  padding:0.3em 1em;
+  text-align:center;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.rhpTableTrDisableFontClr {
+  color: #999999;
+}
+
+.rhpTableTrTagTop {
+  background-image:url("./dojo/current/dijit/themes/claro/form/images/button.png");
+}
+
+.rhpTableTdTag {
+  border-right: 1px solid #769dc0;
+  border-bottom: 1px solid #769dc0;
+  padding:0.3em 1em;
+}
+
+.rhpTableTdTagCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#configNavVpnTree {
+  margin-top: 10px;  
+  border-width: 1px;
+}
+
+#configContContainer {
+  border-width: 0px;
+}
+
+.rhpDialog {
+  margin: 3px;
+  padding: 5px;
+  background-color: white;
+}
+
+.rhpTreeItemRealmIcon {
+  background-image: url(./dojo/current/dijit/icons/images/commonIconsObjActEnabled.png);
+  background-position: -352px; 
+  width: 16px;
+  height: 16px;
+}
+
+.rhpTreeItemKeyIcon {
+  background-image: url(./dojo/current/dijit/icons/images/commonIconsObjActEnabled.png);
+  background-position: -384px; 
+  width: 16px;
+  height: 16px;
+}
+
+.rhpTreeRedIcon {
+  background-image: url(./images/red.png);
+  background-position: 0px; 
+  width: 13px;
+  height: 13px;
+}
+
+.rhpTreeYellowIcon {
+  background-image: url(./images/yellow.png);
+  background-position: 0px; 
+  width: 13px;
+  height: 13px;
+}
+
+.rhpTreeGreenIcon {
+  background-image: url(./images/green.png);
+  background-position: 0px; 
+  width: 13px;
+  height: 13px;
+}
+
+.configVpnIfPane {
+  border-width: 0px;
+}
+
+#configVpnConfigServerPane {
+  width: 100%;
+  height: 30px;
+}
+
+#configVpnCfgSvrBaseContainer {
+  width: 100%;
+  height: 100%;
+}
+

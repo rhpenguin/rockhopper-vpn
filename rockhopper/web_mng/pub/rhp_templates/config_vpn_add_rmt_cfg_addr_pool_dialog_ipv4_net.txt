@@ -1,0 +1,29 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Address Pool
+</p>
+<p>
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogTopIPv4Net"><tbody>
+  <tr>
+    <td><label>Address Type(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolTypeIPv4Net"></div></td>
+  </tr>
+</tbody></table>
+</p>
+
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogIPv4Net"><tbody>
+  <tr>
+    <td><label class="configVpnAddRmtCfgSvrAddrPoolNetworkLabel">Subnet Address:</label></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolNetwork"></div></td>
+    <td style="padding-left: 3px;"><label class="configVpnAddRmtCfgSvrAddrPoolNetmaskLabel">Netmask:</label></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolNetmask"></div></td>
+  </tr>
+</tbody></table>
+
+<p>
+<table><tbody>
+  <tr>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolOkIPv4Net"></div></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolCancelIPv4Net"></div></td>
+  </tr>
+</tbody></table>
+</p>

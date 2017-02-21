@@ -1,0 +1,49 @@
+#!/bin/sh
+
+#
+#  Copyright (C) 2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+#  All rights reserved.
+#  
+#  You can redistribute and/or modify this software under the 
+#  LESSER GPL version 2.1.
+#  See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+#
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+rhp_trace="/dev/rhp_file_trace"
+if [ ! -e ${rhp_trace} ]; then
+  rhp_trace="/dev/null"
+fi
+
+"${rhp_dbg}" "[rhp_mng] RHP_ACTION: ${RHP_ACTION}"
+
+case "${RHP_ACTION}" in
+
+  MNG_RESET_QCD_KEY)
+
+    if [ ! -e "/home/rhpprotected/config/qcd_secret" ]; then
+     ${rhp_dbg} "[rhp_mng] qcd_secret not found."
+    else 
+      rm -rf "/home/rhpprotected/config/qcd_secret" 2> ${rhp_trace}
+    fi
+    ;;
+
+  MNG_RESET_SESS_RESUME_KEY)
+
+    if [ ! -e "/home/rhpprotected/config/sess_resume_key" ]; then
+     ${rhp_dbg} "[rhp_mng] sess_resume_key not found."
+    else 
+      rm -rf "/home/rhpprotected/config/sess_resume_key" 2> ${rhp_trace}
+    fi
+    
+    if [ ! -e "/home/rhpprotected/config/sess_resume_key_old" ]; then
+     ${rhp_dbg} "[rhp_mng] sess_resume_key_old not found."
+    else 
+      rm -rf "/home/rhpprotected/config/sess_resume_key_old" 2> ${rhp_trace}
+    fi
+    ;;
+
+esac
+
+exit 0
+  

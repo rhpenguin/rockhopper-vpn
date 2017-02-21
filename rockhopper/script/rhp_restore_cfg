@@ -1,0 +1,64 @@
+#!/bin/sh
+
+#
+#  Copyright (C) 2009-2010 TETSUHARU HANADA <rhpenguine@gmail.com>
+#  All rights reserved.
+#  
+#  You can redistribute and/or modify this software under the 
+#  LESSER GPL version 2.1.
+#  See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+#
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+rhp_trace="/dev/rhp_file_trace"
+if [ ! -e ${rhp_trace} ]; then
+  rhp_trace="/dev/null"
+fi
+
+#${rhp_dbg} "[ROCKHOPPER:rhp_restore_cfg] Restoring config ..."
+
+
+main_config_dir=/home/rhpmain/config/
+syspxy_config_dir=/home/rhpprotected/config/
+syspxy_certs_dir=/home/rhpprotected/certs/
+rhpgid=rhpenguin
+main_uid_gid=rhpmain:${rhpgid}
+syspxy_uid_gid=rhpprotected:${rhpgid}
+
+restore_dir=/home/rhpmain/restore/
+upgrade_script=/home/rhpprotected/script/rhp_upgrade_conf.pl
+
+if [ -e "${restore_dir}/rhpmain/config/main.xml" ]; then
+  ${upgrade_script} 2> ${rhp_trace}
+fi
+
+
+cd ${restore_dir}
+
+if [ -e "./rhpmain/config" ]; then
+  rm -rf "${main_config_dir}/"* 2> ${rhp_trace}
+  cp -r ./rhpmain/config/* "${main_config_dir}"  2> ${rhp_trace}
+  chown -Rf "{$main_uid_gid}" "${main_config_dir}"* 2> ${rhp_trace}
+  rm -rf "./rhpmain/config" 2> ${rhp_trace}
+  ${rhp_dbg} "[ROCKHOPPER:rhp_restore_cfg] Restoring ${main_config_dir} Done."
+fi
+
+if [ -e "./rhpprotected/config" ]; then
+  rm -rf "${syspxy_config_dir}/"* 2> ${rhp_trace}
+  cp -r ./rhpprotected/config/* "${syspxy_config_dir}"  2> ${rhp_trace}
+  chown -Rf "${syspxy_uid_gid}" "${syspxy_config_dir}"* 2> ${rhp_trace}
+  rm -rf "./rhpprotected/config" 2> ${rhp_trace}
+  ${rhp_dbg} "[ROCKHOPPER:rhp_restore_cfg] Restoring ${syspxy_config_dir} Done."
+fi
+
+if [ -e "./rhpprotected/certs" ]; then
+  rm -rf "${syspxy_certs_dir}/"* 2> ${rhp_trace}
+  cp -r ./rhpprotected/certs/* "${syspxy_certs_dir}"  2> ${rhp_trace}
+  chown -Rf "${syspxy_uid_gid}" "${syspxy_certs_dir}"* 2> ${rhp_trace}
+  rm -rf "./rhpprotected/certs" 2> ${rhp_trace}
+  ${rhp_dbg} "[ROCKHOPPER:rhp_restore_cfg] Restoring ${syspxy_certs_dir} Done."
+fi
+
+#${rhp_dbg} "[ROCKHOPPER:rhp_restore_cfg] Restoring config Done."
+
+exit 0

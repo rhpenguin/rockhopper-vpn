@@ -1,0 +1,14 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryMykeyStoreEap">
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">Authentication Method</td>
+      <td class="rhpTableTdTag rhpTableTrTagTop">My ID</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStoreEapAuthMethod"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStoreEapId"></td>
+    </tr>
+  </tbody>
+</table>
+</p>

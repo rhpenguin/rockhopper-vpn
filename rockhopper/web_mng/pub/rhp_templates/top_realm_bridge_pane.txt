@@ -1,0 +1,19 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Bridge Cache
+</p>
+<p>
+  <div id="topRealmBridgeFlush"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmBridgeTable">
+    <tbody id="topRealmBridgeTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Destination MAC</td>
+        <td class="rhpTableTdTag">Peer ID</td>
+        <td class="rhpTableTdTag">Side</td>
+        <td class="rhpTableTdTag">Type</td>
+        <td class="rhpTableTdTag">Elapsed Seconds</td>
+      </tr>
+    </tbody>
+  </table>
+</p>

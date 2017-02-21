@@ -1,0 +1,84 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 10px;margin-left: 10px;">
+Add a New Internal Route
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>IP Version(*):</label></td>
+    <td><div id="configVpnRouteAddIPVer"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnRouteAddIPv4Label">Destination IPv4 Network(*):</label></td>
+    <td><div id="configVpnRouteAddDestNetwork"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnRouteAddIPv4Label">Netmask(*):</label></td>
+    <td><div id="configVpnRouteAddNetmask"></div></td>
+  </tr>
+  <tr style="height: 5px;"><td></td><td></td></tr>
+  <tr>
+    <td><label class="configVpnRouteAddIPv6Label">Destination IPv6 Network(*):</label></td>
+    <td><div id="configVpnRouteAddDestNetworkV6"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnRouteAddIPv6Label">Prefix(*):</label></td>
+    <td><div id="configVpnRouteAddV6Prefix"></div></td>
+  </tr>
+  <tr style="height: 5px;"><td></td><td></td></tr>
+  <tr>
+    <td><label>Forwarding Type(*):</label></td>
+    <td><div id="configVpnRouteAddFwdType"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnRouteAddPeerIDTypeLabel">Peer ID Type(*):</label></td>
+    <td><div id="configVpnRouteAddPeerIdType"></div>
+        <div id="configVpnRouteAddPeerIdList"></div></td>
+  </tr>
+  <tr>
+    <td><label>Via(*):</label></td>
+    <td><div id="configVpnRouteAddFwdTo"></div></td>
+  </tr>
+  <tr>
+    <td><label>Metric:</label></td>
+    <td><div id="configVpnRouteAddMetric"></div></td>
+  </tr>
+</table>
+</p>
+<small>
+<table class="rhpTableTag">
+  <tbody>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Forwarding Type</label></td>
+      <td class="rhpTableTdTag"><label>Via (e.g.)</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Gateway Address:</label></td>
+      <td class="rhpTableTdTag"><label>192.168.0.1 (IPv4) or 2001:0DB8::1 (IPv6)</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Gateway Peer ID - Host Name(FQDN):</label></td>
+      <td class="rhpTableTdTag"><label>hostname.example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Gateway Peer ID - E-mail Address:</label></td>
+      <td class="rhpTableTdTag"><label>username@example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Gateway Peer ID - subjectName(DN):</label></td>
+      <td class="rhpTableTdTag"><label>C=JP,...,O=example,OU=sales,CN=username</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Interface Name:</label></td>
+      <td class="rhpTableTdTag"><label>rhpvif10 or eth0</label></td>
+    </tr>
+  </tbody>
+</table>
+</small>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnRouteAddOk"></div></td>
+    <td><div id="configVpnRouteAddCancel"></div></td>
+  </tr>
+</table>
+</p>

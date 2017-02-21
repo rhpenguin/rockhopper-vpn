@@ -1,0 +1,113 @@
+
+Please visit Rockhopper VPN's project site to get more detailed information.
+
+  - http://rockhoppervpn.sourceforge.net/
+  - http://sourceforge.net/projects/rockhoppervpn/
+  - Getting Started:
+    - http://rockhoppervpn.sourceforge.net/getstarted.html
+  - Documents:
+    - http://rockhoppervpn.sourceforge.net/documents.html
+
+
+
+What is Rockhopper VPN software?
+--------------------------------
+
+Rockhopper project is developing new VPN software based on modern 
+design and implementation considerations for Linux. 
+
+Traditionally, most Open Source implementations of IPsec have been 
+designed consisting of two separate components: the ESP/AH protocol 
+stack in kernel space and the Key Exchange (IKEv1/v2) service in user 
+space. Although this design approach is advantageous with respect to 
+performance and affinity for IP layer implementation, from a secure 
+programming perspective, implementing security functions in kernel 
+space is not advisable because it tends to be more difficult to use 
+security functions and resource management and protection functions 
+coherently as provided by the operating system. Moreover, developing 
+modules in kernel space, such as device drivers, generally requires 
+more complicated debugging steps than implementing applications in 
+user space.
+
+On the contrary, all components of this new software are implemented 
+in user space only, including the ESP protocol stack. This is 
+accomplished by adopting the standard TUN/TAP device driver supported 
+by the most recent UNIX-clone operating systems (Linux and BSD 
+descendants). Since the TUN/TAP device driver emulates virtual Ether-
+-net functionality, similar to the traditional design, the ESP protocol 
+stack in this software is implemented transparently to the TCP/IP net-
+-work stack in kernel space. This means that when a packet reaches a 
+virtual Ethernet interface instantiated by the TUN/TAP device driver 
+from an application and is read by the software through the TUN/TAP 
+device driver's API, network processing by TCP/IP stacks, such as IP 
+routing and MAC address resolution, is already completed for the packet. 
+Then, the software dispatches the packet to the appropriate IPsec tunnel 
+by searching the mapping table storing the destination MAC address and 
+Security Parameter Index (SPI) related to the IPsec tunnel's peer. The 
+primary purpose of this design decision is to realize a more secure 
+implementation and to provide a more useful development platform for 
+advanced or experimental IPsec functions.
+
+During execution of the proposed software, two independent processes are 
+forked. One of these is used to process protected services executed with 
+privileged administrator capabilities, such as the key store service that 
+manages authentication information like public/private key pairs, digital 
+certificates, and Pre-shared Keys (PSK), and the configuration service 
+provisioning network stacks such as network interfaces and routing tables. 
+The other is used for components that are executed with restricted user 
+capabilities and to handle communication with external entities, for 
+example, the IKE protocol stack or a Web-based management interface using 
+the socket API. Both processes interact with each other to provide the 
+VPN service as a whole.
+
+In addition, this software contains a large variety of functions that 
+modern VPN software should support: Virtual Ethernet (Ethernet over IPsec), 
+Routing-based VPN, Role-based ID management and configuration, AJAX-based 
+(Comet) Web management interface for configuring and monitoring, and so on. 
+All of these functions have been implemented from scratch.
+
+This software adopts a design that maximizes the potential of multi-core 
+processors. For this purpose, to load-balance heavy cryptographic 
+processing of ESP and IKEv2 packets in each network session, a rule-based 
+task load-balancing function is implemented. This function dispatches 
+tasks in each session to the appropriate thread in a pre-established thread 
+pool according to their traffic properties and also supports other 
+subfunctions maintaining sticky persistence of dispatched sessions and 
+prioritizing the tasks. For example, after the IKEv2 cookie function for 
+IKE_SA_INIT exchange has been activated as a result of detecting the 
+possibility of a flooding attack, all processing of packets for sessions 
+not yet authenticated is dispatched to the task queue with the lowest 
+priority to protect other processing for already authenticated and 
+established sessions.
+
+Another interesting feature of this software for developers is that it adopts 
+a flexible pluggable design for many external components: hardware cryptography 
+and ESP/AH protocol off-load engines, the PKI library, software cryptography 
+libraries like OpenSSL, Log and Debug Trace library, Extensible Authentication 
+Protocol (EAP) library, and so on. Thus, it is relatively easy for users or 
+developers, who need to plug-in their proprietary components, to modify the 
+configuration of this software.
+
+The IPsec specification is still being enhanced by IETF ipsecme WG and many 
+vendors and new issues may arise during the transition to IPv6 and with the 
+adoption of IKEv2. To keep up-to-date with protocol updates and extensions, 
+the software also introduces a message handler structure in the IKEv2 protocol 
+service, similar to the Linux netfilter service. Therefore, by developing and 
+adding a message handler module supporting the new protocol updates or 
+extensions, users and developers can significantly enhance the software.
+
+Rockhopper VPN service exports AJAX-based(Comet) Web management interface. 
+Users or developers can easily develop or customize their original management 
+tools or consoles on Web browsers. For instance, you are able to develop a 
+light-weight Web console providing end users with only Remote Access Client's 
+functionality. This software's package includes a sample implementaiton of Web 
+console powered by The Dojo Toolkit, a sample command-line tool written in 
+Perl and a sample VPN client GUI implemented in GTK2-perl.
+
+
+This software is released under the LESSER GPL version 2.1.
+
+
+Please enjoy,
+
+                                                   --- Rockhopper Project 

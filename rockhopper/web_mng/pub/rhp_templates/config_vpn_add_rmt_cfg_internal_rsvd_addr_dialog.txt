@@ -1,0 +1,79 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Reserved Internal Address
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Peer ID Type(*):</label></td>
+    <td><div id="configVpnAddRsvdInternalAddrPeerIdType"></div>
+        <div id="configVpnAddRsvdInternalAddrPeerIdList"></div></td>
+  </tr>
+  <tr>
+    <td><label>Peer ID(*):</label></td>
+    <td><div id="configVpnRsvdInternalAddrPeerId"></div></td>
+  </tr>
+
+  <tr style="height: 10px;"><td></td><td></td></tr>
+
+  <tr>
+    <td><label>IP Version(*):</label></td>
+    <td><div id="configVpnAddRsvdInternalAddrIPVer"></div></td>
+  </tr>
+
+  <tr style="height: 10px;"><td></td><td></td></tr>
+
+  <tr>
+    <td><label class="configVpnAddRsvdInternalAddrLabel">Reserved IPv4 Address(*):</label></td>
+    <td><div id="configVpnAddRsvdInternalAddrAddress"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddRsvdInternalAddrLabel">Netmask(*):</label></td>
+    <td><div id="configVpnAddRsvdInternalAddrNetmask"></div></td>
+  </tr>
+
+  <tr style="height: 10px;"><td></td><td></td></tr>
+
+  <tr>
+    <td><label class="configVpnAddRsvdInternalAddrV6Label">Reserved IPv6 Address(*):</label></td>
+    <td><div id="configVpnAddRsvdInternalAddrAddressV6"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddRsvdInternalAddrV6Label">Prefix(*):</label></td>
+    <td><div id="configVpnAddRsvdInternalAddrPrefixV6"></div></td>
+  </tr>
+</table>
+</p>
+<small>
+<table class="rhpTableTag">
+  <tbody>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Peer ID Type</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>Peer ID (e.g.)</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Host Name(FQDN):</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>host.example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>E-mail Address:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>username@example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>subjectName(DN):</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>C=JP,...,O=example,OU=sales,CN=username</label></td>
+    </tr>
+  </tbody>
+</table>
+</small>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddRsvdInternalAddrOk"></div></td>
+    <td><div id="configVpnAddRsvdInternalAddrCancel"></div></td>
+  </tr>
+</table>
+</p>

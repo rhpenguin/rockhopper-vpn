@@ -1,0 +1,71 @@
+<p>
+  <table>
+    <tbody>
+    <tr>
+      <td><div id="eventSave"></div></td>    
+      <td style="width:10px;"></td>    
+      <td><div id="eventReset"></div></td>    
+      <td style="width:50px;"></td>    
+      <td><div id="eventSaveTxt"></div></td>    
+      <td style="width:5px;"></td>    
+      <td><label style="font-size:100%;" id="eventSaveTxtStatus"></label></td>
+    </tr>    
+    </tbody>
+  </table>
+  <iframe name="event_save_as_txt_response" style="display:none;" id="eventSaveAsTxtResponse">
+  </iframe>
+</p>  
+<p>
+  <input id="eventLogDebugCheck">
+  <label style="font-weight: bold;" for="eventLogDebugCheck">Enable debug logging.</label>
+</p>  
+<p style="padding-top:15px;">
+To narrow down event log records, 
+specify conditions and push <span style="font-weight: bold;">Update View</span>.
+  <table>
+    <tbody>
+    <tr>
+      <td><div id="eventClear"></div></td>    
+      <td style="width:15px;"></td>    
+      <td><div id="eventUpdate"></div></td>    
+      <td style="width:5px;"></td>    
+      <td><div id="eventResetConditions"></div></td>    
+      <td style="width:20px;"></td>    
+      <td><label>Max events:</label></td>    
+      <td><div id="eventShowNumber"></div></td>
+      <td style="width:15px;"></td>    
+      <td>
+      <input id="eventLogAutoUpdateViewCheck">
+      <label style="font-weight: bold;" for="eventLogAutoUpdateViewCheck">Automatically update view.</label>
+      </td>
+    </tr>    
+    </tbody>
+  </table>
+</p>
+<p>
+<label style="font-size:90%;" id="eventActionStatus"></label>
+</p>
+<p>
+  <table class="rhpTableTag" id="eventContPaneTable">
+    <tbody id="eventContPaneBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">No.</td>
+        <td class="rhpTableTdTag">Time</td>
+        <td class="rhpTableTdTag">Event Source</td>
+        <td class="rhpTableTdTag">Realm ID</td>
+        <td class="rhpTableTdTag">Level</td>
+        <td class="rhpTableTdTag">Event ID</td>
+        <td class="rhpTableTdTag" style="width:40%;">Message</td>
+      </tr>
+      <tr class="rhpTableThTag" id="eventContPaneTopTr">
+        <td class="rhpTableTdTag"><div id="eventNoSearch">Conditions</div></td>
+        <td class="rhpTableTdTag"><div id="eventTimeSearch"></div></td>
+        <td class="rhpTableTdTag"><div id="eventEventSourceSearch"></div></td>
+        <td class="rhpTableTdTag"><div id="eventRealmSearch"></div></td>
+        <td class="rhpTableTdTag"><div id="eventLevelSearch"></div></td>
+        <td class="rhpTableTdTag"><div id="eventEventIdSearch"></div></td>
+        <td class="rhpTableTdTag">Free word: <div id="eventMesgSearch"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

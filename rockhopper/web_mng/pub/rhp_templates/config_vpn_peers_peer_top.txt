@@ -1,0 +1,146 @@
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+(*): Required.
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">Peer's IP Address:</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configVpnPeersPeerAddressIPVer"></div></td>
+            </tr>
+            <tr>
+            <td><div id="configVpnPeersPeerAddress"></div></td>
+            <td style="padding-left: 10px;"><label>Port:</label></td>
+            <td><div id="configVpnPeersPeerPort"></div></td>
+            </tr>
+          </tbody></table>
+        </td>
+
+      </tr>    
+      <tr style="height: 5px;"></tr>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">Secondary IP Address:</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configVpnPeersPeer2ndAddressIPVer"></div></td>
+            </tr>
+            <tr>
+            <td><div id="configVpnPeersPeer2ndAddress"></div></td>
+            <td style="padding-left: 10px;"><label>Port:</label></td>
+            <td><div id="configVpnPeersPeer2ndPort"></div></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 500px;">
+  <label style="font-size: 95%;">
+    If no peer's IP addresses are specified and this peer's ID-Type is hostname (FQDN),
+    Rockhopper will try to resolve the address by using the ID.
+  </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top:30px;">
+  <form id="configVpnPeersPeerDeploy">
+  </form>
+</p>
+
+
+<p style="margin-top:15px;">
+  <table id="configContVpnPeersPeerIkev1">
+    <tbody>
+      <tr>
+        <td>
+          <input id="configContVpnPeersPeerIkev1Check">
+          <label for="configContVpnPeersPeerIkev1Check" style="font-weight: bold; font-size: 100%;" class="configContVpnPeersPeerIkev1CheckLabel">
+          Connect by using IKEv1 (initiator):
+          </label>
+        </td>
+        <td style="width: 15px;"></td>
+        <td>
+          <form id="configContVpnPeersPeerIkev1Mode">
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="radio" id="configContVpnPeersPeerIkev1ModeMain" value="main" name="configContVpnPeersPeerIkev1Mode"></input>
+                    <label for="configContVpnPeersPeerIkev1ModeMain" class="configContVpnPeersPeerIkev1ModeLabel">Main mode</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="radio" id="configContVpnPeersPeerIkev1ModeAggressive" value="aggressive" name="configContVpnPeersPeerIkev1Mode"></input>
+                    <label for="configContVpnPeersPeerIkev1ModeAggressive" class="configContVpnPeersPeerIkev1ModeLabel">Aggressive mode</label>
+                  </td>
+                </tr>
+                <tr style="height: 15px;"></tr>
+                <tr>
+                  <td>
+                    <input id="configContVpnPeersPeerIkev1CommitBitCheck">
+                    <label for="configContVpnPeersPeerIkev1CommitBitCheck" class="configContVpnPeersPeerIkev1ModeLabel">
+                    Enable commit-bit for Quick mode (Phase 2).
+                    </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </td>        
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+
+<p style="margin-top:15px;">
+  <table>
+    <tbody>
+      <tr>
+        <td><input id="configContVpnPeersPeerAlwaysOnConnCheck">
+            <label for="configContVpnPeersPeerAlwaysOnConnCheck" style="font-weight: bold; font-size: 100%;">
+            Enable always-on connection.
+            </label></td>
+      </tr>    
+      <tr style="height: 10px;"></tr>
+      <tr>
+        <td><input id="configContVpnPeersPeerV6UdpEncapDisabledCheck">
+            <label for="configContVpnPeersPeerV6UdpEncapDisabledCheck" style="font-weight: bold; font-size: 100%;">
+            Disable ESP's UDP-encapsulation for IPv6 NAT-T.
+            </label></td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top:35px;">
+  <label style="font-weight: bold; font-size: 100%;">This remote peer's Internal Address:</label> 
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label style="font-weight: bold; font-size: 100%;">IPv4:</label></td>    
+        <td><div id="configVpnPeersPeerInternalAddress"></div></td>
+      </tr>    
+      <tr style="height: 5px;"></tr>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label style="font-weight: bold; font-size: 100%;">IPv6:</label></td>    
+        <td><div id="configVpnPeersPeerInternalAddressV6"></div></td>
+      </tr>    
+    </tbody>
+  </table>
+</p>

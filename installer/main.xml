@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<rhp_config version="1.0" description="Main Service Config">
+
+  <admin_services>  
+  
+    <admin_service id="1" address_v4="127.0.0.1" port="32501" protocol="http" root_dir="/home/rhpmain/www" timeout="60" max_connections="100" nobody_allowed="enable">
+    </admin_service>
+
+  </admin_services>
+
+  <event_log path="/home/rhpmain/log/rockhopper.log"/>
+
+  <home dir="/home/rhpmain/"/>
+
+  <cfg_bkup_script script="/home/rhpmain/script/rhp_cfg_bkup_main"/>
+
+  <event_log_convert_script script="/home/rhpmain/script/rhp_event_log_convert"/>
+
+  <packet_capture path="/home/rhpmain/tmp/rockhopper.pcap"/>
+
+</rhp_config>
+
+
+

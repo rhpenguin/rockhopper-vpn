@@ -1,0 +1,36 @@
+<p style="margin-top: 0px;">
+  <table>
+    <tbody>
+    <tr>
+      <td><label style="font-weight: bold; font-size: 100%;">Address Hold Time:</label></td>    
+      <td><div id="configVpnRmtCfgSvrAddrPoolHoldTime"></div></td>
+      <td><label>(hours)</label></td>    
+    </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="margin-top: 30px;">
+  <div id="configVpnRmtCfgSvrAddrPoolCreateBtn"></div>
+</p>
+
+<p style="margin-top: 1px;padding-top: 0px;">
+  <table class="rhpTableTag" id="configVpnRmtCfgSvrAddrPoolTable">
+    <tbody id="configVpnRmtCfgSvrAddrPoolTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 260px;">IPv4 Address Pool</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 1px;padding-top: 20px;">
+  <table class="rhpTableTag" id="configVpnRmtCfgSvrAddrPoolTableV6">
+    <tbody id="configVpnRmtCfgSvrAddrPoolTableBodyV6">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 260px;">IPv6 Address Pool</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

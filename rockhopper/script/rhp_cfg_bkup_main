@@ -1,0 +1,319 @@
+#!/bin/sh
+
+#
+#  Copyright (C) 2009-2010 TETSUHARU HANADA <rhpenguine@gmail.com>
+#  All rights reserved.
+#  
+#  You can redistribute and/or modify this software under the 
+#  LESSER GPL version 2.1.
+#  See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+#
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+rhp_trace="/dev/rhp_file_trace"
+if [ ! -e ${rhp_trace} ]; then
+  rhp_trace="/dev/null"
+fi
+
+${rhp_dbg} "[rhp_cfg_bkup_main] RHP_CFG_BKUP_ACTION: ${RHP_CFG_BKUP_ACTION}"
+${rhp_dbg} "[rhp_cfg_bkup_main] RHP_CFG_BKUP_PW: ${RHP_CFG_BKUP_PW}"
+${rhp_dbg} "[rhp_cfg_bkup_main] RHP_CFG_BKUP_HOME_DIR: ${RHP_CFG_BKUP_HOME_DIR}"
+
+openssl_cmd="/usr/bin/openssl"
+tar_cmd="/bin/tar"
+
+if [ ! -e "$openssl_cmd" ]; then
+ ${rhp_dbg} "[rhp_cfg_bkup_main] openssl command not found."
+ exit 0
+fi
+
+
+main_config_dir=config
+
+main_tar_name=rockhopper_main_cfg.tgz
+
+main_rcfg_name=rockhopper_main.rcfg
+syspxy_rcfg_name=rockhopper_syspxy.rcfg
+
+config_tar_file=rockhopper.tar
+config_file=rockhopper.rcfg
+
+
+
+restore_dir=${RHP_CFG_BKUP_HOME_DIR}/restore
+restore_config_file=rockhopper_restore.rcfg
+restore_config_tar_file=rockhopper_restore.tar
+
+restore_main_tar_name=rockhopper_main_cfg.tgz
+restore_syspxy_tar_name=rockhopper_syspxy_cfg.tgz
+
+restore_main_rcfg_name=rockhopper_main.rcfg
+restore_syspxy_rcfg_name=rockhopper_syspxy.rcfg
+
+
+read file_pw < "${RHP_CFG_BKUP_PW}" 
+${rhp_dbg} "[rhp_cfg_bkup_main] RHP_CFG_BKUP_PW: ${RHP_CFG_BKUP_PW} ==> password: ${file_pw}"
+
+
+
+cleanup_save()
+{
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/www/tmp/${main_tar_name}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/www/tmp/${main_rcfg_name}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/www/tmp/${syspxy_rcfg_name}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/www/tmp/${config_tar_file}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/www/tmp/${config_file}" 2> ${rhp_trace}
+}
+
+cleanup_restore()
+{
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/restore/${restore_config_file}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/restore/${restore_config_tar_file}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/restore/${restore_main_tar_name}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/restore/${restore_syspxy_tar_name}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/restore/${restore_main_rcfg_name}" 2> ${rhp_trace}
+  rm -f "${RHP_CFG_BKUP_HOME_DIR}/restore/${restore_syspxy_rcfg_name}" 2> ${rhp_trace}
+  rm -rf "${RHP_CFG_BKUP_HOME_DIR}/restore/rhpmain/"* 2> ${rhp_trace}
+  rm -rf "${RHP_CFG_BKUP_HOME_DIR}/restore/rhpprotected/"* 2> ${rhp_trace}
+}
+
+case ${RHP_CFG_BKUP_ACTION} in
+
+  SAVE)
+
+    ${rhp_dbg} "[rhp_cfg_bkup_main] Saving config starts..."
+
+    cd "${RHP_CFG_BKUP_HOME_DIR}/www/tmp/"
+
+    if [ ! -e "./${syspxy_rcfg_name}" ]; then
+     cleanup_save
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ./${syspxy_rcfg_name} not found."
+     exit 1
+    fi
+
+
+    cd "${RHP_CFG_BKUP_HOME_DIR}"
+    
+    rm -f "./www/tmp/${main_tar_name}" 2> ${rhp_trace}
+    ${tar_cmd} zc -f "./www/tmp/${main_tar_name}" "./${main_config_dir}"  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${tar_cmd} zc -f ./www/tmp/${main_tar_name} ./${main_config_dir} failed. $err"
+     cleanup_save
+     exit 1
+    fi
+    
+    if [ ! -e "./www/tmp/${main_tar_name}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ./www/tmp/$main_tar_name NOT created."
+     cleanup_save
+     exit 1
+    fi
+
+
+    cd "${RHP_CFG_BKUP_HOME_DIR}/www/tmp/" 2> ${rhp_trace}
+    
+    rm -f "./${main_rcfg_name}" 2> ${rhp_trace}
+    ${openssl_cmd} enc -e -aes256 -in "./${main_tar_name}" -out "./${main_rcfg_name}" -pass file:${RHP_CFG_BKUP_PW}  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${openssl_cmd} enc -e -aes256 -in "./${main_tar_name}" -out "./${main_rcfg_name}" -pass file:${RHP_CFG_BKUP_PW}  2> ${rhp_trace} failed."
+     cleanup_save
+     exit 1
+    fi
+
+    if [ ! -e "./${main_enc_name}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ./${main_rcfg_name} NOT created."
+     cleanup_save
+     exit 1
+    fi
+
+
+    rm -f "./${config_tar_file}" 2> ${rhp_trace}
+    ${tar_cmd} c -f "./${config_tar_file}" "./${main_rcfg_name}" "./${syspxy_rcfg_name}"  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${tar_cmd} c -f ./${config_tar_file} ./${main_rcfg_name} ${syspxy_rcfg_name} failed."
+     cleanup_save
+     exit 1
+    fi
+
+    if [ ! -e "./${config_tar_file}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ./${config_tar_file} NOT created."
+     cleanup_save
+     exit 1
+    fi
+
+
+    rm -f "./${config_file}" 2> ${rhp_trace}
+    ${openssl_cmd} enc -base64 -in "./${config_tar_file}" -out "./${config_file}"  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${openssl_cmd} enc -base64 -in ./${config_tar_file} -out ./${config_file} failed."
+     cleanup_save
+     exit 1
+    fi
+    
+    if [ ! -e "./${config_file}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ./${config_file} NOT created."
+     cleanup_save
+     exit 1
+    fi
+
+    
+    chmod -f 0550 "./${config_file}" 2> ${rhp_trace}
+    
+    rm -f "./${main_tar_name}" 2> ${rhp_trace}
+    rm -f "./${main_rcfg_name}" 2> ${rhp_trace}
+    rm -f "./${syspxy_rcfg_name}" 2> ${rhp_trace}
+    rm -f "./${config_tar_file}" 2> ${rhp_trace}
+
+    ${rhp_dbg} "[rhp_cfg_bkup_main] Saving config done."
+
+    ;;
+
+    
+  RESTORE)
+
+    ${rhp_dbg} "[rhp_cfg_bkup_main] Restoring config starts..."
+
+    cd "${restore_dir}" 2> ${rhp_trace}
+
+    if [ ! -e "./${restore_config_file}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${restore_config_file} not found."
+     cleanup_restore
+     exit 1
+    fi
+
+    rm -f "./${restore_config_tar_file}" 2> ${rhp_trace}
+    ${openssl_cmd} enc -d -base64 -in "./${restore_config_file}" -out "./${restore_config_tar_file}"  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${openssl_cmd} enc -d -base64 -in ./${restore_config_file} -out ./${restore_config_tar_file} failed."
+     cleanup_restore
+     exit 1
+    fi
+
+    if [ ! -e "./${restore_config_tar_file}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ./${restore_config_tar_file} NOT created."
+     cleanup_restore
+     exit 1
+    fi
+
+
+    rm -f "./${restore_main_rcfg_name}"  2> ${rhp_trace}
+    rm -f "./${restore_syspxy_rcfg_name}" 2> ${rhp_trace}
+
+    ${tar_cmd} x -f "./${restore_config_tar_file}" 2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${tar_cmd} x -f ./${restore_config_tar_file} failed."
+     cleanup_restore
+     exit 1
+    fi
+
+    if [ ! -e "./${restore_main_rcfg_name}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${restore_main_rcfg_name} not found."
+     cleanup_restore
+     exit 1
+    fi
+
+    if [ ! -e "./${restore_syspxy_rcfg_name}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${restore_syspxy_rcfg_name} not found."
+     cleanup_restore
+     exit 1
+    fi
+
+
+    rm -f "./${restore_main_tar_name}" 2> ${rhp_trace}
+    ${openssl_cmd} enc -d -aes256 -in "./${restore_main_rcfg_name}" -out "./${restore_main_tar_name}" -pass file:${RHP_CFG_BKUP_PW}  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${openssl_cmd} enc -d -aes256 -in "./${restore_main_rcfg_name}" -out "./${restore_main_tar_name}" -pass file:${RHP_CFG_BKUP_PW}  2> ${rhp_trace} failed."
+     cleanup_restore
+     exit 1
+    fi
+
+    if [ ! -e "./${restore_main_tar_name}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${restore_main_tar_name} NOT created."
+     cleanup_restore
+     exit 1
+    fi
+
+
+    rm -f "./${restore_syspxy_tar_name}" 2> ${rhp_trace}
+    ${openssl_cmd} enc -d -aes256 -in "./${restore_syspxy_rcfg_name}" -out "./${restore_syspxy_tar_name}" -pass file:${RHP_CFG_BKUP_PW}  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ${openssl_cmd} enc -d -aes256 -in "./${restore_syspxy_rcfg_name}" -out "./${restore_syspxy_tar_name}" -pass file:${RHP_CFG_BKUP_PW}  2> ${rhp_trace} failed."
+     cleanup_restore
+     exit 1
+    fi
+
+    if [ ! -e "./${restore_syspxy_tar_name}" ]; then
+     ${rhp_dbg} "[rhp_cfg_bkup_main] ./${restore_syspxy_tar_name} NOT created."
+     cleanup_restore
+     exit 1
+    fi
+
+
+
+    if [ ! -e "./rhpmain" ]; then
+      mkdir -m 770 "rhpmain" 2> ${rhp_trace}
+    fi
+
+    if [ ! -e "./rhpprotected" ]; then
+      mkdir -m 770 "rhpprotected" 2> ${rhp_trace}
+    fi
+
+    rm -rf ./rhpmain/* 2> ${rhp_trace}
+    rm -rf ./rhpprotected/* 2> ${rhp_trace}
+
+
+    ${tar_cmd} xz -f "./${restore_main_tar_name}" -C "./rhpmain"  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+      ${rhp_dbg} "[rhp_cfg_bkup_main] ${tar_cmd} xz -f ./${restore_main_tar_name} -C ./rhpmain failed."
+      cleanup_files
+      exit 0
+    fi
+    
+    if [ ! -e "./rhpmain/config" ]; then
+      ${rhp_dbg} "[rhp_cfg_bkup_main] ./rhpmain/config not found."
+      cleanup_files
+      exit 0
+    fi
+
+
+    ${tar_cmd} xz -f "./${restore_syspxy_tar_name}" -C "./rhpprotected"  2> ${rhp_trace}
+
+    if [ "$?" -ne 0 ]; then
+      ${rhp_dbg} "[rhp_cfg_bkup_main] ${tar_cmd} xz -f "./${restore_syspxy_tar_name}" -C "./rhpprotected" failed."
+      cleanup_files
+      exit 0
+    fi
+
+    if [ ! -e "./rhpprotected/config" ]; then
+      ${rhp_dbg} "[rhp_cfg_bkup_main] ./rhpprotected/config not found."
+      cleanup_files
+      exit 0
+    fi
+
+    if [ ! -e "./rhpprotected/certs" ]; then
+      ${rhp_dbg} "[rhp_cfg_bkup_main] ./rhpprotected/certs not found."
+      cleanup_files
+      exit 0
+    fi
+
+    rm -f "./${restore_main_tar_name}" 2> ${rhp_trace}
+    rm -f "./${restore_syspxy_tar_name}" 2> ${rhp_trace}
+    rm -f "./${restore_main_rcfg_name}" 2> ${rhp_trace}
+    rm -f "./${restore_syspxy_rcfg_name}" 2> ${rhp_trace}
+    rm -f "./${restore_config_tar_file}" 2> ${rhp_trace}
+    rm -f "./${restore_config_file}" 2> ${rhp_trace}
+
+    ${rhp_dbg} "[rhp_cfg_bkup_main] Restoring config Done."
+    ;;
+
+esac
+
+exit 0

@@ -1,0 +1,69 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Role String
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Role Type(*):</label></td>
+    <td><div id="configVpnAddRoleSfxType"></div></td>
+  </tr>
+  <tr>
+    <td><label>Role String(*):</label></td>
+    <td><div id="configVpnAddRoleSfx"></div></td>
+  </tr>
+</table>
+</p>
+<small>
+<table class="rhpTableTag">
+  <tbody>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Role Type</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>Role String(e.g.)</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Host Name(FQDN):</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>.example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>E-mail Address:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>@example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>subjectName(DN):</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>C=JP,...,O=example,OU=sales</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>subjectAltName: Host Name(FQDN):</label></td>
+      <td style="width:10px;"></td>
+      <td class="rhpTableTdTag"><label>.sales.example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>subjectAltName: E-mail Address:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>@sales.example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>EAP: User Name</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>A substring of the user name's prefix or suffix. (e.g.) .sales </label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>RADIUS: Attribute Value</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>A string value received from a RADIUS server. (e.g.) sales </label></td>
+    </tr>
+  </tbody>
+</table>
+</small>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddRoleSfxOk"></div></td>
+    <td><div id="configVpnAddRoleSfxCancel"></div></td>
+  </tr>
+</table>
+</p>

@@ -1,0 +1,20 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Domain Name
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Domain Name(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalDnsSfx"></div></td>
+  </tr>
+</table>
+<label>e.g. .example.com</label>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddRmtCfgSvrInternalDnsOk"></div></td>
+    <td><div id="configVpnAddRmtCfgSvrInternalDnsCancel"></div></td>
+  </tr>
+</table>
+</p>

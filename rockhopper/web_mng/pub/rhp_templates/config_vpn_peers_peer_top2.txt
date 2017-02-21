@@ -1,0 +1,30 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <label style="font-weight: bold; font-size: 100%;">This remote peer's Network Deployment(*): </label>
+      </td>
+      <td style="width: 20px;"></td>
+      <td>
+        <input type="radio" id="configVpnPeersPeerDeployHub" value="hub" name="configVpnPeersPeerDeploy"></input>
+        <label for="configVpnPeersPeerDeployHub" style="font-weight: bold; font-size: 100%;">Hub (Concentrator / Gateway / NHS) Node</label>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <input type="radio" id="configVpnPeersPeerDeploySpoke" value="spoke" name="configVpnPeersPeerDeploy"></input>
+        <label for="configVpnPeersPeerDeploySpoke" style="font-weight: bold; font-size: 100%;">Spoke Node / Client / NHC / Other</label>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <input type="radio" id="configVpnPeersPeerDeployMeshNode" value="mesh_node" name="configVpnPeersPeerDeploy"></input>
+        <label for="configVpnPeersPeerDeployMeshNode" style="font-weight: bold; font-size: 100%;">Mesh Node</label>
+      </td>
+    </tr>
+  </tbody>
+</table>

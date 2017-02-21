@@ -1,0 +1,26 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New RADIUS Attribute (Accounting)
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Attribute Type:</label></td>
+    <td><div id="configRadiusAcctAddSendingAttrName"></div></td>
+  </tr>
+  <tr>
+    <td><label>Attribute/Setting Value:</label></td>
+    <td><div id="configRadiusAcctAddSendingAttrValue"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<div id="configRadiusAcctAddSendingAttrDesc">No description.</div>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configRadiusAcctAddSendingAttrOk"></div></td>
+    <td><div id="configRadiusAcctAddSendingAttrCancel"></div></td>
+  </tr>
+</table>
+</p>

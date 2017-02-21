@@ -1,0 +1,82 @@
+#!/bin/sh
+
+#
+#  Copyright (C) 2009-2010 TETSUHARU HANADA <rhpenguine@gmail.com>
+#  All rights reserved.
+#  
+#  You can redistribute and/or modify this software under the 
+#  LESSER GPL version 2.1.
+#  See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+#
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+rhp_trace="/dev/rhp_file_trace"
+if [ ! -e ${rhp_trace} ]; then
+  rhp_trace="/dev/null"
+fi
+
+${rhp_dbg} "[rhp_cfg_bkup_syspxy] RHP_CFG_BKUP_PW: ${RHP_CFG_BKUP_PW}"
+${rhp_dbg} "[rhp_cfg_bkup_syspxy] RHP_CFG_BKUP_HOME_DIR: ${RHP_CFG_BKUP_HOME_DIR}"
+${rhp_dbg} "[rhp_cfg_bkup_syspxy] RHP_CFG_BKUP_RES_DIR: ${RHP_CFG_BKUP_RES_DIR}"
+
+openssl_cmd=/usr/bin/openssl
+tar_cmd=/bin/tar
+
+if [ ! -e ${openssl_cmd} ]; then
+ ${rhp_dbg} "[rhp_cfg_bkup_syspxy] openssl command not found."
+ exit 1
+fi
+
+
+syspxy_config_dir=config
+syspxy_certs_dir=certs
+
+syspxy_tar_name=rockhopper_syspxy_cfg.tgz
+syspxy_rcfg_name=rockhopper_syspxy.rcfg
+
+
+read file_pw < "${RHP_CFG_BKUP_PW}"
+${rhp_dbg} "[rhp_cfg_bkup_syspxy] RHP_CFG_BKUP_PW: ${RHP_CFG_BKUP_PW} ==> password: ${file_pw}"
+
+
+${rhp_dbg} "[rhp_cfg_bkup_syspxy] Saving config starts..."
+
+cd ${RHP_CFG_BKUP_HOME_DIR}  2> ${rhp_trace}
+
+rm -f "./${syspxy_tar_name}" 2> ${rhp_trace}
+${tar_cmd} zc -f "./${syspxy_tar_name}" "./${syspxy_config_dir}" "./${syspxy_certs_dir}" 2> ${rhp_trace}
+
+if [ "$?" -ne 0 ]; then
+ ${rhp_dbg} "[rhp_cfg_bkup_syspxy] ${tar_cmd} zc -f ${syspxy_tar_name} ${syspxy_config_dir} ${syspxy_certs_dir} failed."
+ exit 1
+fi
+
+if [ ! -e "./${syspxy_tar_name}" ]; then
+ ${rhp_dbg} "[rhp_cfg_bkup_syspxy] ${syspxy_tar_name} NOT created."
+ exit 1
+fi
+
+rm -f "./${syspxy_rcfg_name}" 2> ${rhp_trace}
+${openssl_cmd} enc -e -aes256 -in "./${syspxy_tar_name}" -out "${RHP_CFG_BKUP_RES_DIR}/${syspxy_rcfg_name}" -pass file:${RHP_CFG_BKUP_PW} 2> ${rhp_trace}
+
+if [ "$?" -ne 0 ]; then
+ ${rhp_dbg} "[rhp_cfg_bkup_syspxy] ${openssl_cmd} enc -e -aes256 -in "./${syspxy_tar_name}" -out "${RHP_CFG_BKUP_RES_DIR}/${syspxy_rcfg_name}" -pass file:${RHP_CFG_BKUP_PW} 2> ${rhp_trace} failed."
+ rm -f "./${syspxy_tar_name}" 
+ exit 1
+fi
+
+if [ ! -e "./${syspxy_enc_name}" ]; then
+ ${rhp_dbg} "[rhp_cfg_bkup_syspxy] ./${syspxy_rcfg_name} NOT created."
+ rm -f "./${syspxy_tar_name}" 
+ exit 1
+fi
+
+
+chmod -f 0550 "${RHP_CFG_BKUP_RES_DIR}/${syspxy_rcfg_name}" 2> ${rhp_trace}
+
+
+rm -f "./${syspxy_tar_name}"  2> ${rhp_trace}
+
+${rhp_dbg} "[rhp_cfg_bkup_syspxy] Saving config Done."
+
+exit 0

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<rhp_protected_config version="1.0" description="Protected Service Config">
+
+  <netmng_script script="/home/rhpprotected/script/rhp_netmng" dir="/home/rhpprotected/script"/>
+
+  <mng_script script="/home/rhpprotected/script/rhp_mng" dir="/home/rhpprotected/script"/>
+
+  <auth_conf path="/home/rhpprotected/config/auth.xml"/>
+
+  <policy_conf path="/home/rhpprotected/config/policy.xml"/>
+
+  <cert_store path="/home/rhpprotected/certs/"/>
+
+  <home dir="/home/rhpprotected/"/>
+
+  <cfg_bkup_script script="/home/rhpprotected/script/rhp_cfg_bkup_syspxy" res_dir="/home/rhpmain/www/tmp"/>
+
+  <cfg_cert_file_script script="/home/rhpprotected/script/rhp_cfg_cert_file" stored_dir="/home/rhpmain/certs"/>
+
+  <qcd_secret path="/home/rhpprotected/config/qcd_secret"/>
+
+  <sess_resume_key key_path="/home/rhpprotected/config/sess_resume_key" old_key_path="/home/rhpprotected/config/sess_resume_key_old" revocation_bfltr_path="/home/rhpprotected/config/sess_resume_rvk_bfltr" revocation_old_bfltr_path="/home/rhpprotected/config/sess_resume_rvk_old_bfltr"/>
+
+</rhp_protected_config>
+
+
+

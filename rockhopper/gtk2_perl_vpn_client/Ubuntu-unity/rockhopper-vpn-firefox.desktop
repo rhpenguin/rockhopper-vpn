@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Rockhopper Web Console 
+Comment=VPN Configuration and Management.
+GenericName=Rockhopper Web Console
+Exec=firefox -new-window http://127.0.0.1:32501
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=network-vpn
+Categories=GNOME;GTK;Network;
+StartupNotify=true
+

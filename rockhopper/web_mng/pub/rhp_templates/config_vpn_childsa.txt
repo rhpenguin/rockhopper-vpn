@@ -1,0 +1,90 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Child SA(IPsec SA) Detailed Settings
+</p>
+<p style="margin-top: 30px;">
+  <div id="configVpnAddChildSaReset"></div>
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">Rekey Interval:</label></td>
+        <td><div id="configVpnChildSaLifetimeRekey"></div></td>
+        <td><label>(seconds)</label></td>
+      </tr>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">Lifetime:</label></td>
+        <td><div id="configVpnChildSaLifetimeExpire"></div></td>
+        <td><label>(seconds)</label></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+<div id="configDisableV6UdpEncapTop">
+<p style="margin-top: 30px;">
+  <table>
+    <tbody>
+      <tr id="configDontFwdBtwnVpnConnsTop">
+        <td>
+          <input id="configDontFwdBtwnVpnConns">
+        </td>
+        <td style="width: 450px;">
+          <label for="configDontFwdBtwnVpnConns" style="font-weight: bold; font-size: 100%;" class="configDontFwdBtwnVpnConnsLabel">
+          Don't forward packets between VPN connections.
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 10px;"></tr>    
+      <tr>
+        <td>
+          <input id="configExactMatchTs">
+        </td>
+        <td style="width: 450px;">
+          <label for="configExactMatchTs" style="font-weight: bold; font-size: 100%;" class="configExactMatchTsLabel">
+          IKEv2: Don't narrow traffic selectors. (Exact match)
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 40px;"></tr>    
+      <tr>
+        <td>
+          <input id="configDisableV6UdpEncap">
+        </td>
+        <td style="width: 450px;">
+          <label for="configDisableV6UdpEncap" style="font-weight: bold; font-size: 100%;" class="configDisableV6UdpEncapLabel">
+          Disable ESP's UDP-encapsulation for IPv6 NAT-T. 
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 10px;"></tr>    
+      <tr>
+        <td>
+          <input id="configUdpEncapForIPv6Enabled">
+        </td>
+        <td style="width: 450px;">
+          <label for="configUdpEncapForIPv6Enabled" style="font-weight: bold; font-size: 100%;" class="configUdpEncapForIPv6EnabledLabel">
+          Enable ESP's UDP-encapsulation for IPv6 NAT-T after receiving a UDP-encapsulated packet 
+          from a remote peer(non-Rockhopper).
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+</div>
+
+<p style="margin-top: 30px;">
+  <div id="configVpnAddChildSaSetting"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configVpnChildSaTable">
+    <tbody id="configVpnChildSaTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 160px;">Setting Name</td>
+        <td class="rhpTableTdTag" style="width: 160px;">Value</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

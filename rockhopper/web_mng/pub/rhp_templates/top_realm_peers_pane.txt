@@ -1,0 +1,15 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Connected Peers
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmPeersTable">
+    <tbody id="topRealmPeersTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Peer Node</td>
+        <td class="rhpTableTdTag">This Node</td>
+        <td class="rhpTableTdTag">IKE SA</td>
+        <td class="rhpTableTdTag">Child SA</td>
+      </tr>
+    </tbody>
+  </table>
+</p>

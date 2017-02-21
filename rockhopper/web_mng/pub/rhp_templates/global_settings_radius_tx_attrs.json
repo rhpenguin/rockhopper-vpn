@@ -1,0 +1,12 @@
+{
+  identifier:"radius_attr_name",
+  label: "radius_attr_name",
+  "items": [
+        {"radius_attr_name":"NAS-Identifier","default_value":"Rockhopper","desc":"Send a specified string as a NAS-Identifier attribute. [RFC2865]"},
+        {"radius_attr_name":"NAS-Identifier-IKEv2-ID","default_value":"enable","desc":"Send this node's IKEv2 ID as a NAS-Identifier attribute. [RFC2865]"},
+        {"radius_attr_name":"Connect-Info","default_value":"CONNECT IPsec-IKEv2-VPN","desc":"Send a Connect-Info attribute. [RFC2869]"},
+        {"radius_attr_name":"Framed-MTU","default_value":1492,"desc":"Send a fixed tunnel MTU as a Framed-MTU attribute. [RFC2865]"},
+        {"radius_attr_name":"Calling-Station-Id","default_value":"enable","desc":"Send a remote user's IP address and port as a Calling-Station-Id</br/>attribute. [RFC2865]"},
+        {"radius_attr_name":"NAS-Port-Type","default_value":"enable","desc":"Send a NAS-Port-Type attribute as Virtual(5). [RFC2865]"}
+  ]
+}

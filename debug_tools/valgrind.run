@@ -1,0 +1,122 @@
+#! /bin/bash
+
+#
+# Before running this script, 
+#
+#  - Stop rockhopperd('/etc/init.d/rockhopper stop') or kill all rockhopper's 
+#    processes.
+#
+#  - Copy a new debugged binary(rockhopperd or librhp*.so) to /usr/sbin or 
+#    /usr/lib (if any).
+#
+#  and
+#
+#  - Debug as root (sudo su).
+#
+
+
+#
+#   - When building rockhopper with debug flags enabled, run installer script like this:
+#
+#     % cd rockhopper-x.y.z (installed-dir)
+#     % ./debug_tools/install_dbg_no_optmz.sh
+#     or
+#     % ./installer/install_uninstall.pl install_dbg no_optmz
+#
+
+
+#
+# (cf)
+#
+# [ /usr/sbin/rockhopperd usage ]
+#
+# rockhopperd [-h] -m conf_file -p auth_conf_file 
+#            -u user_name [-s user_name] [-i pid_file_dir] [-v]
+#   -m main_conf_file : Conf file path for main service.
+#   -p protected_conf_file : Conf file path for protected service.
+#   -u user_name : User name for main service.
+#   -s user_name : User name for protected service.
+#   -i : pid-file dir.
+#   -d "default" or "main_foreground" : Debug mode. (Don't daemonize it!)
+#   -v : Show version.
+#   -h : Show help infomation.
+#
+#
+
+
+VALGRIND=valgrind
+ULIMIT=ulimit
+PKILL=pkill
+IPTABLES=/sbin/iptables
+NAME="rockhopperd"
+MAINDIR=/home/rhpmain
+DAEMON=/usr/sbin/${NAME}
+PROTECTEDDIR=/home/rhpprotected
+PIDDIR=/var/run/rockhopper
+RHPNETMNG=/home/rhpprotected/script/rhp_netmng
+
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+if [ -e "/dev/rhp_file_trace" ]; then
+  rhp_trace="/dev/rhp_file_trace"
+else
+  rhp_trace="/dev/null"
+fi
+
+
+${rhp_dbg} "Rockhopper START"
+echo "Rockhopper START"
+
+
+if [ -e "${IPTABLES}" ]; then
+  "${RHPNETMNG}" INIT ${IPTABLES} 2> ${rhp_trace}   
+  ${IPTABLES} -L -v -t filter
+  echo ""
+  ${IPTABLES} -L -v -t nat
+  echo ""
+else
+  ${rhp_dbg} "iptables NOT found."
+  echo "iptables NOT found."
+fi
+
+
+${PKILL} -f ${NAME}
+if [ ! "$?" ]; then
+echo "pkill -f ${NAME} OK."
+fi
+
+
+#
+# Debugging by Valgrind.
+#
+# Of course, Rockhopper's debug trace service(with rhp_trace) is 
+# available at the same time.
+#
+echo ""
+echo "Logfile: ./valgrind.log"
+echo ""
+
+if [ "$1" = "syspxy" ]; then
+#
+# Debugging the protected process by valgrind. After invoking rockhopperd, use 'run' command.
+#
+echo ""
+echo "Debugging protected process..."
+echo ""
+sleep 10
+${VALGRIND} --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ${DAEMON} -m ${MAINDIR}/config/main.xml -p ${PROTECTEDDIR}/config/protected.xml -u rhpmain -s rhpprotected -c -d default -i ${PIDDIR}  2>&1 | tee ./valgrind.log
+else
+#
+# Debug the main process by valgrind. After invoking rockhopperd, use 'run' command.
+#
+echo ""
+echo "Debugging main process..."
+echo ""
+sleep 10
+${VALGRIND} --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ${DAEMON} -m ${MAINDIR}/config/main.xml -p ${PROTECTEDDIR}/config/protected.xml -u rhpmain -s rhpprotected -c -d main_foreground -i ${PIDDIR}  2>&1 | tee ./valgrind.log
+fi
+
+
+
+${rhp_dbg} "Rockhopper END"
+echo "Rockhopper END"

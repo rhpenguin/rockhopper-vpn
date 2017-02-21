@@ -1,0 +1,31 @@
+<p style="font-size: 105%;color: blue;font-weight: bold;">
+If you updated this realm's configuration, please don't forget to save it.
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 0px;margin-top: 0px;margin-bottom: 15px;">
+VPN Interface: <div id="cfgRlmSmryVpnInterface"></div>
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 15px;margin-top: 0px;margin-bottom: 15px;">
+Network Interface: <div id="cfgRlmSmryNetworkInterface"></div>
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 15px;margin-top: 0px;margin-bottom: 15px;">
+Service: <div id="cfgRlmSmryService"></div>
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 15px;margin-top: 0px;margin-bottom: 15px;">
+My Key Store: <div id="cfgRlmSmryMyKeyStore"></div>
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 15px;margin-top: 0px;margin-bottom: 15px;">
+Remote Peers: <div id="cfgRlmSmryRemotePeers"></div>
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 15px;margin-top: 0px;margin-bottom: 15px;">
+Remote Peers' Key Store: <div id="cfgRlmSmryRemotePeersKeyStore"></div>
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 15px;margin-top: 0px;margin-bottom: 15px;">
+Roles: <div id="cfgRlmSmryRoles"></div>
+</p>

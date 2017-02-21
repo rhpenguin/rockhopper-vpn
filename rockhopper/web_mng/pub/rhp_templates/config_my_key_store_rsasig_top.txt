@@ -1,0 +1,26 @@
+<p>
+  <table>
+    <tbody>
+      <tr style="height: 50px;">
+        <td><label id="configVpnMyKeyStoreRsaSigIdTypeLabel" style="font-weight: bold; font-size: 100%;">My ID Type(*): </label></td>
+        <td><div id="configVpnMyKeyStoreRsaSigIdType"></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <label style="font-size:95%;">
+    'auto': First, subjectAltName(E-mail address or Host name(FQDN)) in the certificate is 
+     searched as this node's ID. If it doesn't exist, subjectName(DN) is used as the ID.
+  </label>
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr style="height: 50px;">
+        <td><label id="configVpnMyKeyStoreFormatLabel" style="font-weight: bold; font-size: 100%;">Key Format(*): </label></td>
+        <td><div id="configVpnMyKeyStoreFormat"></div></td>
+        <td style="width: 15px;"></td>
+        <td><div id="configVpnMyKeyStoreRsaSigSeeCert"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

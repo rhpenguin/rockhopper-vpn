@@ -1,0 +1,64 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+IKE SA Detailed Settings
+</p>
+<p style="margin-top: 30px;">
+  <div id="configVpnAddIkeSaReset"></div>
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">Rekey Interval:</label></td>
+        <td><div id="configVpnIkeSaLifetimeRekey"></div></td>
+        <td><label>(seconds)</label></td>
+      </tr>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">Lifetime:</label></td>
+        <td><div id="configVpnIkeSaLifetimeExpire"></div></td>
+        <td><label>(seconds)</label></td>
+      </tr>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">Keep-Alive Interval:</label></td>
+        <td><div id="configVpnIkeSaKeepAlive"></div></td>
+        <td><label>(seconds)</label></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 95%;">
+  <label>
+    If MOBIKE is enabled and this node is a responder, <label style="font-weight:bold;">Keep-Alive Interval</label> 
+    is NOT used. Instead, please specify <label style="font-weight:bold;">mobike_resp_keep_alive_interval</label>. 
+    Also, if <label style="font-weight:bold;">No Authentication</label> is configured as an authentication method, please specify 
+    <label style="font-weight:bold;">mobike_resp_null_auth_keep_alive_interval</label> instead of them. <br/>
+  </label>
+</p>
+
+<p style="margin-top: 40px;">
+  <table>
+    <tbody>
+      <tr>
+        <td><label style="font-weight: bold; font-size: 100%;">VPN connection's lifetime:</label></td>
+        <td><div id="configVpnConnLifetime"></div></td>
+        <td><label>(seconds)</label></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+
+<p style="margin-top: 30px;">
+  <div id="configVpnAddIkeSaSetting"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configVpnIkeSaTable">
+    <tbody id="configVpnIkeSaTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 160px;">Setting Name</td>
+        <td class="rhpTableTdTag" style="width: 160px;">Value</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+

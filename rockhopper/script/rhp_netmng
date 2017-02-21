@@ -1,0 +1,570 @@
+#!/bin/sh
+
+#
+#  Copyright (C) 2009-2014 TETSUHARU HANADA <rhpenguine@gmail.com>
+#  All rights reserved.
+#  
+#  You can redistribute and/or modify this software under the 
+#  LESSER GPL version 2.1.
+#  See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+#
+
+#
+# [FIXME! UGLY!!!]
+#
+# First, setup File capabilties for network config tools. This is because
+# process invoked by execve() does NOT inherit parent's process capabilities 
+# if the process's user id is NOT root.
+#
+# chmod go-rwx /home/<syspxy_user_name_install_dir>
+#
+# sudo setcap cap_net_admin=iep /home/<syspxy_user_name_install_dir>/script/rhp_netmgn_script (This file)
+#
+# cp /sbin/ifconfig /home/<syspxy_user_name_install_dir>/script/.
+# sudo setcap cap_net_admin=iep /home/<syspxy_user_name_install_dir>/script/ifconfig
+#
+# cp /bin/ip /home/<syspxy_user_name_install_dir>/script/.
+# sudo setcap cap_net_admin=iep /home/<syspxy_user_name_install_dir>/script/ip
+#
+# cp /sbin/route /home/<syspxy_user_name_install_dir>/script/.
+# sudo setcap cap_net_admin=iep /home/<syspxy_user_name_install_dir>/script/route
+#
+#
+# setcap/getcap commands are included in libcap2 library.
+#
+
+
+#
+# Iptables/ip6tables and netfilter themselves need only CAP_NET_ADMIN and CAP_NET_RAW. 
+# CAP_NET_RAW is necessary for iptables to open a NETLINK socket. Also, if 
+# related netfilter modules are not loaded, iptables internally calls modprobe
+# with execve() which requires an additional capability. So, necessary netfilter 
+# modules should be loaded on boot by setting up /etc/modules or calling 
+# 'iptables -L' in startup script.
+#
+#
+# cp /sbin/iptables /home/<syspxy_user_name_install_dir>/script/.
+# sudo setcap setcap cap_net_admin,cap_net_raw=eip /home/<syspxy_user_name_install_dir>/script/iptables
+#
+# cp /sbin/ip6tables /home/<syspxy_user_name_install_dir>/script/.
+# sudo setcap setcap cap_net_admin,cap_net_raw=eip /home/<syspxy_user_name_install_dir>/script/ip6tables
+#
+
+#
+# [ iptables REDIRECT ] (DNS Proxy service to process Split DNS)
+# sudo iptables -t nat -A OUTPUT -d <DNS-Server-IP> -p udp --dport 53 -m owner ! --uid-owner <User-Name> -j REDIRECT --to-port <DNS-Pxy-Port>
+# sudo ip6tables -t nat -A OUTPUT -d <DNS-Server-IP> -p udp --dport 53 -m owner ! --uid-owner <User-Name> -j REDIRECT --to-port <DNS-Pxy-Port>
+#
+# [CAUTION]
+#  For IPv6, DNS proxy service requires kernel v3.7 and later (supporting IPv6 NAT) 
+#  and corresponding ip6tables. 
+#
+#
+
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+rhp_trace="/dev/rhp_file_trace"
+if [ ! -e ${rhp_trace} ]; then
+  rhp_trace="/dev/null"
+fi
+
+ip_cmd="$RHP_SCRIPT_DIR/ip"
+iptables_cmd="$RHP_SCRIPT_DIR/iptables"
+ip6tables_cmd="$RHP_SCRIPT_DIR/ip6tables"
+brctl_cmd="$RHP_SCRIPT_DIR/brctl"
+
+tuntap_cfg_cmd="$RHP_SCRIPT_DIR/rhp_tuntap_cfg"
+
+
+#
+# - INIT_IPTABLES, INIT_IP6TABLES, CLEANUP_IPTABLES or CLEANUP_IP6TABLES
+#  Path of iptables or ip6tables 
+#
+iptables_cmd2=$2
+
+"${rhp_dbg}" "[rhp_netmng] ARG1: $1, ARG2: $2, rhp_trace: ${rhp_trace}"
+"${rhp_dbg}" "[rhp_netmng] RHP_ACTION: ${RHP_ACTION}"
+
+
+case $1 in
+
+  INIT_IPTABLES | CLEANUP_IPTABLES)
+
+    RHP_IPTABLES_PATH_DPXY_OUT="rockhopper_dnspxy_out"
+    RHP_IPTABLES_PATH_FW_IN="rockhopper_fw_in"
+    RHP_IPTABLES_PATH_FW_OUT="rockhopper_fw_out"
+    RHP_IPTABLES_PATH_FW_FWD="rockhopper_fw_fwd"
+    ;;
+
+  INIT_IP6TABLES | CLEANUP_IP6TABLES)
+
+    RHP_IPTABLES_PATH_DPXY_OUT="rockhopper_dnspxy_out6"
+    RHP_IPTABLES_PATH_FW_IN="rockhopper_fw_in6"
+    RHP_IPTABLES_PATH_FW_OUT="rockhopper_fw_out6"
+    RHP_IPTABLES_PATH_FW_FWD="rockhopper_fw_fwd6"
+    ;;
+    
+esac
+
+case $1 in
+
+  INIT_IPTABLES | INIT_IP6TABLES)
+
+    if [ -e "${iptables_cmd2}" ]; then
+
+      "${rhp_dbg}" "[rhp_netmng] INIT_IPTABLES iptables. $1, ${iptables_cmd2}"
+
+      "${rhp_dbg}" "[rhp_netmng] iptables: Flush chains."
+      ${iptables_cmd2} -t nat -F ${RHP_IPTABLES_PATH_DPXY_OUT} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -F ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -F ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -F ${RHP_IPTABLES_PATH_FW_FWD} 2> "${rhp_trace}"
+
+      "${rhp_dbg}" "[rhp_netmng] iptables: New chains."
+      ${iptables_cmd2} -t nat -N ${RHP_IPTABLES_PATH_DPXY_OUT} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -N ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -N ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -N ${RHP_IPTABLES_PATH_FW_FWD} 2> "${rhp_trace}"
+
+      "${rhp_dbg}" "[rhp_netmng] iptables: Insert chains"
+      ${iptables_cmd2} -t nat -I OUTPUT -j ${RHP_IPTABLES_PATH_DPXY_OUT} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -I INPUT -j ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -I OUTPUT -j ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -I FORWARD -j ${RHP_IPTABLES_PATH_FW_FWD} 2> "${rhp_trace}"
+
+      ${iptables_cmd2} -t filter -L -v > "${rhp_trace}"
+      ${iptables_cmd2} -t nat -L -v > "${rhp_trace}"
+
+      # Only lo by default.
+      "${rhp_dbg}" "[rhp_netmng] iptables: Add default rules."
+      ${iptables_cmd2} -t filter -I ${RHP_IPTABLES_PATH_FW_IN} -i lo -j ACCEPT 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -I ${RHP_IPTABLES_PATH_FW_IN} -o lo -j ACCEPT 2> "${rhp_trace}"
+
+    else
+
+      "${rhp_dbg}" "[rhp_netmng] $1: -- ${iptables_cmd2} NOT found."
+    fi
+    ;;
+    
+  CLEANUP_IPTABLES | CLEANUP_IP6TABLES)
+
+    if [ -e "${iptables_cmd2}" ]; then
+
+      "${rhp_dbg}" "[rhp_netmng] CLEANUP_IPTABLES iptables."
+
+      "${rhp_dbg}" "[rhp_netmng] iptables: Delete rules"
+      ${iptables_cmd2} -t nat -D OUTPUT -j ${RHP_IPTABLES_PATH_DPXY_OUT} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -D INPUT -j ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -D OUTPUT -j ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -D FORWARD -j ${RHP_IPTABLES_PATH_FW_FWD} 2> "${rhp_trace}"
+
+      "${rhp_dbg}" "[rhp_netmng] iptables: Flush chains"
+      ${iptables_cmd2} -t nat -F ${RHP_IPTABLES_PATH_DPXY_OUT} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -F ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -F ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -F ${RHP_IPTABLES_PATH_FW_FWD} 2> "${rhp_trace}"
+
+      "${rhp_dbg}" "[rhp_netmng] iptables: Delete chains"
+      ${iptables_cmd2} -t nat -X ${RHP_IPTABLES_PATH_DPXY_OUT} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -X ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -X ${RHP_IPTABLES_PATH_FW_IN} 2> "${rhp_trace}"
+      ${iptables_cmd2} -t filter -X ${RHP_IPTABLES_PATH_FW_FWD} 2> "${rhp_trace}"
+
+      ${iptables_cmd2} -t nat -L -v > "${rhp_trace}"
+      ${iptables_cmd2} -t filter -L -v > "${rhp_trace}"
+
+    else
+
+      "${rhp_dbg}" "[rhp_netmng] $1: -- ${iptables_cmd2} NOT found."
+    fi
+    ;;
+    
+esac
+
+
+
+case "${RHP_ACTION}" in
+
+  CONFIG_INTERFACE)
+
+    "${rhp_dbg}" "[rhp_netmng] RHP_ADDR_ACTION: ${RHP_ADDR_ACTION}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_INTERFACE: ${RHP_INTERFACE}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4: ${RHP_IPV4}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4_SUBNET_MASK: ${RHP_IPV4_SUBNET_MASK}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4_SUBNET_PREFIXLEN: ${RHP_IPV4_SUBNET_PREFIXLEN}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6: ${RHP_IPV6}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_SUBNET_PREFIXLEN: ${RHP_IPV6_SUBNET_PREFIXLEN}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_DISABLE_INTERFACE: ${RHP_IPV6_DISABLE_INTERFACE}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_MTU: ${RHP_MTU}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_EXEC_UP_DOWN: ${RHP_EXEC_UP_DOWN}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_SCRIPT_DIR: ${RHP_SCRIPT_DIR}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_SERVICE: ${RHP_IPV6_SERVICE}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_AUTOCONF: ${RHP_IPV6_AUTOCONF}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_REALM_ID: ${RHP_REALM_ID}"
+    
+    if [ -n "${RHP_INTERFACE}" ]; then
+
+      if [ -n "${RHP_IPV6_SERVICE}" ]; then
+
+        if [ "${RHP_IPV6_SERVICE}" = "disable" ]; then
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6 -d -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6 -d -i ${RHP_REALM_ID} > "${rhp_trace}"
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6 -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6 -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+        fi
+      fi
+
+      if [ -n "${RHP_IPV6_AUTOCONF}" ]; then
+
+        if [ "${RHP_IPV6_AUTOCONF}" = "disable" ]; then
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_autoconf -d -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_autoconf -d -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra -d -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra -d -i ${RHP_REALM_ID} > "${rhp_trace}"
+#        elif [ "${RHP_IPV6_AUTOCONF}" = "address" ]; then 
+#          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra -e -i ${RHP_REALM_ID}"
+#          ${tuntap_cfg_cmd} -a ipv6_accept_ra -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+#          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_defrtr -d -i ${RHP_REALM_ID}"
+#          ${tuntap_cfg_cmd} -a ipv6_accept_ra_defrtr -d -i ${RHP_REALM_ID} > "${rhp_trace}"
+#          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_rtr_pref -d -i ${RHP_REALM_ID}"
+#          ${tuntap_cfg_cmd} -a ipv6_accept_ra_rtr_pref -d -i ${RHP_REALM_ID} > "${rhp_trace}"
+#          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_pinfo -e -i ${RHP_REALM_ID}"
+#          ${tuntap_cfg_cmd} -a ipv6_accept_ra_pinfo -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+#          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_autoconf -e -i ${RHP_REALM_ID}"
+#          ${tuntap_cfg_cmd} -a ipv6_autoconf -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+        elif [ "${RHP_IPV6_AUTOCONF}" = "exec_ipv6_autoconf" ]; then 
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_defrtr -d -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra_defrtr -d -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_rtr_pref -d -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra_rtr_pref -d -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_pinfo -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra_pinfo -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_autoconf -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_autoconf -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} link set dev ${RHP_INTERFACE} down"
+          ${ip_cmd} link set dev ${RHP_INTERFACE} down 2> "${rhp_trace}"
+          sleep 1          
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} link set dev ${RHP_INTERFACE} up"
+          ${ip_cmd} link set dev ${RHP_INTERFACE} up 2> "${rhp_trace}"          
+          sleep 1          
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_defrtr -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra_defrtr -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_pinfo -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra_pinfo -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_accept_ra_rtr_pref -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_accept_ra_rtr_pref -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+          "${rhp_dbg}" "[rhp_netmng] ${tuntap_cfg_cmd} -a ipv6_autoconf -e -i ${RHP_REALM_ID}"
+          ${tuntap_cfg_cmd} -a ipv6_autoconf -e -i ${RHP_REALM_ID} > "${rhp_trace}"
+        fi
+      fi
+
+
+      #
+      # First, set the I/F UP for IPv4(NETLINK).
+      #
+      if [ -n "${RHP_EXEC_UP_DOWN}" ]; then
+        "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} link set dev ${RHP_INTERFACE} ${RHP_EXEC_UP_DOWN}"
+        ${ip_cmd} link set dev ${RHP_INTERFACE} ${RHP_EXEC_UP_DOWN} 2> "${rhp_trace}"
+      fi          
+
+      if [ -n "${RHP_MTU}" ]; then
+        "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} link set dev ${RHP_INTERFACE} mtu ${RHP_MTU}"
+        ${ip_cmd} link set dev ${RHP_INTERFACE} mtu ${RHP_MTU} 2> "${rhp_trace}"
+      fi
+  
+      if [ -n "${RHP_IPV4_SUBNET_PREFIXLEN}" ]; then
+
+        _RHP_CFG_IF_AF="-4"
+        _RHP_CFG_IF_DEST=${RHP_IPV4_SUBNET_PREFIXLEN}
+
+        if [ "${RHP_ADDR_ACTION}" = "add" ]; then
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_IF_AF} addr add ${_RHP_CFG_IF_DEST} brd + dev ${RHP_INTERFACE}"
+          ${ip_cmd} ${_RHP_CFG_IF_AF} addr add ${_RHP_CFG_IF_DEST} brd + dev ${RHP_INTERFACE} 2> "${rhp_trace}"
+        elif [ "${RHP_ADDR_ACTION}" = "delete" ]; then
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_IF_AF} addr delete ${_RHP_CFG_IF_DEST} brd + dev ${RHP_INTERFACE}"
+          ${ip_cmd} ${_RHP_CFG_IF_AF} addr delete ${_RHP_CFG_IF_DEST} brd + dev ${RHP_INTERFACE} 2> "${rhp_trace}"
+        fi
+      fi
+        
+      if [ -n "${RHP_IPV6_SUBNET_PREFIXLEN}" ]; then
+
+        _RHP_CFG_IF_AF="-6"
+        _RHP_CFG_IF_DEST=${RHP_IPV6_SUBNET_PREFIXLEN}
+          
+        if [ "${RHP_ADDR_ACTION}" = "add" ]; then
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_IF_AF} addr add ${_RHP_CFG_IF_DEST} dev ${RHP_INTERFACE}"
+          ${ip_cmd} ${_RHP_CFG_IF_AF} addr add ${_RHP_CFG_IF_DEST} dev ${RHP_INTERFACE} 2> "${rhp_trace}"
+        elif [ "${RHP_ADDR_ACTION}" = "delete" ]; then
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_IF_AF} addr delete ${_RHP_CFG_IF_DEST} dev ${RHP_INTERFACE}"
+          ${ip_cmd} ${_RHP_CFG_IF_AF} addr delete ${_RHP_CFG_IF_DEST} dev ${RHP_INTERFACE} 2> "${rhp_trace}"
+        fi
+      fi
+    fi    
+    ;;
+
+
+  CONFIG_ROUTE)
+
+    "${rhp_dbg}" "[rhp_netmng] RHP_ROUTE_ACTION: ${RHP_ROUTE_ACTION}"  
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4_DEST: ${RHP_IPV4_DEST}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4_DEST_SUBNET_MASK: ${RHP_IPV4_DEST_SUBNET_MASK}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4_DEST_SUBNET_PREFIXLEN: ${RHP_IPV4_DEST_SUBNET_PREFIXLEN}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4_GW: ${RHP_IPV4_GW}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_DEST: ${RHP_IPV6_DEST}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_DEST_SUBNET_PREFIXLEN: ${RHP_IPV6_DEST_SUBNET_PREFIXLEN}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_GW: ${RHP_IPV6_GW}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_ROUTE_INTERFACE: ${RHP_ROUTE_INTERFACE}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_ROUTE_METRIC: ${RHP_ROUTE_METRIC}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_SCRIPT_DIR: ${RHP_SCRIPT_DIR}"
+
+    if [ "${RHP_IPV4_DEST}" = "default" ]; then
+      _RHP_CFG_RT_AF="-4"
+      _RHP_CFG_RT_DEST=${RHP_IPV4_DEST};          
+    elif [ -n "${RHP_IPV4_DEST_SUBNET_PREFIXLEN}" ]; then
+      _RHP_CFG_RT_AF="-4"
+      _RHP_CFG_RT_DEST=${RHP_IPV4_DEST_SUBNET_PREFIXLEN};          
+    elif [ "${RHP_IPV6_DEST}" = "default" ]; then
+      _RHP_CFG_RT_AF="-6"
+      _RHP_CFG_RT_DEST=${RHP_IPV6_DEST};          
+    elif [ -n "${RHP_IPV6_DEST_SUBNET_PREFIXLEN}" ]; then
+      _RHP_CFG_RT_AF="-6"
+      _RHP_CFG_RT_DEST=${RHP_IPV6_DEST_SUBNET_PREFIXLEN};          
+    fi
+
+    if [ "${RHP_ROUTE_ACTION}" = "add" ]; then
+
+      if [ -n "${RHP_IPV4_GW}" ]; then    
+  
+        if [ -n "${RHP_ROUTE_METRIC}" ]; then    
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW} metric ${RHP_ROUTE_METRIC}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW} metric ${RHP_ROUTE_METRIC} 2> "${rhp_trace}"
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW} 2> "${rhp_trace}"
+        fi
+
+      elif [ -n "${RHP_IPV6_GW}" ]; then
+
+        if [ -n "${RHP_ROUTE_METRIC}" ]; then    
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW} metric ${RHP_ROUTE_METRIC}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW} metric ${RHP_ROUTE_METRIC} 2> "${rhp_trace}"
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW} 2> "${rhp_trace}"
+        fi
+                  
+      elif [ -n "${RHP_ROUTE_INTERFACE}" ]; then
+
+        if [ -n "${RHP_ROUTE_METRIC}" ]; then    
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE} metric ${RHP_ROUTE_METRIC}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE} metric ${RHP_ROUTE_METRIC} 2> "${rhp_trace}"
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route add ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE} 2> "${rhp_trace}"
+        fi
+      fi
+      
+    elif [ "${RHP_ROUTE_ACTION}" = "reject" ]; then
+
+      "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} add unreachable ${_RHP_CFG_RT_DEST}"
+      ${ip_cmd} ${_RHP_CFG_RT_AF} add unreachable ${_RHP_CFG_RT_DEST} 2> "${rhp_trace}"
+      
+    elif [ "${RHP_ROUTE_ACTION}" = "delete" ]; then
+
+      if [ -n "${RHP_IPV4_GW}" ]; then    
+  
+        if [ -n "${RHP_ROUTE_METRIC}" ]; then    
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW} metric ${RHP_ROUTE_METRIC}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW} metric ${RHP_ROUTE_METRIC} 2> "${rhp_trace}"
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV4_GW} 2> "${rhp_trace}"
+        fi
+
+      elif [ -n "${RHP_IPV6_GW}" ]; then
+
+        if [ -n "${RHP_ROUTE_METRIC}" ]; then    
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW} metric ${RHP_ROUTE_METRIC}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW} metric ${RHP_ROUTE_METRIC} 2> "${rhp_trace}"
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} via ${RHP_IPV6_GW} 2> "${rhp_trace}"
+        fi
+                  
+      elif [ -n "${RHP_ROUTE_INTERFACE}" ]; then
+
+        if [ -n "${RHP_ROUTE_METRIC}" ]; then    
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE} metric ${RHP_ROUTE_METRIC}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE} metric ${RHP_ROUTE_METRIC} 2> "${rhp_trace}"
+        else
+          "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE}"
+          ${ip_cmd} ${_RHP_CFG_RT_AF} route delete ${_RHP_CFG_RT_DEST} dev ${RHP_ROUTE_INTERFACE} 2> "${rhp_trace}"
+        fi
+      fi
+
+    elif [ "${RHP_ROUTE_ACTION}" = "delete_reject" ]; then
+
+      "${rhp_dbg}" "[rhp_netmng] ${ip_cmd} ${_RHP_CFG_RT_AF} delete unreachable ${_RHP_CFG_RT_DEST}"
+      ${ip_cmd} ${_RHP_CFG_RT_AF} delete unreachable ${_RHP_CFG_RT_DEST} 2> "${rhp_trace}"
+    fi
+    ;;
+
+
+  CONFIG_DNS_PXY_REDIRECT)
+
+    "${rhp_dbg}" "[rhp_netmng] RHP_DNS_PXY_ACTION: ${RHP_DNS_PXY_ACTION}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV4_INET_NAME_SERVER: ${RHP_IPV4_INET_NAME_SERVER}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_IPV6_INET_NAME_SERVER: ${RHP_IPV6_INET_NAME_SERVER}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_INTERNAL_DNS_PORT: ${RHP_INTERNAL_DNS_PORT}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_SCRIPT_DIR: ${RHP_SCRIPT_DIR}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_DNS_PXY_USER: ${RHP_DNS_PXY_USER}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_DNS_PXY_ACTION: ${RHP_DNS_PXY_ACTION}"
+
+    if [ -n "${RHP_IPV4_INET_NAME_SERVER}" ]; then    
+      _RHP_CFG_DPXY_RDRCT_NSERVER=${RHP_IPV4_INET_NAME_SERVER}
+      _RHP_CFG_DPXY_RDRCT_CHAIN="rockhopper_dnspxy_out"
+      _RHP_CFG_DPXY_RDRCT_CMD=${iptables_cmd}
+    elif [ -n "${RHP_IPV6_INET_NAME_SERVER}" ]; then
+      _RHP_CFG_DPXY_RDRCT_NSERVER=${RHP_IPV6_INET_NAME_SERVER}
+      _RHP_CFG_DPXY_RDRCT_CHAIN="rockhopper_dnspxy_out6"
+      _RHP_CFG_DPXY_RDRCT_CMD=${ip6tables_cmd}
+    fi
+
+    if [ "${RHP_DNS_PXY_ACTION}" = "start" ]; then
+      "${rhp_dbg}" "[rhp_netmng] ${_RHP_CFG_DPXY_RDRCT_CMD} -t nat -A rockhopper_dnspxy_out -d ${_RHP_CFG_DPXY_RDRCT_NSERVER} -p udp --dport 53 -m owner ! --uid-owner $RHP_DNS_PXY_USER -j REDIRECT --to-port ${RHP_INTERNAL_DNS_PORT}"
+      ${_RHP_CFG_DPXY_RDRCT_CMD} -t nat -A ${_RHP_CFG_DPXY_RDRCT_CHAIN} -d ${_RHP_CFG_DPXY_RDRCT_NSERVER} -p udp --dport 53 -m owner ! --uid-owner ${RHP_DNS_PXY_USER} -j REDIRECT --to-port ${RHP_INTERNAL_DNS_PORT} 2> "${rhp_trace}"
+    elif [ "${RHP_DNS_PXY_ACTION}" = "end" ]; then
+      "${rhp_dbg}" "[rhp_netmng] ${_RHP_CFG_DPXY_RDRCT_CMD} -t nat -D rockhopper_dnspxy_out -d ${_RHP_CFG_DPXY_RDRCT_NSERVER} -p udp --dport 53 -m owner ! --uid-owner ${RHP_DNS_PXY_USER} -j REDIRECT --to-port ${RHP_INTERNAL_DNS_PORT}"
+      ${_RHP_CFG_DPXY_RDRCT_CMD} -t nat -D ${_RHP_CFG_DPXY_RDRCT_CHAIN} -d ${_RHP_CFG_DPXY_RDRCT_NSERVER} -p udp --dport 53 -m owner ! --uid-owner ${RHP_DNS_PXY_USER} -j REDIRECT --to-port ${RHP_INTERNAL_DNS_PORT} 2> "${rhp_trace}"
+    fi
+    ;;
+
+
+  CONFIG_BRIDGE)
+
+    "${rhp_dbg}" "[rhp_netmng] RHP_BRIDGE_NAME: ${RHP_BRIDGE_NAME}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_BRIDGE_VIF_NAME: ${RHP_BRIDGE_VIF_NAME}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_BRIDGE_ACTION: ${RHP_BRIDGE_ACTION}"
+
+    if [ "${RHP_BRIDGE_ACTION}" = "add" ]; then
+      "${rhp_dbg}" "[rhp_netmng] ${brctl_cmd} addif ${RHP_BRIDGE_NAME} ${RHP_BRIDGE_VIF_NAME}"
+      ${brctl_cmd} addif ${RHP_BRIDGE_NAME} ${RHP_BRIDGE_VIF_NAME} 2> "${rhp_trace}"
+    elif [ "${RHP_BRIDGE_ACTION}" = "delete" ]; then    
+      "${rhp_dbg}" "[rhp_netmng] ${brctl_cmd} delif ${RHP_BRIDGE_NAME} ${RHP_BRIDGE_VIF_NAME}"
+      ${brctl_cmd} delif ${RHP_BRIDGE_NAME} ${RHP_BRIDGE_VIF_NAME} 2> "${rhp_trace}"
+    fi
+    ;;
+
+
+  CONFIG_FW_RULES)
+
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_ACTION: ${RHP_FW_ACTION}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_TRAFFIC: ${RHP_FW_TRAFFIC}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_IF: ${RHP_FW_IF}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_FILTER_POS: ${RHP_FW_FILTER_POS}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_WEB_MNG_ADDR: ${RHP_FW_WEB_MNG_ADDR}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_WEB_MNG_PORT: ${RHP_FW_WEB_MNG_PORT}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_WEB_MNG_CL_SUBNET: ${RHP_FW_WEB_MNG_CL_SUBNET}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_WEB_MNG_CL_ADDR: ${RHP_FW_WEB_MNG_CL_ADDR}"
+    "${rhp_dbg}" "[rhp_netmng] RHP_FW_WEB_MNG_CL_SUBNET_MASK: ${RHP_FW_WEB_MNG_CL_SUBNET_MASK}"
+
+  
+    if [ "${RHP_FW_ACTION}" = "flush" ]; then
+
+      "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -F rockhopper_fw_in"
+      ${iptables_cmd} -t filter -F rockhopper_fw_in 2> "${rhp_trace}"
+      "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -F rockhopper_fw_out"
+      ${iptables_cmd} -t filter -F rockhopper_fw_out 2> "${rhp_trace}"
+      "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -F rockhopper_fw_fwd"
+      ${iptables_cmd} -t filter -F rockhopper_fw_fwd 2> "${rhp_trace}"
+
+      "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i lo -j ACCEPT"
+      ${iptables_cmd} -t filter -A rockhopper_fw_in -i lo -j ACCEPT 2> "${rhp_trace}"
+      "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o lo -j ACCEPT"
+      ${iptables_cmd} -t filter -A rockhopper_fw_out -o lo -j ACCEPT 2> "${rhp_trace}"
+
+    elif [ "${RHP_FW_ACTION}" = "accept" ]; then
+    
+      if [ "${RHP_FW_TRAFFIC}" = "ipsec" ]; then
+
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 500 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 500 -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 4500 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 4500 -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p 50 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p 50 -j ACCEPT 2> "${rhp_trace}"
+  
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --sport 500 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --sport 500 -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --sport 4500 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --sport 4500 -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p 50 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p 50 -j ACCEPT 2> "${rhp_trace}"
+  
+      elif [ "${RHP_FW_TRAFFIC}" = "virtual-interface" ]; then
+      
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i rhpvif+ -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i rhpvif+ -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o rhpvif+ -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o rhpvif+ -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_fwd -o rhpvif+ -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_fwd -o rhpvif+ -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_fwd -i rhpvif+ -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_fwd -i rhpvif+ -j ACCEPT 2> "${rhp_trace}"
+      
+      elif [ "${RHP_FW_TRAFFIC}" = "web-mng" ]; then
+
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p tcp --source ${RHP_FW_WEB_MNG_CL_SUBNET} --destination ${RHP_FW_WEB_MNG_ADDR} --dport ${RHP_FW_WEB_MNG_PORT} -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p tcp --source ${RHP_FW_WEB_MNG_CL_SUBNET} --destination ${RHP_FW_WEB_MNG_ADDR} --dport ${RHP_FW_WEB_MNG_PORT} -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p tcp --source ${RHP_FW_WEB_MNG_ADDR} --destination ${RHP_FW_WEB_MNG_CL_SUBNET} --sport ${RHP_FW_WEB_MNG_PORT} -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p tcp --source ${RHP_FW_WEB_MNG_ADDR} --destination ${RHP_FW_WEB_MNG_CL_SUBNET} --sport ${RHP_FW_WEB_MNG_PORT} -j ACCEPT 2> "${rhp_trace}"
+  
+      elif [ "${RHP_FW_TRAFFIC}" = "dns" ]; then
+
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 53 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 53 -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --sport 53 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --sport 53 -j ACCEPT 2> "${rhp_trace}"
+
+      elif [ "${RHP_FW_TRAFFIC}" = "dhcp" ]; then
+
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 67:68 --sport 67:68 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -p udp --dport 67:68 --sport 67:68 -j ACCEPT 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --dport 67:68 --sport 67:68 -j ACCEPT"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -p udp --dport 67:68 --sport 67:68 -j ACCEPT 2> "${rhp_trace}"
+
+      else 
+        
+        "${rhp_dbg}" "Unknown traffic for 'accept' action. ${RHP_FW_TRAFFIC}"
+      fi
+
+    elif [ "${RHP_FW_ACTION}" = "drop" ]; then
+
+      if [ "${RHP_FW_TRAFFIC}" = "default" ]; then
+
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -j DROP"
+        ${iptables_cmd} -t filter -A rockhopper_fw_in -i ${RHP_FW_IF} -j DROP 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -j DROP"
+        ${iptables_cmd} -t filter -A rockhopper_fw_out -o ${RHP_FW_IF} -j DROP 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_fwd -o ${RHP_FW_IF} -j DROP"
+        ${iptables_cmd} -t filter -A rockhopper_fw_fwd -o ${RHP_FW_IF} -j DROP 2> "${rhp_trace}"
+        "${rhp_dbg}" "[rhp_netmng] ${iptables_cmd} -t filter -A rockhopper_fw_fwd -i ${RHP_FW_IF} -j DROP"
+        ${iptables_cmd} -t filter -A rockhopper_fw_fwd -i ${RHP_FW_IF} -j DROP 2> "${rhp_trace}"
+
+      else
+      
+        "${rhp_dbg}" "Unknown traffic for 'drop' action. ${RHP_FW_TRAFFIC}"
+      fi
+
+    fi
+    ;;
+
+esac
+
+exit 0

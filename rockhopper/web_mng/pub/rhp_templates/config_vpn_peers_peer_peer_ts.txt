@@ -1,0 +1,33 @@
+<p style="margin-top: 30px;">
+  <div id="configVpnPeersPeerPeerTSCreate"></div>
+</p>
+<p style="font-size: 95%;padding: 0px;margin: 0px;">
+If no traffic selectors are defined, a configuration to allow 'any' traffic is automatically added.
+</p>
+<p style="margin-top: 1px;padding-top: 0px;">
+  <table class="rhpTableTag" id="configVpnPeerTSTable">
+    <tbody id="configVpnPeerTSTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 30px;">Priority</td>
+        <td class="rhpTableTdTag" style="width: 300px;">IPv4 Address Range</td>
+        <td class="rhpTableTdTag" style="width: 80px;">Protocol</td>
+        <td class="rhpTableTdTag" style="width: 160px;">Port Range</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 0px;padding-top: 20px;">
+  <table class="rhpTableTag" id="configVpnPeerTSTableV6">
+    <tbody id="configVpnPeerTSTableBodyV6">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 30px;">Priority</td>
+        <td class="rhpTableTdTag" style="width: 300px;">IPv6 Address Range</td>
+        <td class="rhpTableTdTag" style="width: 80px;">Protocol</td>
+        <td class="rhpTableTdTag" style="width: 160px;">Port Range</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

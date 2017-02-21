@@ -1,0 +1,16 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryMykeyStoreRsaSig">
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">Authentication Method</td>
+      <td class="rhpTableTdTag rhpTableTrTagTop">My ID</td>
+      <td class="rhpTableTdTag rhpTableTrTagTop">ID Type</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStorePskAuthMethod"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStorePskId"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStorePskIdType"></td>
+    </tr>
+  </tbody>
+</table>
+</p>

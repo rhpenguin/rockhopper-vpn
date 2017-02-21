@@ -1,0 +1,159 @@
+<p style="margin-top: 30px;">
+<table id="configVpnRmtCfgNarrowTsTop"><tbody>
+  <tr>
+    <td style="width: 300px;">
+      <label style="font-weight: bold; font-size: 100%;">
+        Narrow or Check traffic selectors for remote clients by using assigned address(es).</label>
+    </td>
+    <td style="width: 15px;"></td>
+    <td>
+      <form id="configVpnRmtCfgNarrowTs">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <input type="radio" id="configVpnRmtCfgNarrowTsEnable" value="enable" name="configVpnRmtCfgNarrowTsEnable"></input>
+                <label for="configVpnRmtCfgNarrowTsEnable">Enable</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="radio" id="configVpnRmtCfgNarrowTsEnableForNonRockhopper" value="enable_for_non_rockhopper" name="configVpnRmtCfgNarrowTsEnableForNonRockhopper"></input>
+                <label for="configVpnRmtCfgNarrowTsEnableForNonRockhopper">Enable for Non-Rockhopper clients</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="radio" id="configVpnRmtCfgNarrowTsDisable" value="disable" name="configVpnRmtCfgNarrowTsDisable"></input>
+                <label for="configVpnRmtCfgNarrowTsDisable">Disable</label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </td>
+  </tr>
+</tbody></table>
+</p>
+
+<p style="margin-top: 40px;">
+  <table id="configVpnRmtCfgRejectOtherThanCltTop">
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnRmtCfgRejectOtherThanClt">
+          <label for="configVpnRmtCfgRejectOtherThanClt" style="font-weight: bold; font-size: 100%;">
+            Reject VPN connections with peers other than remote clients.
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 30px;">
+  <table id="configVpnRmtCfgDisableNonIPTrafficTop">
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnRmtCfgDisableNonIPTraffic">
+        </td>
+        <td style="width: 450px;">
+          <label for="configVpnRmtCfgDisableNonIPTraffic" style="font-weight: bold; font-size: 100%;" class="configVpnRmtCfgDisableNonIPTrafficLabel">
+          Disable Non-IP traffic. 
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 530px; font-size: 95%;">
+          <label style="font-weight: bold;">IP encapsulation (IP over IP)</label> 
+          is automatically configured as <label style="font-weight: bold;">Encapsulation Mode</label> for remote clients.
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 40px;">
+  <table id="configVpnRmtCfgAllowIPv6AutoConfTop">
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnRmtCfgAllowIPv6AutoConf">
+        </td>
+        <td style="width: 550px;">
+          <label for="configVpnRmtCfgAllowIPv6AutoConf" style="font-weight: bold; font-size: 100%;" class="configVpnRmtCfgAllowIPv6AutoConfLabel">
+          IKEv2: Allow IPv6 address Auto-configuration for remote clients. (Rockhopper's private extension) 
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 30px;">
+  <table id="configVpnRmtCfgDontFwdBtwnVpnConnsTop">
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnRmtCfgDontFwdBtwnVpnConns">
+        </td>
+        <td style="width: 450px;">
+          <label for="configVpnRmtCfgDontFwdBtwnVpnConns" style="font-weight: bold; font-size: 100%;" class="configVpnRmtCfgDontFwdBtwnVpnConnsLabel">
+          Don't forward packets between remote clients. 
+          </label>
+        </td>
+      </tr>    
+      <tr>
+        <td>
+        </td>
+        <td>
+          <table><tbody>
+          <tr>
+            <td>
+              <input id="configVpnRmtCfgDontFwdBtwnVpnConnsExceptV6Auto">
+            </td>
+            <td style="width: 420px;">
+              <label for="configVpnRmtCfgDontFwdBtwnVpnConnsExceptV6Auto" style="font-weight: bold; font-size: 100%;" class="configVpnRmtCfgDontFwdBtwnVpnConnsExceptV6AutoLabel">
+              Allow only link-local ICMPv6 for IPv6 address Auto-configuration.
+              </label>
+            </td>
+          </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 40px;">
+  <table id="configVpnRmtCfgRejectCltTSTop">
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnRmtCfgRejectCltTS">
+        </td>
+        <td style="width: 450px;">
+          <label for="configVpnRmtCfgRejectCltTS" style="font-weight: bold; font-size: 100%;" class="configVpnRmtCfgRejectCltTSLabel">
+          IKEv2: Reject traffic selectors requested by remote client.
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 530px; font-size: 95%;">
+          If a remote client requests traffic selectors other than ANY, the VPN connection is rejected.
+          This means that the remote client need to obey traffic selectors specified by remote configuration server (i.e. this node).
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+

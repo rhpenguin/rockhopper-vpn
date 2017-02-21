@@ -1,0 +1,17 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Remote Configuration Server: Address Pools
+</p>
+<p>
+  <div id="topRealmAddrPoolFlush"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmAddrPoolTable">
+    <tbody id="topRealmAddrPoolTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Peer ID</td>
+        <td class="rhpTableTdTag">Assigned Address</td>
+        <td class="rhpTableTdTag">Expiration Seconds</td>
+      </tr>
+    </tbody>
+  </table>
+</p>

@@ -1,0 +1,38 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+ARP Cache (IPv4)
+</p>
+<p>
+  <div id="topRealmArpFlush"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmArpTable">
+    <tbody id="topRealmArpTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Target IP</td>
+        <td class="rhpTableTdTag">Target MAC</td>
+        <td class="rhpTableTdTag">Peer ID</td>
+        <td class="rhpTableTdTag">Side</td>
+        <td class="rhpTableTdTag">Type</td>
+        <td class="rhpTableTdTag">Elapsed<br/>Seconds</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+<p style="font-weight: bold;font-size: 115%;padding-top: 30px;margin-top: 0px;margin-bottom: 30px;">
+Incomplete Addresses
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmArpRslvTable">
+    <tbody id="topRealmArpRslvTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Target IP</td>
+        <td class="rhpTableTdTag">Sender IP<br/>Peer ID</td>
+        <td class="rhpTableTdTag">Sender MAC</td>
+        <td class="rhpTableTdTag">Elapsed<br/>Seconds</td>
+        <td class="rhpTableTdTag">Retry<br/>times</td>
+        <td class="rhpTableTdTag">Queued<br/>packets</td>
+      </tr>
+    </tbody>
+  </table>
+</p>

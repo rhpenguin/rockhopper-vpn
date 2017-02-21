@@ -1,0 +1,27 @@
+  <table><tbody>
+    <tr>
+      <td style="padding-left: 20px;"><label class="configVpnNetworkIfLabel" style="font-size:85%;font-weight:normal;">
+        Destination NAT IPv4 Address:</label></td>
+      <td><div id="configVpnNetworkIfPrimaryNatAddr"></div></td>
+      <td><div id="configVpnNetworkIfPrimaryNatAddr2"></div></td>
+    </tr>
+  </tbody></table>
+
+  <table><tbody>
+    <tr>
+      <td style="padding-left: 20px;">
+        <label class="configVpnNetworkIfLabel" style="font-size:85%;font-weight:normal;">
+        Destination NAT IPv6 Address:</label>
+      </td>
+      <td>
+        <table><tbody>
+          <tr>
+            <td><div id="configVpnNetworkIfPrimaryNatAddrV6"></div></td>
+          </tr>
+          <tr>
+            <td><div id="configVpnNetworkIfPrimaryNatAddr2V6"></div></td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </tbody></table>

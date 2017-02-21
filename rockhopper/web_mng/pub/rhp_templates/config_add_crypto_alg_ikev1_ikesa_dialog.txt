@@ -1,0 +1,31 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New IKE SA's Algorithm (IKEv1)
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Priority:</label></td>
+    <td><div id="configGlobalCryptoPriorityIkev1IkeSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Encryption:</label></td>
+    <td><div id="configGlobalCryptoEncrIkev1IkeSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Hash:</label></td>
+    <td><div id="configGlobalCryptoHashIkev1IkeSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Diffie-Hellman(DH):</label></td>
+    <td><div id="configGlobalCryptoDhIkev1IkeSa"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddGlobalCryptoIkev1IkeSaOk"></div></td>
+    <td><div id="configVpnAddGlobalCryptoIkev1IkeSaCancel"></div></td>
+  </tr>
+</table>
+</p>

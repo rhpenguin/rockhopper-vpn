@@ -1,0 +1,71 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 10px;margin-top: 10px;margin-bottom: 10px;">
+Web Management Service
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td><label></label>Listening IPv4 Address:</td>    
+        <td><div id="configGlobalWebMngSvAddress"></div></td>
+      </tr>
+      <tr style="height: 5px;"></tr>
+      <tr>
+        <td><label></label>Listening IPv6 Address:</td>    
+        <td><div id="configGlobalWebMngSvAddressV6"></div></td>
+      </tr>
+      <tr style="height: 5px;"></tr>
+      <tr>        
+        <td><label>Listening Port:</label></td>
+        <td><div id="configGlobalWebMngSvPort"></div></td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+* Above settings are actually applied after you restart Rockhopper. <br>
+* Web management service is always accessible on '127.0.0.1 (IPv4)'.
+</p>
+<p style="margin-top: 40px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configGlobalWebMngAllowRhpClient">
+          <label for="configGlobalWebMngAllowRhpClient">
+            Enable VPN Client (GUI). <label style="font-weight: bold;">You should uncheck this if this node is not a VPN client. </label>
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 10px;">
+      </tr>    
+      <tr>
+        <td>
+          <input id="configGlobalWebMngAutoReconnectRhpClient">
+          <label for="configGlobalWebMngAutoReconnectRhpClient">
+            VPN Client (GUI): Automatically reconnect VPN.
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 20px;">
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="margin-top: 20px;">
+  <div id="configGlobalWebMngAllowedAddrCreate"></div>
+</p>
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+Loopback IPv4 address(127.0.0.1) is always allowed.
+</p>
+<p>
+  <table class="rhpTableTag" id="configGlobalWebMngAclsTable" style="width:410px;">
+    <tbody id="configGlobalWebMngAclsTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 250px;">Allowed Client's IP Address</td>
+        <td class="rhpTableTdTag" style="width: 80px;">Realm ID</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

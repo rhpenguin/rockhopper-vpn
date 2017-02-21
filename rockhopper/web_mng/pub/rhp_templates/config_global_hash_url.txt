@@ -1,0 +1,49 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 5px;margin-top: 5px;margin-bottom: 10px;">
+IKEv2 Certificate URL (Hash and URL encoding)
+</p>
+
+<p style="margin-top: 40px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configGlobalHashUrlInitiatorEnabled">
+          <label for="configGlobalHashUrlInitiatorEnabled">
+            Enable for an initiator.
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 10px;">
+      </tr>    
+      <tr>
+        <td>
+          <input id="configGlobalHashUrlResponderEnabled">
+          <label for="configGlobalHashUrlResponderEnabled">
+            Enable for a responder.
+          </label>
+        </td>
+      </tr>    
+      </tr>    
+      <tr style="height: 20px;">
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 30px;">
+  <div id="configGlobalHashUrlHttpServersBtn"></div>
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+Please specify Web(HTTP) server names which distributes certificates.
+</p>
+<p>
+  <table class="rhpTableTag" id="configGlobalHashUrlHttpServersTable" style="width:530px;">
+    <tbody id="configGlobalHashUrlHttpServersTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;">Type</td>
+        <td class="rhpTableTdTag" style="width: 200px;">Server Name</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

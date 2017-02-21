@@ -1,0 +1,19 @@
+{
+  "identifier":"label",
+  "label": "label",
+  "items": [
+    {"name":"etherip", "label":"EtherIP"},
+    {"name":"gre", "label":"GRE"},
+    {"name":"icmp", "label":"ICMP"},
+    {"name":"icmp_fragments", "label":"IKEv2: ICMP(Fragments)"},
+    {"name":"tcp", "label":"TCP"},
+    {"name":"tcp_fragments", "label":"IKEv2: TCP(Fragments)"},
+    {"name":"udp", "label":"UDP"},
+    {"name":"udp_fragments", "label":"IKEv2: UDP(Fragments)"},
+    {"name":"sctp", "label":"SCTP"},
+    {"name":"sctp_fragments", label:"SCTP(Fragments)"},
+    {"name":"udplite", "label":"UDPLite"},
+    {"name":"udplite_fragments", "label":"IKEv2: UDPLite(Fragments)"},
+    {"name":"any", "label":"Any"}
+  ]
+}

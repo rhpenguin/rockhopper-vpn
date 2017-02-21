@@ -1,0 +1,35 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New IPsec SA's Algorithm (IKEv1)
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Type:</label></td>
+    <td><div id="configGlobalCryptoTypeIkev1IpsecSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Priority:</label></td>
+    <td><div id="configGlobalCryptoPriorityIkev1IpsecSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Encryption:</label></td>
+    <td><div id="configGlobalCryptoEncrIkev1IpsecSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Authentication:</label></td>
+    <td><div id="configGlobalCryptoAuthIkev1IpsecSa"></div></td>
+  </tr>
+  <tr>
+    <td><label>Extended Sequence Number(ESN):</label></td>
+    <td><div id="configGlobalCryptoEsnIkev1IpsecSa"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddGlobalCryptoIkev1IpsecSaOk"></div></td>
+    <td><div id="configVpnAddGlobalCryptoIkev1IpsecSaCancel"></div></td>
+  </tr>
+</table>
+</p>

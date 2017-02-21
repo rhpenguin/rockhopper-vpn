@@ -1,0 +1,41 @@
+<p style="font-weight: bold;font-size: 110%;padding-top: 0px;margin-top: 15px;margin-bottom: 10px;">
+Resource Statistics 
+<div class="topGlobalStatisticsRsrcClear"></div>
+</p>
+
+<p style="font-weight: bold;font-size: 100%;padding-top: 0px;margin-top: 25px;margin-bottom: 10px;">
+Resource Statistics(Main Process)          
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topGlobalStatisticsRsrcMainTable" style="width: 480px;">
+    <tbody class="topGlobalStatisticsRsrcMainTableBody">
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topGlobalStatisticsRsrcMainWtsTable" style="width: 480px;">
+    <tbody class="topGlobalStatisticsRsrcMainWtsTableBody">
+    </tbody>
+  </table>
+</p>
+
+<p style="font-weight: bold;font-size: 100%;padding-top: 0px;margin-top: 25px;margin-bottom: 10px;">
+Resource Statistics(Protected Process)          
+<div class="topGlobalStatisticsRsrcClear"></div>
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topGlobalStatisticsRsrcProtectedTable" style="width: 480px;">
+    <tbody class="topGlobalStatisticsRsrcProtectedTableBody">
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topGlobalStatisticsRsrcProtectedWtsTable" style="width: 480px;">
+    <tbody class="topGlobalStatisticsRsrcProtectedWtsTableBody">
+    </tbody>
+  </table>
+</p>

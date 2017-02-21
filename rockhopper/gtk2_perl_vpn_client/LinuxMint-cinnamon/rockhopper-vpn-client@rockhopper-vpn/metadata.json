@@ -1,0 +1,6 @@
+{
+ "uuid": "rockhopper-vpn-client@rockhopper-vpn",
+ "name": "Rockhopper VPN Client",
+ "description": "VPN Client GUI",
+ "icon": "network-vpn"
+}

@@ -1,0 +1,26 @@
+<p>
+<label class="configRadiusLabel">RFC2865 defines types 224-249 for implementation-specific use.</label>
+</p>
+<p style="margin-top: 0px;">
+  <table>
+    <tbody>
+
+      <tr>
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Private attribute type: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeCommon"></div>
+        </td>
+      </tr>    
+
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 25px;">
+<div id="configRadiusExtRadiusAttrsTypeCommonHelp"></div>
+</p>

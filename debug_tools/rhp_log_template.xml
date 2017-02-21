@@ -1,0 +1,1475 @@
+<?xml version="1.0"?>
+<log_template>
+
+<label tag="ERROR">
+  <label_item value="1" label="EPERM"/>
+  <label_item value="2" label="ENOENT"/>
+  <label_item value="3" label="ESRCH"/>
+  <label_item value="4" label="EINTR"/>
+  <label_item value="5" label="EIO"/>
+  <label_item value="6" label="ENXIO"/>
+  <label_item value="7" label="E2BIG"/>
+  <label_item value="8" label="ENOEXEC"/>
+  <label_item value="9" label="EBADF"/>
+  <label_item value="10" label="ECHILD"/>
+  <label_item value="11" label="EAGAIN"/>
+  <label_item value="12" label="ENOMEM"/>
+  <label_item value="13" label="EACCES"/>
+  <label_item value="14" label="EFAULT"/>
+  <label_item value="15" label="ENOTBLK"/>
+  <label_item value="16" label="EBUSY"/>
+  <label_item value="17" label="EEXIST"/>
+  <label_item value="18" label="EXDEV"/>
+  <label_item value="19" label="ENODEV"/>
+  <label_item value="20" label="ENOTDIR"/>
+  <label_item value="21" label="EISDIR"/>
+  <label_item value="22" label="EINVAL"/>
+  <label_item value="23" label="ENFILE"/>
+  <label_item value="24" label="EMFILE"/>
+  <label_item value="25" label="ENOTTY"/>
+  <label_item value="26" label="ETXTBSY"/>
+  <label_item value="27" label="EFBIG"/>
+  <label_item value="28" label="ENOSPC"/>
+  <label_item value="29" label="ESPIPE"/>
+  <label_item value="30" label="EROFS"/>
+  <label_item value="31" label="EMLINK"/>
+  <label_item value="32" label="EPIPE"/>
+  <label_item value="33" label="EDOM"/>
+  <label_item value="34" label="ERANGE"/>
+  <label_item value="35" label="EDEADLK"/>
+  <label_item value="36" label="ENAMETOOLONG"/>
+  <label_item value="37" label="ENOLCK"/>
+  <label_item value="38" label="ENOSYS"/>
+  <label_item value="39" label="ENOTEMPTY"/>
+  <label_item value="40" label="ELOOP"/>
+  <label_item value="42" label="ENOMSG"/>
+  <label_item value="43" label="EIDRM"/>
+  <label_item value="44" label="ECHRNG"/>
+  <label_item value="45" label="EL2NSYNC"/>
+  <label_item value="46" label="EL3HLT"/>
+  <label_item value="47" label="EL3RST"/>
+  <label_item value="48" label="ELNRNG"/>
+  <label_item value="49" label="EUNATCH"/>
+  <label_item value="50" label="ENOCSI"/>
+  <label_item value="51" label="EL2HLT"/>
+  <label_item value="52" label="EBADE"/>
+  <label_item value="53" label="EBADR"/>
+  <label_item value="54" label="EXFULL"/>
+  <label_item value="55" label="ENOANO"/>
+  <label_item value="56" label="EBADRQC"/>
+  <label_item value="57" label="EBADSLT"/>
+  <label_item value="59" label="EBFONT"/>
+  <label_item value="60" label="ENOSTR"/>
+  <label_item value="61" label="ENODATA"/>
+  <label_item value="62" label="ETIME"/>
+  <label_item value="63" label="ENOSR"/>
+  <label_item value="64" label="ENONET"/>
+  <label_item value="65" label="ENOPKG"/>
+  <label_item value="66" label="EREMOTE"/>
+  <label_item value="67" label="ENOLINK"/>
+  <label_item value="68" label="EADV"/>
+  <label_item value="69" label="ESRMNT"/>
+  <label_item value="70" label="ECOMM"/>
+  <label_item value="71" label="EPROTO"/>
+  <label_item value="72" label="EMULTIHOP"/>
+  <label_item value="73" label="EDOTDOT"/>
+  <label_item value="74" label="EBADMSG"/>
+  <label_item value="75" label="EOVERFLOW"/>
+  <label_item value="76" label="ENOTUNIQ"/>
+  <label_item value="77" label="EBADFD"/>
+  <label_item value="78" label="EREMCHG"/>
+  <label_item value="79" label="ELIBACC"/>
+  <label_item value="80" label="ELIBBAD"/>
+  <label_item value="81" label="ELIBSCN"/>
+  <label_item value="82" label="ELIBMAX"/>
+  <label_item value="83" label="ELIBEXEC"/>
+  <label_item value="84" label="EILSEQ"/>
+  <label_item value="85" label="ERESTART"/>
+  <label_item value="86" label="ESTRPIPE"/>
+  <label_item value="87" label="EUSERS"/>
+  <label_item value="88" label="ENOTSOCK"/>
+  <label_item value="89" label="EDESTADDRREQ"/>
+  <label_item value="90" label="EMSGSIZE"/>
+  <label_item value="91" label="EPROTOTYPE"/>
+  <label_item value="92" label="ENOPROTOOPT"/>
+  <label_item value="93" label="EPROTONOSUPPORT"/>
+  <label_item value="94" label="ESOCKTNOSUPPORT"/>
+  <label_item value="95" label="EOPNOTSUPP"/>
+  <label_item value="96" label="EPFNOSUPPORT"/>
+  <label_item value="97" label="EAFNOSUPPORT"/>
+  <label_item value="98" label="EADDRINUSE"/>
+  <label_item value="99" label="EADDRNOTAVAIL"/>
+  <label_item value="100" label="ENETDOWN"/>
+  <label_item value="101" label="ENETUNREACH"/>
+  <label_item value="102" label="ENETRESET"/>
+  <label_item value="103" label="ECONNABORTED"/>
+  <label_item value="104" label="ECONNRESET"/>
+  <label_item value="105" label="ENOBUFS"/>
+  <label_item value="106" label="EISCONN"/>
+  <label_item value="107" label="ENOTCONN"/>
+  <label_item value="108" label="ESHUTDOWN"/>
+  <label_item value="109" label="ETOOMANYREFS"/>
+  <label_item value="110" label="ETIMEDOUT"/>
+  <label_item value="111" label="ECONNREFUSED"/>
+  <label_item value="112" label="EHOSTDOWN"/>
+  <label_item value="113" label="EHOSTUNREACH"/>
+  <label_item value="114" label="EALREADY"/>
+  <label_item value="115" label="EINPROGRESS"/>
+  <label_item value="116" label="ESTALE"/>
+  <label_item value="117" label="EUCLEAN"/>
+  <label_item value="118" label="ENOTNAM"/>
+  <label_item value="119" label="ENAVAIL"/>
+  <label_item value="120" label="EISNAM"/>
+  <label_item value="121" label="EREMOTEIO"/>
+  <label_item value="122" label="EDQUOT"/>
+  <label_item value="123" label="ENOMEDIUM"/>
+  <label_item value="124" label="EMEDIUMTYPE"/>
+  <label_item value="125" label="ECANCELED"/>
+  <label_item value="126" label="ENOKEY"/>
+  <label_item value="127" label="EKEYEXPIRED"/>
+  <label_item value="128" label="EKEYREVOKED"/>
+  <label_item value="129" label="EKEYREJECTED"/>
+</label>
+<label tag="RHP_ERROR">
+  <label_item value="0" label="STATUS_SUCCESS"/>
+  <label_item value="1" label="STATUS_EXIT"/>
+  <label_item value="2" label="STATUS_INVALID_MSG"/>
+  <label_item value="3" label="STATUS_NOT_SUPPORTED_VER"/>
+  <label_item value="4" label="STATUS_MSG_TOO_LARGE"/>
+  <label_item value="5" label="STATUS_DECRYPTED"/>
+  <label_item value="6" label="STATUS_UNKNOWN_PAYLOAD"/>
+  <label_item value="7" label="STATUS_ENUM_OK"/>
+  <label_item value="8" label="STATUS_UNKNOWN_PARAMS"/>
+  <label_item value="9" label="STATUS_RETRANS_OK"/>
+  <label_item value="10" label="STATUS_NO_IP"/>
+  <label_item value="11" label="STATUS_UNKNOWN_PARAM"/>
+  <label_item value="12" label="STATUS_INVALID_CERT"/>
+  <label_item value="13" label="STATUS_INTEG_INVALID"/>
+  <label_item value="14" label="STATUS_MAX_HTTP_CONNS"/>
+  <label_item value="15" label="STATUS_CLOSE_HTTP_CONN"/>
+  <label_item value="16" label="STATUS_HTTP_READLINE_PENDING"/>
+  <label_item value="17" label="STATUS_ABORT_HTTP_CONN"/>
+  <label_item value="18" label="STATUS_SKIP"/>
+  <label_item value="19" label="STATUS_HTTP_NOT_SUP_VER"/>
+  <label_item value="20" label="STATUS_HTTP_URI_TOO_LARGE"/>
+  <label_item value="21" label="STATUS_HTTP_NOT_FOUND"/>
+  <label_item value="22" label="STATUS_HTTP_ENT_TOO_LARGE"/>
+  <label_item value="23" label="STATUS_HTTP_REQ_PENDING"/>
+  <label_item value="24" label="STATUS_HTTP_UNAUTHORIZED"/>
+  <label_item value="25" label="STATUS_IKESA_EXISTS"/>
+  <label_item value="26" label="STATUS_CHILDSA_COLLISION"/>
+  <label_item value="27" label="STATUS_NO_PROPOSAL_CHOSEN"/>
+  <label_item value="28" label="STATUS_HANDLE_COOKIE"/>
+  <label_item value="29" label="STATUS_COOKIE_NOT_MATCHED"/>
+  <label_item value="30" label="STATUS_NAT_PREVENTION"/>
+  <label_item value="31" label="STATUS_CREATE_CHILDSA_FAILED"/>
+  <label_item value="32" label="STATUS_PEER_NOTIFIED_ERROR"/>
+  <label_item value="33" label="STATUS_NEW_REQUEST_PKT"/>
+  <label_item value="35" label="STATUS_INVALID_STATE"/>
+  <label_item value="36" label="STATUS_NETMNG_DONE"/>
+  <label_item value="37" label="STATUS_NETMNG_NOT_INTERESTED"/>
+  <label_item value="38" label="STATUS_HTTP_BUS_MESG_TOO_BIG"/>
+  <label_item value="39" label="STATUS_DROP_PKT"/>
+  <label_item value="40" label="STATUS_ESP_IMPL_PENDING"/>
+  <label_item value="41" label="STATUS_IKEV2_MESG_HANDLER_PENDING"/>
+  <label_item value="42" label="STATUS_IKEV2_MESG_HANDLER_END"/>
+  <label_item value="44" label="STATUS_BEHIND_A_NAT"/>
+  <label_item value="45" label="STATUS_IKEV2_AUTH_FAILED"/>
+  <label_item value="46" label="STATUS_IKEV2_DESTROY_SA_AFTER_TX"/>
+  <label_item value="47" label="STATUS_IKEV2_COOKIE_MAX_RETRIED"/>
+  <label_item value="48" label="STATUS_IKEV2_RETRY_COOKIE"/>
+  <label_item value="49" label="STATUS_BAD_SA_STATE"/>
+  <label_item value="51" label="STATUS_BAD_PACKET"/>
+  <label_item value="52" label="STATUS_ANTI_REPLAY_ERROR"/>
+  <label_item value="53" label="STATUS_SELECTOR_NOT_MATCHED"/>
+  <label_item value="54" label="STATUS_NO_ETHERIP_ENCAP"/>
+  <label_item value="55" label="STATUS_NO_PEER_ADDRESS"/>
+  <label_item value="56" label="STATUS_ARP_RESOLV_PENDING"/>
+  <label_item value="57" label="STATUS_EAP_PSK_AUTH_FAILED"/>
+  <label_item value="58" label="STATUS_DNS_PKT_NOT_INTERESTED"/>
+  <label_item value="59" label="STATUS_EOF"/>
+  <label_item value="60" label="STATUS_INVALID_DNS_PKT"/>
+  <label_item value="61" label="STATUS_IPSEC_MODE_NOT_MATCHED"/>
+  <label_item value="62" label="STATUS_PEER_IS_ALSO_ACCESSPOINT"/>
+  <label_item value="63" label="STATUS_PMTUD_ERROR"/>
+  <label_item value="64" label="STATUS_PEER_IS_MESH_NODE"/>
+  <label_item value="65" label="STATUS_HTTP_URI_GONE"/>
+  <label_item value="66" label="STATUS_NO_ACTIVE_IF"/>
+  <label_item value="67" label="STATUS_INVALID_IKEV2_MESG_BAD_PKT"/>
+  <label_item value="68" label="STATUS_INVALID_IKEV2_MESG_BAD_NON_ESP_MARKER"/>
+  <label_item value="69" label="STATUS_INVALID_IKEV2_MESG_BAD_LENGTH"/>
+  <label_item value="70" label="STATUS_INVALID_IKEV2_MESG_BAD_SPI_FIELD"/>
+  <label_item value="71" label="STATUS_INVALID_IKEV2_MESG_BAD_NEXT_PAYLOAD_FIELD"/>
+  <label_item value="72" label="STATUS_INVALID_IKEV2_MESG_NOT_ENCRYPTED"/>
+  <label_item value="73" label="STATUS_INVALID_IKEV2_MESG_BAD_ENC_PAYLOAD_LENGTH"/>
+  <label_item value="74" label="STATUS_INVALID_IKEV2_MESG_BAD_MESG_ID"/>
+  <label_item value="75" label="STATUS_INVALID_IKEV2_MESG_IKE_SA_INIT_NOT_INITIATOR_REQ"/>
+  <label_item value="76" label="STATUS_INVALID_IKEV2_MESG_IKE_SA_INIT_NOT_RESPONDER_RESP"/>
+  <label_item value="77" label="STATUS_INVALID_IKEV2_MESG_IKE_AUTH_BAD_R_SPI"/>
+  <label_item value="78" label="STATUS_INVALID_IKEV2_MESG_IKE_AUTH_BAD_MESG_ID"/>
+  <label_item value="79" label="STATUS_INVALID_IKEV2_MESG_IKE_AUTH_NOT_INITIATOR_REQ"/>
+  <label_item value="80" label="STATUS_INVALID_IKEV2_MESG_IKE_AUTH_NOT_RESPONDER_RESP"/>
+  <label_item value="81" label="STATUS_INVALID_IKEV2_MESG_IKE_CREATE_CHILD_SA_BAD_MESG_ID"/>
+  <label_item value="82" label="STATUS_INVALID_IKEV2_MESG_IKE_INFORMATIONAL_BAD_MESG_ID"/>
+  <label_item value="83" label="STATUS_INVALID_IKEV2_MESG_IKE_UNSUPPORTED_EXCHANGE_TYPE"/>
+  <label_item value="84" label="STATUS_INVALID_IKEV2_MESG_NO_VPN"/>
+  <label_item value="85" label="STATUS_INVALID_IKEV2_MESG_VPN_NOT_ACTIVE"/>
+  <label_item value="86" label="STATUS_INVALID_IKEV2_MESG_NO_REALM"/>
+  <label_item value="87" label="STATUS_INVALID_IKEV2_MESG_REALM_NOT_ACTIVE"/>
+  <label_item value="88" label="STATUS_INVALID_IKEV2_MESG_CHECK_CFG_ADDR_ERR"/>
+  <label_item value="89" label="STATUS_INVALID_IKEV2_MESG_NO_IKESA"/>
+  <label_item value="90" label="STATUS_INVALID_IKEV2_MESG_IKE_SA_INIT_BAD_SA_STATUS"/>
+  <label_item value="91" label="STATUS_INVALID_IKEV2_MESG_IKE_AUTH_BAD_SA_STATUS"/>
+  <label_item value="92" label="STATUS_INVALID_IKEV2_MESG_BAD_SA_STATUS"/>
+  <label_item value="93" label="STATUS_INVALID_IKEV2_MESG_NO_REQ_PKT"/>
+  <label_item value="94" label="STATUS_INVALID_IKEV2_MESG_INTEG_ERR"/>
+  <label_item value="95" label="STATUS_INVALID_IKEV2_MESG_RX_FROM_UNKNOWN_PEER"/>
+  <label_item value="96" label="STATUS_INVALID_IKEV2_MESG_PEER_ADDR_PORT_CHANGED"/>
+  <label_item value="97" label="STATUS_INVALID_IKEV2_MESG_COOKIE_HANDLER_ERR"/>
+  <label_item value="98" label="STATUS_INVALID_IKEV2_MESG_DECRYPTO_ERR"/>
+  <label_item value="99" label="STATUS_INVALID_IKEV2_MESG_BAD_NEXT_PAYLOAD"/>
+  <label_item value="100" label="STATUS_INVALID_IKEV2_MESG_INVALID_PAYLOAD"/>
+  <label_item value="101" label="STATUS_INVALID_STUN_MESG_BAD_LENGTH"/>
+  <label_item value="102" label="STATUS_INVALID_STUN_MESG_BAD_LENGTH_FORMAT"/>
+  <label_item value="103" label="STATUS_INVALID_STUN_MESG_BAD_MAGIC_COOKIE"/>
+  <label_item value="104" label="STATUS_INVALID_STUN_MESG_BAD_START_BITS"/>
+  <label_item value="105" label="STATUS_INVALID_STUN_MESG_NO_FINGERPRINT"/>
+  <label_item value="106" label="STATUS_INVALID_STUN_MESG_INVALID_FINGERPRINT"/>
+  <label_item value="107" label="STATUS_INVALID_STUN_MESG_BAD_POS"/>
+  <label_item value="108" label="STATUS_INVALID_STUN_MESG_BAD_ADDR_FAMILY"/>
+  <label_item value="109" label="STATUS_INVALID_STUN_MESG_ATTR_BAD_LENGTH"/>
+  <label_item value="110" label="STATUS_INVALID_STUN_MESG_ATTR_INTEG_REQUIRED"/>
+  <label_item value="111" label="STATUS_INVALID_STUN_MESG_ATTR_UNAME_REQUIRED"/>
+  <label_item value="112" label="STATUS_INVALID_STUN_MESG_NO_STERM_CRED"/>
+  <label_item value="113" label="STATUS_INVALID_STUN_MESG_BAD_INTEG"/>
+  <label_item value="114" label="STATUS_HTTP_UNAUTHORIZED_BASIC_AUTH_PROMPT"/>
+  <label_item value="115" label="STATUS_RESTORE_CFG_ARCHIVE_USER_ERR"/>
+  <label_item value="116" label="STATUS_HTTP_COOKIE_UNAUTHORIZED"/>
+  <label_item value="117" label="STATUS_IKEV2_NOT_SUPPORTED_PROTO"/>
+  <label_item value="118" label="STATUS_IKEV2_NOT_ENCRYPTED_MESG"/>
+  <label_item value="119" label="STATUS_INVALID_IKEV2_MESG_BAD_EXCHG_TYPE_RESP"/>
+  <label_item value="120" label="STATUS_INVALID_IKEV2_MESG_PFS_REQUIRED"/>
+  <label_item value="121" label="STATUS_EAP_STAT_NONE"/>
+  <label_item value="122" label="STATUS_EAP_STAT_PENDING"/>
+  <label_item value="123" label="STATUS_EAP_STAT_CONTINUE"/>
+  <label_item value="124" label="STATUS_EAP_STAT_COMPLETED"/>
+  <label_item value="125" label="STATUS_EAP_STAT_NOT_SUPPORTED"/>
+  <label_item value="126" label="STATUS_EAP_STAT_ERROR"/>
+  <label_item value="127" label="STATUS_CERT_EXPIRED"/>
+  <label_item value="128" label="STATUS_ESP_ENCRYPT_ERR"/>
+  <label_item value="129" label="STATUS_ESP_DECRYPT_ERR"/>
+  <label_item value="130" label="STATUS_ESP_INTEG_ERR"/>
+  <label_item value="131" label="STATUS_ESP_INVALID_PKT"/>
+  <label_item value="132" label="STATUS_ESP_NO_CHILDSA"/>
+  <label_item value="133" label="STATUS_X509_CERT_PARSE_DER_ERR"/>
+  <label_item value="134" label="STATUS_NO_REQUESTED_CA_KEYS"/>
+  <label_item value="135" label="STATUS_CONNECT_VPN_I_EAP_SUP_USER_KEY_NEEDED"/>
+  <label_item value="136" label="STATUS_IKEV2_MESG_QCD_INVALID_IKE_SPI_NTFY"/>
+  <label_item value="137" label="STATUS_INVALID_IKEV2_MESG_NO_VPN_ENC"/>
+  <label_item value="138" label="STATUS_IKEV2_MOBIKE_NO_NATS_ALLOWED"/>
+  <label_item value="139" label="STATUS_IKEV2_MOBIKE_RT_CK_PENDING"/>
+  <label_item value="140" label="STATUS_IKEV2_MOBIKE_RT_CK_INVALID_COOKIE2"/>
+  <label_item value="141" label="STATUS_IKEV2_MOBIKE_NOT_INTERESTED"/>
+  <label_item value="142" label="STATUS_IKEV2_MOBIKE_UPDATE_SA_ADDR_NOT_COMP"/>
+  <label_item value="143" label="STATUS_IKEV2_MOBIKE_RX_UNACCEPTABLE_ADDR"/>
+  <label_item value="144" label="STATUS_HTTP_CLT_DONE"/>
+  <label_item value="145" label="STATUS_IKEV2_HASH_URL_INVALID_CERT_DATA"/>
+  <label_item value="146" label="STATUS_IKEV2_QCD_ERR_RESP_IGNORED"/>
+  <label_item value="147" label="STATUS_IKEV2_MOBIKE_KA_PENDING"/>
+  <label_item value="148" label="STATUS_VPN_MAX_SESSIONS_REACHED"/>
+  <label_item value="149" label="STATUS_IKESA_MAX_HALF_OPEN_SESSIONS_REACHED"/>
+  <label_item value="150" label="STATUS_DNS_RSLV_MAX_TASKS_REACHED"/>
+  <label_item value="151" label="STATUS_HTTP_CLT_MAX_REQS_REACHED"/>
+  <label_item value="152" label="STATUS_IPV6_DISABLED"/>
+  <label_item value="153" label="STATUS_MISMATCHED_IP_VERSION"/>
+  <label_item value="154" label="STATUS_ESP_RX_DUMMY_PKT"/>
+  <label_item value="156" label="STATUS_ARP_MAX_ADDRS_REACHED"/>
+  <label_item value="157" label="STATUS_ARP_MAX_Q_PKTS_REACHED"/>
+  <label_item value="158" label="STATUS_IPV6_PKT_NOT_INTERESTED"/>
+  <label_item value="159" label="STATUS_IKEV2_FRAG_RX_PENDING"/>
+  <label_item value="160" label="STATUS_IKEV2_FRAG_RX_IGNORED"/>
+  <label_item value="161" label="STATUS_IKEV2_FRAG_RX_BAD_MESG"/>
+  <label_item value="162" label="STATUS_IKEV2_TOO_MANY_FRAGS"/>
+  <label_item value="163" label="STATUS_IKEV2_FRAG_RX_1ST_FRAG"/>
+  <label_item value="164" label="STATUS_IKEV2_FRAG_RX_COMPLETED"/>
+  <label_item value="165" label="STATUS_IKEV2_RETRANS_PKT_CLEARED"/>
+  <label_item value="166" label="STATUS_INVALID_IKEV2_SESS_RESUME_TKT"/>
+  <label_item value="167" label="STATUS_IKEV2_SESS_RESUME_AUTH_FAILED"/>
+  <label_item value="168" label="STATUS_INVALID_IKEV2_SESS_RESUME_TKT_CFG_UPDATED"/>
+  <label_item value="169" label="STATUS_IKEV2_SESS_RESUME_TKT_REVOKED"/>
+  <label_item value="170" label="STATUS_IKEV2_SESS_RESUME_TKT_REVOKED_MAX_TKTS"/>
+  <label_item value="171" label="STATUS_IKEV2_SESS_RESUME_TKT_MAC_ERR"/>
+  <label_item value="172" label="STATUS_IKEV2_SESS_RESUME_TKT_DEC_ERR"/>
+  <label_item value="173" label="STATUS_IKEV2_SESS_RESUME_TKT_INVALID_VER"/>
+  <label_item value="174" label="STATUS_IKEV2_SESS_RESUME_TKT_EXPIRED"/>
+  <label_item value="175" label="STATUS_IKEV2_SESS_RESUME_TKT_INVALID_PARAM"/>
+  <label_item value="176" label="STATUS_IKEV2_SESS_RESUME_RX_NACK"/>
+  <label_item value="177" label="STATUS_RADIUS_INVALID_MESG_LEN"/>
+  <label_item value="178" label="STATUS_RADIUS_INVALID_AUTHENTICATOR"/>
+  <label_item value="179" label="STATUS_RADIUS_INVALID_MESG_AUTHENTICATOR"/>
+  <label_item value="180" label="STATUS_RADIUS_INVALID_MESG_AUTHENTICATOR_LEN"/>
+  <label_item value="181" label="STATUS_RADIUS_MESG_NO_ATTRS_FOUND"/>
+  <label_item value="182" label="STATUS_RADIUS_UNKNOWN_ATTR"/>
+  <label_item value="183" label="STATUS_RADIUS_INVALID_ATTR"/>
+  <label_item value="184" label="STATUS_RADIUS_INVALID_SESSION"/>
+  <label_item value="185" label="STATUS_RADIUS_RETX_REQ_ERR"/>
+  <label_item value="186" label="STATUS_RADIUS_UNSUP_MESG_CODE"/>
+  <label_item value="187" label="STATUS_RADIUS_NO_SECRET_FOUND"/>
+  <label_item value="188" label="STATUS_RADIUS_GEN_MSK_ERR"/>
+  <label_item value="189" label="STATUS_RADIUS_VPN_REALM_NOT_FOUND"/>
+  <label_item value="190" label="STATUS_RADIUS_MESG_SIGN_ERR"/>
+  <label_item value="191" label="STATUS_RADIUS_MESG_AUTH_ERR"/>
+  <label_item value="192" label="STATUS_RADIUS_NO_EAP_ATTR_FOUND"/>
+  <label_item value="193" label="STATUS_RADIUS_RX_REALM_ID_OR_ROLE_NOT_MATCHED"/>
+  <label_item value="194" label="STATUS_RADIUS_MAX_SESSIONS_REACHED"/>
+  <label_item value="195" label="STATUS_INVALID_IKEV2_SESS_RESUME_RADIUS_TKT"/>
+  <label_item value="196" label="STATUS_INVALID_IKEV2_SESS_RESUME_TKT_BAD_POLICY_IDX"/>
+  <label_item value="197" label="STATUS_RADIUS_ACCT_MAX_QUEUED_MESGS_REACHED"/>
+  <label_item value="198" label="STATUS_DNS_RSLV_ERR"/>
+  <label_item value="199" label="STATUS_IP_ROUTING_MAX_ENTRIES_REACHED"/>
+  <label_item value="200" label="STATUS_IP_ROUTING_DISABLED"/>
+  <label_item value="201" label="STATUS_PKT_RECV_FROM_VPN_LOOP"/>
+  <label_item value="202" label="STATUS_NO_IPIP_ENCAP"/>
+  <label_item value="203" label="STATUS_NO_GRE_ENCAP"/>
+  <label_item value="204" label="STATUS_NHRP_NOT_SUPPORTED_ATTR"/>
+  <label_item value="205" label="STATUS_NHRP_INVALID_PKT"/>
+  <label_item value="206" label="STATUS_NHRP_MAX_CACHE_NUM_REACHED"/>
+  <label_item value="207" label="STATUS_NHRP_MAX_REQ_SESS_REACHED"/>
+  <label_item value="208" label="STATUS_NHRP_UNSUP_COMPULSORY_EXT"/>
+  <label_item value="209" label="STATUS_NHRP_NOT_NHS"/>
+  <label_item value="210" label="STATUS_NHRP_INVALID_ADDR"/>
+  <label_item value="211" label="STATUS_NHRP_RX_DUPLICATED_ADDR"/>
+  <label_item value="212" label="STATUS_NHRP_RX_FROM_UNKNOWN_VPN"/>
+  <label_item value="213" label="STATUS_IP_ROUTING_HOPLIMIT_TTL_EXCEEDED"/>
+  <label_item value="214" label="STATUS_NHRP_NOT_NHC"/>
+  <label_item value="215" label="STATUS_NHRP_HOP_LIMIT_REACHED"/>
+  <label_item value="216" label="STATUS_NHRP_NO_FWD_TRANSIT_NHS_RECORDS"/>
+  <label_item value="217" label="STATUS_NHRP_NO_FWD_LOOP_DETECTED"/>
+  <label_item value="218" label="STATUS_NHRP_NO_RVRS_TRANSIT_NHS_RECORDS"/>
+  <label_item value="219" label="STATUS_NHRP_NO_RESPONDER_ADDR_EXT"/>
+</label>
+<label tag="IKESA_STAT">
+  <label_item value="0" label="DEFAULT"/>
+  <label_item value="1" label="I_IKE_SA_INIT_SENT"/>
+  <label_item value="2" label="I_AUTH_SENT"/>
+  <label_item value="3" label="I_AUTH_EAP_SENT"/>
+  <label_item value="4" label="R_IKE_SA_INIT_SENT"/>
+  <label_item value="5" label="ESTABLISHED"/>
+  <label_item value="6" label="REKEYING"/>
+  <label_item value="7" label="DELETE"/>
+  <label_item value="8" label="DELETE_WAIT"/>
+  <label_item value="9" label="I_REKEY_SENT"/>
+  <label_item value="10" label="DEAD"/>
+  <label_item value="101" label="V1_MAIN_1ST_SENT_I"/>
+  <label_item value="102" label="V1_MAIN_3RD_SENT_I"/>
+  <label_item value="103" label="V1_MAIN_5TH_SENT_I"/>
+  <label_item value="104" label="V1_MAIN_2ND_SENT_R"/>
+  <label_item value="105" label="V1_MAIN_4TH_SENT_R"/>
+  <label_item value="106" label="V1_AGG_1ST_SENT_I"/>
+  <label_item value="107" label="V1_AGG_WAIT_COMMIT_I"/>
+  <label_item value="108" label="V1_AGG_2ND_SENT_R"/>
+  <label_item value="109" label="V1_ESTABLISHED"/>
+  <label_item value="110" label="V1_REKEYING"/>
+  <label_item value="111" label="V1_DELETE"/>
+  <label_item value="112" label="V1_DELETE_WAIT"/>
+  <label_item value="113" label="V1_DEAD"/>
+</label>
+<label tag="EAP_STAT">
+  <label_item value="0" label="IKESA_DEFAULT"/>
+  <label_item value="1" label="IKESA_I_PEND"/>
+  <label_item value="2" label="IKESA_R_PEND"/>
+  <label_item value="3" label="IKESA_I_COMP"/>
+  <label_item value="4" label="IKESA_R_COMP"/>
+</label>
+<label tag="CHILDSA_STAT">
+  <label_item value="0" label="DEFAULT"/>
+  <label_item value="1" label="LARVAL"/>
+  <label_item value="2" label="MATURE"/>
+  <label_item value="3" label="REKEYING"/>
+  <label_item value="4" label="DELETE"/>
+  <label_item value="5" label="DELETE_WAIT"/>
+  <label_item value="6" label="DEAD"/>
+  <label_item value="100" label="IPSECSA_STAT_V1_1ST_SENT_I"/>
+  <label_item value="101" label="IPSECSA_STAT_V1_WAIT_COMMIT_I"/>
+  <label_item value="102" label="IPSECSA_STAT_V1_2ND_SENT_R"/>
+  <label_item value="103" label="IPSECSA_STAT_V1_MATURE"/>
+  <label_item value="104" label="IPSECSA_STAT_V1_REKEYING"/>
+  <label_item value="105" label="IPSECSA_STAT_V1_DELETE"/>
+  <label_item value="106" label="IPSECSA_STAT_V1_DELETE_WAIT"/>
+  <label_item value="107" label="IPSECSA_STAT_V1_DEAD"/>
+</label>
+<label tag="VIF_TYPE">
+  <label_item value="1" label="ETHER_TAP"/>
+  <label_item value="2" label="IP_TUNNEL"/>
+</label>
+<label tag="AF">
+  <label_item value="0" label="UNSPEC"/>
+  <label_item value="1" label="UNIX"/>
+  <label_item value="2" label="INET"/>
+  <label_item value="10" label="INET6"/>
+  <label_item value="15" label="KEY"/>
+  <label_item value="16" label="NETLINK"/>
+</label>
+<label tag="IKE_SIDE">
+  <label_item value="0" label="IKE_INITIATOR"/>
+  <label_item value="1" label="IKE_RESPONDER"/>
+</label>
+<label tag="IPSEC_DIR">
+  <label_item value="0" label="DIR_INBOUND"/>
+  <label_item value="1" label="DIR_OUTBOUND"/>
+</label>
+<label tag="PKT">
+  <label_item value="0" label="IPV4_IKE"/>
+  <label_item value="1" label="IPV6_IKE"/>
+  <label_item value="2" label="IPV4_ESP"/>
+  <label_item value="3" label="IPV6_ESP"/>
+  <label_item value="4" label="IPV4_ESP_NAT_T"/>
+  <label_item value="5" label="IPV6_ESP_NAT_T"/>
+  <label_item value="6" label="PLAIN_ETHER_TAP"/>
+  <label_item value="7" label="PLAIN_IPV4_TUNNEL"/>
+  <label_item value="8" label="PLAIN_IPV6_TUNNEL"/>
+  <label_item value="9" label="PLAIN_IPV4_ESP_DUMMY"/>
+  <label_item value="10" label="PLAIN_IPV6_ESP_DUMMY"/>
+  <label_item value="11" label="IPV4_DNS"/>
+  <label_item value="12" label="IPV6_DNS"/>
+  <label_item value="13" label="IPV4_RADIUS"/>
+  <label_item value="14" label="IPV6_RADIUS"/>
+</label>
+<label tag="PROTO_IP">
+  <label_item value="1" label="ICMP"/>
+  <label_item value="6" label="TCP"/>
+  <label_item value="17" label="UDP"/>
+  <label_item value="47" label="GRE"/>
+  <label_item value="50" label="ESP"/>
+  <label_item value="51" label="AH"/>
+  <label_item value="97" label="ETHERIP"/>
+  <label_item value="108" label="IPCOMP"/>
+  <label_item value="115" label="L2TP"/>
+  <label_item value="132" label="SCTP"/>
+  <label_item value="136" label="UDPLITE"/>
+</label>
+<label tag="PROTO_IKE_EXCHG">
+  <label_item value="34" label="IKE_SA_INIT"/>
+  <label_item value="35" label="IKE_AUTH"/>
+  <label_item value="36" label="CREATE_CHILD_SA"/>
+  <label_item value="37" label="INFORMATIONAL"/>
+  <label_item value="38" label="SESS_RESUME"/>
+</label>
+<label tag="PROTO_IKE_PAYLOAD">
+  <label_item value="0" label="PROTO_IKE_NO_MORE_PAYLOADS"/>
+  <label_item value="33" label="SA"/>
+  <label_item value="34" label="KE"/>
+  <label_item value="35" label="ID_I"/>
+  <label_item value="36" label="ID_R"/>
+  <label_item value="37" label="CERT"/>
+  <label_item value="38" label="CERTREQ"/>
+  <label_item value="39" label="AUTH"/>
+  <label_item value="40" label="N_I_R"/>
+  <label_item value="41" label="N"/>
+  <label_item value="42" label="D"/>
+  <label_item value="43" label="V"/>
+  <label_item value="44" label="TS_I"/>
+  <label_item value="45" label="TS_R"/>
+  <label_item value="46" label="E"/>
+  <label_item value="47" label="CP"/>
+  <label_item value="48" label="EAP"/>
+  <label_item value="49" label="GSPM"/>
+  <label_item value="50" label="IDG"/>
+  <label_item value="51" label="GSA"/>
+  <label_item value="52" label="KD"/>
+  <label_item value="53" label="SKF"/>
+</label>
+<label tag="PROTO_IKE_PROTOID">
+  <label_item value="1" label="IKE"/>
+  <label_item value="2" label="AH"/>
+  <label_item value="3" label="ESP"/>
+</label>
+<label tag="PROTO_IKE_TRANSFORM">
+  <label_item value="0" label="TYPE_RESERVED"/>
+  <label_item value="1" label="TYPE_ENCR"/>
+  <label_item value="2" label="TYPE_PRF"/>
+  <label_item value="3" label="TYPE_INTEG"/>
+  <label_item value="4" label="TYPE_DH"/>
+  <label_item value="5" label="TYPE_ESN"/>
+  <label_item value="5" label="TYPE_MAX"/>
+</label>
+<label tag="PROTO_IKE_ID">
+  <label_item value="0" label="ANY"/>
+  <label_item value="1" label="IPV4_ADDR"/>
+  <label_item value="2" label="FQDN"/>
+  <label_item value="3" label="RFC822_ADDR"/>
+  <label_item value="4" label="UNASSIGNED4"/>
+  <label_item value="5" label="IPV6_ADDR"/>
+  <label_item value="6" label="UNASSIGNED6"/>
+  <label_item value="7" label="UNASSIGNED7"/>
+  <label_item value="8" label="UNASSIGNED8"/>
+  <label_item value="9" label="DER_ASN1_DN"/>
+  <label_item value="10" label="DER_ASN1_GN"/>
+  <label_item value="11" label="KEY_ID"/>
+  <label_item value="12" label="FC_NAME"/>
+  <label_item value="13" label="NULL_ID"/>
+  <label_item value="10000" label="PRIVATE_SUBJECTALTNAME"/>
+  <label_item value="10001" label="PRIVATE_CERT_AUTO"/>
+  <label_item value="10002" label="PRIVATE_NOT_RESOLVED"/>
+  <label_item value="10003" label="PRIVATE_NULL_ID_WITH_ALT_ID"/>
+  <label_item value="10004" label="PRIVATE_NULL_ID_WITH_ADDR"/>
+</label>
+<label tag="PROTO_IKE_NOTIFY">
+  <label_item value="0" label="RESERVED"/>
+  <label_item value="1" label="ERR_UNSUPPORTED_CRITICAL_PAYLOAD"/>
+  <label_item value="4" label="ERR_INVALID_IKE_SPI"/>
+  <label_item value="5" label="ERR_INVALID_MAJOR_VERSION"/>
+  <label_item value="7" label="ERR_INVALID_SYNTAX"/>
+  <label_item value="9" label="ERR_INVALID_MESSAGE_ID"/>
+  <label_item value="11" label="ERR_INVALID_SPI"/>
+  <label_item value="14" label="ERR_NO_PROPOSAL_CHOSEN"/>
+  <label_item value="17" label="ERR_INVALID_KE_PAYLOAD"/>
+  <label_item value="24" label="ERR_AUTHENTICATION_FAILED"/>
+  <label_item value="34" label="ERR_SINGLE_PAIR_REQUIRED"/>
+  <label_item value="35" label="ERR_NO_ADDITIONAL_SAS"/>
+  <label_item value="36" label="ERR_INTERNAL_ADDRESS_FAILURE"/>
+  <label_item value="37" label="ERR_FAILED_CP_REQUIRED"/>
+  <label_item value="38" label="ERR_TS_UNACCEPTABLE"/>
+  <label_item value="39" label="ERR_INVALID_SELECTORS"/>
+  <label_item value="40" label="ERR_UNACCEPTABLE_ADDRESSES"/>
+  <label_item value="41" label="ERR_UNEXPECTED_NAT_DETECTED"/>
+  <label_item value="43" label="ERR_TEMPORARY_FAILURE"/>
+  <label_item value="44" label="ERR_CHILD_SA_NOT_FOUND"/>
+  <label_item value="12345" label="ERR_PRIV_MS_STATUS"/>
+  <label_item value="16384" label="ST_INITIAL_CONTACT"/>
+  <label_item value="16385" label="ST_SET_WINDOW_SIZE"/>
+  <label_item value="16386" label="ST_ADDITIONAL_TS_POSSIBLE"/>
+  <label_item value="16387" label="ST_IPCOMP_SUPPORTED"/>
+  <label_item value="16388" label="ST_NAT_DETECTION_SOURCE_IP"/>
+  <label_item value="16389" label="ST_NAT_DETECTION_DESTINATION_IP"/>
+  <label_item value="16390" label="ST_COOKIE"/>
+  <label_item value="16391" label="ST_USE_TRANSPORT_MODE"/>
+  <label_item value="16392" label="ST_HTTP_CERT_LOOKUP_SUPPORTED"/>
+  <label_item value="16393" label="ST_REKEY_SA"/>
+  <label_item value="16394" label="ST_ESP_TFC_PADDING_NOT_SUPPORTED"/>
+  <label_item value="16395" label="ST_NON_FIRST_FRAGMENTS_ALSO"/>
+  <label_item value="16396" label="ST_MOBIKE_SUPPORTED"/>
+  <label_item value="16397" label="ST_ADDITIONAL_IP4_ADDRESS"/>
+  <label_item value="16398" label="ST_ADDITIONAL_IP6_ADDRESS"/>
+  <label_item value="16399" label="ST_NO_ADDITIONAL_ADDRESSES"/>
+  <label_item value="16400" label="ST_UPDATE_SA_ADDRESSES"/>
+  <label_item value="16401" label="ST_COOKIE2"/>
+  <label_item value="16402" label="ST_NO_NATS_ALLOWED"/>
+  <label_item value="16419" label="ST_QCD_TOKEN"/>
+  <label_item value="40960" label="ST_PRIV_START"/>
+  <label_item value="65535" label="ST_PRIV_END"/>
+  <label_item value="40003" label="ST_PRIV_MS_NOTIFY_STATUS"/>
+  <label_item value="40004" label="ST_PRIV_MS_NOTIFY_DOS_COOKIE"/>
+  <label_item value="40005" label="ST_PRIV_MS_NOTIFY_EXCHANGE_INFO"/>
+  <label_item value="59300" label="ST_PRIV_USE_ETHERIP_ENCAP"/>
+  <label_item value="59301" label="ST_PRIV_INTERNAL_IP4_ADDRESS"/>
+  <label_item value="59302" label="ST_PRIV_INTERNAL_IP6_ADDRESS"/>
+  <label_item value="59303" label="ST_PRIV_INTERNAL_MAC_ADDRESS"/>
+  <label_item value="59304" label="ST_PRIV_INTERNAL_ACCESSPOINT"/>
+  <label_item value="59305" label="ST_PRIV_INTERNAL_MESH_NODE"/>
+  <label_item value="59306" label="ST_PRIV_REALM_ID"/>
+  <label_item value="59307" label="ST_PRIV_IPV6_AUTOCONF_REKEY_SA"/>
+  <label_item value="59308" label="ST_PRIV_USE_GRE_ENCAP"/>
+  <label_item value="59309" label="ST_PRIV_AUTH_TICKET"/>
+  <label_item value="59310" label="ST_PRIV_ENC_AUTH_TICKET"/>
+  <label_item value="59311" label="ST_PRIV_AUTH_TICKET_SUPPORTED"/>
+  <label_item value="59400" label="ST_PRIV_DBG_IKE_INTEG_ERR"/>
+  <label_item value="59401" label="ST_PRIV_DBG_ESP_INTEG_ERR"/>
+</label>
+<label tag="PROTO_IKE_CFG">
+  <label_item value="1" label="REQUEST"/>
+  <label_item value="2" label="REPLY"/>
+  <label_item value="3" label="SET"/>
+  <label_item value="4" label="ACK"/>
+</label>
+<label tag="PROTO_IKE_CFG_ATTR">
+  <label_item value="1" label="INTERNAL_IP4_ADDRESS"/>
+  <label_item value="2" label="INTERNAL_IP4_NETMASK"/>
+  <label_item value="3" label="INTERNAL_IP4_DNS"/>
+  <label_item value="4" label="INTERNAL_IP4_NBNS"/>
+  <label_item value="5" label="INTERNAL_ADDRESS_EXPIRY"/>
+  <label_item value="6" label="INTERNAL_IP4_DHCP"/>
+  <label_item value="7" label="APPLICATION_VERSION"/>
+  <label_item value="8" label="INTERNAL_IP6_ADDRESS"/>
+  <label_item value="10" label="INTERNAL_IP6_DNS"/>
+  <label_item value="11" label="INTERNAL_IP6_NBNS"/>
+  <label_item value="12" label="INTERNAL_IP6_DHCP"/>
+  <label_item value="13" label="INTERNAL_IP4_SUBNET"/>
+  <label_item value="14" label="SUPPORTED_ATTRIBUTES"/>
+  <label_item value="15" label="INTERNAL_IP6_SUBNET"/>
+  <label_item value="28467" label="DNS_SFX"/>
+  <label_item value="28468" label="IPV4_GATEWAY"/>
+</label>
+<label tag="PROTO_IKE_CERTENC">
+  <label_item value="1" label="PKCS7_X509_CERT"/>
+  <label_item value="2" label="PGP_CERT"/>
+  <label_item value="3" label="DNS_SIGNED_KEY"/>
+  <label_item value="4" label="X509_CERT_SIG"/>
+  <label_item value="6" label="KERBEROS_TOKEN"/>
+  <label_item value="7" label="CRL"/>
+  <label_item value="8" label="ARL"/>
+  <label_item value="9" label="SPKI_CERT"/>
+  <label_item value="10" label="X509_CERT_ATTR"/>
+  <label_item value="11" label="RAW_RSA_KEY"/>
+  <label_item value="12" label="X509_CERT_HASH_URL"/>
+  <label_item value="13" label="X509_BUNDLE_HASH_URL"/>
+</label>
+<label tag="PROTO_IKE_NOTIFY_RHP_INTERNAL_NET_MODE">
+  <label_item value="1" label="PROTO_IKE_NOTIFY_INTERNAL_NET_MODE_IPNET"/>
+  <label_item value="2" label="PROTO_IKE_NOTIFY_INTERNAL_NET_MODE_ETHERNET"/>
+</label>
+<label tag="PROTO_IKE_TS">
+  <label_item value="7" label="IPV4_ADDR_RANGE"/>
+  <label_item value="8" label="IPV6_ADDR_RANGE"/>
+  <label_item value="1" label="PROTO_IKEV1_ID_IPV4_ADDR"/>
+  <label_item value="4" label="PROTO_IKEV1_ID_IPV4_ADDR_SUBNET"/>
+  <label_item value="5" label="PROTO_IKEV1_ID_IPV6_ADDR"/>
+  <label_item value="6" label="PROTO_IKEV1_ID_IPV6_ADDR_SUBNET"/>
+</label>
+<label tag="IPC">
+  <label_item value="0" label="RESERVED"/>
+  <label_item value="1" label="EXIT_REQUEST"/>
+  <label_item value="2" label="NOP"/>
+  <label_item value="10" label="NETMNG_REGISTER"/>
+  <label_item value="11" label="NETMNG_UPDATE_IF"/>
+  <label_item value="12" label="NETMNG_UPDATE_ADDR"/>
+  <label_item value="13" label="NETMNG_DELETE_IF"/>
+  <label_item value="14" label="NETMNG_DELETE_ADDR"/>
+  <label_item value="15" label="NETMNG_VIF_CREATE"/>
+  <label_item value="16" label="NETMNG_VIF_DELETE"/>
+  <label_item value="17" label="NETMNG_VIF_UPDATE"/>
+  <label_item value="18" label="NETMNG_ROUTE_UPDATE"/>
+  <label_item value="19" label="NETMNG_ROUTE_DELETE"/>
+  <label_item value="20" label="NETMNG_DNSPXY_RDIR_START"/>
+  <label_item value="21" label="NETMNG_DNSPXY_RDIR_END"/>
+  <label_item value="22" label="NETMNG_BRIDGE_ADD"/>
+  <label_item value="23" label="NETMNG_BRIDGE_DELETE"/>
+  <label_item value="24" label="NETMNG_ROUTEMAP_UPDATED"/>
+  <label_item value="25" label="NETMNG_ROUTEMAP_DELETED"/>
+  <label_item value="26" label="NETMNG_VIF_EXEC_IPV6_AUTOCONF"/>
+  <label_item value="100" label="AUTH_BASIC_REQUEST"/>
+  <label_item value="101" label="AUTH_BASIC_REPLY"/>
+  <label_item value="102" label="AUTH_COOKIE_REQUEST"/>
+  <label_item value="103" label="AUTH_COOKIE_REPLY"/>
+  <label_item value="200" label="SIGN_REQUEST"/>
+  <label_item value="201" label="SIGN_PSK_REPLY"/>
+  <label_item value="202" label="SIGN_RSASIG_REPLY"/>
+  <label_item value="203" label="VERIFY_PSK_REQUEST"/>
+  <label_item value="204" label="VERIFY_PSK_REPLY"/>
+  <label_item value="205" label="VERIFY_RSASIG_REQUEST"/>
+  <label_item value="206" label="VERIFY_RSASIG_REPLY"/>
+  <label_item value="207" label="CA_PUBKEY_DIGESTS_REQUEST"/>
+  <label_item value="208" label="CA_PUBKEY_DIGESTS_REPLY"/>
+  <label_item value="209" label="RESOLVE_MY_ID_REQUEST"/>
+  <label_item value="210" label="RESOLVE_MY_ID_REPLY"/>
+  <label_item value="211" label="VERIFY_AND_SIGN_REQUEST"/>
+  <label_item value="212" label="VERIFY_AND_SIGN_REPLY"/>
+  <label_item value="213" label="EAP_SUP_VERIFY_REQUEST"/>
+  <label_item value="214" label="EAP_SUP_VERIFY_REPLY"/>
+  <label_item value="215" label="QCD_TOKEN_REQUEST"/>
+  <label_item value="216" label="QCD_TOKEN_REPLY"/>
+  <label_item value="217" label="QCD_GEN_REPLY_TOKEN_REQUEST"/>
+  <label_item value="218" label="QCD_GEN_REPLY_TOKEN_REPLY"/>
+  <label_item value="219" label="SESS_RESUME_ENC_REQUEST"/>
+  <label_item value="220" label="SESS_RESUME_ENC_REPLY"/>
+  <label_item value="221" label="SESS_RESUME_DEC_REQUEST"/>
+  <label_item value="222" label="SESS_RESUME_DEC_REPLY"/>
+  <label_item value="300" label="SYSPXY_CFG_REQUEST"/>
+  <label_item value="301" label="SYSPXY_CFG_REPLY"/>
+  <label_item value="302" label="CA_PUBKEY_DIGESTS_UPDATE"/>
+  <label_item value="400" label="SYSPXY_MEMORY_DBG"/>
+  <label_item value="500" label="SYSPXY_LOG_RECORD"/>
+  <label_item value="501" label="SYSPXY_LOG_CTRL"/>
+  <label_item value="600" label="EAP_AUTH_HANDLE_REQUEST"/>
+  <label_item value="601" label="EAP_AUTH_HANDLE_REPLY"/>
+  <label_item value="602" label="EAP_AUTH_HANDLE_CANCEL"/>
+  <label_item value="603" label="EAP_SUP_HANDLE_REQUEST"/>
+  <label_item value="604" label="EAP_SUP_HANDLE_REPLY"/>
+  <label_item value="605" label="EAP_SUP_HANDLE_CANCEL"/>
+  <label_item value="606" label="EAP_SUP_USER_KEY_REQUEST"/>
+  <label_item value="607" label="EAP_SUP_USER_KEY"/>
+  <label_item value="608" label="EAP_SUP_USER_KEY_CACHED"/>
+  <label_item value="609" label="EAP_SUP_USER_KEY_CLEAR_CACHE"/>
+  <label_item value="700" label="FIREWALL_RULES_APPLY"/>
+  <label_item value="800" label="RADIUS_MESG_AUTH_REQUEST"/>
+  <label_item value="801" label="RADIUS_MESG_AUTH_REPLY"/>
+  <label_item value="802" label="RADIUS_MESG_SIGN_REQUEST"/>
+  <label_item value="803" label="RADIUS_MESG_SIGN_REPLY"/>
+</label>
+<label tag="SYSPXY_EOPLL_EVENT">
+  <label_item value="0" label="SYSPXY_EPOLL_NETLINK"/>
+  <label_item value="1" label="SYSPXY_EPOLL_IPC"/>
+</label>
+<label tag="MAIN_EOPLL_EVENT">
+  <label_item value="0" label="MAIN_EPOLL_IPC"/>
+  <label_item value="1" label="MAIN_EPOLL_NETSOCK"/>
+  <label_item value="2" label="MAIN_EPOLL_TUNDEV"/>
+  <label_item value="3" label="MAIN_EPOLL_HTTP_LISTEN"/>
+  <label_item value="4" label="MAIN_EPOLL_HTTP_SERVER"/>
+  <label_item value="5" label="MAIN_EPOLL_DNSPXY_RSLVR"/>
+  <label_item value="6" label="MAIN_EPOLL_DNSPXY_PROTECTED_V4"/>
+  <label_item value="7" label="MAIN_EPOLL_DNSPXY_INET_V4"/>
+  <label_item value="8" label="MAIN_EPOLL_HTTP_CLT_GET_CONNECT"/>
+  <label_item value="9" label="MAIN_EPOLL_HTTP_CLT_GET_RECV"/>
+  <label_item value="10" label="MAIN_EPOLL_DNSPXY_PROTECTED_V6"/>
+  <label_item value="11" label="MAIN_EPOLL_DNSPXY_INET_V6"/>
+</label>
+<label tag="IP_PMTUD_FLAG">
+  <label_item value="0" label="IP_PMTUDISC_DONT"/>
+  <label_item value="1" label="IP_PMTUDISC_WANT"/>
+  <label_item value="2" label="IP_PMTUDISC_DO"/>
+  <label_item value="3" label="IP_PMTUDISC_PROBE"/>
+</label>
+<label tag="WTS_DISP_RULE_FLAG">
+  <label_item value="1" label="WTS_DISP_RULE_NETSOCK"/>
+  <label_item value="2" label="WTS_DISP_RULE_CERTOPR"/>
+  <label_item value="3" label="WTS_DISP_RULE_AUTHREP"/>
+  <label_item value="4" label="WTS_DISP_RULE_ESP_TX"/>
+  <label_item value="5" label="WTS_DISP_RULE_TUNTAP"/>
+  <label_item value="6" label="WTS_DISP_RULE_SESS_RESUME_DEC_TKT"/>
+  <label_item value="7" label="WTS_DISP_RULE_DMVPN_HANDLE_SHORTCUT"/>
+  <label_item value="8" label="WTS_DISP_RULE_MISC"/>
+  <label_item value="9" label="WTS_DISP_RULE_RAND"/>
+  <label_item value="10" label="WTS_DISP_RULE_SAME_WORKER"/>
+  <label_item value="11" label="WTS_DISP_RULE_MISC_BLOCKING"/>
+</label>
+<label tag="WTS_DISP_LEVEL_FLAG">
+  <label_item value="0" label="WTS_DISP_LEVEL_CTRL"/>
+  <label_item value="1" label="WTS_DISP_LEVEL_HIGH_1"/>
+  <label_item value="2" label="WTS_DISP_LEVEL_HIGH_2"/>
+  <label_item value="3" label="WTS_DISP_LEVEL_HIGH_3"/>
+  <label_item value="4" label="WTS_DISP_LEVEL_LOW_1"/>
+  <label_item value="5" label="WTS_DISP_LEVEL_LOW_2"/>
+  <label_item value="6" label="WTS_DISP_LEVEL_LOW_3"/>
+</label>
+<label tag="NETSOCK_RX_SOCK">
+  <label_item value="0" label="NETSOCK_RX_SK_IKE"/>
+  <label_item value="1" label="NETSOCK_RX_SK_ESP"/>
+  <label_item value="2" label="NETSOCK_RX_SK_NAT_T"/>
+</label>
+<label tag="PROCESS_ROLE">
+  <label_item value="0" label="SYSPXY"/>
+  <label_item value="1" label="MAIN"/>
+</label>
+<label tag="NETLINK_MSG">
+  <label_item value="1" label="NLMSG_NOOP"/>
+  <label_item value="2" label="NLMSG_ERROR"/>
+  <label_item value="3" label="NLMSG_DONE"/>
+  <label_item value="4" label="NLMSG_OVERRUN"/>
+  <label_item value="16" label="RTM_NEWLINK"/>
+  <label_item value="17" label="RTM_DELLINK"/>
+  <label_item value="18" label="RTM_GETLINK"/>
+  <label_item value="19" label="RTM_SETLINK"/>
+  <label_item value="20" label="RTM_NEWADDR"/>
+  <label_item value="21" label="RTM_DELADDR"/>
+  <label_item value="22" label="RTM_GETADDR"/>
+  <label_item value="24" label="RTM_NEWROUTE"/>
+  <label_item value="25" label="RTM_DELROUTE"/>
+  <label_item value="26" label="RTM_GETROUTE"/>
+  <label_item value="28" label="RTM_NEWNEIGH"/>
+  <label_item value="29" label="RTM_DELNEIGH"/>
+  <label_item value="30" label="RTM_GETNEIGH"/>
+  <label_item value="32" label="RTM_NEWRULE"/>
+  <label_item value="33" label="RTM_DELRULE"/>
+  <label_item value="34" label="RTM_GETRULE"/>
+  <label_item value="36" label="RTM_NEWQDISC"/>
+  <label_item value="37" label="RTM_DELQDISC"/>
+  <label_item value="38" label="RTM_GETQDISC"/>
+  <label_item value="40" label="RTM_NEWTCLASS"/>
+  <label_item value="41" label="RTM_DELTCLASS"/>
+  <label_item value="42" label="RTM_GETTCLASS"/>
+  <label_item value="44" label="RTM_NEWTFILTER"/>
+  <label_item value="45" label="RTM_DELTFILTER"/>
+  <label_item value="46" label="RTM_GETTFILTER"/>
+  <label_item value="48" label="RTM_NEWACTION"/>
+  <label_item value="49" label="RTM_DELACTION"/>
+  <label_item value="50" label="RTM_GETACTION"/>
+  <label_item value="52" label="RTM_NEWPREFIX"/>
+  <label_item value="58" label="RTM_GETMULTICAST"/>
+  <label_item value="62" label="RTM_GETANYCAST"/>
+  <label_item value="64" label="RTM_NEWNEIGHTBL"/>
+  <label_item value="66" label="RTM_GETNEIGHTBL"/>
+  <label_item value="67" label="RTM_SETNEIGHTBL"/>
+  <label_item value="68" label="RTM_NEWNDUSEROPT"/>
+  <label_item value="72" label="RTM_NEWADDRLABEL"/>
+  <label_item value="73" label="RTM_DELADDRLABEL"/>
+  <label_item value="74" label="RTM_GETADDRLABEL"/>
+</label>
+<label tag="NETLINK_RTA">
+  <label_item value="0" label="IFLA_UNSPEC"/>
+  <label_item value="1" label="IFLA_ADDRESS"/>
+  <label_item value="2" label="IFLA_BROADCAST"/>
+  <label_item value="3" label="IFLA_IFNAME"/>
+  <label_item value="4" label="IFLA_MTU"/>
+  <label_item value="5" label="IFLA_LINK"/>
+  <label_item value="6" label="IFLA_QDISC"/>
+  <label_item value="7" label="IFLA_STATS"/>
+  <label_item value="8" label="IFLA_COST"/>
+  <label_item value="9" label="IFLA_PRIORITY"/>
+  <label_item value="10" label="IFLA_MASTER"/>
+  <label_item value="11" label="IFLA_WIRELESS"/>
+  <label_item value="12" label="IFLA_PROTINFO"/>
+  <label_item value="13" label="IFLA_TXQLEN"/>
+  <label_item value="14" label="IFLA_MAP"/>
+  <label_item value="15" label="IFLA_WEIGHT"/>
+  <label_item value="16" label="IFLA_OPERSTATE"/>
+  <label_item value="17" label="IFLA_LINKMODE"/>
+  <label_item value="18" label="IFLA_LINKINFO"/>
+  <label_item value="19" label="IFLA_NET_NS_PID"/>
+</label>
+<label tag="RT_TABLE">
+  <label_item value="0" label="UNSPEC"/>
+  <label_item value="253" label="DEFAULT"/>
+  <label_item value="254" label="MAIN"/>
+  <label_item value="255" label="LOCAL"/>
+</label>
+<label tag="RT_RTN">
+  <label_item value="0" label="RTN_UNSPEC"/>
+  <label_item value="1" label="RTN_UNICAST"/>
+  <label_item value="2" label="RTN_LOCAL"/>
+  <label_item value="3" label="RTN_BROADCAST"/>
+  <label_item value="4" label="RTN_ANYCAST"/>
+  <label_item value="5" label="RTN_MULTICAST"/>
+  <label_item value="6" label="RTN_BLACKHOLE"/>
+  <label_item value="7" label="RTN_UNREACHABLE"/>
+  <label_item value="8" label="RTN_PROHIBIT"/>
+  <label_item value="9" label="RTN_THROW"/>
+  <label_item value="10" label="RTN_NAT"/>
+  <label_item value="11" label="RTN_XRESOLVE"/>
+</label>
+<label tag="RT_SCOPE">
+  <label_item value="0" label="UNIVERSE"/>
+  <label_item value="200" label="SITE"/>
+  <label_item value="253" label="LINK"/>
+  <label_item value="254" label="HOST"/>
+  <label_item value="255" label="NOWHERE"/>
+</label>
+<label tag="RTPROT">
+  <label_item value="0" label="UNSPEC"/>
+  <label_item value="1" label="REDIRECT"/>
+  <label_item value="2" label="KERNEL"/>
+  <label_item value="3" label="BOOT"/>
+  <label_item value="4" label="STATIC"/>
+  <label_item value="8" label="GATED"/>
+  <label_item value="9" label="RA"/>
+  <label_item value="10" label="MRT"/>
+  <label_item value="11" label="ZEBRA"/>
+  <label_item value="12" label="BIRD"/>
+  <label_item value="13" label="DNROUTED"/>
+  <label_item value="14" label="XORP"/>
+  <label_item value="15" label="NTK"/>
+</label>
+<label tag="RTA_ATTR_TYPE">
+  <label_item value="0" label="RTA_UNSPEC"/>
+  <label_item value="1" label="RTA_DST"/>
+  <label_item value="2" label="RTA_SRC"/>
+  <label_item value="3" label="RTA_IIF"/>
+  <label_item value="4" label="RTA_OIF"/>
+  <label_item value="5" label="RTA_GATEWAY"/>
+  <label_item value="6" label="RTA_PRIORITY"/>
+  <label_item value="7" label="RTA_PREFSRC"/>
+  <label_item value="8" label="RTA_METRICS"/>
+  <label_item value="9" label="RTA_MULTIPATH"/>
+  <label_item value="10" label="RTA_PROTOINFO"/>
+  <label_item value="11" label="RTA_FLOW"/>
+  <label_item value="12" label="RTA_CACHEINFO"/>
+  <label_item value="13" label="RTA_SESSION"/>
+  <label_item value="14" label="RTA_MP_ALGO"/>
+  <label_item value="15" label="RTA_TABLE"/>
+  <label_item value="16" label="RTA_MARK"/>
+</label>
+<label tag="IFC_EVT">
+  <label_item value="0" label="DESTROY"/>
+  <label_item value="1" label="UPDATE_IF"/>
+  <label_item value="2" label="UPDATE_ADDR"/>
+  <label_item value="3" label="DELETE_IF"/>
+  <label_item value="4" label="DELETE_ADDR"/>
+</label>
+<label tag="UI">
+  <label_item value="0" label="TYPE_HTTP"/>
+</label>
+<label tag="TIMER_STAT">
+  <label_item value="0" label="INIT"/>
+  <label_item value="1" label="WAITING"/>
+  <label_item value="2" label="EXEC"/>
+  <label_item value="3" label="DONE"/>
+  <label_item value="4" label="DELETED"/>
+</label>
+<label tag="CHILDSA_MODE">
+  <label_item value="0" label="TRANSPORT"/>
+  <label_item value="1" label="TUNNEL"/>
+</label>
+<label tag="IKEV2_MESG_HDLR">
+  <label_item value="0" label="IKEV2_MESG_HANDLER_START"/>
+  <label_item value="1" label="IKEV2_MESG_HANDLER_END"/>
+  <label_item value="10" label="IKEV2_MESG_HANDLER_IKESA_INIT"/>
+  <label_item value="11" label="IKEV2_MESG_HANDLER_SESS_RESUME"/>
+  <label_item value="20" label="IKEV2_MESG_HANDLER_NAT_T"/>
+  <label_item value="25" label="IKEV2_MESG_HANDLER_AUTH_TKT_SHORTCUT"/>
+  <label_item value="30" label="IKEV2_MESG_HANDLER_IKESA_AUTH"/>
+  <label_item value="40" label="IKEV2_MESG_HANDLER_EAP"/>
+  <label_item value="50" label="IKEV2_MESG_HANDLER_CONFIG"/>
+  <label_item value="60" label="IKEV2_MESG_HANDLER_INTERNAL_NET"/>
+  <label_item value="70" label="IKEV2_MESG_HANDLER_CREATE_CHILDSA"/>
+  <label_item value="80" label="IKEV2_MESG_HANDLER_KEEP_ALIVE"/>
+  <label_item value="90" label="IKEV2_MESG_HANDLER_REKEY"/>
+  <label_item value="100" label="IKEV2_MESG_HANDLER_MOBIKE"/>
+  <label_item value="110" label="IKEV2_MESG_HANDLER_SESS_RESUME_TKT"/>
+  <label_item value="120" label="IKEV2_MESG_HANDLER_AUTH_TKT_HUB2SPOKE"/>
+  <label_item value="200" label="IKEV2_MESG_HANDLER_QCD"/>
+  <label_item value="1000" label="IKEV2_MESG_HANDLER_INFORMATIONAL"/>
+  <label_item value="1001" label="IKEV2_MESG_HANDLER_DELETE_SA"/>
+  <label_item value="15000" label="IKEV2_MESG_HANDLER_TX_NEW_REQ"/>
+</label>
+<label tag="VPN_ENCAP">
+  <label_item value="1" label="ETHERIP"/>
+  <label_item value="2" label="IPIP"/>
+  <label_item value="4" label="GRE"/>
+  <label_item value="7" label="ANY"/>
+</label>
+<label tag="PROTO_IKE_AUTHMETHOD">
+  <label_item value="0" label="NONE"/>
+  <label_item value="1" label="RSA_SIG"/>
+  <label_item value="2" label="SHARED_KEY"/>
+  <label_item value="3" label="DSS_SIG"/>
+  <label_item value="4" label="UNASSIGNED4"/>
+  <label_item value="5" label="UNASSIGNED5"/>
+  <label_item value="6" label="UNASSIGNED6"/>
+  <label_item value="7" label="UNASSIGNED7"/>
+  <label_item value="8" label="UNASSIGNED8"/>
+  <label_item value="9" label="ECDSA_SHA_256"/>
+  <label_item value="10" label="ECDSA_SHA_384"/>
+  <label_item value="11" label="ECDSA_SHA_512"/>
+  <label_item value="12" label="GSPM"/>
+  <label_item value="13" label="NULL_AUTH"/>
+  <label_item value="14" label="DIGITAL_SIG"/>
+</label>
+<label tag="BRIDGE_SIDE">
+  <label_item value="0" label="TUNTAP"/>
+  <label_item value="1" label="VPN"/>
+</label>
+<label tag="XML_DT">
+  <label_item value="0" label="LONG"/>
+  <label_item value="1" label="ULONG"/>
+  <label_item value="2" label="LONGLONG"/>
+  <label_item value="3" label="ULONGLONG"/>
+  <label_item value="4" label="IPV4"/>
+  <label_item value="5" label="IPV6"/>
+  <label_item value="6" label="PORT"/>
+  <label_item value="7" label="STRING"/>
+  <label_item value="8" label="IPV4_SUBNET"/>
+  <label_item value="9" label="IPV6_SUBNET"/>
+  <label_item value="10" label="BASE64"/>
+  <label_item value="11" label="DN_DER"/>
+  <label_item value="12" label="LONG"/>
+  <label_item value="13" label="ULONG"/>
+  <label_item value="14" label="DOUBLE"/>
+</label>
+<label tag="ROLE_TYPE">
+  <label_item value="1" label="FQDN"/>
+  <label_item value="2" label="EMAIL"/>
+  <label_item value="3" label="SUBJECT"/>
+  <label_item value="4" label="SUBJECTALTNAME_FQDN"/>
+  <label_item value="5" label="SUBJECTALTNAME_EMAIL"/>
+  <label_item value="6" label="EAP_PREFIX_SEARCH"/>
+  <label_item value="7" label="EAP_SUFFIX_SEARCH"/>
+  <label_item value="8" label="ANY"/>
+  <label_item value="9" label="RADIUS_ATTRIBUTE"/>
+</label>
+<label tag="IKEV2_CFG_ATTR_TYPE">
+  <label_item value="1" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP4_ADDRESS"/>
+  <label_item value="2" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP4_NETMASK"/>
+  <label_item value="3" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP4_DNS"/>
+  <label_item value="4" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP4_NBNS"/>
+  <label_item value="5" label="PROTO_IKE_CFG_ATTR_INTERNAL_ADDRESS_EXPIRY"/>
+  <label_item value="6" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP4_DHCP"/>
+  <label_item value="7" label="PROTO_IKE_CFG_ATTR_APPLICATION_VERSION"/>
+  <label_item value="8" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP6_ADDRESS"/>
+  <label_item value="10" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP6_DNS"/>
+  <label_item value="11" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP6_NBNS"/>
+  <label_item value="12" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP6_DHCP"/>
+  <label_item value="13" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP4_SUBNET"/>
+  <label_item value="14" label="PROTO_IKE_CFG_ATTR_SUPPORTED_ATTRIBUTES"/>
+  <label_item value="15" label="PROTO_IKE_CFG_ATTR_INTERNAL_IP6_SUBNET"/>
+  <label_item value="23456" label="PROTO_IKE_CFG_ATTR_MS_INTERNAL_IPV4_SERVER"/>
+  <label_item value="23457" label="PROTO_IKE_CFG_ATTR_MS_INTERNAL_IPV6_SERVER"/>
+  <label_item value="28467" label="PROTO_IKE_CFG_ATTR_DNS_SFX"/>
+  <label_item value="28468" label="PROTO_IKE_CFG_ATTR_IPV4_GATEWAY"/>
+  <label_item value="28469" label="PROTO_IKE_CFG_ATTR_IPV6_GATEWAY"/>
+  <label_item value="28470" label="PROTO_IKE_CFG_ATTR_IPV6_AUTOCONF"/>
+</label>
+<label tag="IPC_SYSPXY_CFG">
+  <label_item value="0" label="NONE"/>
+  <label_item value="1" label="GET"/>
+  <label_item value="2" label="CREATE_REALM"/>
+  <label_item value="3" label="UPDATE_REALM"/>
+  <label_item value="4" label="DELETE_REALM"/>
+  <label_item value="5" label="GET_KEY_INFO"/>
+  <label_item value="6" label="UPDATE_KEY_INFO"/>
+  <label_item value="7" label="DELETE_KEY_INFO"/>
+  <label_item value="8" label="UPDATE_CERT"/>
+  <label_item value="9" label="DELETE_CERT"/>
+  <label_item value="10" label="UPDATE_ADMIN"/>
+  <label_item value="11" label="DELETE_ADMIN"/>
+  <label_item value="12" label="GET_PRINTED_CERTS"/>
+  <label_item value="13" label="ENUM_ADMIN"/>
+  <label_item value="14" label="BKUP_SAVE"/>
+  <label_item value="15" label="UPLOAD_CERT_FILE"/>
+  <label_item value="16" label="UPDATE_CERT_FILE"/>
+  <label_item value="17" label="RSRC_STATISTICS"/>
+  <label_item value="18" label="ENABLE_REALM"/>
+  <label_item value="19" label="DISABLE_REALM"/>
+  <label_item value="20" label="RESET_QCD_KEY"/>
+  <label_item value="21" label="RESET_SESS_RESUME_KEY"/>
+  <label_item value="22" label="UPDATE_RADIUS_MNG"/>
+</label>
+<label tag="XML_NODE">
+  <label_item value="1" label="XML_ELEMENT_NODE"/>
+  <label_item value="2" label="XML_ATTRIBUTE_NODE"/>
+  <label_item value="3" label="XML_TEXT_NODE"/>
+  <label_item value="4" label="XML_CDATA_SECTION_NODE"/>
+  <label_item value="5" label="XML_ENTITY_REF_NODE"/>
+  <label_item value="6" label="XML_ENTITY_NODE"/>
+  <label_item value="7" label="XML_PI_NODE"/>
+  <label_item value="8" label="XML_COMMENT_NODE"/>
+  <label_item value="9" label="XML_DOCUMENT_NODE"/>
+  <label_item value="10" label="XML_DOCUMENT_TYPE_NODE"/>
+  <label_item value="11" label="XML_DOCUMENT_FRAG_NODE"/>
+  <label_item value="12" label="XML_NOTATION_NODE"/>
+  <label_item value="13" label="XML_HTML_DOCUMENT_NODE"/>
+  <label_item value="14" label="XML_DTD_NODE"/>
+  <label_item value="15" label="XML_ELEMENT_DECL"/>
+  <label_item value="16" label="XML_ATTRIBUTE_DECL"/>
+  <label_item value="17" label="XML_ENTITY_DECL"/>
+  <label_item value="18" label="XML_NAMESPACE_DECL"/>
+  <label_item value="19" label="XML_XINCLUDE_START"/>
+  <label_item value="20" label="XML_XINCLUDE_END"/>
+  <label_item value="21" label="XML_DOCB_DOCUMENT_NODE"/>
+</label>
+<label tag="WTS_DISP_TASK_NAME">
+  <label_item value="0" label="WTS_STA_TASK_NAME_PKT"/>
+  <label_item value="1" label="WTS_STA_TASK_NAME_LOG"/>
+</label>
+<label tag="LOG_SRC">
+  <label_item value="1" label="MAIN"/>
+  <label_item value="2" label="SYSPXY"/>
+  <label_item value="3" label="IKEV2"/>
+  <label_item value="4" label="UI"/>
+  <label_item value="5" label="VPNMNG"/>
+  <label_item value="6" label="CFG"/>
+  <label_item value="7" label="AUTHCFG"/>
+</label>
+<label tag="LOG_LV">
+  <label_item value="0" label="DEBUG"/>
+  <label_item value="1" label="ERR"/>
+  <label_item value="2" label="WARN"/>
+  <label_item value="3" label="NOTICE"/>
+  <label_item value="4" label="INFO"/>
+</label>
+<label tag="LOG_ID">
+  <label_item value="100" label="CONNECT_I_ERR"/>
+  <label_item value="101" label="CONNECT_I_START"/>
+  <label_item value="102" label="CLOSE_VPN"/>
+  <label_item value="103" label="CLOSE_VPN_ERR"/>
+  <label_item value="104" label="VPN_ESTABLISHED"/>
+  <label_item value="105" label="VPN_DELETED"/>
+  <label_item value="106" label="VPN_ADDED"/>
+  <label_item value="107" label="MAIN_CREATE_REALM"/>
+  <label_item value="108" label="MAIN_CREATE_REALM_ERR"/>
+  <label_item value="109" label="SYSPXY_CREATE_REALM"/>
+  <label_item value="110" label="SYSPXY_CREATE_REALM_ERR"/>
+  <label_item value="111" label="MAIN_DELETE_REALM"/>
+  <label_item value="112" label="MAIN_DELETE_REALM_ERR"/>
+  <label_item value="113" label="SYSPXY_DELETE_REALM"/>
+  <label_item value="114" label="SYSPXY_DELETE_REALM_ERR"/>
+  <label_item value="115" label="MAIN_UPDATE_REALM"/>
+  <label_item value="116" label="MAIN_UPDATE_REALM_ERR"/>
+  <label_item value="117" label="SYSPXY_UPDATE_REALM"/>
+  <label_item value="118" label="SYSPXY_UPDATE_REALM_ERR"/>
+  <label_item value="119" label="CFG_PARSE_ERR"/>
+  <label_item value="120" label="AUTHCFG_PARSE_ERR"/>
+  <label_item value="121" label="NO_MY_AUTH_INFO"/>
+  <label_item value="122" label="NO_MY_PSK"/>
+  <label_item value="123" label="NO_MY_CERT"/>
+  <label_item value="124" label="NO_PEER_AUTH_INFO"/>
+  <label_item value="125" label="PARSE_GLOBAL_CFG_ERR"/>
+  <label_item value="126" label="UPDATE_GLOBAL_CFG"/>
+  <label_item value="127" label="UPDATE_GLOBAL_CFG_ERR"/>
+  <label_item value="128" label="MEMDBG_FREE_NULL_PT"/>
+  <label_item value="129" label="MEMDBG_FREE_INVALID_PT"/>
+  <label_item value="130" label="MEMDBG_FREE_DUP_PT"/>
+  <label_item value="131" label="MEMDBG_FREE_MAY_DUP_PT"/>
+  <label_item value="132" label="MEMDBG_FREE_MAY_DUP_PT2"/>
+</label>
+<label tag="VIF_ADDR">
+  <label_item value="0" label="STATIC"/>
+  <label_item value="1" label="IKEV2CFG"/>
+  <label_item value="2" label="DHCP"/>
+  <label_item value="3" label="NONE"/>
+</label>
+<label tag="SQLITE3_ERR">
+  <label_item value="0" label="SQLITE_OK"/>
+  <label_item value="1" label="SQLITE_ERROR"/>
+  <label_item value="2" label="SQLITE_INTERNAL"/>
+  <label_item value="3" label="SQLITE_PERM"/>
+  <label_item value="4" label="SQLITE_ABORT"/>
+  <label_item value="5" label="SQLITE_BUSY"/>
+  <label_item value="6" label="SQLITE_LOCKED"/>
+  <label_item value="7" label="SQLITE_NOMEM"/>
+  <label_item value="8" label="SQLITE_READONLY"/>
+  <label_item value="9" label="SQLITE_INTERRUPT"/>
+  <label_item value="10" label="SQLITE_IOERR"/>
+  <label_item value="11" label="SQLITE_CORRUPT"/>
+  <label_item value="12" label="SQLITE_NOTFOUND"/>
+  <label_item value="13" label="SQLITE_FULL"/>
+  <label_item value="14" label="SQLITE_CANTOPEN"/>
+  <label_item value="15" label="SQLITE_PROTOCOL"/>
+  <label_item value="16" label="SQLITE_EMPTY"/>
+  <label_item value="17" label="SQLITE_SCHEMA"/>
+  <label_item value="18" label="SQLITE_TOOBIG"/>
+  <label_item value="19" label="SQLITE_CONSTRAINT"/>
+  <label_item value="20" label="SQLITE_MISMATCH"/>
+  <label_item value="21" label="SQLITE_MISUSE"/>
+  <label_item value="22" label="SQLITE_NOLFS"/>
+  <label_item value="23" label="SQLITE_AUTH"/>
+  <label_item value="24" label="SQLITE_FORMAT"/>
+  <label_item value="25" label="SQLITE_RANGE"/>
+  <label_item value="26" label="SQLITE_NOTADB"/>
+  <label_item value="100" label="SQLITE_ROW"/>
+  <label_item value="101" label="SQLITE_DONE"/>
+</label>
+<label tag="EAP_CODE">
+  <label_item value="1" label="PROTO_REQUEST"/>
+  <label_item value="2" label="PROTO_RESPONSE"/>
+  <label_item value="3" label="PROTO_SUCCESS"/>
+  <label_item value="4" label="PROTO_FAILURE"/>
+</label>
+<label tag="EAP_TYPE">
+  <label_item value="0" label="PROTO_NONE"/>
+  <label_item value="1" label="PROTO_IDENTITY"/>
+  <label_item value="2" label="PROTO_NOTIFICATION"/>
+  <label_item value="3" label="PROTO_NAK"/>
+  <label_item value="4" label="PROTO_MD5_CHALLENGE"/>
+  <label_item value="5" label="PROTO_ONE_TIME_PASSWORD"/>
+  <label_item value="6" label="PROTO_GENERIC_TOKEN_CARD"/>
+  <label_item value="13" label="PROTO_EAP_TLS"/>
+  <label_item value="18" label="PROTO_EAP_GSM_SIM"/>
+  <label_item value="21" label="PROTO_EAP_TTLS"/>
+  <label_item value="23" label="PROTO_EAP_AKA"/>
+  <label_item value="25" label="PROTO_PEAP"/>
+  <label_item value="26" label="PROTO_MS_CHAPV2"/>
+  <label_item value="29" label="PROTO_PEAPV0_MS_CHAPV2"/>
+  <label_item value="43" label="PROTO_EAP_FAST"/>
+  <label_item value="47" label="PROTO_EAP_PSK"/>
+  <label_item value="48" label="PROTO_EAP_SAKE"/>
+  <label_item value="49" label="PROTO_EAP_IKEV2"/>
+  <label_item value="50" label="PROTO_EAP_AKA_PRIME"/>
+  <label_item value="51" label="PROTO_EAP_GPSK"/>
+  <label_item value="52" label="PROTO_EAP_PWD"/>
+  <label_item value="53" label="PROTO_EAP_EKE_V1"/>
+  <label_item value="54" label="PROTO_EAP_PT_EAP"/>
+  <label_item value="55" label="PROTO_TEAP"/>
+  <label_item value="500" label="PROTO_PRIV_RADIUS"/>
+</label>
+<label tag="MSCHAPV2">
+  <label_item value="1" label="PROTO_MS_CHAPV2_CODE_CHALLENGE"/>
+  <label_item value="2" label="PROTO_MS_CHAPV2_CODE_RESPONSE"/>
+  <label_item value="3" label="PROTO_MS_CHAPV2_CODE_SUCCESS"/>
+  <label_item value="4" label="PROTO_MS_CHAPV2_CODE_FAILURE"/>
+  <label_item value="7" label="PROTO_MS_CHAPV2_CODE_CHANGE_PASSWORD"/>
+</label>
+<label tag="EAP_ROLE">
+  <label_item value="0" label="EAP_DISABLED"/>
+  <label_item value="1" label="EAP_SUPPLICANT"/>
+  <label_item value="2" label="EAP_AUTHENTICATOR"/>
+</label>
+<label tag="STUN_ATTR_TYPE">
+  <label_item value="1" label="PROTO_STUN_ATTR_MAPPED_ADDRESS"/>
+  <label_item value="6" label="PROTO_STUN_ATTR_USERNAME"/>
+  <label_item value="8" label="PROTO_STUN_ATTR_MESSAGE_INTEGRITY"/>
+  <label_item value="9" label="PROTO_STUN_ATTR_ERROR_CODE"/>
+  <label_item value="10" label="PROTO_STUN_ATTR_UNKNOWN_ATTRIBUTES"/>
+  <label_item value="20" label="PROTO_STUN_ATTR_REALM"/>
+  <label_item value="21" label="PROTO_STUN_ATTR_NONCE"/>
+  <label_item value="32" label="PROTO_STUN_ATTR_XOR_MAPPED_ADDRESS"/>
+  <label_item value="32802" label="PROTO_STUN_ATTR_SOFTWARE"/>
+  <label_item value="32803" label="PROTO_STUN_ATTR_ALTERNATE_SERVER"/>
+  <label_item value="32808" label="PROTO_STUN_ATTR_FINGERPRINT"/>
+  <label_item value="12" label="PROTO_STUN_ATTR_CHANNEL_NUMBER"/>
+  <label_item value="13" label="PROTO_STUN_ATTR_LIFETIME"/>
+  <label_item value="18" label="PROTO_STUN_ATTR_XOR_PEER_ADDRESS"/>
+  <label_item value="19" label="PROTO_STUN_ATTR_DATA"/>
+  <label_item value="22" label="PROTO_STUN_ATTR_XOR_RELAYED_ADDRESS"/>
+  <label_item value="24" label="PROTO_STUN_ATTR_EVEN_PORT"/>
+  <label_item value="25" label="PROTO_STUN_ATTR_REQUESTED_TRANSPORT"/>
+  <label_item value="26" label="PROTO_STUN_ATTR_DONT_FRAGMENT"/>
+  <label_item value="34" label="PROTO_STUN_ATTR_RESERVATION_TOKEN"/>
+</label>
+<label tag="STUN_METHOD">
+  <label_item value="1" label="PROTO_BIND"/>
+  <label_item value="3" label="PROTO_ALLOCATE"/>
+  <label_item value="4" label="PROTO_REFRESH"/>
+  <label_item value="6" label="PROTO_SEND"/>
+  <label_item value="7" label="PROTO_DATA"/>
+  <label_item value="8" label="PROTO_CREATE_PERMISSION"/>
+  <label_item value="9" label="PROTO_CHANNEL_BIND"/>
+</label>
+<label tag="STUN_CLASS">
+  <label_item value="0" label="PROTO_REQ"/>
+  <label_item value="1" label="PROTO_INDICATION"/>
+  <label_item value="2" label="PROTO_RESP"/>
+  <label_item value="3" label="PROTO_ERROR"/>
+</label>
+<label tag="LIB_MCHP2_STAT">
+  <label_item value="0" label="INIT"/>
+  <label_item value="1" label="CHALLENGE"/>
+  <label_item value="2" label="RETRY_REQ"/>
+  <label_item value="3" label="SUCCESS_REQ"/>
+  <label_item value="4" label="FAILURE_RESP"/>
+  <label_item value="5" label="SUCCESS_RESP"/>
+  <label_item value="6" label="SUCCESS"/>
+  <label_item value="7" label="FAILURE"/>
+</label>
+<label tag="LIB_S_MCHP2_STAT">
+  <label_item value="0" label="INIT"/>
+  <label_item value="1" label="CHALLENGE_RESP"/>
+  <label_item value="2" label="CHALLENGE_RETRY_WAIT_NEWKEY"/>
+  <label_item value="3" label="CHALLENGE_RETRY_RESP"/>
+  <label_item value="4" label="SUCCESS_RESP"/>
+  <label_item value="5" label="FAILURE_RESP"/>
+  <label_item value="6" label="SUCCESS"/>
+  <label_item value="7" label="FAILURE"/>
+</label>
+<label tag="OPNSSL_CRT_ERR">
+  <label_item value="2" label="X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT"/>
+  <label_item value="3" label="X509_V_ERR_UNABLE_TO_GET_CRL"/>
+  <label_item value="4" label="X509_V_ERR_UNABLE_TO_DECRYPT_CERT_SIGNATURE"/>
+  <label_item value="5" label="X509_V_ERR_UNABLE_TO_DECRYPT_CRL_SIGNATURE"/>
+  <label_item value="6" label="X509_V_ERR_UNABLE_TO_DECODE_ISSUER_PUBLIC_KEY"/>
+  <label_item value="7" label="X509_V_ERR_CERT_SIGNATURE_FAILURE"/>
+  <label_item value="8" label="X509_V_ERR_CRL_SIGNATURE_FAILURE"/>
+  <label_item value="9" label="X509_V_ERR_CERT_NOT_YET_VALID"/>
+  <label_item value="10" label="X509_V_ERR_CERT_HAS_EXPIRED"/>
+  <label_item value="11" label="X509_V_ERR_CRL_NOT_YET_VALID"/>
+  <label_item value="12" label="X509_V_ERR_CRL_HAS_EXPIRED"/>
+  <label_item value="13" label="X509_V_ERR_ERROR_IN_CERT_NOT_BEFORE_FIELD"/>
+  <label_item value="14" label="X509_V_ERR_ERROR_IN_CERT_NOT_AFTER_FIELD"/>
+  <label_item value="15" label="X509_V_ERR_ERROR_IN_CRL_LAST_UPDATE_FIELD"/>
+  <label_item value="16" label="X509_V_ERR_ERROR_IN_CRL_NEXT_UPDATE_FIELD"/>
+  <label_item value="17" label="X509_V_ERR_OUT_OF_MEM"/>
+  <label_item value="18" label="X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT"/>
+  <label_item value="19" label="X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN"/>
+  <label_item value="20" label="X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY"/>
+  <label_item value="21" label="X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE"/>
+  <label_item value="22" label="X509_V_ERR_CERT_CHAIN_TOO_LONG"/>
+  <label_item value="23" label="X509_V_ERR_CERT_REVOKED"/>
+  <label_item value="24" label="X509_V_ERR_INVALID_CA"/>
+  <label_item value="25" label="X509_V_ERR_PATH_LENGTH_EXCEEDED"/>
+  <label_item value="26" label="X509_V_ERR_INVALID_PURPOSE"/>
+  <label_item value="27" label="X509_V_ERR_CERT_UNTRUSTED"/>
+  <label_item value="28" label="X509_V_ERR_CERT_REJECTED"/>
+  <label_item value="29" label="X509_V_ERR_SUBJECT_ISSUER_MISMATCH"/>
+  <label_item value="30" label="X509_V_ERR_AKID_SKID_MISMATCH"/>
+  <label_item value="31" label="X509_V_ERR_AKID_ISSUER_SERIAL_MISMATCH"/>
+  <label_item value="32" label="X509_V_ERR_KEYUSAGE_NO_CERTSIGN"/>
+  <label_item value="33" label="X509_V_ERR_UNABLE_TO_GET_CRL_ISSUER"/>
+  <label_item value="34" label="X509_V_ERR_UNHANDLED_CRITICAL_EXTENSION"/>
+  <label_item value="35" label="X509_V_ERR_KEYUSAGE_NO_CRL_SIGN"/>
+  <label_item value="36" label="X509_V_ERR_UNHANDLED_CRITICAL_CRL_EXTENSION"/>
+  <label_item value="37" label="X509_V_ERR_INVALID_NON_CA"/>
+  <label_item value="38" label="X509_V_ERR_PROXY_PATH_LENGTH_EXCEEDED"/>
+  <label_item value="39" label="X509_V_ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE"/>
+  <label_item value="40" label="X509_V_ERR_PROXY_CERTIFICATES_NOT_ALLOWED"/>
+  <label_item value="41" label="X509_V_ERR_INVALID_EXTENSION"/>
+  <label_item value="42" label="X509_V_ERR_INVALID_POLICY_EXTENSION"/>
+  <label_item value="43" label="X509_V_ERR_NO_EXPLICIT_POLICY"/>
+  <label_item value="44" label="X509_V_ERR_DIFFERENT_CRL_SCOPE"/>
+  <label_item value="45" label="X509_V_ERR_UNSUPPORTED_EXTENSION_FEATURE"/>
+  <label_item value="46" label="X509_V_ERR_UNNESTED_RESOURCE"/>
+  <label_item value="47" label="X509_V_ERR_PERMITTED_VIOLATION"/>
+  <label_item value="48" label="X509_V_ERR_EXCLUDED_VIOLATION"/>
+  <label_item value="49" label="X509_V_ERR_SUBTREE_MINMAX"/>
+  <label_item value="51" label="X509_V_ERR_UNSUPPORTED_CONSTRAINT_TYPE"/>
+  <label_item value="52" label="X509_V_ERR_UNSUPPORTED_CONSTRAINT_SYNTAX"/>
+  <label_item value="53" label="X509_V_ERR_UNSUPPORTED_NAME_SYNTAX"/>
+  <label_item value="54" label="X509_V_ERR_CRL_PATH_VALIDATION_ERROR"/>
+  <label_item value="50" label="X509_V_ERR_APPLICATION_VERIFICATION"/>
+</label>
+<label tag="RTMAP_TYPE">
+  <label_item value="0" label="UNKNOWN"/>
+  <label_item value="1" label="DEFAULT"/>
+  <label_item value="2" label="STATIC"/>
+  <label_item value="3" label="DYNAMIC"/>
+  <label_item value="4" label="DYNAMIC_DEFAULT"/>
+  <label_item value="5" label="INTERNAL"/>
+</label>
+<label tag="RTMAP_EVT">
+  <label_item value="0" label="RTMAPC_EVT_DESTROY"/>
+  <label_item value="1" label="RTMAPC_EVT_UPDATED"/>
+  <label_item value="2" label="RTMAPC_EVT_DELETED"/>
+</label>
+<label tag="V6LLADDR_STAT">
+  <label_item value="0" label="V6_LINK_LOCAL_ADDR_INIT"/>
+  <label_item value="1" label="V6_LINK_LOCAL_ADDR_DAD_PROBING"/>
+  <label_item value="2" label="V6_LINK_LOCAL_ADDR_AVAILABLE"/>
+  <label_item value="3" label="V6_LINK_LOCAL_ADDR_ERR"/>
+</label>
+<label tag="RADIUS_CODE">
+  <label_item value="0" label="NONE"/>
+  <label_item value="1" label="ACCESS_REQUEST"/>
+  <label_item value="2" label="ACCESS_ACCEPT"/>
+  <label_item value="3" label="ACCESS_REJECT"/>
+  <label_item value="4" label="ACCOUNTING_REQUEST"/>
+  <label_item value="5" label="ACCOUNTING_RESPONSE"/>
+  <label_item value="11" label="ACCESS_CHALLENGE"/>
+  <label_item value="12" label="STATUS_SERVER"/>
+  <label_item value="13" label="STATUS_CLIENT"/>
+  <label_item value="255" label="RESERVED"/>
+</label>
+<label tag="RADIUS_ATTR">
+  <label_item value="1" label="TYPE_USER_NAME"/>
+  <label_item value="4" label="TYPE_NAS_IP_ADDRESS"/>
+  <label_item value="95" label="TYPE_NAS_IPV6_ADDRESS"/>
+  <label_item value="32" label="TYPE_NAS_ID"/>
+  <label_item value="12" label="TYPE_FRAMED_MTU"/>
+  <label_item value="30" label="TYPE_CALLED_STATION_ID"/>
+  <label_item value="31" label="TYPE_CALLING_STATION_ID"/>
+  <label_item value="61" label="TYPE_NAS_PORT_TYPE"/>
+  <label_item value="79" label="TYPE_EAP"/>
+  <label_item value="80" label="TYPE_MESG_AUTH"/>
+  <label_item value="5" label="TYPE_NAS_PORT"/>
+  <label_item value="87" label="TYPE_NAS_PORT_ID"/>
+  <label_item value="77" label="TYPE_CONNECT_INFO"/>
+  <label_item value="27" label="TYPE_SESSION_TIMEOUT"/>
+  <label_item value="18" label="TYPE_REPLY_MESG"/>
+  <label_item value="24" label="TYPE_STATE"/>
+  <label_item value="26" label="TYPE_VENDOR_SPECIFIC"/>
+  <label_item value="29" label="TYPE_TERMINATION_ACTION"/>
+  <label_item value="8" label="TYPE_FRAMED_IP_ADDRESS"/>
+  <label_item value="9" label="TYPE_FRAMED_IP_NETMASK"/>
+  <label_item value="168" label="TYPE_FRAMED_IPV6_ADDRESS"/>
+  <label_item value="169" label="TYPE_DNS_IPV6_ADDRESS"/>
+  <label_item value="81" label="TYPE_TUNNEL_PRIVATE_GROUP_ID"/>
+  <label_item value="90" label="TYPE_TUNNEL_CLIENT_AUTH_ID"/>
+  <label_item value="101" label="TYPE_ERROR_CAUSE"/>
+</label>
+<label tag="RADIUS_VENDOR">
+  <label_item value="9" label="RADIUS_ATTR_TYPE_VENDOR_SPECIFIC_CISCO"/>
+  <label_item value="311" label="RADIUS_ATTR_TYPE_VENDOR_SPECIFIC_MICROSOFT"/>
+</label>
+<label tag="RADIUS_MS_ATTR">
+  <label_item value="16" label="RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_SEND_KEY"/>
+  <label_item value="17" label="RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_RECV_KEY"/>
+  <label_item value="7" label="RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_ENCRYPTION_POLICY"/>
+  <label_item value="8" label="RADIUS_VENDOR_MS_ATTR_TYPE_MPPE_ENCRYPTION_TYPES"/>
+  <label_item value="28" label="RADIUS_VENDOR_MS_ATTR_TYPE_PRIMARY_DNS_SERVER"/>
+  <label_item value="29" label="RADIUS_VENDOR_MS_ATTR_TYPE_SECONDARY_DNS_SERVER"/>
+  <label_item value="30" label="RADIUS_VENDOR_MS_ATTR_TYPE_PRIMARY_NBNS_SERVER"/>
+  <label_item value="31" label="RADIUS_VENDOR_MS_ATTR_TYPE_SECONDARY_NBNS_SERVER"/>
+</label>
+<label tag="RADIUS_ACCT_STAT">
+  <label_item value="1" label="START"/>
+  <label_item value="2" label="STOP"/>
+  <label_item value="3" label="INTERIM_UPDATE"/>
+  <label_item value="7" label="ACCOUNTING_ON"/>
+  <label_item value="8" label="ACCOUNTING_OFF"/>
+</label>
+<label tag="RADIUS_ACCT_TERM_CAUSE">
+  <label_item value="1" label="USER_REQUEST"/>
+  <label_item value="2" label="LOST_CARRIER"/>
+  <label_item value="3" label="LOST_SERVICE"/>
+  <label_item value="4" label="IDLE_TIMEOUT"/>
+  <label_item value="5" label="SESSION_TIMEOUT"/>
+  <label_item value="6" label="ADMIN_RESET"/>
+  <label_item value="7" label="ADMIN_REBOOT"/>
+  <label_item value="8" label="PORT_ERROR"/>
+  <label_item value="9" label="NAS_ERROR"/>
+  <label_item value="10" label="NAS_REQUEST"/>
+  <label_item value="11" label="NAS_REBOOT"/>
+  <label_item value="12" label="PORT_UNNEEDED"/>
+  <label_item value="13" label="PORT_PREEMPTED"/>
+  <label_item value="14" label="PORT_SUSPENDED"/>
+  <label_item value="15" label="SERVICE_UNAVAILABLE"/>
+  <label_item value="16" label="CALLBACK"/>
+  <label_item value="17" label="USER_ERROR"/>
+  <label_item value="18" label="HOST_REQUEST"/>
+</label>
+<label tag="RADIUS_ACCT_AUTHENTIC">
+  <label_item value="1" label="AUTHENTIC_RADIUS"/>
+  <label_item value="2" label="AUTHENTIC_LOCAL"/>
+  <label_item value="3" label="AUTHENTIC_REMOTE"/>
+</label>
+<label tag="RADIUS_USAGE">
+  <label_item value="0" label="AUTHENTICATION"/>
+  <label_item value="1" label="ACCOUNTING"/>
+</label>
+<label tag="RADIUS_SECRET_IDX">
+  <label_item value="0" label="PRIMARY"/>
+  <label_item value="1" label="SECONDARY"/>
+  <label_item value="2" label="ACCT_PRIMARY"/>
+  <label_item value="3" label="ACCT_SECONDARY"/>
+</label>
+<label tag="NHRP_PKT_TYPE">
+  <label_item value="1" label="PROTO_NHRP_PKT_RESOLUTION_REQ"/>
+  <label_item value="2" label="PROTO_NHRP_PKT_RESOLUTION_REP"/>
+  <label_item value="3" label="PROTO_NHRP_PKT_REGISTRATION_REQ"/>
+  <label_item value="4" label="PROTO_NHRP_PKT_REGISTRATION_REP"/>
+  <label_item value="5" label="PROTO_NHRP_PKT_PURGE_REQ"/>
+  <label_item value="6" label="PROTO_NHRP_PKT_PURGE_REP"/>
+  <label_item value="7" label="PROTO_NHRP_PKT_ERROR_INDICATION"/>
+  <label_item value="8" label="PROTO_NHRP_PKT_TRAFFIC_INDICATION"/>
+</label>
+<label tag="NHRP_CIE_CODE">
+  <label_item value="0" label="PROTO_NONE"/>
+  <label_item value="0" label="PROTO_SUCCESS"/>
+  <label_item value="4" label="PROTO_ADMIN_PROHIBITED"/>
+  <label_item value="5" label="PROTO_NO_RESOURCE"/>
+  <label_item value="14" label="PROTO_ADDR_COLLISION"/>
+</label>
+<label tag="NHRP_ERR_CODE">
+  <label_item value="1" label="PROTO_UNSUP_EXT"/>
+  <label_item value="3" label="PROTO_LOOP_DECTECT"/>
+  <label_item value="6" label="PROTO_UNREACH"/>
+  <label_item value="7" label="PROTO_PROTOCOL_ERR"/>
+  <label_item value="8" label="PROTO_MESG_TOO_LONG"/>
+  <label_item value="9" label="PROTO_INVALID_EXT"/>
+  <label_item value="10" label="PROTO_INVALID_RES_REP"/>
+  <label_item value="11" label="PROTO_AUTH_FAILURE"/>
+  <label_item value="12" label="PROTO_HOP_CNT_EXCEEDED"/>
+</label>
+<label tag="NHRP_TRF_CODE">
+  <label_item value="0" label="PROTO_NHRP_TRAFFIC_CODE_NHRP"/>
+</label>
+<label tag="NHRP_AF">
+  <label_item value="" label="0x0100"/>
+  <label_item value="" label="0x0200"/>
+</label>
+<label tag="NHRP_EXT">
+  <label_item value="0" label="PROTO_TYPE_END"/>
+  <label_item value="3" label="PROTO_TYPE_RESPONDER_ADDRESS"/>
+  <label_item value="4" label="PROTO_TYPE_FORWARD_TRANSIT_NHS_RECORD"/>
+  <label_item value="5" label="PROTO_TYPE_REVERSE_TRANSIT_NHS_RECORD"/>
+  <label_item value="7" label="PROTO_TYPE_AUTHENTICATION"/>
+  <label_item value="8" label="PROTO_TYPE_VENDOR_PRIVATE"/>
+  <label_item value="9" label="PROTO_TYPE_NAT_ADDRESS"/>
+</label>
+<label tag="AUTH_TKT_ATTR">
+  <label_item value="" label="0"/>
+  <label_item value="" label="1"/>
+  <label_item value="" label="2"/>
+  <label_item value="" label="3"/>
+  <label_item value="" label="4"/>
+  <label_item value="" label="5"/>
+  <label_item value="" label="6"/>
+  <label_item value="" label="7"/>
+  <label_item value="" label="8"/>
+  <label_item value="" label="9"/>
+</label>
+<label tag="AUTH_TKT">
+  <label_item value="" label="0"/>
+  <label_item value="" label="1"/>
+  <label_item value="" label="2"/>
+  <label_item value="" label="3"/>
+  <label_item value="" label="4"/>
+</label>
+</log_template>

@@ -1,0 +1,18 @@
+
+<p id="pConfigVpnIfAddrIKEv2Config">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnIfAddressIKEv2ConfigPaneIPv6Auto">
+          <label for="configVpnIfAddressIKEv2ConfigPaneIPv6Auto" style="font-weight: bold; font-size: 100%;">
+            Enable IPv6 address Auto-configuration. 
+          </label>
+            (Rockhopper's private extension)
+        </td>
+      </tr>    
+      <tr style="height: 20px;">
+      </tr>    
+    </tbody>
+  </table>
+</p>

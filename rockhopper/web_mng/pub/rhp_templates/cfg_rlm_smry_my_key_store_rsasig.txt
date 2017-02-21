@@ -1,0 +1,10 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryMykeyStorePSK">
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">Authentication Method</td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStoreRsaSigAuthMethod"></td>
+    </tr>
+  </tbody>
+</table>
+</p>

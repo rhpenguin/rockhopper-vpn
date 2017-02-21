@@ -1,0 +1,17 @@
+  <table><tbody>
+    <tr>
+      <td style="padding-left: 20px;">
+      <label class="configVpnNetworkIfLabel" style="font-size:85%;font-weight:normal;">
+        Destination NAT IPv4 Address:</label></td>
+      <td><div id="configVpnNetworkIfSecondaryNatAddr"></div></td>
+    </tr>
+  </tbody></table>
+
+  <table><tbody>
+    <tr>
+      <td style="padding-left: 20px;">
+      <label class="configVpnNetworkIfLabel" style="font-size:85%;font-weight:normal;">
+        Destination NAT IPv6 Address:</label></td>
+      <td><div id="configVpnNetworkIfSecondaryNatAddrV6"></div></td>
+    </tr>
+  </tbody></table>

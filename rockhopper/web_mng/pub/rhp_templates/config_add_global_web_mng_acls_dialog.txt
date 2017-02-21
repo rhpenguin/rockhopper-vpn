@@ -1,0 +1,65 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Allowed IP Address
+</p>
+<p>
+
+<table><tbody>
+  <tr>
+    <td><label>Address Type:</label></td>
+    <td>
+    <table><tbody>
+    <tr>
+    <td><div id="configAddGlobalWebMngAddrType"></div></td>
+    </tr>
+    </tbody></table>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label class="configAddGlobalWebMngAddrLabel">IPv4 Address:</label></td>
+    <td>
+    <table><tbody>
+    <tr>
+    <td><div id="configAddGlobalWebMngAddr"></div></td>
+    <td style="padding-left: 5px;"><label class="configAddGlobalWebMngNetmaskLabel">Netmask:</label></td>
+    <td><div id="configAddGlobalWebMngNetmask"></div></td>
+    </tr>
+    </tbody></table>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label class="configAddGlobalWebMngAddrV6Label">IPv6 Address:</label></td>
+    <td>
+    <table><tbody>
+    <tr>
+    <td><div id="configAddGlobalWebMngAddrV6"></div></td>
+    <td style="padding-left: 5px;"><label class="configAddGlobalWebMngPrefixLenV6Label">Prefix:</label></td>
+    <td><div id="configAddGlobalWebMngPrefixLenV6"></div></td>
+    </tr>
+    </tbody></table>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label>Realm ID:</label></td>
+    <td>
+    <table><tbody>
+    <tr>
+    <td><div id="configGlobalWebMngAclRealm"></div></td>
+    <td style="padding-left: 10px;"><label>'0': any</label></td>
+    </tr>
+    </tbody></table>
+    </td>
+  </tr>
+</tbody></table>
+</p>
+
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddGlobalWebMngOk"></div></td>
+    <td><div id="configVpnAddGlobalWebMngCancel"></div></td>
+  </tr>
+</table>
+</p>

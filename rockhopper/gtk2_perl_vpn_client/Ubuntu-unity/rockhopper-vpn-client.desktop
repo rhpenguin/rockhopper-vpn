@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Rockhopper VPN Client
+Comment=VPN Client GUI
+GenericName=VPN Client
+Exec=/usr/local/sbin/rhp_client.pl
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=network-vpn
+Categories=GNOME;GTK;Network;
+StartupNotify=true
+

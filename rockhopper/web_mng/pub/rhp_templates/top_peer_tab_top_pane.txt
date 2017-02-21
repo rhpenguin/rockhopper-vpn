@@ -1,0 +1,34 @@
+<p>
+  <table class="rhpTableTag" id="topRealmPeerTable">
+    <tbody id="topRealmPeerTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag"></td>
+        <td class="rhpTableTdTag">Remote Peer Node</td>
+        <td class="rhpTableTdTag">This Node</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmPeerTable2" style="width:450px;">
+    <tbody id="topRealmPeerTable2Body">
+    </tbody>
+  </table>
+</p>
+
+<p>
+<div id="topRealmPeerRmtCfgRtMap"></div>
+</p>
+<p>
+<div id="topRealmPeerRmtCfgDns"></div>
+</p>
+<p>
+<div id="topRealmPeerMobikeAddPeers"></div>
+</p>
+<p>
+<div id="topRealmPeerMobikeRtCheck"></div>
+</p>
+
+<p>
+<div id="topRealmPeerRadiusRxAttrs"></div>
+</p>

@@ -1,0 +1,151 @@
+#!/bin/sh
+
+#
+#  Copyright (C) 2009-2010 TETSUHARU HANADA <rhpenguine@gmail.com>
+#  All rights reserved.
+#  
+#  You can redistribute and/or modify this software under the 
+#  LESSER GPL version 2.1.
+#  See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+#
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+rhp_trace="/dev/rhp_file_trace"
+if [ ! -e ${rhp_trace} ]; then
+  rhp_trace="/dev/null"
+fi
+
+
+${rhp_dbg} "[rhp_cfg_cert_file] RHP_CFG_CERT_FILE_REALM: ${RHP_CFG_CERT_FILE_REALM}"
+${rhp_dbg} "[rhp_cfg_cert_file] RHP_CFG_CERT_FILE_PW: ${RHP_CFG_CERT_FILE_PW}"
+${rhp_dbg} "[rhp_cfg_cert_file] RHP_CFG_CERT_FILE_UPLOADED_DIR: ${RHP_CFG_CERT_FILE_UPLOADED_DIR}"
+${rhp_dbg} "[rhp_cfg_cert_file] RHP_CFG_CERT_FILE_HOME_DIR: ${RHP_CFG_CERT_FILE_HOME_DIR}"
+
+
+openssl_cmd=/usr/bin/openssl
+
+if [ ! -e "${openssl_cmd}" ]; then
+ ${rhp_dbg} "[rhp_cfg_cert_file] openssl command not found."
+ exit 1
+fi
+
+
+
+syspxy_certs_dir=certs
+
+syspxy_pkcs12_file=${RHP_CFG_CERT_FILE_REALM}.p12
+syspxy_my_cert_file=mycert${RHP_CFG_CERT_FILE_REALM}.pem
+syspxy_my_privkey_file=privkey${RHP_CFG_CERT_FILE_REALM}.pem
+syspxy_ca_cert_file=cacert${RHP_CFG_CERT_FILE_REALM}.pem
+syspxy_crl_file=crl${RHP_CFG_CERT_FILE_REALM}.pem
+
+syspxy_my_cert_tmp_file=my_cert_${RHP_CFG_CERT_FILE_REALM}.tmp
+syspxy_my_privkey_tmp_file=my_priv_key_${RHP_CFG_CERT_FILE_REALM}.tmp
+syspxy_ca_cert_tmp_file=ca_certs_${RHP_CFG_CERT_FILE_REALM}.tmp
+syspxy_crl_tmp_file=crl_${RHP_CFG_CERT_FILE_REALM}.tmp
+
+
+read file_pw < "${RHP_CFG_CERT_FILE_PW}" 
+${rhp_dbg} "[rhp_cfg_cert_file] RHP_CFG_CERT_FILE_PW: ${RHP_CFG_CERT_FILE_PW} ==> password: ${file_pw}"
+
+
+cleanup_files()
+{
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp/${syspxy_pkcs12_file} 2> ${rhp_trace}
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp/${syspxy_my_cert_file} 2> ${rhp_trace}
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp/${syspxy_my_privkey_file} 2> ${rhp_trace}
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp/${syspxy_ca_cert_file} 2> ${rhp_trace}
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp/${syspxy_crl_file} 2> ${rhp_trace}
+
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/${syspxy_my_cert_tmp_file} 2> ${rhp_trace}
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/${syspxy_my_privkey_tmp_file} 2> ${rhp_trace}
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/${syspxy_ca_cert_tmp_file} 2> ${rhp_trace}
+  rm -f ${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/${syspxy_crl_tmp_file} 2> ${rhp_trace}
+}
+
+
+${rhp_dbg} "[rhp_cfg_cert_file] Saving cert files starts..."
+
+
+if [ ! -e "${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp" ]; then
+  mkdir -m 700 "${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp" 2> ${rhp_trace}
+fi
+
+
+cd "${RHP_CFG_CERT_FILE_HOME_DIR}/${syspxy_certs_dir}/tmp" 2> ${rhp_trace}
+
+
+if [ -e "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_pkcs12_file}" ]; then
+
+  mv -f "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_pkcs12_file}" . 2> ${rhp_trace}
+
+  ${openssl_cmd} pkcs12 -clcerts -nokeys -in "./${syspxy_pkcs12_file}" -out "../${syspxy_my_cert_tmp_file}" -passin file:${RHP_CFG_CERT_FILE_PW} -passout file:${RHP_CFG_CERT_FILE_PW} 2> ${rhp_trace}
+
+  if [ "$?" -ne 0 ]; then
+   ${rhp_dbg} "[rhp_cfg_cert_file] ${openssl_cmd} pkcs12 -clcerts -nokeys -in "./${syspxy_pkcs12_file}" -out "../${syspxy_my_cert_tmp_file}" -passin file:${RHP_CFG_CERT_FILE_PW} -passout file:${RHP_CFG_CERT_FILE_PW} 2> ${rhp_trace} failed."
+   cleanup_files
+   exit 1
+  fi
+
+  if [ ! -e "../${syspxy_my_cert_tmp_file}" ]; then
+   ${rhp_dbg} "[rhp_cfg_cert_file] ../${syspxy_my_cert_tmp_file} NOT created."
+   cleanup_files
+   exit 1
+  fi
+
+
+  ${openssl_cmd} pkcs12 -nocerts -in "./${syspxy_pkcs12_file}" -out "../${syspxy_my_privkey_tmp_file}" -passin file:${RHP_CFG_CERT_FILE_PW} -passout file:${RHP_CFG_CERT_FILE_PW} 2> ${rhp_trace}
+
+  if [ "$?" -ne 0 ]; then
+   ${rhp_dbg} "[rhp_cfg_cert_file] ${openssl_cmd} pkcs12 -nocerts -in "./${syspxy_pkcs12_file}" -out "../${syspxy_my_privkey_tmp_file}" -passin file:${RHP_CFG_CERT_FILE_PW} -passout file:${RHP_CFG_CERT_FILE_PW} 2> ${rhp_trace} failed."
+   cleanup_files
+   exit 1
+  fi
+
+  if [ ! -e "../${syspxy_my_privkey_tmp_file}" ]; then
+   ${rhp_dbg} "[rhp_cfg_cert_file] ../${syspxy_my_privkey_tmp_file} NOT created."
+   cleanup_files
+   exit 1
+  fi
+  
+
+  ${openssl_cmd} pkcs12 -cacerts -nokeys -in "./${syspxy_pkcs12_file}" -out "../${syspxy_ca_cert_tmp_file}" -passin file:${RHP_CFG_CERT_FILE_PW} -passout file:${RHP_CFG_CERT_FILE_PW} 2> ${rhp_trace}
+
+  if [ "$?" -ne 0 ]; then
+   ${rhp_dbg} "[rhp_cfg_cert_file] ${openssl_cmd} pkcs12 -cacerts -nokeys -in "./${syspxy_pkcs12_file}" -out "../${syspxy_ca_cert_tmp_file}" -passin file:${RHP_CFG_CERT_FILE_PW} -passout file:${RHP_CFG_CERT_FILE_PW} 2> ${rhp_trace} failed."
+  fi
+
+  if [ ! -e "../${syspxy_ca_cert_tmp_file}" ]; then
+   ${rhp_dbg} "[rhp_cfg_cert_file] ../${syspxy_ca_cert_tmp_file} NOT created."
+  fi
+  
+  rm -f "./${syspxy_pkcs12_file}"
+fi
+
+
+if [ -e "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_my_cert_file}" ]; then
+
+  mv -f "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_my_cert_file}" "../${syspxy_my_cert_tmp_file}" 2> ${rhp_trace}
+fi
+
+
+if [ -e "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_my_privkey_file}" ]; then
+
+  mv -f "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_my_privkey_file}" "../${syspxy_my_privkey_tmp_file}" 2> ${rhp_trace}
+fi
+
+
+if [ -e "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_ca_cert_file}" ]; then
+
+  mv -f "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_ca_cert_file}" "../${syspxy_ca_cert_tmp_file}" 2> ${rhp_trace}
+fi
+
+
+if [ -e "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_crl_file}" ]; then
+
+  mv -f "${RHP_CFG_CERT_FILE_UPLOADED_DIR}/${syspxy_crl_file}" "../${syspxy_crl_tmp_file}" 2> ${rhp_trace}
+fi
+
+${rhp_dbg} "[rhp_cfg_cert_file] Saving cert files Done."
+
+exit 0

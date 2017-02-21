@@ -1,0 +1,17 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Source interfaces
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmSrcIfTable">
+    <tbody id="topRealmSrcIfTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Priority</td>
+        <td class="rhpTableTdTag">Name</td>
+        <td class="rhpTableTdTag">Status</td>
+        <td class="rhpTableTdTag">IP Address</td>
+        <td class="rhpTableTdTag">MAC</td>
+        <td class="rhpTableTdTag">MTU</td>
+      </tr>
+    </tbody>
+  </table>
+</p>

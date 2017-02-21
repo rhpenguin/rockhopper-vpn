@@ -1,0 +1,169 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 10px;margin-top: 10px;margin-bottom: 10px;">
+RADIUS Authentication (EAP)
+</p>
+
+<div id="configRadiusTop">
+<p style="margin-top: 25px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configGlobalRadiusEnable">
+          <label for="configGlobalRadiusEnable" style="font-weight: bold; font-size: 110%;">
+            Enable RADIUS authentication.
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+<label class="configRadiusLabel">(*): Required.</label>
+</p>
+<p style="margin-top: 0px;">
+  <table>
+    <tbody>
+    
+      <tr>
+        <td><label class="configRadiusLabel" style="font-weight: bold; font-size: 100%;">RADIUS Server's Address(*):</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configRadiusIPVer"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td><div id="configRadiusServerAddress"></div></td>
+            <td style="padding-left: 10px;"><label class="configRadiusLabel">Port:</label></td>
+            <td><div id="configRadiusServerPort"></div></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>    
+
+      <tr style="height: 10px;"></tr>
+
+      <tr>
+        <td><label class="configRadiusLabel" style="font-weight: bold; font-size: 100%;">Source IP Address:</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configRadiusSourceAddressIPVer"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td><div id="configRadiusSourceAddress"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>    
+
+      <tr style="height: 15px;"></tr>
+
+      <tr>
+        <td><label class="configRadiusLabel" style="font-weight: bold; font-size: 100%;">Shared Secret(*):</label></td>    
+        <td><div id="configRadiusSharedSecret"></td>
+      </tr>    
+
+      <tr style="height: 5px;"></tr>
+
+      <tr>
+        <td></td>
+        <td>
+          <label class="configRadiusLabel" style="font-size: 95%;">
+          To set or change a shared secret, please sepcify a new secret to 
+          <label style="font-weight: bold; font-size: 100%;">Shared Secret</label>.
+          </label>
+        </td>    
+      </tr>    
+
+    </tbody>
+  </table>
+</p>
+<p style="margin-top: 20px;">
+<div id="configRadiusSecondaryServerCheck"></div>
+<label class="configRadiusLabel" style="font-weight: bold;font-size: 110%;">
+ Configure a Secondary RADIUS server.
+</label>
+<div id="configRadiusSecondaryServerPane"></div>
+</p>
+
+
+<p style="margin-top: 50px;">
+<label class="configRadiusLabel" style="font-weight: bold;font-size: 110%;">
+- Configure attributes received from RADIUS server.
+</label>
+</p>
+<p style="margin-top: 15px;">
+  <div id="configRadiusAddReceivedAttrs"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configRadiusAddReceivedAttrsTable" style="width:530px;">
+    <tbody id="configRadiusAddReceivedAttrsTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusLabel">Attribute Type</label></td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 30px;">
+<div id="configRadiusPrivateAttrsCheck"></div>
+<label class="configRadiusLabel" style="font-weight: bold;font-size: 110%;">
+ Define a different private attribute type for each remote client's setting.
+</label>
+<div id="configRadiusPrivateAttrsPanes"></div>
+</p>
+
+<p style="margin-top: 30px;">
+<div id="configRadiusCommonPrivateAttrCheck"></div>
+<label class="configRadiusLabel" style="font-weight: bold;font-size: 110%;">
+ Define a single private attribute type used for all remote client's settings.
+</label>
+<div id="configRadiusCommonPrivateAttrPanes"></div>
+</p>
+
+
+
+<p style="margin-top: 55px;">
+<label class="configRadiusLabel" style="font-weight: bold;font-size: 110%;">
+- Configure attributes sent to RADIUS server.
+</label>
+</p>
+<p style="margin-top: 15px;">
+  <div id="configRadiusAddSendingAttrs"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configRadiusAddSendingAttrsTable" style="width:530px;">
+    <tbody id="configRadiusAddSendingAttrsTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusLabel">Attribute Type</label></td>
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusLabel">Value</label></td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+
+<p style="margin-top: 55px;">
+  <div id="configRadiusAddSetting"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configRadiusSettingTable" style="width:530px;">
+    <tbody id="configRadiusSettingTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusLabel">Name</label></td>
+        <td class="rhpTableTdTag" style="width: 200px;"><label class="configRadiusLabel">Value</label></td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+</div>

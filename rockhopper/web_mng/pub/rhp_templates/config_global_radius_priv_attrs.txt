@@ -1,0 +1,198 @@
+<p>
+<label class="configRadiusLabel">RFC2865 defines types 224-249 for implementation-specific use.</label>
+</p>
+<p style="margin-top: 0px;">
+  <table>
+    <tbody>
+
+      <tr>
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          VPN Realm ID: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeVpnRealmId"></div>
+        </td>
+        
+        <td style="width: 10px;">
+        </td>
+
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          VPN Realm's role string: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeVpnRealmRole"></div>
+        </td>
+      </tr>    
+
+      <tr style="height: 5px;"/>
+
+      <tr>
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Remote user's unique<br/>and opaque index: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeUserIndex"></div>
+        </td>
+
+        <td style="width: 10px;">
+        </td>
+
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr style="height: 15px;"/>
+
+      <tr>
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal IPv4 Address: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeInternalIPv4"></div>
+        </td>
+        
+        <td style="width: 10px;">
+        </td>
+
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal IPv6 Address: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeInternalIPv6"></div>
+        </td>
+      </tr>    
+
+      <tr style="height: 15px;"/>
+
+      <tr>
+
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal DNS Server's<br/>IPv4 Address: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeDnsServerIPv4"></div>
+        </td>
+
+        <td style="width: 10px;">
+        </td>
+
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal DNS Server's<br/>IPv6 Address: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeDnsServerIPv6"></div>
+        </td>
+
+      </tr>    
+
+      <tr style="height: 5px;"/>
+
+      <tr>
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal Domain Name: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeDnsDomainName"></div>
+        </td>
+
+        <td style="width: 10px;">
+        </td>
+
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+
+      <tr style="height: 15px;"/>
+
+      <tr>
+        
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal IPv4 Destination<br/>Network: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeRouteIPv4"></div>
+        </td>
+
+        <td style="width: 10px;">
+        </td>
+
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal IPv6 Destination<br/>Network: 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeRouteIPv6"></div>
+        </td>
+
+        <td style="width: 10px;">
+        </td>
+
+      </tr>    
+
+      <tr style="height: 5px;"/>
+
+      <tr>
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal Gateway's IPv4<br/>Address (Bridge mode): 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeInternalGatewayIPv4"></div>
+        </td>
+
+        <td style="width: 10px;">
+        </td>
+
+        <td>
+        
+          <label class="configRadiusLabel" style="font-weight: bold;font-size: 100%;">
+          Internal Gateway's IPv6 <br/>Address (Bridge mode): 
+          </label>
+        </td>
+        <td>
+        <div id="configRadiusExtRadiusAttrsTypeInternalGatewayIPv6"></div>
+        </td>
+      </tr>    
+
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 25px;">
+<div id="configRadiusExtRadiusAttrsTypeHelp"></div>
+</p>

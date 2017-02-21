@@ -1,0 +1,55 @@
+<p style="margin-top: 0px;">
+  <table>
+    <tbody>
+    
+      <tr>
+        <td style="width: 15px"></td>
+        <td><label class="configRadiusAcctLabel" style="font-weight: bold; font-size: 100%;">Server's Address:</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configRadiusAcctSecondaryIPVer"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td><div id="configRadiusAcctSecondaryServerAddress"></div></td>
+            <td style="padding-left: 10px;"><label class="configRadiusAcctLabel">Port:</label></td>
+            <td><div id="configRadiusAcctSecondaryServerPort"></div></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>    
+
+      <tr style="height: 10px;"></tr>
+
+      <tr>
+        <td style="width: 15px"></td>
+        <td><label class="configRadiusAcctLabel" style="font-weight: bold; font-size: 100%;">Source IP Address:</label></td>    
+        <td>
+          <table><tbody>
+            <tr>
+            <td><div id="configRadiusAcctSecondarySourceAddressIPVer"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td><div id="configRadiusAcctSecondarySourceAddress"></div></td>
+            <td></td>
+            <td></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>    
+
+      <tr style="height: 15px;"></tr>
+
+      <tr>
+        <td style="width: 15px"></td>
+        <td><label class="configRadiusAcctLabel" style="font-weight: bold; font-size: 100%;">Shared Secret(*):</label></td>    
+        <td><div id="configRadiusAcctSecondarySharedSecret"></td>
+      </tr>    
+
+    </tbody>
+  </table>
+</p>

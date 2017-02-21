@@ -1,0 +1,45 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Address Pool
+</p>
+<p>
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogTopIPv6Net"><tbody>
+  <tr>
+    <td><label>Address Type(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolTypeIPv6Net"></div></td>
+  </tr>
+</tbody></table>
+</p>
+
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogIPv6Net"><tbody>
+  <tr>
+    <td><label class="configVpnAddRmtCfgSvrAddrPoolNetworkV6Label">Subnet Address:</label></td>
+    <td>
+        <div id="configVpnAddRmtCfgSvrAddrPoolNetworkV6"></div>
+    </td>
+    <td style="padding-left: 3px;">
+      <label class="configVpnAddRmtCfgSvrAddrPoolPrefixV6Label">Prefix:</label>
+    </td>
+    <td>
+      <div id="configVpnAddRmtCfgSvrAddrPoolPrefixLenV6"></div>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    (64 - 128)
+    </td>
+  </tr>
+</tbody></table>
+Prefix length must be 64 and more.
+<p>
+<table><tbody>
+  <tr>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolOkIPv6Net"></div></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolCancelIPv6Net"></div></td>
+  </tr>
+</tbody></table>
+</p>

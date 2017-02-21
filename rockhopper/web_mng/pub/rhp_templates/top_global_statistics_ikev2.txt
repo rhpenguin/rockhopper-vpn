@@ -1,0 +1,10 @@
+<p style="font-weight: bold;font-size: 110%;padding-top: 0px;margin-top: 15px;margin-bottom: 10px;">
+IKEv2 Statistics          
+<div class="topGlobalStatisticsIkev2Clear"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="topGlobalStatisticsIkev2Table" style="width: 480px;">
+    <tbody class="topGlobalStatisticsIkev2TableBody">
+    </tbody>
+  </table>
+</p>

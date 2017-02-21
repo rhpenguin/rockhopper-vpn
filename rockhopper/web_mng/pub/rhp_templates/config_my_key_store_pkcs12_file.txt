@@ -1,0 +1,50 @@
+<p>
+  <form name="configUploadPkcs12Form" action="/protected/certs" method="post" enctype="multipart/form-data" target="upload_pkcs12_response">
+  <table>
+    <tbody>
+    <tr>
+      <td>
+        <label style="font-size: 95%;">
+        Please specify a PKCS#12 file(*.p12) including a RSA private key and certificates(X.509).
+        </label>
+      </td>
+    </tr>
+    <tr style="height: 15px;"><td></td><tr>
+    <tr>
+      <td>
+        <label style="font-weight: bold; font-size: 100%;">
+        PKCS#12 file(*.p12)(*): 
+        </label>
+      </td>
+    </tr>
+    <tr style="height: 10px;"><td></td><tr>
+    <tr>
+      <td >
+        <input type="file" name="upload_cert_file_pkcs12" size="32">
+      </td>    
+    </tr>    
+    <tr style="height: 10px;"><td></td><tr>
+    </tbody>
+  </table>
+  
+  <input type="hidden" name="upload_cert_file_vpn_realm" value="">
+  <input type="hidden" name="upload_cert_file_bus_session_id" value="">
+  </form>
+
+  <iframe name="upload_pkcs12_response" style="display:none;" id="configUploadPkcs12Response">
+  </iframe>
+
+  <table>
+    <tbody>
+    <tr>
+      <td >
+        <label style="font-weight: bold; font-size: 100%;">RSA Private Key's Password(*): </label>
+        <div id="uploadPkcs12FilePassword"></div>
+      </td>    
+    </tr>    
+    <tr style="height: 20px;"><td></td><tr>
+    </tbody>
+  </table>
+</p>
+
+

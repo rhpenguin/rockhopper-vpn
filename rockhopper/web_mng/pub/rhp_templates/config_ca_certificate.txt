@@ -1,0 +1,54 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 15px;">
+CA Certificate / Certificate Revocation List(CRL)
+</p>
+<p style="font-size: 100%;">
+  <label>
+    Before specifying CA certificates, please setup "My Key Store".
+  </label>
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <label id="configVpnCaCertificateFormatLabel" style="font-weight: bold; font-size: 100%;">Certificate/CRL Format(*): </label>
+        </td>
+        <td>
+          <div id="configVpnCaCertificateFormat"></div>
+        </td>
+        <td>
+          <div id="configVpnCaCertificateSeeCert"></div>
+        </td>
+        <td style="width: 1px;">
+        </td>
+        <td>
+          <div id="configVpnCaCertificateSeeCrl"></div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 20px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnCaCertificateAceptExpiredCert">
+          <label for="configVpnCaCertificateAceptExpiredCert" style="font-weight: bold; font-size: 100%;">
+            Accept expired certificates.
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="font-size: 95%;">
+  <label>
+    When uploading a PKCS#12 file(*.p12) including CA certificates on 
+    <label style="font-weight: bold;">My Key Store</label> pane, you don't need to specify them here.
+  </label>
+</p>
+<div id="configVpnCaCertificateFormatCont"></div>

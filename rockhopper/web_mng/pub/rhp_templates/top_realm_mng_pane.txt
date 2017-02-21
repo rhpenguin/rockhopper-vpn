@@ -1,0 +1,44 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Management
+</p>
+<p style="font-weight: bold;font-size: 115%;padding-top: 10px;margin-top: 30px;margin-bottom: 10px;">
+VPN
+</p>
+<p>
+  <table><tbody>
+    <tr>
+      <td>
+        <div id="topRealmMngVpnClearDormant"></div>
+      </td>
+      <td style="width: 20px;">
+      </td>
+      <td>
+        <div id="topRealmMngVpnClearAll"></div>
+      </td>
+    </tr>
+  </tbody></table>
+</p>
+<p>
+</p>
+<p style="font-weight: bold;font-size: 115%;padding-top: 10px;margin-top: 30px;margin-bottom: 10px;">
+EAP peer (client)
+</p>
+<p>
+  <div id="topRealmMngEapMsChapv2ClearUserKeyCache"></div>
+</p>
+<p>
+</p>
+<p style="font-weight: bold;font-size: 115%;padding-top: 10px;margin-top: 30px;margin-bottom: 10px;">
+MOBIKE (initiator)
+</p>
+<p>
+  <div id="topRealmMngMobikeClearAdditionalAddrCache"></div>
+</p>
+<p>
+</p>
+<p style="font-weight: bold;font-size: 115%;padding-top: 10px;margin-top: 30px;margin-bottom: 10px;">
+Session Resumption
+</p>
+<p>
+  <div id="topRealmMngSessResumeInvalidateTkt"></div>
+</p>

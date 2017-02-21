@@ -1,0 +1,23 @@
+<p>
+  <table class="rhpTableTag" id="topGlobalNetIfTable">
+    <tbody class="topGlobalNetIfTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Name</td>
+        <td class="rhpTableTdTag">IP Address</td>
+        <td class="rhpTableTdTag">MAC</td>
+        <td class="rhpTableTdTag">MTU</td>
+        <td class="rhpTableTdTag">USED</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="font-weight: bold;font-size: 110%;padding-top: 0px;margin-top: 25px;margin-bottom: 10px;">
+Statistics          
+<div class="topGlobalStatisticsNetIfClear"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="topGlobalStatisticsNetIfTable" style="width: 480px;">
+    <tbody class="topGlobalStatisticsNetIfTableBody">
+    </tbody>
+  </table>
+</p>

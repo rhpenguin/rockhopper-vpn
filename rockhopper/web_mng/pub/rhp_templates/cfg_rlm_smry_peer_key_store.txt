@@ -1,0 +1,10 @@
+<p>
+<table class="rhpTableTag" style="width:450px;">
+  <tbody id="cfgRlmSmryRemotePeerKeyStoreTableBody">
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">Peer's ID</td>
+      <td class="rhpTableTdTag rhpTableTrTagTop">ID Type</td>
+    </tr>
+  </tbody>
+</table>
+</p>

@@ -1,0 +1,27 @@
+{
+  "identifier":"ikesa_name",
+  "label": "ikesa_name",
+  "items": [
+        {"ikesa_name":"responder_not_rekeying","default_value":"disable","desc":""},
+        {"ikesa_name":"send_ca_chains","default_value":"enable","desc":""},
+        {"ikesa_name":"remote_cfg_wins_server_v4","default_value":"0.0.0.0","desc":""},
+        {"ikesa_name":"remote_cfg_wins_server_v6","default_value":"::","desc":""},
+        {"ikesa_name":"remote_cfg_internal_netmask_v4","default_value":"0.0.0.0","desc":""},
+        {"ikesa_name":"remote_cfg_internal_prefixlen_v6","default_value":64,"desc":""},
+        {"ikesa_name":"remote_cfg_narrow_ts_i","default_value":"enable_for_non_rockhopper","desc":""},
+        {"ikesa_name":"nat_t_keep_alive_interval","default_value":20,"desc":""},
+        {"ikesa_name":"mobike","default_value":"enable","desc":""},
+        {"ikesa_name":"mobike_init_hold_time","default_value":1800,"desc":""},
+        {"ikesa_name":"mobike_init_keep_alive_interval","default_value":60,"desc":""},
+        {"ikesa_name":"mobike_init_keep_alive_max_retries","default_value":0,"desc":""}, 
+        {"ikesa_name":"mobike_init_cache_additional_address","default_value":"disable","desc":""},
+        {"ikesa_name":"mobike_resp_routability_check","default_value":"enable","desc":""},
+        {"ikesa_name":"mobike_resp_keep_alive_interval","default_value":600,"desc":""},
+        {"ikesa_name":"mobike_resp_null_auth_keep_alive_interval","default_value":"60","desc":""},
+        {"ikesa_name":"mobike_resp_keep_alive_retry_interval","default_value":300,"desc":""},
+        {"ikesa_name":"mobike_resp_keep_alive_max_retries","default_value":12,"desc":""},
+        {"ikesa_name":"send_realm_id","default_value":"disable","desc":""},
+        {"ikesa_name":"initiator_sends_responder_id","default_value":"enable","desc":""},
+        {"ikesa_name":"vpn_conn_idle_timeout","default_value":600,"desc":""}
+  ]
+}

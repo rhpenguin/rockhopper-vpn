@@ -1,0 +1,23 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a HTTP Server Name.
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Type(*):</label></td>
+    <td><div id="configGlobalHashUrlHttpServerNameType"></div></td>
+  </tr>
+  <tr>
+    <td><label>Server Name(*):</label></td>
+    <td><div id="configGlobalHashUrlHttpServerName"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configGlobalHashUrlHttpServerOk"></div></td>
+    <td><div id="configGlobalHashUrlHttpServerCancel"></div></td>
+  </tr>
+</table>
+</p>

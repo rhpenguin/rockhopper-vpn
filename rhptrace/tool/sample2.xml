@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<user id="2" name="global">
+
+  <message id="2" tag="">
+    This is %bx , %bi , %bu.
+  </message>
+
+  <message id="3" tag="hoge1">
+    This is %wx , %wi , %wu.
+  </message>
+
+  <message id="4" tag="hoge2">
+    This is %dx , %di , %du.
+  </message>
+
+  <message id="5" tag="hoge3">
+    This is %qx , %qi , %qu.
+  </message>
+
+  <message id="6" tag="hoge4">
+    This is %s. %s
+  </message>
+
+  <message id="7" tag="hoge4">
+    This is
+    %p
+  </message>
+
+  <label name="sym0">
+    <label_item value="255" label="LABEL-1"/>
+    <label_item value="2" label="LABEL-2"/>
+    <label_item value="3" label="LABEL-3"/>
+  </label>
+
+  <bit name="sym1">
+    <bit_item value="1" label="LABEL-1"/>
+    <bit_item value="2" label="LABEL-2"/>
+    <bit_item value="3" label="LABEL-3"/>
+  </bit>
+
+  <message id="8" tag="hoge5">
+    This is %bm[sym0] , %wm[sym0] , %dm[sym0] , %qm[sym0].
+  </message>
+
+  <message id="9">
+    This is %bu , %wu , %du , %qu , %s ,
+    %p.
+  </message>
+
+  <message id="10">
+    %s [%s:%di]
+  </message>
+
+  <message id="11">
+    %a
+  </message>
+
+  <message id="12">
+	  This is %bB[sym1] , %wB[sym1] , %dB[sym1] , %qB[sym1].
+  </message>
+  
+</user>
+

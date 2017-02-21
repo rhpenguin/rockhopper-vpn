@@ -1,0 +1,76 @@
+
+<p>
+  <form name="configUploadPemForm" action="/protected/certs" method="post" enctype="multipart/form-data" target="upload_pem_response">
+  <table>
+    <tbody>
+    <tr>
+      <td>
+        <label>
+        Please specify PEM files.
+        </label>
+      </td>
+    </tr>
+    <tr style="height: 20px;"><td></td></tr>
+    <tr>
+      <td>
+        <label style="font-weight: bold; font-size: 100%;">
+        My Certificate(X.509, *.pem)(*):
+        </label>
+      </td>
+    </tr>
+    <tr style="height: 5px;"><td></td><tr>
+    <tr>
+      <td >
+        <input type="file" name="upload_cert_file_my_cert_pem" size="32">
+      </td>    
+    </tr>    
+    <tr style="height: 5px;"><td></td><tr>
+    <tr>
+      <td>
+        <label style="font-size: 95%;">
+        Additional certificates for intermediate CAs are allowed. 
+        In the above PEM file you specify, a PEM-encoded text block of this node's 
+        certificate(i.e. the end entity certificate) must appear first 
+        and all PEM-encoded text blocks of intermediate CAs' certificates follow it.
+        These intermediate CA certificates are ALSO sent to peers.
+        </label>
+      </td>
+    </tr>
+    <tr style="height: 20px;"><td></td><tr>
+    <tr>
+      <td>
+        <label style="font-weight: bold; font-size: 100%;">
+        RSA private key(*.pem)(*):
+        </label>
+      </td>
+    </tr>
+    <tr style="height: 5px;"><td></td><tr>
+    <tr>
+      <td >
+        <input type="file" name="upload_cert_file_privkey_pem" size="32">
+      </td>    
+    </tr>    
+    <tr style="height: 20px;"><td></td><tr>
+    </tbody>
+  </table>
+  
+  <input type="hidden" name="upload_cert_file_vpn_realm" value="">
+  <input type="hidden" name="upload_cert_file_bus_session_id" value="">
+  </form>
+
+  <iframe name="upload_pem_response" style="display:none;" id="configUploadPemResponse">
+  </iframe>
+
+  <table>
+    <tbody>
+    <tr>
+      <td >
+         RSA Private Key's Password(*): <div id="uploadPemFilePassword"></div>
+      </td>    
+    </tr>    
+    </tbody>
+  </table>
+
+</p>
+
+

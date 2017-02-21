@@ -1,0 +1,25 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Certificate URL
+</p>
+<p style="margin-top: 30px;">
+  <div id="configVpnCertUrlCreateBtn"></div>
+</p>
+<p>  
+  <label style="font-size: 95%">
+  Add HTTP URLs for my certificate (this node's certificate) and/or intermediate CA certificates.
+  <br/>
+  The specified certificate files need to be encoded in DER format.
+  </label>
+</p> 
+<p>
+  <table class="rhpTableTag" id="configVpnCertUrlTable">
+    <tbody id="configVpnCertUrlTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 80px;">Type</td>
+        <td class="rhpTableTdTag" style="width: 250px;">HTTP URL</td>
+        <td class="rhpTableTdTag" style="width: 200px;">SubjectName(DN)</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

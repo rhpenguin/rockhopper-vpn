@@ -1,0 +1,43 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Address Pool
+</p>
+<p>
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogTopIPv4Range"><tbody>
+  <tr>
+    <td><label>Address Type(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolTypeIPv4Range"></div></td>
+  </tr>
+</tbody></table>
+</p>
+
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogIPv4Range"><tbody>
+  <tr>
+    <td>
+      <table><tbody>
+        <tr>
+        <td>
+        <label class="configVpnAddRmtCfgSvrAddrPoolRangeLabel">Starting Address: </label>
+        </td>
+        <td>
+        <div id="configVpnAddRmtCfgSvrAddrPoolStartAddress"></div> 
+        </td>
+        <td style="padding-left: 3px;">
+        <label class="configVpnAddRmtCfgSvrAddrPoolRangeLabel">Ending Address: </label>
+        </td>
+        <td>
+        <div id="configVpnAddRmtCfgSvrAddrPoolEndAddress"></div>
+        </td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+</tbody></table>
+
+<p>
+<table><tbody>
+  <tr>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolOkIPv4Range"></div></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolCancelIPv4Range"></div></td>
+  </tr>
+</tbody></table>
+</p>

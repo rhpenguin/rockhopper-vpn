@@ -1,0 +1,23 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Global Setting (Child SA)
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Setting Name:</label></td>
+    <td><div id="configAddGlobalChildsaSettingName"></div></td>
+  </tr>
+  <tr>
+    <td><label>Setting Value:</label></td>
+    <td><div id="configAddGlobalChildsaSettingValue"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddGlobalChildsaSettingOk"></div></td>
+    <td><div id="configVpnAddGlobalChildsaSettingCancel"></div></td>
+  </tr>
+</table>
+</p>

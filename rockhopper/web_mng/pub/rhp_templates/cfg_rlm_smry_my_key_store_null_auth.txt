@@ -1,0 +1,16 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryMykeyStoreNullAuth">
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag rhpTableTrTagTop">Authentication Method</td>
+      <td class="rhpTableTdTag rhpTableTrTagTop">My ID</td>
+      <td class="rhpTableTdTag rhpTableTrTagTop">ID Type</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStoreNullAuthAuthMethod"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStoreNullAuthId"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryMyKeyStoreNullAuthIdType"></td>
+    </tr>
+  </tbody>
+</table>
+</p>

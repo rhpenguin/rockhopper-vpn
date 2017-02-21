@@ -1,0 +1,117 @@
+<p style="margin-top:20px;">
+<table id="configVpnPeerRmtCltPeerIdTable">
+  <tr>
+    <td><label style="font-weight: bold; font-size: 100%;">Destination ID Type:</label></td>
+    <td><div id="configVpnPeerRmtCltPeerIdType"></div></td>
+  </tr>
+  <tr>
+    <td><label style="font-weight: bold; font-size: 100%;" id="configVpnPeerRmtCltPeerIdLabel">Destination ID:</label></td>
+    <td><div id="configVpnPeerRmtCltPeerId"></div></td>
+  </tr>
+</table>
+</p>
+
+<p style="margin-top:5px;">
+  <table>
+    <tbody>
+      <tr>
+        <td><label style="font-size: 90%;">(e.g.)</label> </td>
+        <td style="width: 500px;">
+  <label style="font-size: 90%;">
+  Host Name(FQDN): hostname.example.com
+  </label>
+        </td>
+      </tr>    
+      <tr>
+        <td></td>
+        <td style="width: 500px;">
+  <label style="font-size: 90%;">
+  E-mail Address: username@example.com
+  </label>
+        </td>
+      </tr>    
+      <tr>
+        <td></td>
+        <td style="width: 500px;">
+  <label style="font-size: 90%;">
+  subjectName(DN): C=JP,...,O=example,OU=sales,CN=username
+  </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+<br/>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 550px;">
+  <label style="font-size: 95%;">
+    If this destination peer hosts multiple VPN realms, you may need to specify 
+    <label style="font-weight: bold; font-size: 100%;">Destination ID</label>.
+  </label>
+  <br/>
+  <br/>
+        </td>
+      </tr>    
+      <tr>
+        <td style="width: 550px;">
+  <label style="font-size: 95%;">
+    If <label style="font-weight: bold; font-size: 100%;">Destination Address</label>
+    isn't specified and <label style="font-weight: bold; font-size: 100%;">Destination ID Type</label> is Host Name(FQDN),
+    Rockhopper will try to resolve the address by using the ID.
+  </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top:55px;">
+  <table>
+    <tbody>
+      <tr>
+        <td><input id="configContVpnPeerRmtCltV6UdpEncapDisabledCheck">
+            <label for="configContVpnPeerRmtCltV6UdpEncapDisabledCheck" style="font-weight: bold; font-size: 100%;">
+            Disable ESP's UDP-encapsulation for IPv6 NAT-T.
+            </label></td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top:10px;">
+  <table>
+    <tbody>
+      <tr>
+        <td><input id="configContVpnPeerRmtCltNullAuthCheck">
+            <label for="configContVpnPeerRmtCltNullAuthCheck" style="font-weight: bold; font-size: 100%;">
+            No Authentication for this destination (remote peer).
+            </label></td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top:40px;">
+<table>
+  <tr>
+    <td><label style="font-weight: bold; font-size: 100%;" id="configVpnPeerRmtCltPskLabel">
+        Destination's Pre-Shared Key (PSK):
+        </label></td>
+    <td><div id="configVpnPeerRmtCltPsk"></div></td>
+  </tr>
+</table>
+<br/>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 550px;">
+  <label style="font-size: 95%;">
+    If a destination's authentication method is Pre-Shared Key (PSK), 
+    you need to specify <label style="font-weight: bold; font-size: 100%;">Destination ID</label> (Host Name(FQDN) or E-mail Address) and the key here. 
+  </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>

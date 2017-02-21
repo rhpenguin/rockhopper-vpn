@@ -1,0 +1,12 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Address Pool
+</p>
+<p>
+<table id="configVpnAddRmtCfgSvrAddrPoolDialogTop"><tbody>
+  <tr>
+    <td><label>Address Type(*):</label></td>
+    <td><div id="configVpnAddRmtCfgSvrAddrPoolType"></div></td>
+  </tr>
+</tbody></table>
+</p>
+

@@ -1,0 +1,40 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Edit VPN Realm (Save, Add, Remove or Load)
+</p>
+<p>
+  <table><tr>
+    <td><div id="configContVpnEditRlmSave"></div></td>
+  </tr></table>
+</p>
+<p style="margin-top: 30px;">
+  <table>
+    <tr>
+    <td><div id="configContVpnEditRlmCreate"></div></td>
+    <td style="width: 90%;"></td>
+    <td><div id="configContVpnEditRlmEnable"></div></td>
+    <td><div id="configContVpnEditRlmDisable"></div></td>
+    </tr>
+    <tr style="height: 15px;"></tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+      <td><div id="configContVpnEditAdvSettings"></div></td>
+    </tr>
+    
+  </table>
+</p>
+<p>
+<table class="rhpTableTag" id="configContVpnEditRlmTable">
+  <tbody id="configContVpnEditRlmTableBody">
+    <tr class="rhpTableTrTag rhpTableTrTagTop" style="font-size:105%;">
+      <td class="rhpTableTdTag" style="width: 10%;">Realm ID</td>
+      <td class="rhpTableTdTag" style="width: 20%;">Realm Name</td>
+      <td class="rhpTableTdTag" style="width: 10%;">Mode</td>
+      <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 50px;"></td>
+      <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      <td class="rhpTableTdTag">Description</td>
+    </tr>
+  </tbody>
+</table>
+</p>

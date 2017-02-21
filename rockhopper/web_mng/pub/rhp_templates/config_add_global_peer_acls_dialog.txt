@@ -1,0 +1,53 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Peer's Access Control List(ACL)
+</p>
+<p>
+<table><tbody>
+
+  <tr>
+    <td><label>Priority:</label></td>
+    <td><div id="configGlobalPeerAclsPriority"></div></td>
+  </tr>
+
+  <tr>
+    <td><label>Address Type:</label></td>
+    <td><div id="configGlobalPeerAclsType"></div></td>
+  </tr>
+
+  <tr>
+    <td><label class="configAddGlobalPeerAclsAddrLabel">IPv4 Address:</label></td>
+    <td>
+      <table><tbody>
+        <tr>
+        <td><div id="configAddGlobalPeerAclsAddr"></div></td>
+        <td style="padding-left: 5px;"><label class="configAddGlobalPeerAclsNetmaskLabel">Netmask:</label></td>
+        <td><div id="configAddGlobalPeerAclsNetmask"></div></td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label class="configAddGlobalPeerAclsAddrV6Label">IPv6 Address:</label></td>
+    <td>
+      <table><tbody>
+        <tr>
+        <td><div id="configAddGlobalPeerAclsAddrV6"></div></td>
+        <td style="padding-left: 5px;"><label class="configAddGlobalPeerAclsPrefixLenV6Label">Prefix:</label></td>
+        <td><div id="configAddGlobalPeerAclsPrefixLenV6"></div></td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+
+</tbody></table>
+</p>
+
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddGlobalPeerAclsOk"></div></td>
+    <td><div id="configVpnAddGlobalPeerAclsCancel"></div></td>
+  </tr>
+</table>
+</p>

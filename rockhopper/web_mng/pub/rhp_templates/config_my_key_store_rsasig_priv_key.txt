@@ -1,0 +1,21 @@
+<table>
+  <tbody>
+    <tr style="height: 30px;">
+      <td>
+      <label id="configVpnMyKeyStoreRsaSigPrivKeyPwTypeLabel" style="font-weight: bold; font-size: 100%;">
+        RSA Private Key's Password(*): 
+      </label>
+      <div id="configVpnMyKeyStoreRsaSigPrivKeyPw"></div></td>
+    </tr>
+    <tr style="height:15px;"></tr>
+    <tr>
+      <td><label>Please paste this node's RSA Private Key(PEM Encoded Text)(*).</label></td>
+    </tr>
+    <tr>
+      <td><div id="configVpnMyKeyStoreRsaSigPrivKeyText"></div></td>
+    </tr>
+  </tbody>
+</table>
+<label style="font-size: 95%;">
+  Please include the first line like 'BEGIN *** PRIVATE KEY' and the last line like 'END *** PRIVATE KEY', too.
+</label>

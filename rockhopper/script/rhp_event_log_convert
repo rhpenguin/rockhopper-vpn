@@ -1,0 +1,45 @@
+#!/bin/sh
+
+#
+#  Copyright (C) 2009-2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+#  All rights reserved.
+#  
+#  You can redistribute and/or modify this software under the 
+#  LESSER GPL version 2.1.
+#  See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+#
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+rhp_trace="/dev/rhp_file_trace"
+if [ ! -e ${rhp_trace} ]; then
+  rhp_trace="/dev/null"
+fi
+
+${rhp_dbg} "[rhp_event_log_convert] RHP_EVENT_LOG_CONVERT_SRC_XML_FILE: ${RHP_EVENT_LOG_CONVERT_SRC_XML_FILE}"
+${rhp_dbg} "[rhp_event_log_convert] RHP_EVENT_LOG_CONVERT_DST_TXT_FILE: ${RHP_EVENT_LOG_CONVERT_DST_TXT_FILE}"
+
+formatter_xml="/home/rhpmain/www/pub/rhp_event_log.xml"
+converter_script="/usr/local/sbin/rockhopper_log"
+
+if [ ! -e "${formatter_xml}" ]; then
+ ${rhp_dbg} "[rhp_event_log_convert] formatter xml not found."
+ exit 0
+fi
+
+if [ ! -e "${converter_script}" ]; then
+ ${rhp_dbg} "[rhp_event_log_convert] converter_script not found."
+ exit 0
+fi
+
+
+${rhp_dbg} "[rhp_event_log_convert] Converting xml starts..."
+
+mv -f "${RHP_EVENT_LOG_CONVERT_SRC_XML_FILE}" "${RHP_EVENT_LOG_CONVERT_SRC_XML_FILE}.tmp" 2> ${rhp_trace}
+
+${converter_script} xml2txt -formatter_xml "${formatter_xml}" -log_xml "${RHP_EVENT_LOG_CONVERT_SRC_XML_FILE}.tmp" -file "${RHP_EVENT_LOG_CONVERT_DST_TXT_FILE}" 2> ${rhp_trace}
+
+rm -f "${RHP_EVENT_LOG_CONVERT_SRC_XML_FILE}.tmp" 2> ${rhp_trace}
+
+${rhp_dbg} "[rhp_event_log_convert] Converting xml to txt ... done."
+
+exit 0

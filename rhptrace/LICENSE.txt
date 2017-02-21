@@ -1,0 +1,11 @@
+/*
+
+	Copyright (C) 2009-2010 TETSUHARU HANADA <rhpenguine@gmail.com>
+	All rights reserved.
+	
+	You can redistribute and/or modify this software under the 
+	LESSER GPL version 2.1.
+	See also LICENSE.txt and LICENSE_LGPL2.1.txt.
+
+*/
+

@@ -1,0 +1,8 @@
+{
+  identifier:"radius_attr_name",
+  label: "radius_attr_name",
+  "items": [
+        {"radius_attr_name":"retransmit_interval","default_value":3,"desc":""},
+        {"radius_attr_name":"retransmit_times","default_value":3,"desc":""}
+  ]
+}

@@ -1,0 +1,22 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 15px;">
+Remote Peers
+</p>
+<p style="margin-top: 30px;">
+  <div id="configVpnPeersCreate"></div>
+</p>
+<p style="font-size: 95%;padding: 0px;margin: 0px;">
+If no peers are defined, a configuration for 'any' peers is automatically added (Responder).
+</p>
+<p>
+  <table class="rhpTableTag" id="configVpnPeersTable">
+    <tbody id="configVpnPeersTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 250px;">Peer ID / Connection Name</td>
+        <td class="rhpTableTdTag">ID Type</td>
+        <td class="rhpTableTdTag" style="width: 90px;">Address</td>
+        <td class="rhpTableTdTag" style="width: 90px;">Internal Address</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

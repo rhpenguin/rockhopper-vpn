@@ -1,0 +1,22 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Enable a New RADIUS Attribute Type (Authentication)
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Attribute Type:</label></td>
+    <td><div id="configRadiusAddReceivedAttrName"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<div id="configRadiusAddReceivedAttrDesc">No description.</div>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configRadiusAddReceivedAttrOk"></div></td>
+    <td><div id="configRadiusAddReceivedAttrCancel"></div></td>
+  </tr>
+</table>
+</p>

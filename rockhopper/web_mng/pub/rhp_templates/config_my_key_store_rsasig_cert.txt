@@ -1,0 +1,25 @@
+<table>
+  <tbody>
+    <tr>      
+      <td>
+        <label>Please paste this node's Certificate(PEM Encoded X.509 Text)(*): </label>
+      </td>
+    </tr>
+    <tr>      
+      <td><div id="configVpnMyKeyStoreRsaSigCertText"></div></td>
+    </tr>
+  </tbody>
+</table>
+<label">
+  Please include the first line like 'BEGIN CERTIFICATE' and the last line like 'END CERTIFICATE', too.
+</label>
+<p></p>
+<p>
+  <label style="font-size: 95%;">
+    Additional certificates for intermediate CAs are allowed. 
+    First, paste a PEM-encoded text block of this node's certificate(i.e.  
+    the end entity certificate).
+    All PEM-encoded text blocks of intermediate CAs' certificates follow it.
+    These intermediate CA certificates are ALSO sent to peers.
+  </label>
+</p>

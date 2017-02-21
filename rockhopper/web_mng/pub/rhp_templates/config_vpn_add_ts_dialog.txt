@@ -1,0 +1,82 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+<label id="configVpnAddTsDialogLabel"></label>
+</p>
+<div id="configVpnAddTsDialogLabelColor">
+<p>
+<table>
+
+  <tr>
+    <td><label>IKE Version(*):</label></td>
+    <td><div id="configVpnAddTSIkeVersion"></div></td>
+  </tr>
+  <tr style="height:15px;"></tr>
+  <tr>
+    <td><label>Priority(*):</label></td>
+    <td><div id="configVpnAddTSPriority"></div></td>
+  </tr>
+  <tr style="height:15px;"></tr>
+  <tr>
+    <td><label>Address Type(*):</label></td>
+    <td><div id="configVpnAddTSAddressType"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddTSNetworkLabel">IPv4 Network:</label></td>
+    <td><div id="configVpnAddTSNetwork"></div>
+        <label class="configVpnAddTSNetworkLabel">Netmask:</label>
+        <div id="configVpnAddTSNetmask"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddTSNetworkV6Label">IPv6 Network:</label></td>
+    <td><div id="configVpnAddTSNetworkV6"></div>
+        <label class="configVpnAddTSNetworkV6Label">Prefix:</label>
+        <div id="configVpnAddTSNetworkV6PrefixLen"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddTSAddressRangeLabel">Address Range:</label></td>
+    <td>
+      <table><tbody>
+        <tr>
+        <td><label class="configVpnAddTSAddressRangeLabel">Starting Address:</label></td>
+        <td><div id="configVpnAddTSStartAddress"></div></td>
+        </tr>
+        <tr>
+        <td><label class="configVpnAddTSAddressRangeLabel">Ending Address:</label></td>
+        <td><div id="configVpnAddTSEndAddress"></div></td>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+  <tr style="height:15px;"></tr>
+  <tr>
+    <td><label class="configVpnAddTSProtocolLabel">Protocol(*):</label></td>
+    <td><div id="configVpnAddTSProtocol"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddTSStartPortLabel">Port Range:</label></td>
+    <td><div id="configVpnAddTSStartPort"></div>
+        <label class="configVpnAddTSStartPortLabel"> - </label>
+        <div id="configVpnAddTSEndPort"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddTSIcmpLabel">ICMP Type Range:</label></td>
+    <td><div id="configVpnAddTSIcmpStartType"></div>
+        <label class="configVpnAddTSIcmpLabel"> - </label>
+        <div id="configVpnAddTSIcmpEndType"></div></td>
+  </tr>
+  <tr>
+    <td><label class="configVpnAddTSIcmpLabel">ICMP Code Range:</label></td>
+    <td><div id="configVpnAddTSIcmpStartCode"></div>
+        <label class="configVpnAddTSIcmpLabel"> - </label>
+        <div id="configVpnAddTSIcmpEndCode"></div></td>
+  </tr>
+</table>
+</p>
+</div>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddTSAddOk"></div></td>
+    <td><div id="configVpnAddTSAddCancel"></div></td>
+  </tr>
+</table>
+</p>

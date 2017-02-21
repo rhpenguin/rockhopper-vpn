@@ -1,0 +1,15 @@
+{
+  identifier:"radius_attr_name",
+  label: "radius_attr_name",
+  "items": [
+        {"radius_attr_name":"Framed-IP-Address","default_value":"enable","desc":"Used as an internal IPv4 address assigned for a remote user.<br/>Framed-IP-Netmask is also enabled. [RFC2865]"},
+        {"radius_attr_name":"Framed-IPv6-Address","default_value":"enable","desc":"Used as an internal IPv6 address assigned for a remote user. [RFC6911]"},
+        {"radius_attr_name":"MS-Primary-DNS-Server","default_value":"enable","desc":"Used as an internal DNS server's address (IPv4) for a remote user. [RFC2548]"},
+        {"radius_attr_name":"DNS-Server-IPv6-Address","default_value":"enable","desc":"Used as an internal DNS server's address (IPv6) for a remote user. [RFC6911]"},
+        {"radius_attr_name":"MS-Primary-NBNS-Server","default_value":"enable","desc":"Used as an internal WINS server's address (IPv4) for a remote user. [RFC2548]"},
+        {"radius_attr_name":"Tunnel-Private-Group-ID","default_value":"enable","desc":"Used as a VPN Realm's role string to identify a remote user's membership. [RFC2868]"},
+        {"radius_attr_name":"Tunnel-Client-Auth-ID","default_value":"enable","desc":"Used as a unique and opaque index to identify a remote user if the actual user's ID<br/>is protected during EAP exchanges. <br/> This value is used to clear the user's zombie VPN connection by gateway. [RFC2868]"},
+        {"radius_attr_name":"Session-Timeout","default_value":"enable","desc":"If it expires, a remote user's VPN is disconnected by gateway. [RFC2865]"},
+        {"radius_attr_name":"Framed-MTU","default_value":"enable","desc":"Used as a tunnel MTU. [RFC2865]"}
+  ]
+}

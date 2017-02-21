@@ -1,0 +1,64 @@
+<p>
+  <table>
+    <tbody>
+      <tr style="height: 30px;">
+        <td><label id="configVpnMyKeyStorePskIdTypeLabel" style="font-weight: bold; font-size: 100%;">My ID Type(*): </label></td>
+        <td><div id="configVpnMyKeyStorePskIdType"></div></td>
+      </tr>
+      <tr style="height: 30px;width:100%;margin-bottom: 0px;padding-bottom: 0px;">
+        <td><label id="configVpnMyKeyStorePskIdLabel" style="font-weight: bold; font-size: 100%;">My ID(*): </label></td>
+        <td><div id="configVpnMyKeyStorePskId"></div></td>
+      </tr>
+      <tr style="margin-top: 0px;padding-top: 0px;">
+        <td></td>
+        <td style="font-size:90%;">
+          <table>   
+            <tr>
+              <td><label>e.g. </label></td>
+              <td style="width:15px;"></td>
+              <td><label>Host Name(FQDN):</td>
+              <td>hostname.example.com</label></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="width:15px;"></td>
+              <td><label>Email Address:</td>
+              <td>username@example.com</label></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="width:15px;"></td>
+              <td><label>IPv4 Address:</td>
+              <td>10.0.0.1</label></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="width:15px;"></td>
+              <td><label>IPv6 Address:</td>
+              <td>2001:db8::1</label></td>
+            </tr>
+          </table>   
+        </td>
+      </tr>
+      <tr style="height: 20px;">
+        <td></td>
+        <td></td>
+      <td>
+      <tr style="height: 30px;">
+        <td style="width: 175px;"><label id="configVpnMyKeyStorePskKeyLabel" style="font-weight: bold; font-size: 100%;">
+        IKEv2 Pre-Shared Key(PSK): </label></td>
+        <td><div id="configVpnMyKeyStorePskKey"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 95%;padding: 0px;margin: 0px;">
+If you changed <label style="font-weight: bold; font-size: 100%;">My ID Type</label>
+and <label style="font-weight: bold; font-size: 100%;">My ID</label>, 
+please sepcify a new Pre-Shared Key(PSK), too.
+</p>
+<p></p>
+<p style="font-size: 95%;padding: 0px;margin: 0px;">
+To change only the old Pre-Shared Key(PSK), please sepcify a new key to 
+<label style="font-weight: bold; font-size: 100%;">Pre-Shared Key(PSK)</label>.
+</p>

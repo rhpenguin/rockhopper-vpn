@@ -1,0 +1,85 @@
+<p>
+  <label style="font-weight: bold; font-size: 100%;">Internal Gateway's Address</label>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label>IPv4: </label></td>    
+        <td><div id="configVpnRmtCfgSvrNetworksGwAddr"></div></td>
+      </tr>    
+      <tr style="height: 10px;"><td></td><td></td><td></td></tr>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label>IPv6: </label></td>    
+        <td><div id="configVpnRmtCfgSvrNetworksGwAddrV6"></div></td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+The above settings are Rockhopper's private extensions for bridge mode.
+</p>
+
+<p style="margin-top: 30px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnRmtCfgAllowIPv6RaEnabled">
+          <label for="configVpnRmtCfgAllowIPv6RaEnabled" style="font-weight: bold; font-size: 100%;">
+            Allow link-local ICMPv6 for Router Solicitation(RS) and Advertisement(RA). 
+          </label>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 500px; font-size: 95%">
+Traffic selectors allowing link-local ICMPv6 (RA/RS) are automatically added for remote peers. <br/>
+(e.g. By receiving RA through a VPN tunnel, a Windows VPN client configures it as a default route.)
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p style="margin-top: 40px;">
+  <table>
+    <tbody>
+      <tr>
+        <td><div id="configVpnRmtCfgSvrNetworksCreateBtn"></div></td>
+        <td><label></label>(Internal Routing Table)</td>    
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+If you specify traffic selectors other than 'any' for child SAs, please also 
+allow the following address ranges.
+</p>
+
+<p>
+  <table class="rhpTableTag" id="configVpnRmtCfgSvrNetworksTable">
+    <tbody id="configVpnRmtCfgSvrNetworksTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 120px;">Destination IPv4 Network</td>
+        <td class="rhpTableTdTag" style="width: 120px;">Netmask</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+<p style="padding-top: 5px;">
+  <table class="rhpTableTag" id="configVpnRmtCfgSvrNetworksTableV6">
+    <tbody id="configVpnRmtCfgSvrNetworksTableBodyV6">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 120px;">Destination IPv6 Network</td>
+        <td class="rhpTableTdTag" style="width: 120px;">Prefix</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

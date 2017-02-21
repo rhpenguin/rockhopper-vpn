@@ -1,0 +1,33 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Connect VPN by Peer's Address
+</p>
+<p>
+<table><tbody>
+<tr>
+<td><label>VPN Realm ID:</label></td>
+<td><div id="topConnectPeerRealm"></div></td>
+</tr>
+</tbody></table>
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td><label></label>Peer's IPv4 Address / Host Name(FQDN):</td>    
+        <td><div id="topConnectPeerAddress"></div></td>
+      </tr>    
+      <tr>
+        <td><label></label>Peer's Port:</td>
+        <td><div id="topConnectPeerPort"></div></td>
+      </tr>    
+    </tbody>
+  </table>
+</p>
+<p>
+<table><tbody><tr>
+<td><div id="topConnectPeer"></div></td>
+<td style="width:15px;"></td>
+<td><input id="topConnectPeerReconectAuto">
+    <label for="topConnectPeerReconectAuto">Automatically reconnect VPN.</label></td>
+</tr></tbody></table>
+</p>

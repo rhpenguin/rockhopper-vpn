@@ -1,0 +1,37 @@
+<p id="pConfigVpnIfAddrNone">
+  <table>
+    <tbody>
+      <tr>
+        <td><label id="configVpnIfAddrNoneBridgeNameLabel" style="font-weight: bold; font-size: 100%;">
+            Linked Bridge Name(*): 
+            </label>
+        </td>
+        <td>
+          <table><tbody><tr>
+            <td><div id="configVpnIfAddrNoneBridgeName"></div></td>
+            <td><div id="configVpnIfAddrNoneSeeIf"></div></td>
+            <td><div id="configVpnIfAddrNoneClear"></div></td>
+          </tr></tbody></table>
+        </td>
+      </tr>      
+    </tbody>
+  </table>
+  <p>
+  <label style="font-weight: bold; font-size: 100%;">Internal Gateway's Address:</label>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label id="configVpnIfNoneGwAddrLabel">IPv4: </label></td>
+        <td><div id="configVpnIfNoneGwAddr"></div></td>
+      </tr>
+      <tr style="height: 10px;"><td></td><td></td><td></td></tr>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label id="configVpnIfNoneGwV6AddrLabel">IPv6: </label></td>
+        <td><div id="configVpnIfNoneGwAddrV6"></div></td>
+      </tr>
+    </tbody>
+  </table>
+  </p>
+</p>

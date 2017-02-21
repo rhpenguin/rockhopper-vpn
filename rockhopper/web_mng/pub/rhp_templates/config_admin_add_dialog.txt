@@ -1,0 +1,30 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Administrator
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Administrator ID(*):</label></td>
+    <td><div id="configAdminId"></div></td>
+  </tr>
+  <tr>
+    <td><label>Password(*):</label></td>
+    <td><div id="configAdminPassword"></div></td>
+  </tr>
+  <tr>
+    <td><label>Realm ID(*):</label></td>
+    <td><div id="configAdminRealmId"></div></td>
+  </tr>
+</table>
+<label> An administrator with Realm ID '0' has all privileges<br>
+        to manage all VPN realms, while an administrator with <br>
+        a specified realm ID can manage only the realm.</label>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configAdminAddOk"></div></td>
+    <td><div id="configAdminAddCancel"></div></td>
+  </tr>
+</table>
+</p>

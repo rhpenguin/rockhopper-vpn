@@ -1,0 +1,29 @@
+{
+  identifier:"childsa_name",
+  label: "childsa_name",
+  "items": [
+        {"childsa_name":"lifetime_larval","default_value":60,"desc":""},
+        {"childsa_name":"lifetime_soft","default_value":3600,"desc":""},
+        {"childsa_name":"lifetime_hard","default_value":3720,"desc":""},
+        {"childsa_name":"lifetime_deleted","default_value":30,"desc":""},
+        {"childsa_name":"anti_replay","default_value":1,"desc":""},
+        {"childsa_name":"anti_replay_win_size","default_value":64,"desc":""},
+        {"childsa_name":"tfc_padding","default_value":0,"desc":""},
+        {"childsa_name":"pfs","default_value":0,"desc":""},
+        {"childsa_name":"resp_not_rekeying","default_value":0,"desc":""},
+        {"childsa_name":"max_seq_esn","default_value":18446744073709547520,"desc":""},
+        {"childsa_name":"max_seq_non_esn","default_value":4294963200,"desc":""},
+        {"childsa_name":"esp_dont_match_selectors","default_value":0,"desc":""},
+        {"childsa_name":"v4_icmp_is_critical","default_value":0,"desc":""},
+        {"childsa_name":"ikev2_rekey_childsa_delete_deferred_init","default_value":30,"desc":""},
+        {"childsa_name":"ikev2_rekey_childsa_delete_deferred_resp","default_value":30,"desc":""},
+        {"childsa_name":"ikev2_max_create_child_sa_failure","default_value":5,"desc":""},
+        {"childsa_name":"ikev1_lifetime_deleted","default_value":1,"desc":""},
+        {"childsa_name":"ikev1_ipsecsa_min_lifetime","default_value":120,"desc":""},
+        {"childsa_name":"ikev1_ipsecsa_rekey_margin","default_value":60,"desc":""},
+        {"childsa_name":"ikev1_ipsecsa_tx_responder_lifetime","default_value":1,"desc":""},
+        {"childsa_name":"ikev1_commit_bit_enabled","default_value":1,"desc":""},
+        {"childsa_name":"ikev1_ipsecsa_gre_strictly_match_ts","default_value":0,"desc":""}
+  ]
+}
+

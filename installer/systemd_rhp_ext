@@ -1,0 +1,260 @@
+#! /bin/sh
+
+#
+# Copyright (C) 2014 - 2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+# All rights reserved.
+#
+
+MAINDIR=/home/rhpmain
+PROTECTEDDIR=/home/rhpprotected
+RHPGROUP=rhpenguin
+MAINUSR=rhpmain
+PROTECTEDUSR=rhpprotected
+PIDDIR=/var/run/rockhopper
+DESC="IP Security service"
+NAME="rockhopperd"
+DAEMON=/usr/sbin/${NAME}
+MAINPIDFILE=${PIDDIR}/rockhopper_main.pid
+PROTECTEDPIDFILE=${PIDDIR}/rockhopper_protected.pid
+SCRIPTNAME=/etc/init.d/rockhopper
+TUNTAPCLEAN=/usr/local/sbin/rhp_tuntap_clean.pl
+IPTABLES=/sbin/iptables
+IP6TABLES=/sbin/ip6tables
+BRCTL1=/usr/sbin/brctl
+BRCTL2=/sbin/brctl
+SETCAP1=/usr/sbin/setcap
+SETCAP2=/sbin/setcap
+IPCMD1=/bin/ip
+IPCMD2=/sbin/ip
+RHPSCRIPTDIR=${PROTECTEDDIR}/script
+RHPNETMNG=${RHPSCRIPTDIR}/rhp_netmng
+RHPLOGTOOL=/usr/local/sbin/rhp_logtool
+TMP_FILES0=${MAINDIR}/www/tmp/
+TMP_FILES1=${MAINDIR}/tmp/
+TMP_FILES2=${MAINDIR}/certs/
+TMP_FILES3=${PROTECTEDDIR}/tmp/
+CFG_RESTORE_TOOL=${PROTECTEDDIR}/script/rhp_restore_cfg
+
+ARG1=$1
+ARG2=$2
+ARG3=$3
+
+#
+# [NOTICE]
+#  To enable debug trace service, please set 1.
+#
+RHPTRACE=0
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+if [ "${RHPTRACE}" != 0 ]; then
+  rhp_trace="/dev/rhp_file_trace"
+else
+  rhp_trace="/dev/null"
+fi
+
+
+# Exit if the package is not installed
+[ -x "${DAEMON}" ] || exit 0
+
+
+do_init()
+{
+  "${rhp_dbg}" "Init Rockhopper ... ${ARG1}, ${ARG2}, ${ARG3}, RHPTRACE:${RHPTRACE}"
+
+  if [ "${RHPTRACE}" != 0 ]; then
+
+    if [ -e "/dev/rhp_trace" ]; then
+      "${rhp_dbg}" "/dev/rhp_trace exists."
+    :
+    else 
+      if [ "${ARG2}" = invoke_trace ]; then
+        echo "Starting rhptrace ..."
+        "${rhp_dbg}" "Starting rhptrace ..."
+        "${PROTECTEDDIR}/rhptrace/rhp_trace_load" > /dev/null
+      fi
+    fi
+
+    export "SEGFAULT_OUTPUT_NAME=/dev/rhp_file_trace" > /dev/null
+  fi
+  
+  
+  if [ -e "${CFG_RESTORE_TOOL}" ]; then
+    "${CFG_RESTORE_TOOL}" 2> "${rhp_trace}"
+  fi
+  
+  rm -f "${TMP_FILES0}"* 2> "${rhp_trace}"
+  rm -f "${TMP_FILES1}"* 2> "${rhp_trace}"
+  rm -f "${TMP_FILES2}"* 2> "${rhp_trace}"
+  rm -f "${TMP_FILES3}"* 2> "${rhp_trace}"
+
+
+  DEVTUNPERM=$(stat --format=%a /dev/net/tun)
+
+  case "${DEVTUNPERM}" in
+    *"666"*)
+      "${rhp_dbg}" "TUNDEV access flags NOT changed. ${DEVTUNPERM}"
+      ;;
+    *)
+    chown -f "root:${RHPGROUP}" "/dev/net/tun" 2> "${rhp_trace}"
+    echo "chown root:${RHPGROUP} /dev/net/tun" 2> "${rhp_trace}"
+    "${rhp_dbg}" "chown root:${RHPGROUP} /dev/net/tun"
+  
+    chmod -f 0660 "/dev/net/tun" 2> "${rhp_trace}"
+    echo "chmod 0660 /dev/net/tun"
+    "${rhp_dbg}" "chmod 0660 /dev/net/tun"
+    ;;
+  esac
+
+  
+  if [ -e "${IPCMD1}" ]; then
+    IPCMD="${IPCMD1}"
+  elif [ -e "${IPCMD2}" ]; then 
+    IPCMD="${IPCMD2}"
+  else
+    "${rhp_dbg}" "ip command NOT found."
+  fi
+  if [ -e "${IPCMD}" ]; then
+    cp -f "${IPCMD}" "${RHPSCRIPTDIR}/ip" 2> "${rhp_trace}"
+    chown -f "${PROTECTEDUSR}:${RHPGROUP}" "${RHPSCRIPTDIR}/ip" 2> "${rhp_trace}"
+  fi
+  
+  if [ -e "${IPTABLES}" ]; then
+  
+    cp -f "${IPTABLES}" "${RHPSCRIPTDIR}/iptables" 2> "${rhp_trace}"
+    chown -f "${PROTECTEDUSR}:${RHPGROUP}" "${RHPSCRIPTDIR}/iptables" 2> "${rhp_trace}"
+
+    # Load netfilter modules
+    "${IPTABLES}" -t nat -L -n > "${rhp_trace}"
+    
+    "${RHPNETMNG}" INIT_IPTABLES ${IPTABLES} 2> "${rhp_trace}"   
+  else
+    "${rhp_dbg}" "iptables NOT found."
+  fi
+
+  if [ -e "${IP6TABLES}" ]; then
+  
+    cp -f "${IP6TABLES}" "${RHPSCRIPTDIR}/ip6tables" 2> "${rhp_trace}"
+    chown -f "${PROTECTEDUSR}:${RHPGROUP}" "${RHPSCRIPTDIR}/ip6tables" 2> "${rhp_trace}"
+
+    # Load netfilter modules
+    "${IP6TABLES}" -t nat -L -n > "${rhp_trace}"
+    
+    "${RHPNETMNG}" INIT_IP6TABLES ${IP6TABLES} 2> "${rhp_trace}"   
+  else
+    "${rhp_dbg}" "ip6tables NOT found."
+  fi  
+
+  if [ -e "${BRCTL1}" ]; then 
+    BRCTL="${BRCTL1}"  
+  elif [ -e "${BRCTL2}" ]; then 
+    BRCTL="${BRCTL2}"  
+  else
+    "${rhp_dbg}" "brctl NOT found."
+  fi
+  if [ -e "${BRCTL}" ]; then
+    cp -f "${BRCTL}" "${RHPSCRIPTDIR}/brctl" 2> "${rhp_trace}"
+    chown -f "${PROTECTEDUSR}:${RHPGROUP}" "${RHPSCRIPTDIR}/brctl" 2> "${rhp_trace}"
+  fi  
+
+  if [ -e "${SETCAP1}" ]; then 
+    SETCAP="${SETCAP1}"
+  elif [ -e "${SETCAP2}" ]; then 
+    SETCAP="${SETCAP2}"
+  else
+    "${rhp_dbg}" "setcap NOT found."
+  fi
+  if [ -e "${SETCAP}" ]; then 
+    if [ -e "${RHPSCRIPTDIR}/ip" ]; then
+      "${SETCAP}" cap_net_admin,cap_net_raw=eip "${RHPSCRIPTDIR}/ip" 2> "${rhp_trace}"
+    fi
+    "${SETCAP}" cap_net_admin,cap_net_raw=eip "${RHPSCRIPTDIR}/rhp_netmng" 2> "${rhp_trace}"
+  fi
+
+  if [ -e "${RHPSCRIPTDIR}/iptables" ]; then
+    "${SETCAP}" cap_net_admin,cap_net_raw=eip "${RHPSCRIPTDIR}/iptables" 2> "${rhp_trace}"
+  else
+    "${rhp_dbg}" "iptables NOT found(2)."
+  fi
+
+  if [ -e "${RHPSCRIPTDIR}/ip6tables" ]; then
+    "${SETCAP}" cap_net_admin,cap_net_raw=eip "${RHPSCRIPTDIR}/ip6tables" 2> "${rhp_trace}"
+  else
+    "${rhp_dbg}" "ip6tables NOT found(2)."
+  fi
+
+  if [ -e "${RHPSCRIPTDIR}/brctl" ]; then
+    "${SETCAP}" cap_net_admin=eip "${RHPSCRIPTDIR}/brctl" 2> "${rhp_trace}"
+  else
+    "${rhp_dbg}" "brctl NOT found(2)."
+  fi
+
+
+  "${TUNTAPCLEAN}" > "${rhp_trace}" 
+
+  rm -f "${MAINDIR}/www/tmp/event_log_*.xml" 2> "${rhp_trace}"
+
+  if [ -e "${MAINDIR}/log/rockhopper.log" ]; then
+  :
+  else
+    "${RHPLOGTOOL}" -c "${MAINDIR}/log/rockhopper.log" 2> "${rhp_trace}"
+    chown -f "${MAINUSR}:${RHPGROUP}" "${MAINDIR}/log/rockhopper.log" 2> "${rhp_trace}"
+    echo "Log DB file was created."
+    "${rhp_dbg}" "Log DB file was created."
+  fi
+
+  if [ ! -d "${PIDDIR}" ]; then
+    mkdir -p "${PIDDIR}" 2> "${rhp_trace}"
+    chown -f "${PROTECTEDUSR}:${RHPGROUP}" "${PIDDIR}" 2> "${rhp_trace}"
+    chmod -f 0755 "${PIDDIR}" 2> "${rhp_trace}"
+  fi 
+
+  "${rhp_dbg}" "Init Rockhopper ... Done."
+
+  return 0
+}
+
+
+do_cleanup()
+{ 
+  "${rhp_dbg}" "Rockhopper Clean-up ..."
+
+  "${TUNTAPCLEAN}" > "${rhp_trace}"
+
+  if [ -e "${IPTABLES}" ]; then
+    "${RHPNETMNG}" CLEANUP_IPTABLES ${IPTABLES} 2> "${rhp_trace}"   
+  fi
+
+  if [ -e "${IP6TABLES}" ]; then
+    "${RHPNETMNG}" CLEANUP_IP6TABLES ${IP6TABLES} 2> "${rhp_trace}"   
+  fi
+
+  "${rhp_dbg}" "Rockhopper Clean-up Done."
+
+  return 0
+}
+
+case "$1" in
+  init)
+        echo "Init ${DESC} ${NAME} ..."
+        do_init
+        echo " Done."
+        ;;
+  cleanup)
+        echo "Clean-up ${DESC} ${NAME} ..."
+        do_cleanup
+        echo " Done."
+        ;;
+#  restart|force-reload)
+#        echo "Restarting ${DESC} ${NAME}"
+#        do_cleanup
+#        do_init
+#        echo " Done."
+#        ;;
+  *)
+#        echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+        echo "Usage: $0 {init|cleanup}" >&2
+        exit 1
+        ;;
+esac
+
+:

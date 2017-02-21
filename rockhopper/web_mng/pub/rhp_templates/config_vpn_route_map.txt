@@ -1,0 +1,42 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Internal Route Map
+</p>
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td><div id="configVpnRouteCreate"></div></td>
+        <td><label>(Internal Routing Table)</label></td>    
+      </tr>    
+    </tbody>
+  </table>
+</p>
+
+<p>
+  <table class="rhpTableTag" id="configVpnRouteTable">
+    <tbody id="configVpnRouteTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 80px;">Destination IPv4 Network</td>
+        <td class="rhpTableTdTag" style="width: 80px;">Netmask</td>
+        <td class="rhpTableTdTag">Forwarding Type</td>
+        <td class="rhpTableTdTag">Via</td>
+        <td class="rhpTableTdTag" style="width: 40px;">Metric</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="padding-top:15px;">
+  <table class="rhpTableTag" id="configVpnRouteTableV6">
+    <tbody id="configVpnRouteTableBodyV6">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 80px;">Destination IPv6 Network</td>
+        <td class="rhpTableTdTag" style="width: 80px;">Prefix</td>
+        <td class="rhpTableTdTag">Forwarding Type</td>
+        <td class="rhpTableTdTag">Via</td>
+        <td class="rhpTableTdTag" style="width: 40px;">Metric</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

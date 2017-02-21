@@ -1,0 +1,90 @@
+#! /bin/sh
+
+#
+# Copyright (C) 2014 - 2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+# All rights reserved.
+#
+
+MAINDIR=/home/rhpmain
+PROTECTEDDIR=/home/rhpprotected
+RHPGROUP=rhpenguin
+MAINUSR=rhpmain
+PROTECTEDUSR=rhpprotected
+DESC="Rockhopper Debug Trace service"
+NAME="rhptrace"
+RHPSCRIPTDIR=${PROTECTEDDIR}/script
+HELPER=/home/rhpprotected/rhptrace/rhp_trace_helper
+DAEMON=/usr/sbin/rockhopperd
+
+
+#
+# [NOTICE]
+#  To enable debug trace service, please set 1.
+#
+RHPTRACE=0
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+if [ "${RHPTRACE}" != 0 ]; then
+  rhp_trace="/dev/rhp_file_trace"
+else
+  rhp_trace="/dev/null"
+fi
+
+
+# Exit if the package is not installed
+[ -x "${HELPER}" ] || exit 0
+[ -x "${DAEMON}" ] || exit 0
+
+
+do_init()
+{
+
+  if [ "${RHPTRACE}" != 0 ]; then
+  
+    if [ -e "/dev/rhp_trace" ]; then
+    :
+    else 
+      echo "Starting rhptrace ..."
+      "${PROTECTEDDIR}/rhptrace/rhp_trace_load" no_helper > /dev/null
+    fi
+  fi
+
+  ${rhp_dbg} "Init rhptrace ..."
+
+  return 0
+}
+
+
+do_cleanup()
+{ 
+
+  ${rhp_dbg} "rhptrace clean-up Done."
+
+  return 0
+}
+
+case "$1" in
+  init)
+        echo "Init ${DESC} ${NAME} ..."
+        do_init
+        echo " Done."
+        ;;
+  cleanup)
+        echo "Clean-up ${DESC} ${NAME} ..."
+        do_cleanup
+        echo " Done."
+        ;;
+#  restart|force-reload)
+#        echo "Restarting ${DESC} ${NAME}"
+#        do_cleanup
+#        do_init
+#        echo " Done."
+#        ;;
+  *)
+#        echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+        echo "Usage: $0 {init|cleanup}" >&2
+        exit 1
+        ;;
+esac
+
+:

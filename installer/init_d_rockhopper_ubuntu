@@ -1,0 +1,121 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          rockhopper
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: rockhopper initscript
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.
+### END INIT INFO
+
+#
+# Author: TETSUHARU HANADA <rhpenguine@gmail.com>
+#
+#
+# Copyright (C) 2009 - 2015 TETSUHARU HANADA <rhpenguine@gmail.com>
+# All rights reserved.
+#
+
+# Do NOT "set -e"
+
+# PATH should only include /usr/* if it runs after the mountnfs.sh script
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin
+DESC="IP Security service"
+NAME="rockhopperd"
+MAINDIR=/home/rhpmain
+PROTECTEDDIR=/home/rhpprotected
+RHPGROUP=rhpenguin
+MAINUSR=rhpmain
+PROTECTEDUSR=rhpprotected
+DAEMON=/usr/sbin/${NAME}
+PIDDIR=/var/run/rockhopper
+DAEMON_ARGS="-m ${MAINDIR}/config/main.xml -p ${PROTECTEDDIR}/config/protected.xml -u ${MAINUSR} -s ${PROTECTEDUSR} -i ${PIDDIR}"
+MAINPIDFILE=${PIDDIR}/rockhopper_main.pid
+PROTECTEDPIDFILE=${PIDDIR}/rockhopper_protected.pid
+SCRIPTNAME=/etc/init.d/rockhopper
+RHPSCRIPTDIR=${PROTECTEDDIR}/script
+RHPINITSCRIPT=${RHPSCRIPTDIR}/rhp_systemd_ext
+
+
+#
+# [NOTICE]
+#  To enable debug trace service, please set 1.
+#
+RHPTRACE=0
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+if [ "${RHPTRACE}" != 0 ]; then
+  rhp_trace="/dev/rhp_file_trace"
+else
+  rhp_trace="/dev/null"
+fi
+
+
+# Exit if the package is not installed
+[ -x "${DAEMON}" ] || exit 0
+
+# Read configuration variable file if it is present
+[ -r "/etc/default/${NAME}" ] && . "/etc/default/${NAME}"
+
+# Load the VERBOSE setting and other rcS variables
+. /lib/init/vars.sh
+
+# Define LSB log_* functions.
+# Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
+. /lib/lsb/init-functions
+
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+
+  "${RHPINITSCRIPT}" init invoke_trace
+
+  start-stop-daemon --start --quiet --verbose --pidfile "${PROTECTEDPIDFILE}" --oknodo --exec ${DAEMON} -- ${DAEMON_ARGS} || return 2
+}
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{	
+  start-stop-daemon --stop --verbose --signal 15 --retry 30 --quiet --pidfile "${MAINPIDFILE}" --name ${NAME} --user ${MAINUSR}
+  RETVAL="$?"
+  [ "${RETVAL}" = 2 ] && return 2
+  
+  start-stop-daemon --stop --verbose --signal 15 --retry 60 --quiet --pidfile "${PROTECTEDPIDFILE}" --name ${NAME} --user ${PROTECTEDUSR}
+  [ "$?" = 2 ] && return 2
+
+  "${RHPINITSCRIPT}" cleanup
+
+  return "${RETVAL}"
+}
+
+case "$1" in
+  start)
+        log_daemon_msg "Starting ${DESC} ${NAME}"
+        do_start
+        log_end_msg $?
+        ;;
+  stop)
+        log_daemon_msg "Stopping ${DESC} ${NAME}"
+        do_stop
+        log_end_msg $?
+        ;;
+  restart|force-reload)
+        log_daemon_msg "Restarting ${DESC} ${NAME}"
+        do_stop
+        do_start
+        log_end_msg $?
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart|force-reload}" >&2
+        exit 1
+        ;;
+esac
+
+:

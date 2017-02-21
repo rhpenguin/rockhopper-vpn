@@ -1,0 +1,23 @@
+
+<label style="font-weight: bold; font-size: 100%;">Internal Address:</label>
+<p id="pConfigVpnIfAddrStatic">
+  <table>
+    <tbody>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label id="configVpnIfAddrStaticLabel">IPv4: </label></td>
+        <td><div id="configVpnIfAddrStatic"></div></td>
+        <td style="padding-left: 10px;"><label id="configVpnIfAddrStaticNetmaskLabel">Netmask: </label></td>
+        <td><div id="configVpnIfAddrStaticNetmask"></div></td>
+      </tr>
+      <tr style="height: 10px;"><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td style="width: 10px;"></td>
+        <td><label id="configVpnIfAddrStaticV6Label">IPv6: </label></td>
+        <td><div id="configVpnIfAddrStaticV6"></div></td>
+        <td style="padding-left: 10px;"><label id="configVpnIfAddrStaticV6PrefixLenLabel">Prefix:</label></td>
+        <td><div id="configVpnIfAddrStaticV6PrefixLen"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</p>

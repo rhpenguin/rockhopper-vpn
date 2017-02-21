@@ -1,0 +1,128 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 5px;margin-top: 5px;margin-bottom: 10px;">
+Cryptographic algorithms
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+If no settings exist, default settings are used.
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+The following settings are actually applied after you restart Rockhopper. 
+</p>
+<p style="margin-top: 30px;">
+<div id="configGlobalAddIkeSaCrypto"></div>
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+Please specify all types(Encryption, Pseudo Random Function(PRF), Integrity and Diffie-Hellman(DH)) of algorithms.
+</p>
+
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td style="vertical-align:top;">
+        <p>
+          <table class="rhpTableTag" id="configGlobalCryptoTableIkeSaEncr" style="width:250px;">
+            <tbody id="configGlobalCryptoTableBodyIkeSaEncr">
+            </tbody>
+          </table>
+        </p>
+        </td>
+        <td style="vertical-align:top;">
+        <p>
+          <table class="rhpTableTag" id="configGlobalCryptoTableIkeSaPrf" style="width:400px;">
+            <tbody id="configGlobalCryptoTableBodyIkeSaPrf">
+            </tbody>
+          </table>
+        </p>
+        </td>
+      <tr>
+    </tbody>
+  </table>
+<br/>
+  <table>
+    <tbody>
+      <tr>
+        <td style="vertical-align:top;">
+        <p>
+          <table class="rhpTableTag" id="configGlobalCryptoTableIkeSaInteg" style="width:250px;">
+            <tbody id="configGlobalCryptoTableBodyIkeSaInteg">
+            </tbody>
+          </table>
+        </p>
+        </td>
+        <td style="vertical-align:top;">
+        <p>
+          <table class="rhpTableTag" id="configGlobalCryptoTableIkeSaDh" style="width:400px;">
+            <tbody id="configGlobalCryptoTableBodyIkeSaDh">
+            </tbody>
+          </table>
+        </p>
+        <td>
+      <tr>
+    </tbody>
+  </table>
+</p>
+
+
+
+<p style="margin-top: 30px;">
+<div id="configGlobalAddChildSaCrypto"></div>
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+Please specify all types(Encryption, Integrity and Extended Sequence Number(ESN)) of algorithms.
+</p>
+
+<p>
+  <table>
+    <tbody>
+      <tr>
+        <td style="vertical-align:top;">
+        <p>
+          <table class="rhpTableTag" id="configGlobalCryptoTableChildSaEncr" style="width:250px;">
+            <tbody id="configGlobalCryptoTableBodyChildSaEncr">
+            </tbody>
+          </table>
+        </p>
+        </td>
+        <td style="vertical-align:top;">
+        <p>
+          <table class="rhpTableTag" id="configGlobalCryptoTableChildSaInteg" style="width:250px;">
+            <tbody id="configGlobalCryptoTableBodyChildSaInteg">
+            </tbody>
+          </table>
+        </p>
+        <td>
+      <tr>
+    </tbody>
+  </table>
+<br/>
+  <table class="rhpTableTag" id="configGlobalCryptoTableChildSaEsn" style="width:430px;">
+    <tbody id="configGlobalCryptoTableBodyChildSaEsn">
+    </tbody>
+  </table>
+</p>
+
+
+
+<p style="margin-top: 30px;">
+<div id="configGlobalAddIkev1IkeSaCrypto"></div>
+</p>
+
+<p>
+  <table class="rhpTableTag" id="configGlobalCryptoTableIkev1IkeSa" style="width:600px;">
+    <tbody id="configGlobalCryptoTableBodyIkev1IkeSa">
+    </tbody>
+  </table>
+</p>
+
+
+
+<p style="margin-top: 40px;">
+<div id="configGlobalAddIkev1IpsecSaCrypto"></div>
+</p>
+
+<p>
+  <table class="rhpTableTag" id="configGlobalCryptoTableIkev1IpsecSa" style="width:600px;">
+    <tbody id="configGlobalCryptoTableBodyIkev1IpsecSa">
+    </tbody>
+  </table>
+</p>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<user id="5" name="rhp_file_trace">
+
+<message id="1" tag="">
+<![CDATA[
+ (size : %di) 
+ %s]]>
+</message>
+
+</user>

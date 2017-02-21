@@ -1,0 +1,278 @@
+
+Please visit Rockhopper VPN's project site to get more detailed information.
+
+  - http://rockhoppervpn.sourceforge.net/
+  - http://sourceforge.net/projects/rockhoppervpn/
+  - Getting Started:
+    - http://rockhoppervpn.sourceforge.net/getstarted.html
+  - Documents:
+    - http://rockhoppervpn.sourceforge.net/documents.html
+
+
+
+Installation
+------------
+
+* Currently tested Linux distributions and Web browsers:
+
+    - Ubuntu Desktop/Server 12.04 or later 
+    - Linux Mint 17.0 or later 
+    - Debian 7.1 or later 
+    - CentOS 6.0 or later 
+    - Fedora 21 or later
+    - Firefox 3.6 or later 
+    - Google Chrome 13.0.x or later 
+
+ This software may work on other Linux distributions derived from or 
+ corresponding to the above distributions. However, you will need to 
+ edit the installer script to do it.
+ 
+ Currently, Internet Explorer's Javascript API is NOT supported. Sorry.
+
+
+* Required additional libraries and tools:
+
+    - Building tools(gcc, make, etc.)
+    - libcap2 / libcap2-bin
+    - libssl-dev(OpenSSL)
+    - libxml2-dev(Gnome libxml2)
+    - libsqlite3-dev(SQLite)
+    - libxml-libxml-perl
+    - perl-libwww-perl
+    - libswitch-perl
+    - libjson-perl [Optional]
+    - libgtk2-perl [Optional]
+    - bridge-utils [Optional]
+    - iptables / ip6tables [Optional]
+
+ This software's installer script tries to install these additional 
+ packages by apt-get or yum command. Of cource, you can install these
+ manually before running the installer srcript.
+
+Before running the installer script, please update package information 
+(e.g. sudo apt-get update or yum update). 
+
+If you configure a Split DNS for your VPN (IPv6), it requires kernel  
+v3.7 and later (supporting IPv6 NAT) and corresponding ip6tables 
+(e.g. Ubuntu 13.04 or later). 
+
+
+
+* Install Rockhopper VPN software:
+
+   (1) Download this software's package(rockhopper-<version>.tgz).
+   (2) Update package information. (e.g. sudo apt-get update or yum update)
+   (3) tar zxvf rockhopper-<version>.tgz
+   (4) cd rockhopper-<version>
+   (5) sudo ./install.sh       
+       *:Please run the installer script as root.
+
+ If you install this software on a distribution whose firewall policy is 
+ 'default deny' like CentOS, you may need to configure the firewall to 
+ allow IPsec(IP protocol: ESP(50)) and IKEv2(IP protocol: UDP(17), 
+ ports: 500 and 4500) traffic. 
+
+
+
+* Install Rockhopper VPN software with debug trace tools:
+
+ If you want to test, develop or hack Rockhopper VPN software, it is 
+ useful to install additional debug trace tools, too. 
+ Please read "Documents/Debug Trace" on our project site to get more 
+ detailed information before the installation.
+
+  - http://rockhoppervpn.sourceforge.net/dev_dbgtrace.html
+
+ Please install like this: 
+
+  (4) sudo ./install_dbg.sh    
+      *:Please run the installer script as root.
+
+
+ Incidentally, if you want to build Rockhopper with no optimization 
+ (gcc -O0), please install like this:
+
+  (4) sudo ./debug_tools/install_dbg_no_optmz.sh 
+      *:Please run the installer script as root.
+      
+ To enable most debug flags (see rhp_misc.h), run the installer 
+ like this:
+
+  (4) sudo ./debug_tools/install_dbg_all.sh 
+      *:Please run the installer script as root.
+
+
+
+* Uninstall Rockhopper
+
+ If you want to uninstall this software, please use the 'uninstall.sh' 
+ script in the same directory.
+
+
+
+
+
+Getting Started
+----------------
+
+ Now you can open Rockhopper Web console by Web browser like firefox. 
+
+ Default URL of the top page is 'http://127.0.0.1:32501/'.
+
+ Also, you can start it by launcher in the Start Menu or in the Unity 
+ dashboard (Ubuntu). 
+
+ Default administrator's information:
+   Name: admin
+   Password: secret
+
+
+ [CAUTION]
+  Please change the password immediately. You can do this on 
+  Web console's "Management" tab pane.
+
+
+
+
+
+Installation on the non-GUI environment
+----------------------------------------
+
+ By default, Rockhopper's Web management service is open on loopback 
+ address(http://127.0.0.1:32501/) only. When you install this software 
+ on a distribution without GUI like Ubuntu Server, it is useful to 
+ configure an additional address and port remotely accessible from 
+ other PCs. You can setup this by rockhopper management tool.
+
+
+  # rockhopper web-mng -mng_address <the machine's IPv4> -admin admin -password <password>
+  # sudo /etc/init.d/rockhopper restart
+  or 
+  # sudo systemctl restart rockhopper
+
+ (Example)
+ ---
+ # ip addr s dev eth0
+ 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP 
+    group default qlen 1000
+     link/ether 00:xx:xx:xx:xx:xx brd ff:ff:ff:ff:ff:ff
+     inet 192.168.20.100/24 brd 192.168.20.255 scope global eth0
+          ^^^^^^^^^^^^^^
+        valid_lft forever preferred_lft forever
+     inet6 fe80::xxxx:xxxx:xxxx:xxxx/64 scope link 
+        valid_lft forever preferred_lft forever
+
+
+ # rockhopper web-mng -mng_address 192.168.20.100
+ Admin Name: admin
+ Password: secret
+
+ # sudo /etc/init.d/rockhopper restart
+ or
+ # sudo systemctl restart rockhopper
+ ---
+
+ Now you can access "http://192.168.20.100:32501/" remotely by Web browser.
+
+ [CAUTION]
+  Communication between Rockhopper's Web management service and
+  Web browsers is NOT encrypted. So, you should access the 
+  management service on protected network/LAN. 
+
+
+
+Enjoy!
+
+
+[Appendix: 1] Simple VPN Client GUI: Manually installing a gtk2-perl package. 
+              (Ubuntu/LinuxMint/Debian).
+----------------------------------------------------------------------------
+
+A Rockhopper's simple VPN Client GUI needs a GTK2-perl package. You can install 
+it manually.
+
+  - Open a Terminal window.
+
+  - Install it by apt-get. 
+
+    $ sudo apt-get install libgtk2-perl
+
+
+
+[Appendix: 2] Simple VPN Client GUI: Building a gtk2-perl package on your 
+              CentOS/Fedora system.
+-------------------------------------------------------------------------
+
+A Rockhopper's simple VPN Client GUI needs a GTK2-perl package. In case of 
+CentOS/Fedora, it may not be distributed on default repositories. If you
+can't find the 'perl-Gtk2' package on the third-party repositories, you need 
+to build it from a source package.
+
+
+- Available Repositories for CentOS > Third Party Repositories.
+  http://wiki.centos.org/AdditionalResources/Repositories
+
+
+The follwoings are just an example procedure to do it. You may need to find 
+other better ways.
+
+
+- Open a Terminal window.
+
+- Just to make sure, try to install a perl-Gtk2 package from the default 
+  repositories. It may fail. 
+
+$ sudo yum install perl-Gtk2 
+
+
+- If failed, configure a third-party repository. [e.g.] repoforge(rpmforge)
+
+$ wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
+You may get it for 32bits or a newer one from the repoforge's site 
+(http://pkgs.repoforge.org/rpmforge-release/).
+
+$ sudo rpm -ivh rpmforge-release-*.rpm
+$ sudo yum update rpmforge-release
+
+- Disable the third-party repository by default.
+
+$ sudo vi /etc/yum.repos.d/rpmforge.repo
+ ...
+ enable=0
+ ...
+
+
+- First, try to get the package from this repository. It may fail.
+
+$ sudo yum install --enablerepo=rpmforge perl-Gtk2
+
+
+- If failed, try to build the GTK2-perl package from a source package. Before starting it, 
+  you may need to install additional packages.
+
+$ sudo yum install gcc make perl-ExtUtils-MakeMaker pango-devel gtk2-devel 
+  perl-Time-HiRes perl-local-lib perl-CPAN
+
+$ sudo yum install --enablerepo=rpmforge perl-ExtUtils-PkgConfig perl-ExtUtils-Depends
+
+
+- Install additional perl modules from CPAN (http://www.cpan.org/).
+
+$ sudo perl -MCPAN -e shell
+  cpan[n]> install Test::More
+  cpan[n]> install Glib
+  cpan[n]> install Cairo
+  cpan[n]> install Pango
+
+
+
+- Get a GTK2-perl package from the project site (http://sourceforge.net/projects/gtk2-perl/files/Gtk2/)
+  and build it.
+
+$ tar xfvz Gtk2-<version>.tar.gz 
+$ cd Gtk2-<version>
+$ perl Makefile.PL
+$ make
+$ make test
+$ sudo make install
+

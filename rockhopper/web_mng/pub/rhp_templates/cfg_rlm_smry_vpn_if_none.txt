@@ -1,0 +1,28 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryVpnIfNoneInternalAddr">
+    <tr class="rhpTableTrTag rhpTableTrTagTop">
+      <td class="rhpTableTdTag">Internal Address Type</td>
+      <td class="rhpTableTdTag">Linked Bridge Name</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfNoneInternalAddrType"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfNoneLinkedBridge"></td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<p>
+<table class="rhpTableTag" style="width:200px;">
+  <tbody id="cfgRlmSmryVpnIfNoneInternalAddr2">
+    <tr class="rhpTableTrTag rhpTableTrTagTop">
+      <td class="rhpTableTdTag">Encapsulation Mode</td>
+      <td class="rhpTableTdTag">MTU</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfNoneEncapMode"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfNoneMtu"></td>
+    </tr>
+  </tbody>
+</table>
+</p>

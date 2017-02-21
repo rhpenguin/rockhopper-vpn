@@ -1,0 +1,64 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Peer
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Peer ID Type(*):</label></td>
+    <td><div id="configVpnAddPeerIdType"></div></td>
+  </tr>
+  <tr>
+    <td><label id="configVpnAddPeerIdLabel">Peer ID(*):</label></td>
+    <td><div id="configVpnAddPeerId"></div></td>
+  </tr>
+</table>
+</p>
+<small>
+<table class="rhpTableTag">
+  <tbody>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Peer ID Type:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>Peer ID (e.g.)</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Host Name(FQDN):</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>hostname.example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>E-mail Address:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>username@example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>subjectName(DN):</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>C=JP,...,O=example,OU=sales,CN=username</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>IPv4 Address:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>10.0.0.1</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>IPv6 Address:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>2001:db8::1</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Null ID:</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>Any string. (Connection Name)</label></td>
+    </tr>
+  </tbody>
+</table>
+</small>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddPeerOk"></div></td>
+    <td><div id="configVpnAddPeerCancel"></div></td>
+  </tr>
+</table>
+</p>

@@ -1,0 +1,80 @@
+<p style="font-weight: bold;font-size: 110%;padding-top: 0px;margin-top: 15px;margin-bottom: 10px;">
+Routing
+</p>
+
+<p style="font-weight: bold;font-size: 100%;padding-top: 0px;margin-top: 25px;margin-bottom: 10px;">
+Routing table for IP routing.          
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topRealmIpRoutingTable">
+    <tbody id="topRealmIpRoutingTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Destination</td>
+        <td class="rhpTableTdTag">Gateway<br/>(Realm ID)</td>
+        <td class="rhpTableTdTag">Out I/F</td>
+        <td class="rhpTableTdTag">Type</td>
+        <td class="rhpTableTdTag">Metric</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+
+
+<p style="font-weight: bold;font-size: 100%;padding-top: 30px;margin-top: 0px;margin-bottom: 30px;">
+Routing table for DMVPN shortcuts (Spoke-to-Spoke).
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topRealmIpRoutingDmvpnTable">
+    <tbody id="topRealmIpRoutingDmvpnTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Destination</td>
+        <td class="rhpTableTdTag">Gateway<br/>(Realm ID)</td>
+        <td class="rhpTableTdTag">Out I/F</td>
+        <td class="rhpTableTdTag">Destination Peer</td>
+        <td class="rhpTableTdTag">Elapsed Seconds <br/> Hold-Time <br/> Metric</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+
+
+<p style="font-weight: bold;font-size: 100%;padding-top: 30px;margin-top: 0px;margin-bottom: 30px;">
+Routing cache for IP routing.          
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topRealmIpRoutingCache">
+    <tbody id="topRealmIpRoutingCacheBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Source</td>
+        <td class="rhpTableTdTag">Destination</td>
+        <td class="rhpTableTdTag">Next Hop<br/>(Realm ID)</td>
+        <td class="rhpTableTdTag">Peer</td>
+        <td class="rhpTableTdTag">Type <br/> Elapsed Seconds <br/> Used</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+
+
+<p style="font-weight: bold;font-size: 100%;padding-top: 30px;margin-top: 0px;margin-bottom: 30px;">
+Routing table's buckets.          
+</p>
+
+<p>
+  <table class="rhpTableTag" id="topRealmIpRoutingTableBucket">
+    <tbody id="topRealmIpRoutingTableBucketBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Address Family</td>
+        <td class="rhpTableTdTag">Prefix <br/>Netmask</td>
+        <td class="rhpTableTdTag">Entries</td>
+        <td class="rhpTableTdTag">Bucket Size</td>
+        <td class="rhpTableTdTag">Rehashed</td>
+      </tr>
+    </tbody>
+  </table>
+</p>

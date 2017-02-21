@@ -1,0 +1,17 @@
+<p style="font-weight: bold;font-size: 110%;padding-top: 0px;margin-top: 15px;margin-bottom: 10px;">
+NHRP Registration Cache (NHS)
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmNhrpCache">
+    <tbody id="topRealmNhrpCacheBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Protocol Address</td>
+        <td class="rhpTableTdTag">NBMA Address</td>
+        <td class="rhpTableTdTag">Peer</td>
+        <td class="rhpTableTdTag">Elapsed Seconds</td>
+        <td class="rhpTableTdTag"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+

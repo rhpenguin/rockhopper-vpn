@@ -1,0 +1,30 @@
+<p id="pConfigVpnIfEncapGre">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <label id="configVpnIfEncapGreKeyLabel" style="font-weight: bold; font-size: 100%;">
+            GRE Key: 
+          </label>
+        </td>
+        <td>
+          <div id="configVpnIfEncapGreKey"></div>
+        </td>
+      </tr>      
+      <tr>
+      <td style="height: 5px;"></td>
+      <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label id="configVpnIfEncapGreNhrpKeyLabel" style="font-weight: bold; font-size: 100%;">
+            NHRP (Next Hop Resolution Protocol) Key: 
+          </label>
+        </td>
+        <td>
+          <div id="configVpnIfEncapGreNhrpKey"></div>
+        </td>
+      </tr>      
+    </tbody>
+  </table>
+</p>

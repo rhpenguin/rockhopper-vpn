@@ -1,0 +1,9 @@
+<table><tbody>
+  <tr id="topRealmPeerTopPaneTr">
+    <td><label id="topRealmPeerTopPaneLabel" style="font-weight: bold;font-size: 130%;"></label></td>
+    <td style="width:40px;"></td>
+    <td id="topRealmPeerTopPaneCloseTd"><div id="topRealmPeerTopPaneClose"></div></td>
+    <td id="topRealmPeerTopPaneCloseTd"><div id="topRealmPeerTopPaneMobikeIStartRtCheck"></div></td>
+  </tr>
+</tbody></table>
+<label style="font-size:90%;">To update this page, please click the left tree's node of this peer.</label>

@@ -1,0 +1,99 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Network Interface
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+(*): Required.
+</p>
+<p style="margin-top: 25px;">
+  <label>Source interface to establish VPN(*):</label>
+</p>
+
+<div id="configVpnNetworkIfTop">
+<p style="margin-top: 25px;">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input id="configVpnNetworkIfDefRoute">
+          <label for="configVpnNetworkIfDefRoute" style="font-size:100%;font-weight:bold;">
+            Use default route
+          </label>
+        </td>
+      </tr>    
+      <tr style="height: 15px;"><td></td></tr>
+      <tr>
+        <td>
+          <div id="configVpnNetworkIfDstNatPrimaryCheck"></div>
+          <label class="configVpnNetworkIfLabel" style="font-size:100%;">
+            Destination NAT Address (IKEv2 MOBIKE Responder)
+          </label>
+        </td>
+      </tr>    
+
+    </tbody>
+  </table>
+
+</p>
+
+<p style="margin-top: 15px;">
+
+<table>
+  <tbody id="configVpnNetworkIfTBodyTop">
+    <tr>
+      <td style="padding-right: 25px;"><label class="configVpnNetworkIfLabel" style="font-size:100%;font-weight:bold;">Primary interface: </label></td>
+      <td>      
+        <table><tbody>    
+        <tr>
+          <td><div id="configVpnNetworkIfPrimaryName"></div></td>
+          <td><div id="configVpnNetworkIfPrimaryViewIf"></div></td>
+          <td><div id="configVpnNetworkIfPrimaryClear"></div></td>
+        </tr>
+        <tr>
+          <td><div id="configVpnNetworkIfPrimaryIPVer"></div></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="configVpnNetworkIfDstNatPrimary"></div>
+</p>
+
+<p style="margin-top: 20px;">
+<table>
+  <tbody id="configVpnNetworkIfTBody2Top">
+    <tr>
+      <td style="padding-right: 10px;"><label class="configVpnNetworkIfLabel" style="font-size:100%;font-weight:bold;">Secondary interface: </label></td>
+      <td>
+      <table><tbody>    
+        <tr>
+          <td><div id="configVpnNetworkIfSecondaryName"></div></td>
+          <td><div id="configVpnNetworkIfSecondaryViewIf"></div></td>
+          <td><div id="configVpnNetworkIfSecondaryClear"></div></td>
+        </tr>
+        <tr>
+          <td><div id="configVpnNetworkIfSecondaryIPVer"></div></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody></table>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<div id="configVpnNetworkIfDstNatSecondary"></div>
+</p>
+
+<p style="font-size: 95%;">
+  <label>
+    When <label style="font-weight:bold;">Destination NAT Address</label> is specified, 
+    a remote peer (a IKEv2 MOBIKE initiator) will be notified of the address as this node's 
+    additional address.
+  </label>
+</p>
+
+</div>

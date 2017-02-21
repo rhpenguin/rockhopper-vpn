@@ -1,0 +1,19 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Enable a VPN Realm
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Realm ID(*):</label></td>
+    <td><div id="enableRealmId"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="enableRealmEnableOk"></div></td>
+    <td><div id="enableRealmEnableCancel"></div></td>
+  </tr>
+</table>
+</p>

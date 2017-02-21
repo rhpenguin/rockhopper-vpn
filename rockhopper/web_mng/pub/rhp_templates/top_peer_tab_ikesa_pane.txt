@@ -1,0 +1,30 @@
+<p>
+  <table class="rhpTableTag topRealmPeerIkeSaTable" style="width:500px;">
+    <tbody class="topRealmPeerIkeSaTableBody">
+    </tbody>
+  </table>
+</p>
+<p>
+  <table class="rhpTableTag topRealmPeerIkeSaTable" style="width:300px;">
+    <tbody class="topRealmPeerIkeSaTable02Body">
+    </tbody>
+  </table>
+</p>
+<p>
+  <label style="font-size: 110%;font-weight:bold;">Authentication Method:</label>
+  <table class="rhpTableTag topRealmPeerIkeSaTable2" style="width:300px;">
+    <tbody class="topRealmPeerIkeSaTable2Body">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag">Peer Node</td>
+        <td class="rhpTableTdTag">This Node</td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p>
+  <label style="font-size: 110%;font-weight:bold;">Cryptographic algorithms:</label>
+  <table class="rhpTableTag topRealmPeerIkeSaTable3" style="width:400px;">
+    <tbody class="topRealmPeerIkeSaTable3Body">
+    </tbody>
+  </table>
+</p>

@@ -1,0 +1,17 @@
+<p>
+  <table class="rhpTableTag" id="topRealmInternalIfTable">
+    <tbody id="topRealmInternalIfTableBody">
+    </tbody>
+  </table>
+</p>
+<div id="topRealmInternalIfBridgeInfo"></div>
+<p style="font-weight: bold;font-size: 110%;padding-top: 0px;margin-top: 25px;margin-bottom: 10px;">
+Statistics
+<div class="topGlobalStatisticsVifClear"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="topRealmInternalIfStatisticsTable" style="width: 480px;">
+    <tbody id="topRealmInternalIfStatisticsTableBody">
+    </tbody>
+  </table>
+</p>

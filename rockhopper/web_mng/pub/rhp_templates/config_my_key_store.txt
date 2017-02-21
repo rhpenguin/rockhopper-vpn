@@ -1,0 +1,14 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 15px;">
+My Key Store
+</p>
+<table>
+  <tbody>
+    <tr>
+      <td><label id="configVpnMyKeyStoreLabel" style="font-weight: bold; font-size: 100%;">Authentication Method(*): </label></td>
+      <td><div id="configVpnMyKeyStore"></div></td>
+      <td style="width:20px;"></td>
+      <td><label style="font-size: 90%;padding: 0px;margin: 0px;">(*): Required.</label></td>
+    </tr>
+  </tbody>
+</table>
+<div id="configVpnMyKeyStore2"></div>

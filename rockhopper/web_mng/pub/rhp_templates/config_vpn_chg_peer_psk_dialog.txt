@@ -1,0 +1,19 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Change Peer's Key
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>New Key/Password(*):</label></td>
+    <td><div id="configVpnChangePeerPsk"></div></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnChangePeerPskOk"></div></td>
+    <td><div id="configVpnChangePeerPskCancel"></div></td>
+  </tr>
+</table>
+</p>

@@ -1,0 +1,19 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 10px;margin-top: 10px;margin-bottom: 10px;">
+Administrator Management
+</p>
+<p style="margin-top: 10px;">
+  <div id="configGlobalAdminAdd"></div>
+</p>
+<p>
+  <table class="rhpTableTag" id="configGlobalAdminTable" style="width: 550px;">
+    <tbody id="configGlobalAdminTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 250px;">Administrator's ID</td>
+        <td class="rhpTableTdTag" style="width: 120px;">Realm ID</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 100px;"></td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+

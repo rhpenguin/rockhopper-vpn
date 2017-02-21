@@ -1,0 +1,74 @@
+#!/bin/sh
+
+rhp_dbg="/usr/local/sbin/rhp_dbg"
+
+module="rhp_trace"
+module_file="rhp_file_trace"
+
+device="rhp_trace"
+device_file="rhp_file_trace"
+
+mode="660"
+user="rhpprotected"
+group="rhpenguin"
+
+"${rhp_dbg}" "Loading Rockhopper Debug Trace ... $1, $2, $3"
+
+
+if [ -e /dev/rhp_trace ]; then
+  logger "/dev/rhp_trace exists."
+  "${rhp_dbg}" "/dev/rhp_trace exists."
+:
+else
+
+	#/sbin/insmod ./rhp_trace.ko no_caps_check=1
+	/sbin/insmod /home/rhpprotected/rhptrace/rhp_trace.ko
+	logger "/sbin/insmod /home/rhpprotected/rhptrace/rhp_trace.ko"
+  sleep 5
+
+	minor=$(awk "\$2==\"$module\" {print \$1}" /proc/misc)
+	minor_file=$(awk "\$2==\"$module_file\" {print \$1}" /proc/misc)
+
+	uid=$(awk -F ':' "\$1==\"$user\" {print \$3}" /etc/passwd)
+
+	/bin/rm -f /dev/${device} 
+	/bin/mknod /dev/${device} c 10 ${minor}  
+  logger "/bin/mknod /dev/${device} c 10 ${minor}"
+  sleep 5
+	/bin/chown $user /dev/${device} 
+  logger "/bin/chown $user /dev/${device}"
+	/bin/chgrp $group /dev/${device} 
+  logger "/bin/chgrp $group /dev/${device}"
+  /bin/chmod $mode  /dev/${device} 
+  logger "/bin/chmod $mode  /dev/${device}"
+
+	/bin/rm -f /dev/${device_file} 
+	/bin/mknod /dev/${device_file} c 10 ${minor_file}
+  logger "/bin/mknod /dev/${device_file} c 10 ${minor_file}"
+  sleep 5
+	/bin/chown $user /dev/${device_file} 
+  logger "/bin/chown $user /dev/${device_file}"
+	/bin/chgrp $group /dev/${device_file} 
+  logger "/bin/chgrp $group /dev/${device_file}"
+  /bin/chmod $mode /dev/${device_file} 
+  logger "/bin/chmod $mode /dev/${device_file}"
+
+fi
+
+/home/rhpprotected/rhptrace/rhp_trace_start_stop start
+
+if [ "$1" != "no_helper" ]; then 
+  /home/rhpprotected/rhptrace/rhp_trace_helper &
+  sleep 3
+  /usr/local/sbin/rhp_trace -e 1
+  /usr/local/sbin/rhp_trace -e 2
+  /usr/local/sbin/rhp_trace -e 3
+  /usr/local/sbin/rhp_trace -e 4
+  /usr/local/sbin/rhp_trace -e 5
+  /usr/local/sbin/rhp_trace -e 6
+  /usr/local/sbin/rhp_trace -e 7
+  /usr/local/sbin/rhp_trace -e 8
+  /usr/local/sbin/rhp_trace -z 30000000
+fi
+
+"${rhp_dbg}" "Loading Rockhopper Debug Trace ... Done."

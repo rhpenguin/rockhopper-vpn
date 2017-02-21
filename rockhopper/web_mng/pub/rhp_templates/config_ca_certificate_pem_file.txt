@@ -1,0 +1,56 @@
+<p>
+  <form name="configUploadCaPemForm" action="/protected/certs" method="post" enctype="multipart/form-data" target="upload_ca_cert_pem_response">
+    <table>
+      <tbody>
+      <tr>
+        <td>
+          <label style="font-weight: bold; font-size: 100%;">
+          CA certificates(X.509, *.pem):
+          </label>
+        </td>
+      <tr>
+      <tr style="height: 5px;"><td></td><tr>
+      <tr>
+        <td >
+          <input type="file" name="upload_ca_cert_file_pem" size="32">
+        </td>    
+      </tr>    
+      <tr style="height: 5px;"><td></td><tr>
+      <tr>
+        <td>
+          <label style="font-size: 95%;">
+          In the above PEM file, multiple certificates for a root CA and intermediate 
+          CAs are allowed. First, PEM-encoded text blocks for all intermediate CAs must 
+          appear before a PEM-encoded text block for the root CA in the same file.  
+          The root CA's text block must be the last one. These intermediate CA 
+          certificates are NOT sent to peers.
+          </label>
+        </td>
+      </tr>
+      <tr style="height: 20px;"><td></td><tr>
+      <tr>
+        <td>
+          <label style="font-weight: bold; font-size: 100%;">
+          CRL(X.509-CRL, *.pem):
+          </label>
+        </td>
+      <tr>
+      <tr style="height: 5px;"><td></td><tr>
+      <tr>
+        <td >
+          <input type="file" name="upload_crl_file_pem" size="32">
+        </td>    
+      </tr>    
+      <tr style="height: 20px;"><td></td><tr>
+      </tbody>
+    </table>
+    
+    <input type="hidden" name="upload_cert_file_vpn_realm" value="">
+    <input type="hidden" name="upload_cert_file_bus_session_id" value="">
+  </form>
+
+  <iframe name="upload_ca_cert_pem_response" style="display:none;" id="configUploadCaCertPemResponse">
+  </iframe>
+</p>
+
+

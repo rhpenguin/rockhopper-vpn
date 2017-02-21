@@ -1,0 +1,65 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Peer's Key
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Peer ID Type (*):</label></td>
+    <td><div id="configVpnPeerKeyStoreAddPeerIdType"></div></td>
+  </tr>
+  <tr>
+    <td><label>Peer ID / User Name (*):</label></td>
+    <td><div id="configVpnPeerKeyStoreAddPeerId"></div>
+        <div id="configVpnPeerKeyStoreAddPeerIdList"></div></td>
+  </tr>
+  <tr>
+    <td><label>PSK (Pre-Shared Key) / Password (*):</label></td>
+    <td><div id="configVpnPeerKeyStoreAddPsk"></div></td>
+  </tr>
+</table>
+</p>
+<small>
+<table id="configVpnAddPeerKeyStoreTable" class="rhpTableTag">
+  <tbody id="configVpnAddPeerKeyStoreTableBody">
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>Peer ID Type</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>Peer ID / User Name (e.g.)</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>PSK(Pre-Shared Key): Host Name(FQDN)</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>hostname.example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>PSK(Pre-Shared Key): E-mail Address</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>username@example.com</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>PSK(Pre-Shared Key): IPv4 Address</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>10.0.0.1</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>PSK(Pre-Shared Key): IPv6 Address</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>2001:db8::1</label></td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag"><label>IKEv2 EAP-MSCHAPv2: User Name</label> <br/> 
+                                <label>IKEv1 XAUTH: User Name</label></td>
+      <td></td>
+      <td class="rhpTableTdTag"><label>username</label></td>
+    </tr>
+  </tbody>
+</table>
+</small>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddPeerKeyStoreOk"></div></td>
+    <td><div id="configVpnAddPeerKeyStoreCancel"></div></td>
+  </tr>
+</table>
+</p>

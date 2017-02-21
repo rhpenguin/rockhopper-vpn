@@ -1,0 +1,43 @@
+<p style="font-weight: bold;font-size: 130%;padding-top: 0px;margin-top: 0px;margin-bottom: 30px;">
+Internal DNS
+</p>
+<p style="font-size: 90%;padding: 0px;margin: 0px;">
+(*): Required if internal DNS is configured.
+</p>
+<p>
+  <label style="font-weight: bold; font-size: 100%;">Internal DNS Server's Address:</label>    
+  <table>
+    <tbody>
+    <tr>
+      <td style="width: 10px;"></td>
+      <td><label>IPv4: </label></td>    
+      <td><div id="configVpnDnsServerAddr"></div></td>
+    </tr>    
+    <tr style="height: 10px;"><td></td><td></td><td></td></tr>
+    <tr>
+      <td style="width: 10px;"></td>
+      <td><label>IPv6: </label></td>    
+      <td><div id="configVpnDnsServerAddrV6"></div></td>
+    </tr>    
+    </tbody>
+  </table>
+</p>
+<p style="margin-top: 30px;">
+  <div id="configVpnDnsCreate"></div><label>(e.g. .example.com)</label>
+</p>
+<p>
+  <table class="rhpTableTag" id="configVpnDnsTable">
+    <tbody id="configVpnDnsTableBody">
+      <tr class="rhpTableTrTag rhpTableTrTagTop">
+        <td class="rhpTableTdTag" style="width: 260px;">Domain Name</td>
+        <td class="rhpTableTdTag rhpTableTdTagCenter" style="width: 80px;"></td>
+      </tr>
+    </tbody>
+  </table>
+</p>
+<p style="font-size: 95%;padding: 0px;margin: 0px;">
+Please specify domain names to be resolved to the above internal DNS server(s) (Split DNS).
+DNS queries including the domain names are forwarded to the internal 
+server(s) over the VPN connection, while the other queries are resolved to the local 
+server(s) or the ISP's server(s).
+</p>

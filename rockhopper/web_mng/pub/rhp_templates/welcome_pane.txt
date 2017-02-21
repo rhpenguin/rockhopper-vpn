@@ -1,0 +1,23 @@
+<p style="margin-top: 50px;">
+<label id="welcomePaneTxt">Rockhopper Web Console</label>
+<div id="welcomePaneVer"></div>
+</p>
+<p style="margin-top: 50px;">
+  <table>
+    <tr>
+      <td><label id="welcomeUserNameLabel">Name:</label></td>
+      <td><div id="adminName"></div></td>
+    </tr>
+    <tr>
+      <td><label id="welcomeUserPwLabel">Password:</label></td>
+      <td><div id="adminPw"></div></td>
+    </tr>
+  </table>
+</p>
+<p>
+<div id="adminNameTx"></div>
+</p>
+<p style="margin-top: 45px;"></p>
+<p>
+<a target="_blank" href="http://rockhoppervpn.sourceforge.net/">Project Web Site&gt</a>
+</p>

@@ -1,0 +1,26 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+EAP Authentication - EAP-MSCHAPv2
+</p>
+<p style="font-weight: bold;font-size: 100%;">
+<div id="eapSupMschapv2UserKeyDialogMesg"></div>
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>User Name:</label></td>
+    <td><div id="eapSupMschapv2UserKeyDialogName"></div></td>
+  </tr>
+  <tr>
+    <td><label>Password:</label></td>
+    <td><div id="eapSupMschapv2UserKeyDialogPw"></div></td>
+  </tr>
+</table>
+</p>
+<p></p>
+<table>
+  <tr>
+    <td><div id="eapSupMschapv2UserKeyDialogOkBtn"></div></td>
+    <td><div id="eapSupMschapv2UserKeyDialogCancelBtn"></div></td>
+  </tr>
+</table>
+</p>

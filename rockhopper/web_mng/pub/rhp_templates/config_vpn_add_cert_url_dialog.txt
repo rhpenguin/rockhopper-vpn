@@ -1,0 +1,38 @@
+<p style="font-weight: bold;font-size: 130%;margin-bottom: 30px;margin-left: 10px;">
+Add a New Certificate URL
+</p>
+<p style="font-size: 85%;padding: 0px;margin: 0px;">
+(*): Required.
+</p>
+<p>
+<table>
+  <tr>
+    <td><label>Type(*):</label></td>
+    <td></td>
+    <td><div id="configVpnAddCertUrlType"></div></td>
+  </tr>
+  <tr>
+    <td><label>URL(*):</label></td>
+    <td><label style="font-weight: bold;font-size: 110%;">http://</label></td>
+    <td><div id="configVpnAddCertUrlUrl"></div></td>
+  </tr>
+  <tr>
+    <td><label id="configVpnAddCertUrlDnLabel">SubjectName(DN)(*):</label></td>
+    <td></td>
+    <td><div id="configVpnAddCertUrlDn"></div></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><label>e.g. C=JP,...,O=example,OU=sales,CN=username</label></td>
+  </tr>
+</table>
+</p>
+<p>
+<table>
+  <tr>
+    <td><div id="configVpnAddCertUrlOk"></div></td>
+    <td><div id="configVpnAddCertUrlCancel"></div></td>
+  </tr>
+</table>
+</p>

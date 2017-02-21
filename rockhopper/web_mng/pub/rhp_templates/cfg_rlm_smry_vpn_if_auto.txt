@@ -1,0 +1,30 @@
+<p>
+<table class="rhpTableTag" style="width:550px;">
+  <tbody id="cfgRlmSmryVpnIfAutoInternalAddr">
+    <tr class="rhpTableTrTag rhpTableTrTagTop">
+      <td class="rhpTableTdTag">Internal Address Type</td>
+      <td class="rhpTableTdTag">IPv4 Address</td>
+      <td class="rhpTableTdTag">IPv6 Address</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfAutoInternalAddrType"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfAutoInternalAddrIPv4"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfAutoInternalAddrIPv6"></td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<p>
+<table class="rhpTableTag" style="width:200px;">
+  <tbody id="cfgRlmSmryVpnIfAutoInternalAddr2">
+    <tr class="rhpTableTrTag rhpTableTrTagTop">
+      <td class="rhpTableTdTag">Encapsulation Mode</td>
+      <td class="rhpTableTdTag">MTU</td>
+    </tr>
+    <tr class="rhpTableTrTag">
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfAutoEncapMode"></td>
+      <td class="rhpTableTdTag" id="cfgRlmSmryVpnIfAutoMtu"></td>
+    </tr>
+  </tbody>
+</table>
+</p>
