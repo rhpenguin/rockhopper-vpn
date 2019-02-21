@@ -99,19 +99,19 @@ static int openssl_digest_vector(const EVP_MD *type, int non_fips,
 			wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestUpdate "
 				   "failed: %s",
 				   ERR_error_string(ERR_get_error(), NULL));
-    	    goto out;
+    	    goto err;
 		}
 	}
 	if (!EVP_DigestFinal_ex(ctx, mac, &mac_len)) {
 		wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestFinal failed: %s",
 			   ERR_error_string(ERR_get_error(), NULL));
-	    goto out;
+	    goto err;
 	}
 
 	EVP_MD_CTX_free(ctx);
 	return 0;
 
-out:
+err:
 	EVP_MD_CTX_free(ctx);
 	return -1;
 }
@@ -418,6 +418,7 @@ void crypto_cipher_deinit(struct crypto_cipher *ctx)
 void * dh5_init(struct wpabuf **priv, struct wpabuf **publ)
 {
 	DH *dh;
+	BIGNUM *p, *g;
 	struct wpabuf *pubkey = NULL, *privkey = NULL;
 	size_t publen, privlen;
 
@@ -428,13 +429,28 @@ void * dh5_init(struct wpabuf **priv, struct wpabuf **publ)
 	if (dh == NULL)
 		return NULL;
 
-	BIGNUM *g;
 	g = BN_new();
-	BN_set_word(g, 2);
+	if ( g == NULL )
+	    goto err;
 
-	DH_set0_pqg(dh, get_group5_prime(), NULL, g);
+    if (BN_set_word(g, 2) != 1) {  // is this >2< hardcoded RHP_PROTO_IKE_DH_GENERATOR?
+        BN_free(g);
+		goto err;
+	}
 
-	if (DH_generate_key(dh) != 1)
+    p = get_group5_prime();  //BN_bin2bn in the back allocates memory
+    if (p == NULL) {
+        BN_free(g);
+		goto err;
+	}
+
+    if (!DH_set0_pqg(dh, p, NULL, g)) {
+        BN_free(p);
+        BN_free(g);
+    	goto err;
+	}
+
+	if (!DH_generate_key(dh))
 		goto err;
 
     DH_get0_key(dh, &publ, &priv);

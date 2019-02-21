@@ -3536,47 +3536,61 @@ static int _rhp_cert_dn_openssl_DER_encode(rhp_cert_dn* cert_dn,u8** der,int* de
 
 static int _rhp_cert_dn_openssl_cmp_rdn(X509_NAME_ENTRY *rdn0,X509_NAME_ENTRY *rdn1)
 {
-  if( X509_NAME_ENTRY_get_data(rdn0)->type != X509_NAME_ENTRY_get_data(rdn1)->type ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED1,"xdxd",rdn0,X509_NAME_ENTRY_get_data(rdn0)->type,rdn1,X509_NAME_ENTRY_get_data(rdn1)->type);
+  ASN1_STRING *rdn0_value, *rdn1_value;
+  ASN1_OBJECT *rdn0_object, *rdn1_object;
+
+  rdn0_value = X509_NAME_ENTRY_get_data(rdn0);
+  rdn1_value = X509_NAME_ENTRY_get_data(rdn1);
+  if (rdn0_value == NULL || rdn1_value == NULL)
+      return -1;
+
+  rdn0_object = X509_NAME_ENTRY_get_object(rdn0);
+  rdn1_object = X509_NAME_ENTRY_get_object(rdn1);
+  if (rdn0_object == NULL || rdn1_object == NULL)
+      return -1;
+
+  if( rdn0_value->type != rdn1_value->type ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED1,"xdxd",rdn0,rdn0_value->type,rdn1,rdn1_value->type);
     return -1;
   }
 
-  if( X509_NAME_ENTRY_get_data(rdn0)->type != V_ASN1_TELETEXSTRING &&
-      X509_NAME_ENTRY_get_data(rdn0)->type != V_ASN1_PRINTABLESTRING &&
-      X509_NAME_ENTRY_get_data(rdn0)->type != V_ASN1_UNIVERSALSTRING &&
-      X509_NAME_ENTRY_get_data(rdn0)->type != V_ASN1_UTF8STRING &&
-      X509_NAME_ENTRY_get_data(rdn0)->type != V_ASN1_BMPSTRING &&
-      X509_NAME_ENTRY_get_data(rdn0)->type != V_ASN1_IA5STRING ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED2,"xd",rdn0,X509_NAME_ENTRY_get_data(rdn0)->type);
+  if( ASN1_STRING_type(rdn0_value) != V_ASN1_TELETEXSTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_PRINTABLESTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_UNIVERSALSTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_UTF8STRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_BMPSTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_IA5STRING ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED2,"xd",rdn0,ASN1_STRING_type(rdn0_value));
     return -1;
   }
 
-  if( X509_NAME_ENTRY_get_data(rdn1)->type != V_ASN1_TELETEXSTRING &&
-      X509_NAME_ENTRY_get_data(rdn1)->type != V_ASN1_PRINTABLESTRING &&
-      X509_NAME_ENTRY_get_data(rdn1)->type != V_ASN1_UNIVERSALSTRING &&
-      X509_NAME_ENTRY_get_data(rdn1)->type != V_ASN1_UTF8STRING &&
-      X509_NAME_ENTRY_get_data(rdn1)->type != V_ASN1_BMPSTRING &&
-      X509_NAME_ENTRY_get_data(rdn1)->type != V_ASN1_IA5STRING ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED3,"xd",rdn1,X509_NAME_ENTRY_get_data(rdn1)->type);
+  if( ASN1_STRING_type(rdn1_value) != V_ASN1_TELETEXSTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_PRINTABLESTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_UNIVERSALSTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_UTF8STRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_BMPSTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_IA5STRING ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED3,"xd",rdn1,ASN1_STRING_type(rdn1_value));
     return -1;
   }
 
+// TODO
 //  if( rdn0->set != rdn1->set ){
 //    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED4,"xdxd",rdn0,rdn0->set,rdn1,rdn1->set);
 //    return -1;
 //  }
 
-  if( X509_NAME_ENTRY_get_data(rdn0)->length != X509_NAME_ENTRY_get_data(rdn1)->length ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED5,"xdxd",rdn0,X509_NAME_ENTRY_get_data(rdn0)->length,rdn1,X509_NAME_ENTRY_get_data(rdn1)->length);
+  if( ASN1_STRING_length(rdn0_value) != ASN1_STRING_length(rdn1_value)){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED5,"xdxd",rdn0,ASN1_STRING_length(rdn0_value),rdn1,ASN1_STRING_length(rdn1_value));
     return -1;
   }
 
-  if( memcmp(X509_NAME_ENTRY_get_data(rdn0)->data,X509_NAME_ENTRY_get_data(rdn1)->data,X509_NAME_ENTRY_get_data(rdn0)->length) ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED6,"xpxp",rdn0,X509_NAME_ENTRY_get_data(rdn0)->length,X509_NAME_ENTRY_get_data(rdn0)->data,rdn1,X509_NAME_ENTRY_get_data(rdn1)->length,X509_NAME_ENTRY_get_data(rdn1)->data);
+  if( memcmp(ASN1_STRING_get0_data(rdn0_value),ASN1_STRING_get0_data(rdn1_value),ASN1_STRING_length(rdn0_value)) ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED6,"xpxp",rdn0,ASN1_STRING_length(rdn0_value),ASN1_STRING_get0_data(rdn0_value),rdn1,ASN1_STRING_length(rdn1_value),ASN1_STRING_get0_data(rdn1_value));
     return -1;
   }
 
-  if( OBJ_cmp(X509_NAME_ENTRY_get_object(rdn0),X509_NAME_ENTRY_get_object(rdn1)) ){
+  if( OBJ_cmp(rdn0_object,rdn1_object) ){
     RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED7,"xx",rdn0,rdn1);
     return -1;
   }

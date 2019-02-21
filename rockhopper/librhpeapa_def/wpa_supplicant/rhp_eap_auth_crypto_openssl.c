@@ -414,6 +414,8 @@ void crypto_cipher_deinit(struct crypto_cipher *ctx)
 void * dh5_init(struct wpabuf **priv, struct wpabuf **publ)
 {
 	DH *dh;
+    BIGNUM *p, *g;
+    const BIGNUM *dh_pub_key, *dh_priv_key;
 	struct wpabuf *pubkey = NULL, *privkey = NULL;
 	size_t publen, privlen;
 
@@ -424,33 +426,34 @@ void * dh5_init(struct wpabuf **priv, struct wpabuf **publ)
 	if (dh == NULL)
 		return NULL;
 
-    BIGNUM *_two;
-    _two = BN_new();
-    BN_set_word(_two, 2);
+    p = get_group5_prime();  //BN_bin2bn in the back allocates memory
 
-    // *_set0_*() functions takes ownership of the passed in BIGNUM*, so you should allocate it by BN_new(), and not free them after passing them in (except if *set0*() failed).
-    if (!DH_set0_pqg(dh, get_group5_prime(), NULL, _two )) {
+    g = BN_new();
+    if (!BN_set_word(g, 2))  // is this >2< hardcoded RHP_PROTO_IKE_DH_GENERATOR?
+		goto err;
+
+    if (!DH_set0_pqg(dh, p, NULL, g)) {
+        BN_free(p);
+        BN_free(g);
 		goto err;
     }
 
-	if (DH_generate_key(dh) != 1)
+	if (!DH_generate_key(dh))
 		goto err;
 
-    const BIGNUM *member_pub_key, *member_priv_key;
+    DH_get0_key(dh, &dh_pub_key, &dh_priv_key);
 
-    DH_get0_key(dh, &member_pub_key, &member_priv_key);
-
-	publen = BN_num_bytes(member_pub_key);
+	publen = BN_num_bytes(dh_pub_key);
 	pubkey = wpabuf_alloc(publen);
 	if (pubkey == NULL)
 		goto err;
-	privlen = BN_num_bytes(member_priv_key);
+	privlen = BN_num_bytes(dh_priv_key);
 	privkey = wpabuf_alloc(privlen);
 	if (privkey == NULL)
 		goto err;
 
-	BN_bn2bin(member_pub_key, wpabuf_put(pubkey, publen));
-	BN_bn2bin(member_priv_key, wpabuf_put(privkey, privlen));
+	BN_bn2bin(dh_pub_key, wpabuf_put(pubkey, publen));
+	BN_bn2bin(dh_priv_key, wpabuf_put(privkey, privlen));
 
 	*priv = privkey;
 	*publ = pubkey;

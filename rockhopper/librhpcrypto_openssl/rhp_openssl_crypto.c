@@ -2037,7 +2037,6 @@ static int _rhp_crypto_dh_alloc(rhp_crypto_dh* dh)
   int err = -EINVAL;
   u8* prime;
   int prime_len;
-  int generator = RHP_PROTO_IKE_DH_GENERATOR;
   DH* dh_ctx = NULL;
 
   dh_ctx = DH_new();
@@ -2056,10 +2055,17 @@ static int _rhp_crypto_dh_alloc(rhp_crypto_dh* dh)
   BIGNUM *p, *g;
   p = BN_bin2bn(prime,prime_len,NULL);
   g = BN_new();
-  BN_set_word(g,generator);
+  if (p == NULL || g == NULL) {
+    RHP_BUG("");
+    err = -ENOMEM;
+    goto error;
+  }
+  if (!BN_set_word(g, RHP_PROTO_IKE_DH_GENERATOR)) {
+    RHP_BUG("");
+    goto error;
+  }
 
-
-  if ( !DH_set0_pqg(dh_ctx, p, NULL, g) ){
+  if (!DH_set0_pqg(dh_ctx, p, NULL, g)){
     RHP_BUG("");
     goto error;
   }
