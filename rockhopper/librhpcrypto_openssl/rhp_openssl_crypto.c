@@ -162,39 +162,39 @@ static void _rhp_crypto_dh_dump(rhp_crypto_dh* dh,BIGNUM* peer_pub_key,char* lab
   int my_pub_key_bin_len = 0;
 
 
-  const BIGNUM *member_p, *member_g, *member_pub_key, *member_priv_key;
+  const BIGNUM *p, *g, *dh_pub_key, *dh_priv_key;
 
-  DH_get0_pqg(dh_ctx, &member_p, NULL, &member_g);
-  DH_get0_key(dh_ctx, &member_pub_key, &member_priv_key);
+  DH_get0_pqg(dh_ctx, &p, NULL, &g);
+  DH_get0_key(dh_ctx, &dh_pub_key, &dh_priv_key);
 
 
   _RHP_TRC_FLG_UPDATE(_rhp_trc_user_id());
   if( _RHP_TRC_COND(_rhp_trc_user_id(),0) ){
 
-		p_bin = (u8*)_rhp_malloc(BN_num_bytes(member_p));
-		g_bin = (u8*)_rhp_malloc(BN_num_bytes(member_g));
+		p_bin = (u8*)_rhp_malloc(BN_num_bytes(p));
+		g_bin = (u8*)_rhp_malloc(BN_num_bytes(g));
 		if( peer_pub_key ){
 			peer_pub_key_bin = (u8*)_rhp_malloc(BN_num_bytes(peer_pub_key));
 			memset(peer_pub_key_bin,0,BN_num_bytes(peer_pub_key));
 		}
-		if( member_priv_key ){
-			my_priv_key_bin = (u8*)_rhp_malloc(BN_num_bytes(member_priv_key));
-			memset(my_priv_key_bin,0,BN_num_bytes(member_priv_key));
+		if( dh_priv_key ){
+			my_priv_key_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_priv_key));
+			memset(my_priv_key_bin,0,BN_num_bytes(dh_priv_key));
 		}
-		if( member_pub_key ){
-			my_pub_key_bin = (u8*)_rhp_malloc(BN_num_bytes(member_pub_key));
-			memset(my_pub_key_bin,0,BN_num_bytes(member_pub_key));
+		if( dh_pub_key ){
+			my_pub_key_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_pub_key));
+			memset(my_pub_key_bin,0,BN_num_bytes(dh_pub_key));
 		}
 
 
 		if( p_bin ){
-			BN_bn2bin(member_p,p_bin);
-			p_bin_len = BN_num_bytes(member_p);
+			BN_bn2bin(p,p_bin);
+			p_bin_len = BN_num_bytes(p);
 		}
 
 		if( g_bin ){
-			BN_bn2bin(member_g,g_bin);
-			g_bin_len = BN_num_bytes(member_g);
+			BN_bn2bin(g,g_bin);
+			g_bin_len = BN_num_bytes(g);
 		}
 
 		if( peer_pub_key_bin ){
@@ -203,13 +203,13 @@ static void _rhp_crypto_dh_dump(rhp_crypto_dh* dh,BIGNUM* peer_pub_key,char* lab
 		}
 
 		if( my_priv_key_bin ){
-			BN_bn2bin(member_priv_key,my_priv_key_bin);
-			my_priv_key_bin_len = BN_num_bytes(member_priv_key);
+			BN_bn2bin(dh_priv_key,my_priv_key_bin);
+			my_priv_key_bin_len = BN_num_bytes(dh_priv_key);
 		}
 
 		if( my_pub_key_bin ){
-			BN_bn2bin(member_pub_key,my_pub_key_bin);
-			my_pub_key_bin_len = BN_num_bytes(member_pub_key);
+			BN_bn2bin(dh_pub_key,my_pub_key_bin);
+			my_pub_key_bin_len = BN_num_bytes(dh_pub_key);
 		}
 
 
@@ -395,7 +395,7 @@ static int _rhp_crypto_openssl_dh_generate_key(rhp_crypto_dh* dh)
   int key_len = DH_size(dh_ctx); // get Diffie-Hellman prime size
   int bin_len;
 
-  const BIGNUM *member_pub_key, *member_priv_key;
+  const BIGNUM *dh_pub_key, *dh_priv_key;
 
 
 //_rhp_crypto_dh_dump(dh,NULL,"_rhp_crypto_openssl_dh_generate_key(1)");
@@ -408,9 +408,9 @@ static int _rhp_crypto_openssl_dh_generate_key(rhp_crypto_dh* dh)
 
 //_rhp_crypto_dh_dump(dh,NULL,"_rhp_crypto_openssl_dh_generate_key(2)");
 
-  DH_get0_key(dh_ctx, &member_pub_key, &member_priv_key);
+  DH_get0_key(dh_ctx, &dh_pub_key, &dh_priv_key);
   // bin_len may be less than key_len.
-  bin_len = BN_num_bytes(member_pub_key);
+  bin_len = BN_num_bytes(dh_pub_key);
   if( key_len < bin_len ){
        RHP_BUG("");
        err = -EINVAL;
@@ -437,7 +437,7 @@ static int _rhp_crypto_openssl_dh_generate_key(rhp_crypto_dh* dh)
      zero bits to the value if necessary."
   */
   // Prepend zero bits if bin_len is less than key_len.
-  if( BN_bn2bin(member_pub_key,(dh->my_pub_key + key_len - bin_len)) < 0 ){
+  if( BN_bn2bin(dh_pub_key,(dh->my_pub_key + key_len - bin_len)) < 0 ){
     err = -ENOMEM;
     RHP_BUG("");
     goto error;
