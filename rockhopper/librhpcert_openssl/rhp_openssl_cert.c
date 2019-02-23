@@ -679,7 +679,7 @@ static int _rhp_cert_store_verify_cert(rhp_cert_store_openssl_ctx* cert_store_ct
 
 	// store_ctx, verified_cert and verified_untrust_ca_crts are just references
   // for 'store_verify_ctx'. X509_STORE_CTX_free() doesn't free them.
-    if( !X509_STORE_CTX_init(store_verify_ctx,store_ctx,verified_cert,verified_untrust_ca_crts) ){
+  if( !X509_STORE_CTX_init(store_verify_ctx,store_ctx,verified_cert,verified_untrust_ca_crts) ){
   	RHP_BUG("");
   	goto error;
   }

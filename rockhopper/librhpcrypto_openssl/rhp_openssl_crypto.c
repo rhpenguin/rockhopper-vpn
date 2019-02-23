@@ -412,9 +412,9 @@ static int _rhp_crypto_openssl_dh_generate_key(rhp_crypto_dh* dh)
   // bin_len may be less than key_len.
   bin_len = BN_num_bytes(member_pub_key);
   if( key_len < bin_len ){
-     RHP_BUG("");
-     err = -EINVAL;
-     goto error;
+       RHP_BUG("");
+       err = -EINVAL;
+       goto error;
   }
 
 
