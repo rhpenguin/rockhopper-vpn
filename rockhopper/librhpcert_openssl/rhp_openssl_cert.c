@@ -3574,11 +3574,10 @@ static int _rhp_cert_dn_openssl_cmp_rdn(X509_NAME_ENTRY *rdn0,X509_NAME_ENTRY *r
     return -1;
   }
 
-// TODO
-//  if( rdn0->set != rdn1->set ){
-//    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED4,"xdxd",rdn0,rdn0->set,rdn1,rdn1->set);
-//    return -1;
-//  }
+  if( X509_NAME_ENTRY_set(rdn0) != X509_NAME_ENTRY_set(rdn1) ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED4,"xdxd",rdn0,X509_NAME_ENTRY_set(rdn0),rdn1,X509_NAME_ENTRY_set(rdn1));
+    return -1;
+  }
 
   if( ASN1_STRING_length(rdn0_value) != ASN1_STRING_length(rdn1_value)){
     RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED5,"xdxd",rdn0,ASN1_STRING_length(rdn0_value),rdn1,ASN1_STRING_length(rdn1_value));
