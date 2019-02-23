@@ -78,37 +78,42 @@ static int openssl_digest_vector(const EVP_MD *type, int non_fips,
 				 size_t num_elem, const u8 *addr[],
 				 const size_t *len, u8 *mac)
 {
-	EVP_MD_CTX ctx;
+	EVP_MD_CTX *ctx;
 	size_t i;
 	unsigned int mac_len;
 
-	EVP_MD_CTX_init(&ctx);
+	ctx = EVP_MD_CTX_new();
 #ifdef CONFIG_FIPS
 #ifdef OPENSSL_FIPS
 	if (non_fips)
-		EVP_MD_CTX_set_flags(&ctx, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
+		EVP_MD_CTX_set_flags(ctx, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
 #endif /* OPENSSL_FIPS */
 #endif /* CONFIG_FIPS */
-	if (!EVP_DigestInit_ex(&ctx, type, NULL)) {
+	if (!EVP_DigestInit_ex(ctx, type, NULL)) {
 		wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestInit_ex failed: %s",
 			   ERR_error_string(ERR_get_error(), NULL));
 		return -1;
 	}
 	for (i = 0; i < num_elem; i++) {
-		if (!EVP_DigestUpdate(&ctx, addr[i], len[i])) {
+		if (!EVP_DigestUpdate(ctx, addr[i], len[i])) {
 			wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestUpdate "
 				   "failed: %s",
 				   ERR_error_string(ERR_get_error(), NULL));
-			return -1;
+    	    goto err;
 		}
 	}
-	if (!EVP_DigestFinal(&ctx, mac, &mac_len)) {
+	if (!EVP_DigestFinal_ex(ctx, mac, &mac_len)) {
 		wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestFinal failed: %s",
 			   ERR_error_string(ERR_get_error(), NULL));
-		return -1;
+	    goto err;
 	}
 
+	EVP_MD_CTX_free(ctx);
 	return 0;
+
+err:
+	EVP_MD_CTX_free(ctx);
+	return -1;
 }
 
 
@@ -145,32 +150,32 @@ int rc4_skip(const u8 *key, size_t keylen, size_t skip,
 #ifdef OPENSSL_NO_RC4
 	return -1;
 #else /* OPENSSL_NO_RC4 */
-	EVP_CIPHER_CTX ctx;
+	EVP_CIPHER_CTX *ctx;
 	int outl;
 	int res = -1;
 	unsigned char skip_buf[16];
 
-	EVP_CIPHER_CTX_init(&ctx);
-	if (!EVP_CIPHER_CTX_set_padding(&ctx, 0) ||
-	    !EVP_CipherInit_ex(&ctx, EVP_rc4(), NULL, NULL, NULL, 1) ||
-	    !EVP_CIPHER_CTX_set_key_length(&ctx, keylen) ||
-	    !EVP_CipherInit_ex(&ctx, NULL, NULL, key, NULL, 1))
+	ctx = EVP_CIPHER_CTX_new();
+	if (!EVP_CIPHER_CTX_set_padding(ctx, 0) ||
+	    !EVP_CipherInit_ex(ctx, EVP_rc4(), NULL, NULL, NULL, 1) ||
+	    !EVP_CIPHER_CTX_set_key_length(ctx, keylen) ||
+	    !EVP_CipherInit_ex(ctx, NULL, NULL, key, NULL, 1))
 		goto out;
 
 	while (skip >= sizeof(skip_buf)) {
 		size_t len = skip;
 		if (len > sizeof(skip_buf))
 			len = sizeof(skip_buf);
-		if (!EVP_CipherUpdate(&ctx, skip_buf, &outl, skip_buf, len))
+		if (!EVP_CipherUpdate(ctx, skip_buf, &outl, skip_buf, len))
 			goto out;
 		skip -= len;
 	}
 
-	if (EVP_CipherUpdate(&ctx, data, &outl, data, data_len))
+	if (EVP_CipherUpdate(ctx, data, &outl, data, data_len))
 		res = 0;
 
 out:
-	EVP_CIPHER_CTX_cleanup(&ctx);
+	EVP_CIPHER_CTX_free(ctx);
 	return res;
 #endif /* OPENSSL_NO_RC4 */
 }
@@ -298,8 +303,8 @@ error:
 
 
 struct crypto_cipher {
-	EVP_CIPHER_CTX enc;
-	EVP_CIPHER_CTX dec;
+	EVP_CIPHER_CTX *enc;
+	EVP_CIPHER_CTX *dec;
 };
 
 
@@ -356,23 +361,23 @@ struct crypto_cipher * crypto_cipher_init(enum crypto_cipher_alg alg,
 		return NULL;
 	}
 
-	EVP_CIPHER_CTX_init(&ctx->enc);
-	EVP_CIPHER_CTX_set_padding(&ctx->enc, 0);
-	if (!EVP_EncryptInit_ex(&ctx->enc, cipher, NULL, NULL, NULL) ||
-	    !EVP_CIPHER_CTX_set_key_length(&ctx->enc, key_len) ||
-	    !EVP_EncryptInit_ex(&ctx->enc, NULL, NULL, key, iv)) {
-		EVP_CIPHER_CTX_cleanup(&ctx->enc);
+	ctx->enc = EVP_CIPHER_CTX_new();
+	EVP_CIPHER_CTX_set_padding(ctx->enc, 0);
+	if (!EVP_EncryptInit_ex(ctx->enc, cipher, NULL, NULL, NULL) ||
+	    !EVP_CIPHER_CTX_set_key_length(ctx->enc, key_len) ||
+	    !EVP_EncryptInit_ex(ctx->enc, NULL, NULL, key, iv)) {
+		EVP_CIPHER_CTX_free(ctx->enc);
 		os_free(ctx);
 		return NULL;
 	}
 
-	EVP_CIPHER_CTX_init(&ctx->dec);
-	EVP_CIPHER_CTX_set_padding(&ctx->dec, 0);
-	if (!EVP_DecryptInit_ex(&ctx->dec, cipher, NULL, NULL, NULL) ||
-	    !EVP_CIPHER_CTX_set_key_length(&ctx->dec, key_len) ||
-	    !EVP_DecryptInit_ex(&ctx->dec, NULL, NULL, key, iv)) {
-		EVP_CIPHER_CTX_cleanup(&ctx->enc);
-		EVP_CIPHER_CTX_cleanup(&ctx->dec);
+	ctx->dec = EVP_CIPHER_CTX_new();
+	EVP_CIPHER_CTX_set_padding(ctx->dec, 0);
+	if (!EVP_DecryptInit_ex(ctx->dec, cipher, NULL, NULL, NULL) ||
+	    !EVP_CIPHER_CTX_set_key_length(ctx->dec, key_len) ||
+	    !EVP_DecryptInit_ex(ctx->dec, NULL, NULL, key, iv)) {
+		EVP_CIPHER_CTX_free(ctx->enc);
+		EVP_CIPHER_CTX_free(ctx->dec);
 		os_free(ctx);
 		return NULL;
 	}
@@ -385,7 +390,7 @@ int crypto_cipher_encrypt(struct crypto_cipher *ctx, const u8 *plain,
 			  u8 *crypt, size_t len)
 {
 	int outl;
-	if (!EVP_EncryptUpdate(&ctx->enc, crypt, &outl, plain, len))
+	if (!EVP_EncryptUpdate(ctx->enc, crypt, &outl, plain, len))
 		return -1;
 	return 0;
 }
@@ -396,7 +401,7 @@ int crypto_cipher_decrypt(struct crypto_cipher *ctx, const u8 *crypt,
 {
 	int outl;
 	outl = len;
-	if (!EVP_DecryptUpdate(&ctx->dec, plain, &outl, crypt, len))
+	if (!EVP_DecryptUpdate(ctx->dec, plain, &outl, crypt, len))
 		return -1;
 	return 0;
 }
@@ -404,8 +409,8 @@ int crypto_cipher_decrypt(struct crypto_cipher *ctx, const u8 *crypt,
 
 void crypto_cipher_deinit(struct crypto_cipher *ctx)
 {
-	EVP_CIPHER_CTX_cleanup(&ctx->enc);
-	EVP_CIPHER_CTX_cleanup(&ctx->dec);
+	EVP_CIPHER_CTX_free(ctx->enc);
+	EVP_CIPHER_CTX_free(ctx->dec);
 	os_free(ctx);
 }
 
@@ -413,6 +418,7 @@ void crypto_cipher_deinit(struct crypto_cipher *ctx)
 void * dh5_init(struct wpabuf **priv, struct wpabuf **publ)
 {
 	DH *dh;
+	BIGNUM *p, *g;
 	struct wpabuf *pubkey = NULL, *privkey = NULL;
 	size_t publen, privlen;
 
@@ -423,28 +429,42 @@ void * dh5_init(struct wpabuf **priv, struct wpabuf **publ)
 	if (dh == NULL)
 		return NULL;
 
-	dh->g = BN_new();
-	if (dh->g == NULL || BN_set_word(dh->g, 2) != 1)
+	g = BN_new();
+	if ( g == NULL )
+	    goto err;
+
+    if (BN_set_word(g, 2) != 1) {  // is this >2< hardcoded RHP_PROTO_IKE_DH_GENERATOR?
+        BN_free(g);
+		goto err;
+	}
+
+    p = get_group5_prime();  //BN_bin2bn in the back allocates memory
+    if (p == NULL) {
+        BN_free(g);
+		goto err;
+	}
+
+    if (!DH_set0_pqg(dh, p, NULL, g)) {
+        BN_free(p);
+        BN_free(g);
+    	goto err;
+	}
+
+	if (!DH_generate_key(dh))
 		goto err;
 
-	dh->p = get_group5_prime();
-	if (dh->p == NULL)
-		goto err;
-
-	if (DH_generate_key(dh) != 1)
-		goto err;
-
-	publen = BN_num_bytes(dh->pub_key);
+    DH_get0_key(dh, &publ, &priv);
+	publen = BN_num_bytes(publ);
 	pubkey = wpabuf_alloc(publen);
 	if (pubkey == NULL)
 		goto err;
-	privlen = BN_num_bytes(dh->priv_key);
+	privlen = BN_num_bytes(priv);
 	privkey = wpabuf_alloc(privlen);
 	if (privkey == NULL)
 		goto err;
 
-	BN_bn2bin(dh->pub_key, wpabuf_put(pubkey, publen));
-	BN_bn2bin(dh->priv_key, wpabuf_put(privkey, privlen));
+	BN_bn2bin(publ, wpabuf_put(pubkey, publen));
+	BN_bn2bin(priv, wpabuf_put(privkey, privlen));
 
 	*priv = privkey;
 	*publ = pubkey;

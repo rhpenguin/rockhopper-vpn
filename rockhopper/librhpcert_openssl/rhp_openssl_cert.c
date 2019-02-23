@@ -694,7 +694,7 @@ static int _rhp_cert_store_verify_cert(rhp_cert_store_openssl_ctx* cert_store_ct
   		vrfy_flag = X509_V_FLAG_CRL_CHECK;
   	}
 
-  	vrfy_flag |= X509_VERIFY_PARAM_get_flags(store_ctx->param);
+  	vrfy_flag |= X509_VERIFY_PARAM_get_flags(X509_STORE_get0_param(store_ctx));
 
 
   	RHP_LOG_D(RHP_LOG_SRC_AUTH,0,RHP_LOG_ID_CERT_VERIFY_CHECK_CRL,"uss",cert_store_ctx->auth_realm_id,dn_log_txt,srn_log_txt);
@@ -708,7 +708,7 @@ static int _rhp_cert_store_verify_cert(rhp_cert_store_openssl_ctx* cert_store_ct
 	  	goto error;
 		}
 
-		X509_VERIFY_PARAM_inherit(v_param,store_verify_ctx->param);
+		X509_VERIFY_PARAM_inherit(v_param,X509_STORE_CTX_get0_param(store_verify_ctx));
 
 		if( !X509_VERIFY_PARAM_set_flags(v_param, vrfy_flag) ){
 			RHP_BUG("");
@@ -2945,9 +2945,9 @@ static int _rhp_cert_store_openssl_cert_verify_cb(int ok,X509_STORE_CTX* store)
 {
   // TODO Write warning log for being expiring certificate , if any.
 
-  RHP_TRC(0,RHPTRCID_OPENSSL_CERT_STORE_VERIFY_CB_FROM_LIB,"dxLd",ok,store,"OPNSSL_CRT_ERR",store->error);
+  RHP_TRC(0,RHPTRCID_OPENSSL_CERT_STORE_VERIFY_CB_FROM_LIB,"dxLd",ok,store,"OPNSSL_CRT_ERR",X509_STORE_CTX_get_error(store));
 
-  if( store->error == X509_V_ERR_CERT_HAS_EXPIRED ){
+  if( X509_STORE_CTX_get_error(store) == X509_V_ERR_CERT_HAS_EXPIRED ){
 
   	if( !_rhp_cert_deny_expired_cert ){
       ok = 1;
@@ -3536,47 +3536,60 @@ static int _rhp_cert_dn_openssl_DER_encode(rhp_cert_dn* cert_dn,u8** der,int* de
 
 static int _rhp_cert_dn_openssl_cmp_rdn(X509_NAME_ENTRY *rdn0,X509_NAME_ENTRY *rdn1)
 {
-  if( rdn0->value->type != rdn1->value->type ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED1,"xdxd",rdn0,rdn0->value->type,rdn1,rdn1->value->type);
+  ASN1_STRING *rdn0_value, *rdn1_value;
+  ASN1_OBJECT *rdn0_object, *rdn1_object;
+
+  rdn0_value = X509_NAME_ENTRY_get_data(rdn0);
+  rdn1_value = X509_NAME_ENTRY_get_data(rdn1);
+  if (rdn0_value == NULL || rdn1_value == NULL)
+      return -1;
+
+  rdn0_object = X509_NAME_ENTRY_get_object(rdn0);
+  rdn1_object = X509_NAME_ENTRY_get_object(rdn1);
+  if (rdn0_object == NULL || rdn1_object == NULL)
+      return -1;
+
+  if( rdn0_value->type != rdn1_value->type ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED1,"xdxd",rdn0,rdn0_value->type,rdn1,rdn1_value->type);
     return -1;
   }
 
-  if( rdn0->value->type != V_ASN1_TELETEXSTRING &&
-      rdn0->value->type != V_ASN1_PRINTABLESTRING &&
-      rdn0->value->type != V_ASN1_UNIVERSALSTRING &&
-      rdn0->value->type != V_ASN1_UTF8STRING &&
-      rdn0->value->type != V_ASN1_BMPSTRING &&
-      rdn0->value->type != V_ASN1_IA5STRING ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED2,"xd",rdn0,rdn0->value->type);
+  if( ASN1_STRING_type(rdn0_value) != V_ASN1_TELETEXSTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_PRINTABLESTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_UNIVERSALSTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_UTF8STRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_BMPSTRING &&
+      ASN1_STRING_type(rdn0_value) != V_ASN1_IA5STRING ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED2,"xd",rdn0,ASN1_STRING_type(rdn0_value));
     return -1;
   }
 
-  if( rdn1->value->type != V_ASN1_TELETEXSTRING &&
-      rdn1->value->type != V_ASN1_PRINTABLESTRING &&
-      rdn1->value->type != V_ASN1_UNIVERSALSTRING &&
-      rdn1->value->type != V_ASN1_UTF8STRING &&
-      rdn1->value->type != V_ASN1_BMPSTRING &&
-      rdn1->value->type != V_ASN1_IA5STRING ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED3,"xd",rdn1,rdn1->value->type);
+  if( ASN1_STRING_type(rdn1_value) != V_ASN1_TELETEXSTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_PRINTABLESTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_UNIVERSALSTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_UTF8STRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_BMPSTRING &&
+      ASN1_STRING_type(rdn1_value) != V_ASN1_IA5STRING ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED3,"xd",rdn1,ASN1_STRING_type(rdn1_value));
     return -1;
   }
 
-  if( rdn0->set != rdn1->set ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED4,"xdxd",rdn0,rdn0->set,rdn1,rdn1->set);
+  if( X509_NAME_ENTRY_set(rdn0) != X509_NAME_ENTRY_set(rdn1) ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED4,"xdxd",rdn0,X509_NAME_ENTRY_set(rdn0),rdn1,X509_NAME_ENTRY_set(rdn1));
     return -1;
   }
 
-  if( rdn0->value->length != rdn1->value->length ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED5,"xdxd",rdn0,rdn0->value->length,rdn1,rdn1->value->length);
+  if( ASN1_STRING_length(rdn0_value) != ASN1_STRING_length(rdn1_value)){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED5,"xdxd",rdn0,ASN1_STRING_length(rdn0_value),rdn1,ASN1_STRING_length(rdn1_value));
     return -1;
   }
 
-  if( memcmp(rdn0->value->data,rdn1->value->data,rdn0->value->length) ){
-    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED6,"xpxp",rdn0,rdn0->value->length,rdn0->value->data,rdn1,rdn1->value->length,rdn1->value->data);
+  if( memcmp(ASN1_STRING_get0_data(rdn0_value),ASN1_STRING_get0_data(rdn1_value),ASN1_STRING_length(rdn0_value)) ){
+    RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED6,"xpxp",rdn0,ASN1_STRING_length(rdn0_value),ASN1_STRING_get0_data(rdn0_value),rdn1,ASN1_STRING_length(rdn1_value),ASN1_STRING_get0_data(rdn1_value));
     return -1;
   }
 
-  if( OBJ_cmp(rdn0->object,rdn1->object) ){
+  if( OBJ_cmp(rdn0_object,rdn1_object) ){
     RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CMP_RDN_NOT_MATCHED7,"xx",rdn0,rdn1);
     return -1;
   }
@@ -3595,8 +3608,9 @@ static int _rhp_cert_dn_openssl_contains_rdns(rhp_cert_dn* cert_dn,rhp_cert_dn* 
 
   RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CONTAINS_RDNS,"xx",cert_dn,rdns);
 
-  rdn0_num = sk_X509_NAME_ENTRY_num(name0->entries);
-  rdn1_num = sk_X509_NAME_ENTRY_num(name1->entries);
+  rdn0_num = X509_NAME_entry_count(name0);
+  rdn1_num = X509_NAME_entry_count(name1);
+
 
   if( rdn0_num < 1 || rdn1_num < 1 ){
     RHP_TRC(0,RHPTRCID_OPENSSL_CERT_DN_CONTAINS_RDNS_NOT_MATCHED1,"xdd",cert_dn,rdn0_num,rdn1_num);
@@ -3610,8 +3624,8 @@ static int _rhp_cert_dn_openssl_contains_rdns(rhp_cert_dn* cert_dn,rhp_cert_dn* 
 
   for( i = 0; i < rdn1_num; i++ ){
 
-    rdn0 = sk_X509_NAME_ENTRY_value(name0->entries,i);
-    rdn1 = sk_X509_NAME_ENTRY_value(name1->entries,i);
+    rdn0 = X509_NAME_get_entry(name0,i);
+    rdn1 = X509_NAME_get_entry(name1,i);
 
     if( _rhp_cert_dn_openssl_cmp_rdn(rdn0,rdn1) ){
       break;

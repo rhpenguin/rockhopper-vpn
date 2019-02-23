@@ -64,27 +64,27 @@ static int openssl_digest_vector(const EVP_MD *type, int non_fips,
 				 size_t num_elem, const u8 *addr[],
 				 const size_t *len, u8 *mac)
 {
-	EVP_MD_CTX ctx;
+	EVP_MD_CTX *ctx;
 	size_t i;
 	unsigned int mac_len;
 
-	RHP_TRC(0,RHPTRCID_RADIUS_OPENSSL_DIGEST_VECTOR,"xddddx",type,type->type,non_fips,num_elem,len,mac);
+	RHP_TRC(0,RHPTRCID_RADIUS_OPENSSL_DIGEST_VECTOR,"xddddx",type,EVP_MD_type(type),non_fips,num_elem,len,mac);
 
-	EVP_MD_CTX_init(&ctx);
+	ctx = EVP_MD_CTX_new();
 #ifdef CONFIG_FIPS
 #ifdef OPENSSL_FIPS
 	if (non_fips)
-		EVP_MD_CTX_set_flags(&ctx, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
+		EVP_MD_CTX_set_flags(ctx, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
 #endif /* OPENSSL_FIPS */
 #endif /* CONFIG_FIPS */
-	if (!EVP_DigestInit_ex(&ctx, type, NULL)) {
+	if (!EVP_DigestInit_ex(ctx, type, NULL)) {
 //		wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestInit_ex failed: %s",
 //			   ERR_error_string(ERR_get_error(), NULL));
 		RHP_BUG("");
 		return -1;
 	}
 	for (i = 0; i < num_elem; i++) {
-		if (!EVP_DigestUpdate(&ctx, addr[i], len[i])) {
+		if (!EVP_DigestUpdate(ctx, addr[i], len[i])) {
 //			wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestUpdate "
 //				   "failed: %s",
 //				   ERR_error_string(ERR_get_error(), NULL));
@@ -92,12 +92,14 @@ static int openssl_digest_vector(const EVP_MD *type, int non_fips,
 			return -1;
 		}
 	}
-	if (!EVP_DigestFinal(&ctx, mac, &mac_len)) {
+	if (!EVP_DigestFinal_ex(ctx, mac, &mac_len)) {
 //		wpa_printf(MSG_ERROR, "OpenSSL: EVP_DigestFinal failed: %s",
 //			   ERR_error_string(ERR_get_error(), NULL));
 		RHP_BUG("");
 		return -1;
 	}
+
+	EVP_MD_CTX_free(ctx);
 
 	RHP_TRC(0,RHPTRCID_RADIUS_OPENSSL_DIGEST_VECTOR_RTRN,"p",*len,mac);
 	return 0;

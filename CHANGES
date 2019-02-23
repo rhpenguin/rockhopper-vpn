@@ -1,4 +1,7 @@
 
+ * rockhopper-0.2.b1-mko [2019/02/21]
+  - [Improved] OpenSSL >1.0 compatibility (tested OpenSSL 1.1.0j @ Debian 9)
+
  * rockhopper-0.2.b1-022 [2017/01/07]
 
   - [New] [RADIUS] RADIUS support for EAP Authentication. [RFC2138][RFC3579]

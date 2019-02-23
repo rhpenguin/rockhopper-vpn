@@ -161,33 +161,40 @@ static void _rhp_crypto_dh_dump(rhp_crypto_dh* dh,BIGNUM* peer_pub_key,char* lab
   int my_priv_key_bin_len = 0;
   int my_pub_key_bin_len = 0;
 
-	_RHP_TRC_FLG_UPDATE(_rhp_trc_user_id());
+
+  const BIGNUM *p, *g, *dh_pub_key, *dh_priv_key;
+
+  DH_get0_pqg(dh_ctx, &p, NULL, &g);
+  DH_get0_key(dh_ctx, &dh_pub_key, &dh_priv_key);
+
+
+  _RHP_TRC_FLG_UPDATE(_rhp_trc_user_id());
   if( _RHP_TRC_COND(_rhp_trc_user_id(),0) ){
 
-		p_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_ctx->p));
-		g_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_ctx->g));
+		p_bin = (u8*)_rhp_malloc(BN_num_bytes(p));
+		g_bin = (u8*)_rhp_malloc(BN_num_bytes(g));
 		if( peer_pub_key ){
 			peer_pub_key_bin = (u8*)_rhp_malloc(BN_num_bytes(peer_pub_key));
 			memset(peer_pub_key_bin,0,BN_num_bytes(peer_pub_key));
 		}
-		if( dh_ctx->priv_key ){
-			my_priv_key_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_ctx->priv_key));
-			memset(my_priv_key_bin,0,BN_num_bytes(dh_ctx->priv_key));
+		if( dh_priv_key ){
+			my_priv_key_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_priv_key));
+			memset(my_priv_key_bin,0,BN_num_bytes(dh_priv_key));
 		}
-		if( dh_ctx->pub_key ){
-			my_pub_key_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_ctx->pub_key));
-			memset(my_pub_key_bin,0,BN_num_bytes(dh_ctx->pub_key));
+		if( dh_pub_key ){
+			my_pub_key_bin = (u8*)_rhp_malloc(BN_num_bytes(dh_pub_key));
+			memset(my_pub_key_bin,0,BN_num_bytes(dh_pub_key));
 		}
 
 
 		if( p_bin ){
-			BN_bn2bin(dh_ctx->p,p_bin);
-			p_bin_len = BN_num_bytes(dh_ctx->p);
+			BN_bn2bin(p,p_bin);
+			p_bin_len = BN_num_bytes(p);
 		}
 
 		if( g_bin ){
-			BN_bn2bin(dh_ctx->g,g_bin);
-			g_bin_len = BN_num_bytes(dh_ctx->g);
+			BN_bn2bin(g,g_bin);
+			g_bin_len = BN_num_bytes(g);
 		}
 
 		if( peer_pub_key_bin ){
@@ -196,13 +203,13 @@ static void _rhp_crypto_dh_dump(rhp_crypto_dh* dh,BIGNUM* peer_pub_key,char* lab
 		}
 
 		if( my_priv_key_bin ){
-			BN_bn2bin(dh_ctx->priv_key,my_priv_key_bin);
-			my_priv_key_bin_len = BN_num_bytes(dh_ctx->priv_key);
+			BN_bn2bin(dh_priv_key,my_priv_key_bin);
+			my_priv_key_bin_len = BN_num_bytes(dh_priv_key);
 		}
 
 		if( my_pub_key_bin ){
-			BN_bn2bin(dh_ctx->pub_key,my_pub_key_bin);
-			my_pub_key_bin_len = BN_num_bytes(dh_ctx->pub_key);
+			BN_bn2bin(dh_pub_key,my_pub_key_bin);
+			my_pub_key_bin_len = BN_num_bytes(dh_pub_key);
 		}
 
 
@@ -388,6 +395,9 @@ static int _rhp_crypto_openssl_dh_generate_key(rhp_crypto_dh* dh)
   int key_len = DH_size(dh_ctx); // get Diffie-Hellman prime size
   int bin_len;
 
+  const BIGNUM *dh_pub_key, *dh_priv_key;
+
+
 //_rhp_crypto_dh_dump(dh,NULL,"_rhp_crypto_openssl_dh_generate_key(1)");
 
   if( DH_generate_key(dh_ctx) != 1 ){
@@ -398,12 +408,13 @@ static int _rhp_crypto_openssl_dh_generate_key(rhp_crypto_dh* dh)
 
 //_rhp_crypto_dh_dump(dh,NULL,"_rhp_crypto_openssl_dh_generate_key(2)");
 
+  DH_get0_key(dh_ctx, &dh_pub_key, &dh_priv_key);
   // bin_len may be less than key_len.
-  bin_len = BN_num_bytes(dh_ctx->pub_key);
+  bin_len = BN_num_bytes(dh_pub_key);
   if( key_len < bin_len ){
-  	RHP_BUG("");
-  	err = -EINVAL;
-  	goto error;
+       RHP_BUG("");
+       err = -EINVAL;
+       goto error;
   }
 
 
@@ -426,7 +437,7 @@ static int _rhp_crypto_openssl_dh_generate_key(rhp_crypto_dh* dh)
      zero bits to the value if necessary."
   */
   // Prepend zero bits if bin_len is less than key_len.
-  if( BN_bn2bin(dh_ctx->pub_key,(dh->my_pub_key + key_len - bin_len)) < 0 ){
+  if( BN_bn2bin(dh_pub_key,(dh->my_pub_key + key_len - bin_len)) < 0 ){
     err = -ENOMEM;
     RHP_BUG("");
     goto error;
@@ -1564,7 +1575,7 @@ static int _rhp_crypto_openssl_encr_aes_cbc_set_dec_key(rhp_crypto_encr* encr,u8
 static int _rhp_crypto_openssl_encr_aes_cbc_encrypt(rhp_crypto_encr* encr,u8* plain_txt,int plain_txt_len,
     u8* outb,int outb_len)
 {
-  EVP_CIPHER_CTX ctx;
+  EVP_CIPHER_CTX *ctx;
   const EVP_CIPHER* type;
   int olen;
   int iv_len = encr->get_iv_len(encr);
@@ -1594,39 +1605,39 @@ static int _rhp_crypto_openssl_encr_aes_cbc_encrypt(rhp_crypto_encr* encr,u8* pl
       return -EINVAL;
   }
 
-  EVP_CIPHER_CTX_init(&ctx);
+  ctx = EVP_CIPHER_CTX_new();
 
-  if( EVP_EncryptInit(&ctx,type,encr->enc_key,encr->enc_iv) == 0 ){
+  if( EVP_EncryptInit_ex(ctx,type,NULL,encr->enc_key,encr->enc_iv) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_set_padding(&ctx,0);
+  EVP_CIPHER_CTX_set_padding(ctx,0);
 
-  if( EVP_EncryptUpdate(&ctx,outb,&olen,plain_txt,plain_txt_len) == 0 ){
+  if( EVP_EncryptUpdate(ctx,outb,&olen,plain_txt,plain_txt_len) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  if( EVP_EncryptFinal_ex(&ctx,NULL,&olen) == 0 ){
+  if( EVP_EncryptFinal_ex(ctx,NULL,&olen) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_ENCR_AES_CBC_ENCRYPT,"xpppp",encr,encr->key_len,encr->enc_key,iv_len,encr->enc_iv,plain_txt_len,plain_txt,outb_len,outb);
   return 0;
 
 error:
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
   return -EINVAL;
 }
 
 static int _rhp_crypto_openssl_encr_aes_cbc_decrypt(rhp_crypto_encr* encr,u8* cipher_txt,int cipher_txt_len,
     u8* outb,int outb_len,u8* iv)
 {
-  EVP_CIPHER_CTX ctx;
+  EVP_CIPHER_CTX *ctx;
   const EVP_CIPHER* type;
   int olen;
   int iv_len = encr->get_iv_len(encr);
@@ -1656,32 +1667,32 @@ static int _rhp_crypto_openssl_encr_aes_cbc_decrypt(rhp_crypto_encr* encr,u8* ci
       return -EINVAL;
   }
 
-  EVP_CIPHER_CTX_init(&ctx);
+  ctx = EVP_CIPHER_CTX_new();
 
-  if( EVP_DecryptInit(&ctx,type,encr->dec_key,iv) == 0 ){
+  if( EVP_DecryptInit(ctx,type,encr->dec_key,iv) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_set_padding(&ctx,0);
+  EVP_CIPHER_CTX_set_padding(ctx,0);
 
-  if( EVP_DecryptUpdate(&ctx,outb,&olen,cipher_txt,cipher_txt_len) == 0 ){
+  if( EVP_DecryptUpdate(ctx,outb,&olen,cipher_txt,cipher_txt_len) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  if( EVP_DecryptFinal(&ctx,NULL,&olen) == 0 ){
+  if( EVP_DecryptFinal_ex(ctx,NULL,&olen) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_ENCR_AES_CBC_DECRYPT,"xppppp",encr,encr->key_len,encr->dec_key,iv_len,iv,cipher_txt_len,cipher_txt,outb_len,outb,AES_BLOCK_SIZE,iv);
   return 0;
 
 error:
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
   return -EINVAL;
 }
 
@@ -1846,7 +1857,7 @@ static int _rhp_crypto_openssl_encr_3des_cbc_set_dec_key(rhp_crypto_encr* encr,u
 static int _rhp_crypto_openssl_encr_3des_cbc_encrypt(rhp_crypto_encr* encr,u8* plain_txt,int plain_txt_len,
     u8* outb,int outb_len)
 {
-  EVP_CIPHER_CTX ctx;
+  EVP_CIPHER_CTX *ctx;
   const EVP_CIPHER* type = EVP_des_ede3_cbc();
   int olen;
   int iv_len = encr->get_iv_len(encr);
@@ -1861,39 +1872,39 @@ static int _rhp_crypto_openssl_encr_3des_cbc_encrypt(rhp_crypto_encr* encr,u8* p
     return -EINVAL;
   }
 
-  EVP_CIPHER_CTX_init(&ctx);
+  ctx = EVP_CIPHER_CTX_new();
 
-  if( EVP_EncryptInit(&ctx,type,encr->enc_key,encr->enc_iv) == 0 ){
+  if( EVP_EncryptInit_ex(ctx,type,NULL,encr->enc_key,encr->enc_iv) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_set_padding(&ctx,0);
+  EVP_CIPHER_CTX_set_padding(ctx,0);
 
-  if( EVP_EncryptUpdate(&ctx,outb,&olen,plain_txt,plain_txt_len) == 0 ){
+  if( EVP_EncryptUpdate(ctx,outb,&olen,plain_txt,plain_txt_len) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  if( EVP_EncryptFinal_ex(&ctx,NULL,&olen) == 0 ){
+  if( EVP_EncryptFinal_ex(ctx,NULL,&olen) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_ENCR_3DES_CBC_ENCRYPT,"xpppp",encr,encr->key_len,encr->enc_key,iv_len,encr->enc_iv,plain_txt_len,plain_txt,outb_len,outb);
   return 0;
 
 error:
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
   return -EINVAL;
 }
 
 static int _rhp_crypto_openssl_encr_3des_cbc_decrypt(rhp_crypto_encr* encr,u8* cipher_txt,int cipher_txt_len,
     u8* outb,int outb_len,u8* iv)
 {
-  EVP_CIPHER_CTX ctx;
+  EVP_CIPHER_CTX *ctx;
   const EVP_CIPHER* type = EVP_des_ede3_cbc();
   int olen;
   int iv_len = encr->get_iv_len(encr);
@@ -1908,32 +1919,32 @@ static int _rhp_crypto_openssl_encr_3des_cbc_decrypt(rhp_crypto_encr* encr,u8* c
     return -EINVAL;
   }
 
-  EVP_CIPHER_CTX_init(&ctx);
+  ctx = EVP_CIPHER_CTX_new();
 
-  if( EVP_DecryptInit(&ctx,type,encr->dec_key,iv) == 0 ){
+  if( EVP_DecryptInit(ctx,type,encr->dec_key,iv) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_set_padding(&ctx,0);
+  EVP_CIPHER_CTX_set_padding(ctx,0);
 
-  if( EVP_DecryptUpdate(&ctx,outb,&olen,cipher_txt,cipher_txt_len) == 0 ){
+  if( EVP_DecryptUpdate(ctx,outb,&olen,cipher_txt,cipher_txt_len) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  if( EVP_DecryptFinal(&ctx,NULL,&olen) == 0 ){
+  if( EVP_DecryptFinal_ex(ctx,NULL,&olen) == 0 ){
     RHP_BUG("");
     goto error;
   }
 
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_ENCR_3DES_CBC_DECRYPT,"xppppp",encr,encr->key_len,encr->dec_key,iv_len,iv,cipher_txt_len,cipher_txt,outb_len,outb,RHP_DES_BLOCK_SIZE,iv);
   return 0;
 
 error:
-  EVP_CIPHER_CTX_cleanup(&ctx);
+  EVP_CIPHER_CTX_free(ctx);
   return -EINVAL;
 }
 
@@ -2026,7 +2037,6 @@ static int _rhp_crypto_dh_alloc(rhp_crypto_dh* dh)
   int err = -EINVAL;
   u8* prime;
   int prime_len;
-  int generator = RHP_PROTO_IKE_DH_GENERATOR;
   DH* dh_ctx = NULL;
 
   dh_ctx = DH_new();
@@ -2042,20 +2052,20 @@ static int _rhp_crypto_dh_alloc(rhp_crypto_dh* dh)
     goto error;
   }
 
-  dh_ctx->p = BN_bin2bn(prime,prime_len,NULL);
-  if( dh_ctx->p == NULL ){
-    RHP_BUG("");
-    goto error;
-  }
-
-  dh_ctx->g = BN_new();
-  if( dh_ctx->g == NULL ){
+  BIGNUM *p, *g;
+  p = BN_bin2bn(prime,prime_len,NULL);
+  g = BN_new();
+  if (p == NULL || g == NULL) {
     RHP_BUG("");
     err = -ENOMEM;
     goto error;
   }
+  if (!BN_set_word(g, RHP_PROTO_IKE_DH_GENERATOR)) {
+    RHP_BUG("");
+    goto error;
+  }
 
-  if( !BN_set_word(dh_ctx->g,generator) ){
+  if (!DH_set0_pqg(dh_ctx, p, NULL, g)){
     RHP_BUG("");
     goto error;
   }
@@ -2218,7 +2228,8 @@ static int _rhp_crypto_openssl_rsasig_sign(rhp_crypto_rsasig* rsasig,u8* mesg_oc
 		u8** signed_octets,int* signed_octets_len)
 {
   int err = -EINVAL;
-  EVP_MD_CTX md_ctx;
+  EVP_MD_CTX *md_ctx;
+  md_ctx = EVP_MD_CTX_new();
   u8* next;
   u8* outb = NULL;
   unsigned int outb_len;
@@ -2236,7 +2247,7 @@ static int _rhp_crypto_openssl_rsasig_sign(rhp_crypto_rsasig* rsasig,u8* mesg_oc
     return -EINVAL;
   }
 
-  if( EVP_SignInit(&md_ctx,EVP_sha1()) != 1 ){
+  if( EVP_SignInit_ex(md_ctx,EVP_sha1(),NULL) != 1 ){
     EVP_PKEY_free(priv_key);
     return -EINVAL;
   }
@@ -2250,18 +2261,18 @@ static int _rhp_crypto_openssl_rsasig_sign(rhp_crypto_rsasig* rsasig,u8* mesg_oc
     goto error;
   }
 
-  if( EVP_SignUpdate(&md_ctx,mesg_octets,mesg_octets_len) != 1 ){
+  if( EVP_SignUpdate(md_ctx,mesg_octets,mesg_octets_len) != 1 ){
 	RHP_BUG("");
     goto error;
   }
 
-  if( EVP_SignFinal(&md_ctx,outb,&outb_len,priv_key) != 1 ){
+  if( EVP_SignFinal(md_ctx,outb,&outb_len,priv_key) != 1 ){
 	RHP_BUG("");
     goto error;
   }
 
   EVP_PKEY_free(priv_key);
-  EVP_MD_CTX_cleanup(&md_ctx);
+  EVP_MD_CTX_free(md_ctx);
 
   *signed_octets = outb;
   *signed_octets_len = outb_len;
@@ -2276,7 +2287,7 @@ error:
   if( priv_key ){
     EVP_PKEY_free(priv_key);
   }
-  EVP_MD_CTX_cleanup(&md_ctx);
+  EVP_MD_CTX_free(md_ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_RSASIG_SIGN_ERR,"xpE",rsasig,mesg_octets_len,mesg_octets,err);
   return err;
@@ -2286,7 +2297,8 @@ static int _rhp_crypto_openssl_rsasig_verify(rhp_crypto_rsasig* rsasig,u8* signe
 {
   int err = -EINVAL;
   u8* next;
-  EVP_MD_CTX md_ctx;
+  EVP_MD_CTX *md_ctx;
+  md_ctx = EVP_MD_CTX_new();
   EVP_PKEY* pub_key = NULL;
 
   if( rsasig->pub_key == NULL ){
@@ -2301,23 +2313,23 @@ static int _rhp_crypto_openssl_rsasig_verify(rhp_crypto_rsasig* rsasig,u8* signe
     return -EINVAL;
   }
 
-  if( EVP_VerifyInit(&md_ctx,EVP_sha1()) != 1 ){
+  if( EVP_VerifyInit(md_ctx,EVP_sha1()) != 1 ){
     RHP_BUG("");
     return -EINVAL;
   }
 
-  if( EVP_VerifyUpdate(&md_ctx,signed_octets,signed_octets_len) != 1 ){
+  if( EVP_VerifyUpdate(md_ctx,signed_octets,signed_octets_len) != 1 ){
     RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_RSASIG_VERIFY_NG1,"xpp",rsasig,signed_octets_len,signed_octets,sig_len,sig);
     goto error;
   }
 
-  if( EVP_VerifyFinal(&md_ctx,sig,sig_len,pub_key) != 1 ){
+  if( EVP_VerifyFinal(md_ctx,sig,sig_len,pub_key) != 1 ){
     RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_RSASIG_VERIFY_NG2,"xpp",rsasig,signed_octets_len,signed_octets,sig_len,sig);
     goto error;
   }
 
   EVP_PKEY_free(pub_key);
-  EVP_MD_CTX_cleanup(&md_ctx);
+  EVP_MD_CTX_free(md_ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_RSASIG_VERIFY_OK,"xpp",rsasig,signed_octets_len,signed_octets,sig_len,sig);
   return 0;
@@ -2326,7 +2338,7 @@ error:
   if( pub_key ){
     EVP_PKEY_free(pub_key);
   }
-  EVP_MD_CTX_cleanup(&md_ctx);
+  EVP_MD_CTX_free(md_ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_RSASIG_VERIFY_ERR,"xppE",rsasig,signed_octets_len,signed_octets,sig_len,sig,err);
   return err;
@@ -2336,7 +2348,8 @@ static int _rhp_crypto_openssl_rsasig_sign_ikev1(rhp_crypto_rsasig* rsasig,
 		u8* mesg_octets,int mesg_octets_len,u8** signature,int* signature_len)
 {
   int err = -EINVAL;
-  EVP_MD_CTX md_ctx;
+  EVP_MD_CTX *md_ctx;
+  md_ctx = EVP_MD_CTX_new();
   u8* next;
   u8* outb = NULL;
   unsigned int outb_len, sig_len;
@@ -2354,13 +2367,13 @@ static int _rhp_crypto_openssl_rsasig_sign_ikev1(rhp_crypto_rsasig* rsasig,
     return -EINVAL;
   }
 
-  if( EVP_SignInit(&md_ctx,EVP_sha1()) != 1 ){
+  if( EVP_SignInit(md_ctx,EVP_sha1()) != 1 ){
     EVP_PKEY_free(priv_key);
     return -EINVAL;
   }
 
 
-  outb_len = RSA_size(priv_key->pkey.rsa);
+  outb_len = RSA_size(EVP_PKEY_get0(priv_key));
 
   outb = (u8*)_rhp_malloc(outb_len);
   if( outb == NULL ){
@@ -2370,7 +2383,7 @@ static int _rhp_crypto_openssl_rsasig_sign_ikev1(rhp_crypto_rsasig* rsasig,
   }
 
   sig_len = RSA_private_encrypt(mesg_octets_len,mesg_octets,
-							outb,priv_key->pkey.rsa,RSA_PKCS1_PADDING);
+							outb,EVP_PKEY_get0(priv_key),RSA_PKCS1_PADDING);
 	if( sig_len == 0 || sig_len != outb_len ){
 		err = -EINVAL;
 		RHP_BUG("");
@@ -2378,7 +2391,7 @@ static int _rhp_crypto_openssl_rsasig_sign_ikev1(rhp_crypto_rsasig* rsasig,
 	}
 
   EVP_PKEY_free(priv_key);
-  EVP_MD_CTX_cleanup(&md_ctx);
+  EVP_MD_CTX_free(md_ctx);
 
   *signature = outb;
   *signature_len = outb_len;
@@ -2393,7 +2406,7 @@ error:
   if( priv_key ){
     EVP_PKEY_free(priv_key);
   }
-  EVP_MD_CTX_cleanup(&md_ctx);
+  EVP_MD_CTX_free(md_ctx);
 
   RHP_TRC_FREQ(0,RHPTRCID_OPENSSL_RSASIG_SIGN_IKEV1_ERR,"xpE",rsasig,mesg_octets_len,mesg_octets,err);
   return err;
@@ -2414,6 +2427,8 @@ static int _rhp_crypto_openssl_rsasig_verify_ikev1(rhp_crypto_rsasig* rsasig,
   }
 
   next = rsasig->pub_key;
+  // EVP_PKEY *d2i_PublicKey(int type, EVP_PKEY **a, const unsigned char **pp, long length);
+  // pub_key is EVP_PKEY*
   pub_key = d2i_PublicKey(EVP_PKEY_RSA,NULL,(const unsigned char**)&next,rsasig->pub_key_len);
   if( pub_key == NULL ){
     RHP_BUG("");
@@ -2421,7 +2436,7 @@ static int _rhp_crypto_openssl_rsasig_verify_ikev1(rhp_crypto_rsasig* rsasig,
   }
 
 
-  outb_len = RSA_size(pub_key->pkey.rsa);
+  outb_len = BN_num_bytes(EVP_PKEY_get0(pub_key));
 
   outb = (u8*)_rhp_malloc(outb_len);
   if( outb == NULL ){
@@ -2431,7 +2446,7 @@ static int _rhp_crypto_openssl_rsasig_verify_ikev1(rhp_crypto_rsasig* rsasig,
   }
 
 
-  sig_len2 = RSA_public_decrypt(signature_len,signature,outb,pub_key->pkey.rsa,RSA_PKCS1_PADDING);
+  sig_len2 = RSA_public_decrypt(signature_len,signature,outb,EVP_PKEY_get0(pub_key),RSA_PKCS1_PADDING);
 	if( sig_len2 == 0 ) {
 		err = -EINVAL;
 		RHP_BUG("");
